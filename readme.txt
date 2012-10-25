@@ -20,14 +20,13 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 
 1. Upload the `wp-linkedin` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Go to the LinkedIn Developer Network and sign-up for a LinkedIn Application Key <https://www.linkedin.com/secure/developer>
+1. Go to the settings page for the plugin and fill in the key, secrets and token fields.
+1. The `Profile fields` field is the list of fields that will be available to the template for rendering (see below for template customization).
 
-Go to the LinkedIn Developer Network and sign-up for a LinkedIn Application Key <https://www.linkedin.com/secure/developer>
-Go to the settings page for the plugin and fill in the key, secrets and token fields.
-The `Profile fields` field is the list of fields that will be available to the template for rendering (see below for template customization).
-
-There are two shrotcodes available:
- * [li_profile] displays your LinkedIn profile
- * [li_recommendations width="480" length="200"] displays a rotating scroller with the recommendations you received
+There are two shortcodes available:
+* [li_profile] displays your LinkedIn profile
+* [li_recommendations width="480" length="200"] displays a rotating scroller with the recommendations you received
 
 To customize the rendering of both shortcodes you must create a `linkedin` folder in your theme and then copy the template file you want to modify.
 The default template files, `recommendations.php` and `profile.php`, are located in the plugin's `template` folder.
