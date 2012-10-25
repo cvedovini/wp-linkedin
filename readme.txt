@@ -25,6 +25,7 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 1. The `Profile fields` field is the list of fields that will be available to the template for rendering (see below for template customization).
 
 There are two shortcodes available:
+
 * [li_profile] displays your LinkedIn profile
 * [li_recommendations width="480" length="200"] displays a rotating scroller with the recommendations you received
 
