@@ -23,8 +23,3 @@ $divid = wp_generate_password(12, false);
 	$('#<?php echo $divid; ?>').scrollable({circular:true}).autoscroll({autoplay:true,autopause:true});
 })(jQuery);
 </script>
-
-<!--
-height:<?php  echo $height; ?>px
- style="max-height:<?php  echo $height - 18; ?>px"
--->
