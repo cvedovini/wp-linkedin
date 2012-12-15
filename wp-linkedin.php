@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.0.1
+Version: 1.0.2
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -45,20 +45,56 @@ class WPLinkedInPlugin {
 		// Translations can be filed in the /languages/ directory
 		load_plugin_textdomain('wp-linkedin', false, dirname(plugin_basename(__FILE__)) . '/languages' );
 
+		wp_register_sidebar_widget('wp-linkedin-recommendation-widget', 'LinkedIn Recommendations',
+				array(&$this, 'recommendations_widget'), array('description' => __('A slider with your LinkedIn recommendations', 'wp-linkedin')));
+		wp_register_widget_control('wp-linkedin-recommendation-widget', 'LinkedIn Recommendations',
+				array(&$this, 'recommendations_widget_control'), array('id_base' => 'wp-linkedin-recommendation-widget'));
+
 		if (is_admin()) {
 			add_action('admin_menu', array(&$this, 'admin_menu'));
 		} else {
 			wp_register_style('wp-linkedin', plugins_url('wp-linkedin/style.css'), false, '1.0.0');
-			wp_register_script('jquery.tools', 'http://cdn.jquerytools.org/1.2.7/full/jquery.tools.min.js', false, '1.2.7');
+			wp_register_script('jquery.tools', 'http://cdn.jquerytools.org/1.2.7/all/jquery.tools.min.js', array('jquery'), '1.2.7');
 			add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
-			add_shortcode('li_recommendations', array(& $this, 'recommendations_sc'));
-			add_shortcode('li_profile', array(& $this, 'profile_sc'));
+			add_shortcode('li_recommendations', array(&$this, 'recommendations_sc'));
+			add_shortcode('li_profile', array(&$this, 'profile_sc'));
 		}
 	}
 
 	function admin_menu() {
 		require_once 'class-admin.php';
 		$this->admin = new WPLinkedInAdmin($this);
+	}
+
+	function recommendations_widget() {
+		$options = get_option('recommendations_widget_options');
+		echo $this->recommendations_sc($options);
+	}
+
+	function recommendations_widget_control() {
+		$options = get_option('recommendations_widget_options');
+
+		if (!is_array( $options )) {
+			$options = array(
+				'width' => '480',
+				'length' => '200'
+			);
+		}
+
+		if (isset($_POST['width'])) {
+			$options['width'] = $_POST['width'];
+		}
+
+		if (isset($_POST['length'])) {
+			$options['length'] = $_POST['length'];
+		}
+
+		update_option('recommendations_widget_options', $options);
+
+		echo '<p><label>Width of widget (in px): </label><br/>';
+		echo '<input type="text" name="width" value="'.$options['width'].'" size="3" /></p>';
+		echo '<p><label>Length of recommendations (in char): </label><br/>';
+		echo '<input type="text" name="lenght" value="'.$options['length'].'" size="3" /></p>';
 	}
 
 	function enqueue_scripts() {
@@ -130,7 +166,6 @@ class WPLinkedInPlugin {
         if($response['success'] === TRUE) {
         	return json_decode($response['linkedin']);
         } else {
-        	echo '<!-- '.json_encode($response).' -->';
         	return false;
         }
 	}
