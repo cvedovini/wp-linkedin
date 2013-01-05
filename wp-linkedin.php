@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.0.2
+Version: 1.1.0
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -77,7 +77,8 @@ class WPLinkedInPlugin {
 		if (!is_array( $options )) {
 			$options = array(
 				'width' => '480',
-				'length' => '200'
+				'length' => '200',
+				'interval' => '1000'
 			);
 		}
 
@@ -89,12 +90,20 @@ class WPLinkedInPlugin {
 			$options['length'] = $_POST['length'];
 		}
 
+		if (isset($_POST['interval'])) {
+			$options['interval'] = $_POST['interval'];
+		}
+
+		if (!isset($options['interval'])) $options['interval'] = '1000';
+
 		update_option('recommendations_widget_options', $options);
 
 		echo '<p><label>Width of widget (in px): </label><br/>';
-		echo '<input type="text" name="width" value="'.$options['width'].'" size="3" /></p>';
+		echo '<input type="text" name="width" value="'.$options['width'].'" size="4" /></p>';
 		echo '<p><label>Length of recommendations (in char): </label><br/>';
-		echo '<input type="text" name="lenght" value="'.$options['length'].'" size="3" /></p>';
+		echo '<input type="text" name="length" value="'.$options['length'].'" size="4" /></p>';
+ 		echo '<p><label>Scroller\'s speed: </label><br/>';
+		echo '<input type="text" name="interval" value="'.$options['interval'].'" size="5" /></p>';
 	}
 
 	function enqueue_scripts() {
@@ -128,7 +137,8 @@ class WPLinkedInPlugin {
 	function recommendations_sc($atts) {
 		extract(shortcode_atts(array(
 				'width' => '480',
-				'length' => '200'
+				'length' => '200',
+				'interval' => '1000'
 		), $atts));
 
 		$profile = $this->get_profile('recommendations-received');
