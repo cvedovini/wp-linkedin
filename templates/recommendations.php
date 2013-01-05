@@ -20,6 +20,6 @@ $divid = wp_generate_password(12, false);
 		h = Math.max(h, $(this).height());
 	});
 	$('#<?php echo $divid; ?>').height(h);
-	$('#<?php echo $divid; ?>').scrollable({circular:true}).autoscroll({autoplay:true,autopause:true});
+	$('#<?php echo $divid; ?>').scrollable({circular:true}).autoscroll({autoplay:true,autopause:true,interval:<?php  echo $interval; ?>});
 })(jQuery);
 </script>

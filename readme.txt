@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
 Tested up to: 3.4.2
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,12 +27,15 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 There are two shortcodes available:
 
 * [li_profile] displays your LinkedIn profile
-* [li_recommendations width="480" length="200"] displays a rotating scroller with the recommendations you received
+* [li_recommendations width="480" length="200" interval="1000"] displays a rotating scroller with the recommendations you received
 
 To customize the rendering of both shortcodes you must create a `linkedin` folder in your theme and then copy the template file you want to modify.
 The default template files, `recommendations.php` and `profile.php`, are located in the plugin's `template` folder.
 
 == Changelog ==
+
+= version 1.1.0 =
+- Adding the `interval` attribute to the shortcode and the widget to control the scroller's speed
 
 = version 1.0.2 =
 - Changing version of jQuery Tools to avoid conflicting with WP's jQuery
