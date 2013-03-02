@@ -31,7 +31,7 @@ define('LINKEDIN_USERSECRET', get_option('wp-linkedin_usersecret'));
 
 define('LINKEDIN_FIELDS_BASIC', 'id, first-name, last-name, picture-url, headline, location, industry, public-profile-url');
 define('LINKEDIN_FIELDS_DEFAULT', 'summary, specialties, languages, skills, educations, positions, recommendations-received');
-define('LINKEDIN_FIELDS', LINKEDIN_FIELDS_BASIC . ', ' . get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAULT));
+define('LINKEDIN_FIELDS', get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAULT));
 
 
 class WPLinkedInPlugin {
@@ -53,7 +53,6 @@ class WPLinkedInPlugin {
 		if (is_admin()) {
 			add_action('admin_menu', array(&$this, 'admin_menu'));
 		} else {
-			wp_register_style('wp-linkedin', plugins_url('wp-linkedin/style.css'), false, '1.0.0');
 			wp_register_script('jquery.tools', 'http://cdn.jquerytools.org/1.2.7/all/jquery.tools.min.js', array('jquery'), '1.2.7');
 			add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
 			add_shortcode('li_recommendations', array(&$this, 'recommendations_sc'));
@@ -107,17 +106,16 @@ class WPLinkedInPlugin {
 	}
 
 	function enqueue_scripts() {
-		wp_enqueue_style('wp-linkedin');
 		wp_enqueue_script('jquery.tools');
 	}
 
 	function profile_sc($atts) {
 		// In case they want to pass customized attribute to their custom template
-		extract(shortcode_atts(array(), $atts));
+		extract(shortcode_atts(array(
+				'fields' => LINKEDIN_FIELDS
+				), $atts));
 
-		$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS);
-		$fields = preg_split('/[,;:]/', $fields);
-		$fields = implode(',', $fields);
+		$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ', ' . $fields);
 
 		$profile = $this->get_profile($fields);
 		$template = locate_template('linkedin/profile.php');

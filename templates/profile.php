@@ -1,3 +1,6 @@
+<?php
+	wp_enqueue_style('wp-linkedin', plugins_url('wp-linkedin/style.css'), false, '1.0.0');
+?>
 <div class="linkedin"><div class="profile">
 <div class="cartouche">
 	<img class="picture" src="<?php echo $profile->pictureUrl; ?>" width="80px" height="80px" />

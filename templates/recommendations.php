@@ -1,5 +1,6 @@
 <?php
-$divid = wp_generate_password(12, false);
+	wp_enqueue_style('wp-linkedin', plugins_url('wp-linkedin/style.css'), false, '1.0.0');
+	$divid = wp_generate_password(12, false);
 ?>
 <div class="linkedin">
 	<div id="<?php echo $divid; ?>" class="scrollable" style="width:<?php  echo $width; ?>px;">
