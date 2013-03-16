@@ -4,8 +4,8 @@ Contributors: cvedovini
 Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
-Tested up to: 3.4.2
-Stable tag: 1.2.0
+Tested up to: 3.5.1
+Stable tag: 1.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -33,6 +33,9 @@ To customize the rendering of both shortcodes you must create a `linkedin` folde
 The default template files, `recommendations.php` and `profile.php`, are located in the plugin's `template` folder.
 
 == Changelog ==
+
+= version 1.2.1 =
+- Added a test to avoid PHP error when no recommendations
 
 = version 1.2.0 =
 - Removed some unecessary code that prevented the fetching of some profile fields
