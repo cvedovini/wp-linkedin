@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
 Tested up to: 3.5.1
-Stable tag: 1.2.1
+Stable tag: 1.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -26,13 +26,18 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 
 There are two shortcodes available:
 
-* [li_profile] displays your LinkedIn profile
 * [li_recommendations width="480" length="200" interval="1000"] displays a rotating scroller with the recommendations you received
+* [li_profile] displays your LinkedIn profile. Optional attributes are `fields` and `lang` to overide the general settings but you can pass any attribute and use it in customized templates.
+
 
 To customize the rendering of both shortcodes you must create a `linkedin` folder in your theme and then copy the template file you want to modify.
-The default template files, `recommendations.php` and `profile.php`, are located in the plugin's `template` folder.
+The default template files, `recommendations.php` and `profile.php`, are located in the plugin's `templates` folder.
+
 
 == Changelog ==
+
+= version 1.2.1 =
+- Added the possibility to select the profile language in the settings and the `[li_profile]` shortcode.
 
 = version 1.2.1 =
 - Added a test to avoid PHP error when no recommendations

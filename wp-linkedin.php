@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.2.1
+Version: 1.3.0
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -32,6 +32,7 @@ define('LINKEDIN_USERSECRET', get_option('wp-linkedin_usersecret'));
 define('LINKEDIN_FIELDS_BASIC', 'id, first-name, last-name, picture-url, headline, location, industry, public-profile-url');
 define('LINKEDIN_FIELDS_DEFAULT', 'summary, specialties, languages, skills, educations, positions, recommendations-received');
 define('LINKEDIN_FIELDS', get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAULT));
+define('LINKEDIN_PROFILELANGUAGE', get_option('wp-linkedin_profilelanguage'));
 
 
 class WPLinkedInPlugin {
@@ -112,12 +113,13 @@ class WPLinkedInPlugin {
 	function profile_sc($atts) {
 		// In case they want to pass customized attribute to their custom template
 		extract(shortcode_atts(array(
-				'fields' => LINKEDIN_FIELDS
+				'fields' => LINKEDIN_FIELDS,
+				'lang' => LINKEDIN_PROFILELANGUAGE
 				), $atts));
 
 		$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ', ' . $fields);
 
-		$profile = $this->get_profile($fields);
+		$profile = $this->get_profile($fields, $lang);
 		$template = locate_template('linkedin/profile.php');
 
 		ob_flush();
@@ -158,7 +160,7 @@ class WPLinkedInPlugin {
 		}
 	}
 
-	function get_profile($options='id') {
+	function get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) {
 		require_once 'linkedin_3.2.0.class.php';
 
 		$API_CONFIG = array(
@@ -170,6 +172,7 @@ class WPLinkedInPlugin {
 		$linkedin = new LinkedIn($API_CONFIG);
         $linkedin->setTokenAccess(array('oauth_token' => LINKEDIN_USERTOKEN, 'oauth_token_secret' => LINKEDIN_USERSECRET));
         $linkedin->setResponseFormat(LINKEDIN::_RESPONSE_JSON);
+        $linkedin->setProfileLanguage($lang);
 
 		$response = $linkedin->profile("~:($options)");
 

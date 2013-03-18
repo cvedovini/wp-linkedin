@@ -144,6 +144,9 @@ class LinkedIn {
   // the format of the data to return
   protected $response_format         = self::_DEFAULT_RESPONSE_FORMAT;
 
+  // the language of the profile to return
+  protected $profile_language = NULL;
+
   // last request fields
   public $last_request_headers,
          $last_request_url;
@@ -687,6 +690,11 @@ class LinkedIn {
         $header[] = 'Content-Type: text/xml; charset=UTF-8';
         curl_setopt($handle, CURLOPT_POSTFIELDS, $data);
       }
+
+      if ($this->profile_language) {
+      	$header[] = 'Accept-Language: '.$this->profile_language;
+      }
+
       curl_setopt($handle, CURLOPT_HTTPHEADER, $header);
 
       // set the last url, headers
@@ -891,6 +899,16 @@ class LinkedIn {
 	 */
 	public function getResponseFormat() {
 	  return $this->response_format;
+	}
+
+	/**
+	 * Get the profile_language property.
+	 *
+	 * @return str
+	 *    The profile language.
+	 */
+	public function getProfileLanguage() {
+		return $this->profile_language;
 	}
 
 	/**
@@ -2092,6 +2110,16 @@ class LinkedIn {
 	 */
 	public function setResponseFormat($format = self::_DEFAULT_RESPONSE_FORMAT) {
 	  $this->response_format = $format;
+	}
+
+	/**
+	 * Set the language property.
+	 *
+	 * @param str $lang
+	 *    [OPTIONAL] The language header to specify to LinkedIn.
+	 */
+	public function setProfileLanguage($lang) {
+		$this->profile_language = $lang;
 	}
 
 	/**
