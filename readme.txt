@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
 Tested up to: 3.5.1
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -36,7 +36,11 @@ The default template files, `recommendations.php` and `profile.php`, are located
 
 == Changelog ==
 
-= version 1.2.1 =
+= version 1.3.1 =
+- Upgrading the widget to use WP_Widget class, enabling several widgets instances
+- Modified the script and CSS to be more respectful of theming
+
+= version 1.3 =
 - Added the possibility to select the profile language in the settings and the `[li_profile]` shortcode.
 
 = version 1.2.1 =
