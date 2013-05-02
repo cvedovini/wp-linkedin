@@ -1,6 +1,3 @@
-<?php
-	wp_enqueue_style('wp-linkedin', plugins_url('wp-linkedin/style.css'), false, '1.0.0');
-?>
 <div class="linkedin"><div class="profile">
 <div class="cartouche">
 	<img class="picture" src="<?php echo $profile->pictureUrl; ?>" width="80px" height="80px" />
@@ -23,7 +20,7 @@
 </div>
 <?php endif; ?>
 
-<?php if (isset($profile->positions)): ?>
+<?php if (isset($profile->positions) && is_array($profile->positions->values)): ?>
 <div class="section">
 <div class="heading"><?php _e('Experience', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->positions->values as $v): ?>
@@ -39,7 +36,7 @@
 </div>
 <?php endif; ?>
 
-<?php if (isset($profile->skills)): ?>
+<?php if (isset($profile->skills) && is_array($profile->skills->values)): ?>
 <div class="section">
 <div class="heading"><?php _e('Skills &amp; Expertise', 'wp-linkedin'); ?></div>
 <?php
@@ -51,7 +48,7 @@ foreach ($profile->skills->values as $v) {
 </div>
 <?php endif;?>
 
-<?php if (isset($profile->languages)): ?>
+<?php if (isset($profile->languages) && is_array($profile->languages->values)): ?>
 <div class="section">
 <div class="heading"><?php _e('Languages', 'wp-linkedin'); ?></div>
 <ul>
@@ -62,7 +59,7 @@ foreach ($profile->skills->values as $v) {
 </div>
 <?php endif;?>
 
-<?php if (isset($profile->educations)): ?>
+<?php if (isset($profile->educations) && is_array($profile->educations->values)): ?>
 <div class="section">
 <div class="heading"><?php _e('Education', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->educations->values as $v): ?>
@@ -80,13 +77,13 @@ foreach ($profile->skills->values as $v) {
 </div>
 <?php endif; ?>
 
-<?php if (isset($profile->recommendationsReceived)): ?>
+<?php if (isset($profile->recommendationsReceived) && is_array($profile->recommendationsReceived->values)): ?>
 <div class="section">
 <div class="heading"><?php _e('Recommendations', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->recommendationsReceived->values as $v): ?>
-<blockquote class="recommendation">
-	<p><?php  echo $v->recommendationText; ?></p>
-	<small><?php echo $v->recommender->firstName; ?> <?php echo $v->recommender->lastName; ?></small>
+<blockquote>
+	<div class="recommendation"><?php  echo $v->recommendationText; ?></div>
+	<div class="recommender"><?php echo $v->recommender->firstName; ?> <?php echo $v->recommender->lastName; ?></div>
 </blockquote>
 <?php endforeach; ?>
 </div>

@@ -1,24 +1,16 @@
 @CHARSET "UTF-8";
 
-.linkedin blockquote {
-	padding: 0 0 0 25px;
-	margin: 0 0 20px;
-	background: url('quote.png') no-repeat 0 0;
-}
-
-.linkedin blockquote p {
-	margin-bottom: 0;
+.linkedin blockquote .recommendation {
 	overflow: hidden;
 	width: 100%;
 }
 
-.linkedin blockquote small {
-	display: block;
-	line-height: 18px;
+.linkedin blockquote .recommender {
+	font-size: smaller;
 	color: #999999;
 }
 
-.linkedin blockquote small:before {
+.linkedin blockquote .recommender:before {
 	content: '\2014 \00A0';
 }
 
