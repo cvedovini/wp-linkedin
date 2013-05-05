@@ -83,7 +83,11 @@ foreach ($profile->skills->values as $v) {
 <?php foreach ($profile->recommendationsReceived->values as $v): ?>
 <blockquote>
 	<div class="recommendation"><?php  echo $v->recommendationText; ?></div>
-	<div class="recommender"><?php echo $v->recommender->firstName; ?> <?php echo $v->recommender->lastName; ?></div>
+	<div class="recommender"><?php
+			if (isset($v->recommender->publicProfileUrl)) echo '<a href="' . $v->recommender->publicProfileUrl . '" target="_blank">';
+			echo $v->recommender->firstName . ' ' . $v->recommender->lastName;
+			if (isset($v->recommender->publicProfileUrl)) echo '</a>';
+	?></div>
 </blockquote>
 <?php endforeach; ?>
 </div>

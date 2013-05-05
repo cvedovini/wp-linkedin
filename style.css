@@ -1,5 +1,9 @@
 @CHARSET "UTF-8";
 
+.linkedin blockquote {
+	clear: none !important;
+}
+
 .linkedin blockquote .recommendation {
 	overflow: hidden;
 	width: 100%;

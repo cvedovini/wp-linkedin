@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.3.1
+Version: 1.3.2
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -30,7 +30,8 @@ define('LINKEDIN_USERTOKEN', get_option('wp-linkedin_usertoken'));
 define('LINKEDIN_USERSECRET', get_option('wp-linkedin_usersecret'));
 
 define('LINKEDIN_FIELDS_BASIC', 'id, first-name, last-name, picture-url, headline, location, industry, public-profile-url');
-define('LINKEDIN_FIELDS_DEFAULT', 'summary, specialties, languages, skills, educations, positions, recommendations-received');
+define('LINKEDIN_FIELDS_RECOMMENDATIONS', 'recommendations-received:(recommendation-text,recommender:(first-name,last-name,public-profile-url))');
+define('LINKEDIN_FIELDS_DEFAULT', 'summary, specialties, languages, skills, educations, positions, ' . LINKEDIN_FIELDS_RECOMMENDATIONS);
 define('LINKEDIN_FIELDS', get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAULT));
 define('LINKEDIN_PROFILELANGUAGE', get_option('wp-linkedin_profilelanguage'));
 
@@ -134,7 +135,7 @@ function wp_linkedin_recommendations($atts) {
 			'interval' => '1000'
 	), $atts));
 
-	$profile = wp_linked_get_profile('recommendations-received');
+	$profile = wp_linked_get_profile(LINKEDIN_FIELDS_RECOMMENDATIONS);
 
 	if (isset($profile->recommendationsReceived) && is_array($profile->recommendationsReceived->values)) {
 		$recommendations = $profile->recommendationsReceived->values;
