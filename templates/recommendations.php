@@ -17,9 +17,16 @@
 <script>
 (function($) {
 	var h = 0;
-	$('#<?php echo $divid; ?> .items blockquote').each(function() {
+	var $div = $('#<?php echo $divid; ?>');
+	<?php if ($width === 'auto'):
+		echo 'var width = $div.innerWidth();';
+	else:
+		echo 'var width = ' . $width . ';';
+	endif; ?>
+
+	$('.items blockquote', $div).each(function() {
 		var $this = $(this);
-		$this.outerWidth(<?php  echo $width; ?>, true);
+		$this.outerWidth(width, true);
 		h = Math.max(h, $this.height());
 	});
 	$('#<?php echo $divid; ?>').height(h);
