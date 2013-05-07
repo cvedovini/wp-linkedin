@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
 Tested up to: 3.5.1
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -35,6 +35,9 @@ The default template files, `recommendations.php` and `profile.php`, are located
 
 
 == Changelog ==
+
+= version 1.3.4 =
+- Enable an 'auto' mode for the width of the recommendations in order to accomodate responsive themes. However, it won't work in some occasion where the width of the parent cannot be calculated. To activate it just use 'auto' as the recommendations width.
 
 = version 1.3.3 =
 - Updating the css version
