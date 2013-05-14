@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.3.3
+Version: 1.3.5
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -48,7 +48,7 @@ class WPLinkedInPlugin {
 	function init() {
 		// Make plugin available for translation
 		// Translations can be filed in the /languages/ directory
-		load_plugin_textdomain('wp-linkedin', false, dirname(plugin_basename(__FILE__)) . '/languages' );
+		load_plugin_textdomain('wp-linkedin', false, dirname(plugin_basename(__FILE__)) . '/languages/' );
 
 		if (is_admin()) {
 			add_action('admin_menu', array(&$this, 'admin_menu'));
@@ -63,7 +63,7 @@ class WPLinkedInPlugin {
 	}
 
 	function widgets_init() {
-		register_widget('WPL_Recommendations_Widget');
+		register_widget('WP_LinkedIn_Recommendations_Widget');
 	}
 
 	function admin_menu() {
@@ -88,9 +88,9 @@ function wp_linked_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) {
 			'callbackUrl'  => NULL
 	);
 
-	$linkedin = new LinkedIn($API_CONFIG);
+	$linkedin = new WP_LinkedIn_LinkedIn($API_CONFIG);
 	$linkedin->setTokenAccess(array('oauth_token' => LINKEDIN_USERTOKEN, 'oauth_token_secret' => LINKEDIN_USERSECRET));
-	$linkedin->setResponseFormat(LINKEDIN::_RESPONSE_JSON);
+	$linkedin->setResponseFormat(WP_LinkedIn_LinkedIn::_RESPONSE_JSON);
 	$linkedin->setProfileLanguage($lang);
 
 	$response = $linkedin->profile("~:($options)");

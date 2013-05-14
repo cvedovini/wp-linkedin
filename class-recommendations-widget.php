@@ -1,6 +1,6 @@
 <?php
 
-class WPL_Recommendations_Widget extends WP_Widget {
+class WP_LinkedIn_Recommendations_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct('wp-linkedin-recommendation-widget', 'LinkedIn Recommendations',
@@ -59,7 +59,7 @@ class WPL_Recommendations_Widget extends WP_Widget {
 	public function update($new_instance, $old_instance) {
 		$instance = array();
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['width'] = (int) $new_instance['width'];
+		$instance['width'] = $new_instance['width'];
 		$instance['length'] = (int) $new_instance['length'];
 		$instance['interval'] = (int) $new_instance['interval'];
 		return $instance;
