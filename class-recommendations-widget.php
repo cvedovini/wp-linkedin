@@ -1,6 +1,6 @@
 <?php
 
-class WPL_Recommendations_Widget extends WP_Widget {
+class WP_LinkedIn_Recommendations_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct('wp-linkedin-recommendation-widget', 'LinkedIn Recommendations',
