@@ -73,14 +73,14 @@
 require_once('OAuth.php');
 
 /**
- * 'LinkedInException' class declaration.
+ * 'WP_LinkedIn_LinkedInException' class declaration.
  *
  * This class extends the base 'Exception' class.
  *
  * @access public
  * @package classpackage
  */
-class LinkedInException extends Exception {}
+class WP_LinkedIn_LinkedInException extends Exception {}
 
 /**
  * 'LinkedIn' class declaration.
@@ -90,7 +90,7 @@ class LinkedInException extends Exception {}
  * @access public
  * @package classpackage
  */
-class LinkedIn {
+class WP_LinkedIn_LinkedIn {
   // api/oauth settings
   const _API_OAUTH_REALM             = 'http://api.linkedin.com';
   const _API_OAUTH_VERSION           = '1.0';
@@ -167,7 +167,7 @@ class LinkedIn {
 	public function __construct($config) {
     if(!is_array($config)) {
       // bad data passed
-		  throw new LinkedInException('LinkedIn->__construct(): bad data passed, $config must be of type array.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_LinkedIn->__construct(): bad data passed, $config must be of type array.');
     }
     $this->setApplicationKey($config['appKey']);
 	  $this->setApplicationSecret($config['appSecret']);
@@ -201,7 +201,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($jid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->bookmarkJob(): bad data passed, $jid must be of type string.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->bookmarkJob(): bad data passed, $jid must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -255,18 +255,18 @@ class LinkedIn {
 	    if(is_array($http_code_required)) {
 		    foreach ($http_code_required as $value) {
 			    if(!is_int($value)) {
-			        throw new LinkedInException('LinkedIn->checkResponse(): $http_code_required must be an integer or an array of integer values');
+			        throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->checkResponse(): $http_code_required must be an integer or an array of integer values');
 			    }
 			}
 		} else {
 			if(!is_int($http_code_required)) {
-	  			throw new LinkedInException('LinkedIn->checkResponse(): $http_code_required must be an integer or an array of integer values');
+	  			throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->checkResponse(): $http_code_required must be an integer or an array of integer values');
 	  		} else {
 	  		  $http_code_required = array($http_code_required);
 	  		}
 		}
 		if(!is_array($response)) {
-			throw new LinkedInException('LinkedIn->checkResponse(): $response must be an array');
+			throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->checkResponse(): $response must be an array');
 		}
 
 		// check for a match
@@ -298,7 +298,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($jid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->closeJob(): bad data passed, $jid must be of string value.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->closeJob(): bad data passed, $jid must be of string value.');
 	  }
 
 	  // construct and send the request
@@ -332,11 +332,11 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($uid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->comment(): bad data passed, $uid must be of type string.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->comment(): bad data passed, $uid must be of type string.');
 	  }
     if(!is_string($comment)) {
       // nothing/non-string passed, raise an exception
-		  throw new LinkedInException('LinkedIn->comment(): bad data passed, $comment must be a non-zero length string.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->comment(): bad data passed, $comment must be a non-zero length string.');
     }
 
     /**
@@ -379,7 +379,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($uid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->comments(): bad data passed, $uid must be of type string.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->comments(): bad data passed, $uid must be of type string.');
 	  }
 
 		// construct and send the request
@@ -415,11 +415,11 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($options)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->company(): bad data passed, $options must be of type string.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->company(): bad data passed, $options must be of type string.');
 	  }
 	  if(!is_bool($by_email)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->company(): bad data passed, $by_email must be of type boolean.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->company(): bad data passed, $by_email must be of type boolean.');
 	  }
 
 	  // construct and send the request
@@ -454,11 +454,11 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($cid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->companyProducts(): bad data passed, $cid must be of type string.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->companyProducts(): bad data passed, $cid must be of type string.');
 	  }
 	  if(!is_string($options)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->companyProducts(): bad data passed, $options must be of type string.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->companyProducts(): bad data passed, $options must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -491,7 +491,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($options)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->connections(): bad data passed, $options must be of type string.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->connections(): bad data passed, $options must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -522,13 +522,13 @@ class LinkedIn {
 	 */
 	public function createPost($gid, $title, $summary = '') {
 		if(!is_string($gid)) {
-			throw new LinkedInException('LinkedIn->createPost(): bad data passed, $gid must be of type string.');
+			throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->createPost(): bad data passed, $gid must be of type string.');
 		}
 		if(!is_string($title) || empty($title)) {
-			throw new LinkedInException('LinkedIn->createPost(): bad data passed, $title must be a non-empty string.');
+			throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->createPost(): bad data passed, $title must be a non-empty string.');
 		}
 		if(!is_string($summary)) {
-			throw new LinkedInException('LinkedIn->createPost(): bad data passed, $summary must be of type string.');
+			throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->createPost(): bad data passed, $summary must be of type string.');
 		}
 
 		// construct the XML
@@ -563,7 +563,7 @@ class LinkedIn {
 	 */
 	public function deletePost($pid) {
 		if(!is_string($pid)) {
-			throw new LinkedInException('LinkedIn->deletePost(): bad data passed, $pid must be of type string');
+			throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->deletePost(): bad data passed, $pid must be of type string');
 		}
 
 		// construct and send the request
@@ -598,13 +598,13 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($jid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->editJob(): bad data passed, $jid must be of string value.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->editJob(): bad data passed, $jid must be of string value.');
 	  }
 	  if(is_string($xml)) {
 	    $xml = trim(stripslashes($xml));
 	  } else {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->editJob(): bad data passed, $xml must be of string value.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->editJob(): bad data passed, $xml must be of string value.');
 	  }
 
 	  // construct and send the request
@@ -643,27 +643,27 @@ class LinkedIn {
 	  // check for cURL
 	  if(!extension_loaded('curl')) {
 	    // cURL not present
-      throw new LinkedInException('LinkedIn->fetch(): PHP cURL extension does not appear to be loaded/present.');
+      throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->fetch(): PHP cURL extension does not appear to be loaded/present.');
 	  }
 
     try {
 	    // generate OAuth values
-	    $oauth_consumer  = new MyOAuthConsumer($this->getApplicationKey(), $this->getApplicationSecret(), $this->getCallbackUrl());
+	    $oauth_consumer  = new WP_LinkedIn_OauthConsumer($this->getApplicationKey(), $this->getApplicationSecret(), $this->getCallbackUrl());
 	    $oauth_token     = $this->getToken();
-	    $oauth_token     = (!is_null($oauth_token)) ? new MyOAuthToken($oauth_token['oauth_token'], $oauth_token['oauth_token_secret']) : NULL;
+	    $oauth_token     = (!is_null($oauth_token)) ? new WP_LinkedIn_OauthToken($oauth_token['oauth_token'], $oauth_token['oauth_token_secret']) : NULL;
       $defaults        = array(
         'oauth_version' => self::_API_OAUTH_VERSION
       );
 	    $parameters    = array_merge($defaults, $parameters);
 
 	    // generate OAuth request
-  		$oauth_req = MyOAuthRequest::from_consumer_and_token($oauth_consumer, $oauth_token, $method, $url, $parameters);
-      $oauth_req->sign_request(new MyOAuthSignatureMethod_HMAC_SHA1(), $oauth_consumer, $oauth_token);
+  		$oauth_req = WP_LinkedIn_OauthRequest::from_consumer_and_token($oauth_consumer, $oauth_token, $method, $url, $parameters);
+      $oauth_req->sign_request(new WP_LinkedIn_OauthSignatureMethod_HMAC_SHA1(), $oauth_consumer, $oauth_token);
 
       // start cURL, checking for a successful initiation
       if(!$handle = curl_init()) {
          // cURL failed to start
-        throw new LinkedInException('LinkedIn->fetch(): cURL did not initialize properly.');
+        throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->fetch(): cURL did not initialize properly.');
       }
 
       // set cURL options, based on parameters passed
@@ -709,7 +709,7 @@ class LinkedIn {
 
       // check for throttling
       if(self::isThrottled($return_data['linkedin'])) {
-        throw new LinkedInException('LinkedIn->fetch(): throttling limit for this user/application has been reached for LinkedIn resource - ' . $url);
+        throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->fetch(): throttling limit for this user/application has been reached for LinkedIn resource - ' . $url);
       }
 
       //TODO - add check for NO response (http_code = 0) from cURL
@@ -719,9 +719,9 @@ class LinkedIn {
 
       // no exceptions thrown, return the data
       return $return_data;
-    } catch(MyOAuthException $e) {
+    } catch(WP_LinkedIn_OauthException $e) {
       // oauth exception raised
-      throw new LinkedInException('OAuth exception caught: ' . $e->getMessage());
+      throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('OAuth exception caught: ' . $e->getMessage());
     }
 	}
 
@@ -740,10 +740,10 @@ class LinkedIn {
 	 */
 	public function flagPost($pid, $type) {
 		if(!is_string($pid)) {
-			throw new LinkedInException('LinkedIn->flagPost(): bad data passed, $pid must be of type string');
+			throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->flagPost(): bad data passed, $pid must be of type string');
 		}
 		if(!is_string($type)) {
-			throw new LinkedInException('LinkedIn->flagPost(): bad data passed, $like must be of type string');
+			throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->flagPost(): bad data passed, $like must be of type string');
 		}
 		//Constructing the xml
 		$data = '<?xml version="1.0" encoding="UTF-8"?>';
@@ -755,7 +755,7 @@ class LinkedIn {
 				$data .= '<code>job</code>';
 				break;
 			default:
-				throw new LinkedInException('LinkedIn->flagPost(): invalid value for $type, must be one of: "promotion", "job"');
+				throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->flagPost(): invalid value for $type, must be one of: "promotion", "job"');
 				break;
 		}
 
@@ -788,7 +788,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($cid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->followCompany(): bad data passed, $cid must be of type string.');
+		  throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->followCompany(): bad data passed, $cid must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -818,10 +818,10 @@ class LinkedIn {
 
 	public function followPost($pid, $follow) {
 		if(!is_string($pid)) {
-			throw new LinkedInException('LinkedIn->followPost(): bad data passed, $pid must be of type string');
+			throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->followPost(): bad data passed, $pid must be of type string');
 		}
 		if(!($follow === TRUE || $follow === FALSE)) {
-			throw new LinkedInException('LinkedIn->followPost(): bad data passed, $follow must be of type boolean');
+			throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->followPost(): bad data passed, $follow must be of type boolean');
 		}
 
 		// construct the XML
@@ -949,10 +949,10 @@ class LinkedIn {
 
 	public function group($gid, $options = '') {
 		if(!is_string($gid)){
-			throw new LinkedInException('LinkedIn->group(): bad data passed, $gid must be of type string.');
+			throw new WP_LinkedIn_WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->group(): bad data passed, $gid must be of type string.');
 		}
 		if(!is_string($options)) {
-			throw new LinkedInException('LinkedIn->group(): bad data passed, $options must be of type string');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->group(): bad data passed, $options must be of type string');
 		}
 
 		// construct and send the request
@@ -979,7 +979,7 @@ class LinkedIn {
 	 */
 	public function groupMemberships($options = '') {
 		if(!is_string($options)) {
-			throw new LinkedInException('LinkedIn->groupMemberships(): bad data passed, $options must be of type string');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->groupMemberships(): bad data passed, $options must be of type string');
 		}
 
 		// construct and send the request
@@ -1008,10 +1008,10 @@ class LinkedIn {
 	 */
 	public function groupPost($pid, $options = '') {
 		if(!is_string($pid)) {
-			throw new LinkedInException('LinkedIn->groupPost(): bad data passed, $pid must be of type string.');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->groupPost(): bad data passed, $pid must be of type string.');
 		}
 		if(!is_string($options)) {
-			throw new LinkedInException('LinkedIn->groupPost(): bad data passed, $options must be of type string.');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->groupPost(): bad data passed, $options must be of type string.');
 		}
 
 		// construct and send the request
@@ -1040,10 +1040,10 @@ class LinkedIn {
 	 */
 	public function groupPostComments($pid, $options = ''){
 		if(!is_string($pid)){
-			throw new LinkedInException('LinkedIn->groupPostComments(): bad data passed, $pid must be of type string.');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->groupPostComments(): bad data passed, $pid must be of type string.');
 		}
 		if(!is_string($options)) {
-			throw new LinkedInException('LinkedIn->groupPostComments(): bad data passed, $options must be of type string.');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->groupPostComments(): bad data passed, $options must be of type string.');
 		}
 
 		// construct and send the request
@@ -1070,10 +1070,10 @@ class LinkedIn {
 	 */
 	public function groupPosts($gid, $options = '') {
 		if(!is_string($gid)){
-			throw new LinkedInException('LinkedIn->groupPosts(): bad data passed, $gid must be of type string');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->groupPosts(): bad data passed, $gid must be of type string');
 		}
 		if(!is_string($options)){
-			throw new LinkedInException('LinkedIn->groupPosts(): bad data passed, $options must be of type string');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->groupPosts(): bad data passed, $options must be of type string');
 		}
 
 		// construct and send the request
@@ -1102,10 +1102,10 @@ class LinkedIn {
 	 */
 	public function groupSettings($gid, $options = '') {
 		if(!is_string($gid)) {
-			throw new LinkedInException('LinkedIn->groupSettings(): bad data passed, $gid must be of type string');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->groupSettings(): bad data passed, $gid must be of type string');
 		}
 		if(!is_string($options)) {
-			throw new LinkedInException('LinkedIn->groupSettings(): bad data passed, $options must be of type string');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->groupSettings(): bad data passed, $options must be of type string');
 		}
 
 		// construct and send the request
@@ -1152,7 +1152,7 @@ class LinkedIn {
      */
     // check passed data
     if(empty($recipient)) {
-   		throw new LinkedInException('LinkedIn->invite(): you must provide an invitation recipient.');
+   		throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->invite(): you must provide an invitation recipient.');
     }
     switch($method) {
       case 'email':
@@ -1160,38 +1160,38 @@ class LinkedIn {
           $recipient = array_map('trim', $recipient);
         } else {
           // bad format for recipient for email method
-          throw new LinkedInException('LinkedIn->invite(): invitation recipient email/name array is malformed.');
+          throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->invite(): invitation recipient email/name array is malformed.');
         }
         break;
       case 'id':
         $recipient = trim($recipient);
         if(!self::isId($recipient)) {
           // bad format for recipient for id method
-          throw new LinkedInException('LinkedIn->invite(): invitation recipient ID does not match LinkedIn format.');
+          throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->invite(): invitation recipient ID does not match LinkedIn format.');
         }
         break;
       default:
-        throw new LinkedInException('LinkedIn->invite(): bad invitation method, must be one of: email, id.');
+        throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->invite(): bad invitation method, must be one of: email, id.');
         break;
     }
     if(!empty($subject)) {
       $subject = trim(htmlspecialchars(strip_tags(stripslashes($subject))));
     } else {
-      throw new LinkedInException('LinkedIn->invite(): message subject is empty.');
+      throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->invite(): message subject is empty.');
     }
     if(!empty($body)) {
       $body = trim(htmlspecialchars(strip_tags(stripslashes($body))));
       if(strlen($body) > self::_INV_BODY_LENGTH) {
-        throw new LinkedInException('LinkedIn->invite(): message body length is too long - max length is ' . self::_INV_BODY_LENGTH . ' characters.');
+        throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->invite(): message body length is too long - max length is ' . self::_INV_BODY_LENGTH . ' characters.');
       }
     } else {
-      throw new LinkedInException('LinkedIn->invite(): message body is empty.');
+      throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->invite(): message body is empty.');
     }
     switch($type) {
       case 'friend':
         break;
       default:
-        throw new LinkedInException('LinkedIn->invite(): bad invitation type, must be one of: friend.');
+        throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->invite(): bad invitation type, must be one of: friend.');
         break;
     }
 
@@ -1235,7 +1235,7 @@ class LinkedIn {
                            $response['linkedin'] = self::xmlToArray($response['linkedin']);
                            if($response['linkedin'] === FALSE) {
                              // bad XML data
-                             throw new LinkedInException('LinkedIn->invite(): LinkedIn returned bad XML data.');
+                             throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->invite(): LinkedIn returned bad XML data.');
                            }
                            $authentication = explode(':', $response['linkedin']['person']['children']['api-standard-profile-request']['children']['headers']['children']['http-header']['children']['value']['content']);
 
@@ -1246,7 +1246,7 @@ class LinkedIn {
                                      </authorization>';
                          } else {
                            // bad response from the profile request, not a valid ID?
-                           throw new LinkedInException('LinkedIn->invite(): could not send invitation, LinkedIn says: ' . print_r($response['linkedin'], TRUE));
+                           throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->invite(): could not send invitation, LinkedIn says: ' . print_r($response['linkedin'], TRUE));
                          }
                          break;
                      }
@@ -1283,7 +1283,7 @@ class LinkedIn {
 	  // check passed data
     if(!is_string($id)) {
 	    // bad data passed
-	    throw new LinkedInException('LinkedIn->isId(): bad data passed, $id must be of type string.');
+	    throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->isId(): bad data passed, $id must be of type string.');
 	  }
 
 	  $pattern = '/^[a-z0-9_\-]{10}$/i';
@@ -1353,11 +1353,11 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($jid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->job(): bad data passed, $jid must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->job(): bad data passed, $jid must be of type string.');
 	  }
 	  if(!is_string($options)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->job(): bad data passed, $options must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->job(): bad data passed, $options must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -1384,7 +1384,7 @@ class LinkedIn {
 	 */
 	public function joinGroup($gid) {
 		if(!is_string($gid)) {
-			throw new LinkedInException('LinkedIn->joinGroup(): bad data passed, $gid must be of type string.');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->joinGroup(): bad data passed, $gid must be of type string.');
 		}
 
 		// constructing the XML
@@ -1441,7 +1441,7 @@ class LinkedIn {
 	 */
 	public function leaveGroup($gid){
 		if(!is_string($gid)) {
-			throw new LinkedInException('LinkedIn->leaveGroup(): bad data passed, $gid must be of type string');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->leaveGroup(): bad data passed, $gid must be of type string');
 		}
 
 		// construct and send the request
@@ -1470,7 +1470,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($uid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->like(): bad data passed, $uid must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->like(): bad data passed, $uid must be of type string.');
 	  }
 
     // construct the XML
@@ -1503,10 +1503,10 @@ class LinkedIn {
 	 */
 	public function likePost($pid, $like) {
 		if(!is_string($pid)) {
-			throw new LinkedInException ('LinkedIn->likePost(): bad data passed, $pid must be of type string');
+			throw new WP_LinkedIn_LinkedInException ('WP_LinkedIn_WP_LinkedIn_LinkedIn->likePost(): bad data passed, $pid must be of type string');
 		}
 		if(!($like === TRUE || $like === FALSE)) {
-			throw new LinkedInException('LinkedIn->likePost(): bad data passed, $like must be of type boolean');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->likePost(): bad data passed, $like must be of type boolean');
 		}
 
 		// construct the XML
@@ -1541,7 +1541,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($uid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->likes(): bad data passed, $uid must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->likes(): bad data passed, $uid must be of type string.');
 	  }
 
 		// construct and send the request
@@ -1585,16 +1585,16 @@ class LinkedIn {
     if(!empty($subject) && is_string($subject)) {
       $subject = trim(strip_tags(stripslashes($subject)));
     } else {
-      throw new LinkedInException('LinkedIn->message(): bad data passed, $subject must be of type string.');
+      throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->message(): bad data passed, $subject must be of type string.');
     }
     if(!empty($body) && is_string($body)) {
       $body = trim(strip_tags(stripslashes($body)));
     } else {
-      throw new LinkedInException('LinkedIn->message(): bad data passed, $body must be of type string.');
+      throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->message(): bad data passed, $body must be of type string.');
     }
     if(!is_array($recipients) || count($recipients) < 1) {
       // no recipients, and/or bad data
-      throw new LinkedInException('LinkedIn->message(): at least one message recipient required.');
+      throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->message(): at least one message recipient required.');
     }
 
     // construct the xml data
@@ -1606,7 +1606,7 @@ class LinkedIn {
                     if(is_string($recipients[$i])) {
                       $data .= '<recipient><person path="/people/' . trim($recipients[$i]) . '"/></recipient>';
                     } else {
-                      throw new LinkedInException ('LinkedIn->message(): bad data passed, $recipients must be an array of type string.');
+                      throw new WP_LinkedIn_LinkedInException ('WP_LinkedIn_WP_LinkedIn_LinkedIn->message(): bad data passed, $recipients must be an array of type string.');
                     }
                   }
     $data  .= '  </recipients>
@@ -1644,7 +1644,7 @@ class LinkedIn {
     if(is_string($xml)) {
       $xml = trim(stripslashes($xml));
     } else {
-      throw new LinkedInException('LinkedIn->postJob(): bad data passed, $xml must be of type string.');
+      throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->postJob(): bad data passed, $xml must be of type string.');
     }
 
     // construct and send the request
@@ -1678,7 +1678,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($options)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->profile(): bad data passed, $options must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->profile(): bad data passed, $options must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -1712,15 +1712,15 @@ class LinkedIn {
 	public function raw($method, $url, $body = NULL) {
 	  if(!is_string($method)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->raw(): bad data passed, $method must be of string value.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->raw(): bad data passed, $method must be of string value.');
 	  }
 	  if(!is_string($url)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->raw(): bad data passed, $url must be of string value.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->raw(): bad data passed, $url must be of string value.');
 	  }
 	  if(!is_null($body) && !is_string($url)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->raw(): bad data passed, $body must be of string value.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->raw(): bad data passed, $body must be of string value.');
 	  }
 
     // construct and send the request
@@ -1741,7 +1741,7 @@ class LinkedIn {
 	 */
 	public function removeSuggestedGroup($gid) {
 		if(!is_string($gid)) {
-			throw new LinkedInException('LinkedIn->removeSuggestedGroup(): bad data passed, $gid must be of type string');
+			throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->removeSuggestedGroup(): bad data passed, $gid must be of type string');
 		}
 
 		// construct and send the request
@@ -1774,11 +1774,11 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($jid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->renewJob(): bad data passed, $jid must be of string value.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->renewJob(): bad data passed, $jid must be of string value.');
 	  }
 	  if(!is_string($cid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->renewJob(): bad data passed, $cid must be of string value.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->renewJob(): bad data passed, $cid must be of string value.');
 	  }
 
 	  // construct the xml data
@@ -1818,7 +1818,7 @@ class LinkedIn {
 	  // check passed data
     if(!is_string($token) || !is_string($secret) || !is_string($verifier)) {
       // nothing passed, raise an exception
-		  throw new LinkedInException('LinkedIn->retrieveTokenAccess(): bad data passed, string type is required for $token, $secret and $verifier.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->retrieveTokenAccess(): bad data passed, string type is required for $token, $secret and $verifier.');
     }
 
     // start retrieval process
@@ -1954,7 +1954,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($options)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->searchCompanies(): bad data passed, $options must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->searchCompanies(): bad data passed, $options must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -1987,7 +1987,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($options)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->jobsSearch(): bad data passed, $options must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->jobsSearch(): bad data passed, $options must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -2020,7 +2020,7 @@ class LinkedIn {
 	  // check passed data
     if(!is_null($options) && !is_string($options)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->search(): bad data passed, $options must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->search(): bad data passed, $options must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -2085,10 +2085,10 @@ class LinkedIn {
 	 */
 	public function setGroupSettings($gid, $xml) {
 		if(!is_string ($gid)) {
-      throw new LinkedInException('LinkedIn->setGroupSettings(): bad data passed, $token_access should be in array format.');
+      throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->setGroupSettings(): bad data passed, $token_access should be in array format.');
 		}
 		if(!is_string ($xml)) {
-      throw new LinkedInException('LinkedIn->setGroupSettings(): bad data passed, $token_access should be in array format.');
+      throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->setGroupSettings(): bad data passed, $token_access should be in array format.');
 		}
 
 		// construct and send the request
@@ -2132,7 +2132,7 @@ class LinkedIn {
     // check passed data
     if(!is_null($token) && !is_array($token)) {
       // bad data passed
-      throw new LinkedInException('LinkedIn->setToken(): bad data passed, $token_access should be in array format.');
+      throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->setToken(): bad data passed, $token_access should be in array format.');
     }
 
     // set token
@@ -2200,7 +2200,7 @@ class LinkedIn {
             // we have shared content, format it as needed per rules above
             $content_title = trim(htmlspecialchars(strip_tags(stripslashes($content['title']))));
             if(strlen($content_title) > self::_SHARE_CONTENT_TITLE_LENGTH) {
-              throw new LinkedInException('LinkedIn->share(): title length is too long - max length is ' . self::_SHARE_CONTENT_TITLE_LENGTH . ' characters.');
+              throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->share(): title length is too long - max length is ' . self::_SHARE_CONTENT_TITLE_LENGTH . ' characters.');
             }
             $content_xml .= '<content>
                                <title>' . $content_title . '</title>
@@ -2211,7 +2211,7 @@ class LinkedIn {
             if(array_key_exists('description', $content)) {
               $content_desc = trim(htmlspecialchars(strip_tags(stripslashes($content['description']))));
               if(strlen($content_desc) > self::_SHARE_CONTENT_DESC_LENGTH) {
-                throw new LinkedInException('LinkedIn->share(): description length is too long - max length is ' . self::_SHARE_CONTENT_DESC_LENGTH . ' characters.');
+                throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->share(): description length is too long - max length is ' . self::_SHARE_CONTENT_DESC_LENGTH . ' characters.');
               }
               $content_xml .= '<description>' . $content_desc . '</description>';
             }
@@ -2225,7 +2225,7 @@ class LinkedIn {
           	// comment located
           	$comment = htmlspecialchars(trim(strip_tags(stripslashes($content['comment']))));
           	if(strlen($comment) > self::_SHARE_COMMENT_LENGTH) {
-              throw new LinkedInException('LinkedIn->share(): comment length is too long - max length is ' . self::_SHARE_COMMENT_LENGTH . ' characters.');
+              throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->share(): comment length is too long - max length is ' . self::_SHARE_COMMENT_LENGTH . ' characters.');
             }
             $content_xml .= '<comment>' . $comment . '</comment>';
 
@@ -2246,7 +2246,7 @@ class LinkedIn {
             	// comment located
             	$comment = htmlspecialchars(trim(strip_tags(stripslashes($content['comment']))));
             	if(strlen($comment) > self::_SHARE_COMMENT_LENGTH) {
-                throw new LinkedInException('LinkedIn->share(): comment length is too long - max length is ' . self::_SHARE_COMMENT_LENGTH . ' characters.');
+                throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->share(): comment length is too long - max length is ' . self::_SHARE_COMMENT_LENGTH . ' characters.');
               }
               $content_xml .= '<comment>' . $comment . '</comment>';
         	  }
@@ -2256,7 +2256,7 @@ class LinkedIn {
           break;
         default:
           // bad action passed
-          throw new LinkedInException('LinkedIn->share(): share action is an invalid value, must be one of: share, reshare.');
+          throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->share(): share action is an invalid value, must be one of: share, reshare.');
           break;
       }
 
@@ -2283,11 +2283,11 @@ class LinkedIn {
         $response = $this->fetch('POST', $share_url, $data);
   		} else {
   		  // data contraints/rules not met, raise an exception
-		    throw new LinkedInException('LinkedIn->share(): sharing data constraints not met; check that you have supplied valid content and combinations of content to share.');
+		    throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->share(): sharing data constraints not met; check that you have supplied valid content and combinations of content to share.');
   		}
     } else {
       // data missing, raise an exception
-		  throw new LinkedInException('LinkedIn->share(): sharing action or shared content is missing.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->share(): sharing action or shared content is missing.');
     }
 
     /**
@@ -2379,7 +2379,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($options)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->suggestedJobs(): bad data passed, $options must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->suggestedJobs(): bad data passed, $options must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -2411,7 +2411,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($jid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->unbookmarkJob(): bad data passed, $jid must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->unbookmarkJob(): bad data passed, $jid must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -2443,7 +2443,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($cid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->unfollowCompany(): bad data passed, $cid must be of string value.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->unfollowCompany(): bad data passed, $cid must be of string value.');
 	  }
 
 	  // construct and send the request
@@ -2474,7 +2474,7 @@ class LinkedIn {
 	  // check passed data
 	  if(!is_string($uid)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->unlike(): bad data passed, $uid must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->unlike(): bad data passed, $uid must be of type string.');
 	  }
 
     // construct the xml data
@@ -2511,7 +2511,7 @@ class LinkedIn {
 	  // check passed data
     if(!is_string($update)) {
       // nothing/non-string passed, raise an exception
-		  throw new LinkedInException('LinkedIn->updateNetwork(): bad data passed, $update must be a non-zero length string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_WP_LinkedIn_LinkedIn->updateNetwork(): bad data passed, $update must be a non-zero length string.');
     }
 
     /**
@@ -2532,7 +2532,7 @@ class LinkedIn {
       $person = self::xmlToArray($response['linkedin']);
       if($person === FALSE) {
         // bad xml data
-        throw new LinkedInException('LinkedIn->updateNetwork(): LinkedIn returned bad XML data.');
+        throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_LinkedIn->updateNetwork(): LinkedIn returned bad XML data.');
       }
   		$fields = $person['person']['children'];
 
@@ -2544,7 +2544,7 @@ class LinkedIn {
       // create the network update
       $update = trim(htmlspecialchars(strip_tags($update, self::_NETWORK_HTML)));
       if(strlen($update) > self::_NETWORK_LENGTH) {
-        throw new LinkedInException('LinkedIn->share(): update length is too long - max length is ' . self::_NETWORK_LENGTH . ' characters.');
+        throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_LinkedIn->share(): update length is too long - max length is ' . self::_NETWORK_LENGTH . ' characters.');
       }
       $user   = htmlspecialchars('<a href="' . $profile_url . '">' . $first_name . ' ' . $last_name . '</a>');
   		$data   = '<activity locale="en_US">
@@ -2563,7 +2563,7 @@ class LinkedIn {
       return $this->checkResponse(201, $response);
     } else {
       // profile retrieval failed
-      throw new LinkedInException('LinkedIn->updateNetwork(): profile data could not be retrieved.');
+      throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_LinkedIn->updateNetwork(): profile data could not be retrieved.');
     }
 	}
 
@@ -2592,11 +2592,11 @@ class LinkedIn {
 	  // check passed data
     if(!is_null($options) && !is_string($options)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->updates(): bad data passed, $options must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_LinkedIn->updates(): bad data passed, $options must be of type string.');
 	  }
 	  if(!is_null($id) && !is_string($id)) {
 	    // bad data passed
-		  throw new LinkedInException('LinkedIn->updates(): bad data passed, $id must be of type string.');
+		  throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_LinkedIn->updates(): bad data passed, $id must be of type string.');
 	  }
 
 	  // construct and send the request
@@ -2628,8 +2628,8 @@ class LinkedIn {
 	public static function xmlToArray($xml) {
 	  // check passed data
     if(!is_string($xml)) {
+      throw new WP_LinkedIn_LinkedInException('WP_LinkedIn_LinkedIn->xmlToArray(): bad data passed, $xml must be a non-zero length string.');
 	    // bad data possed
-      throw new LinkedInException('LinkedIn->xmlToArray(): bad data passed, $xml must be a non-zero length string.');
 	  }
 
 	  $parser = xml_parser_create();
