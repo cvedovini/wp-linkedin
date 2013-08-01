@@ -4,8 +4,8 @@ Contributors: cvedovini
 Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
-Tested up to: 3.5.1
-Stable tag: 1.3.5
+Tested up to: 3.5.2
+Stable tag: 1.3.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -35,6 +35,9 @@ The default template files, `recommendations.php` and `profile.php`, are located
 
 
 == Changelog ==
+
+= version 1.3.6 =
+- Fixing how the presence of data is tested and adding error messages when the profile cannot be retrieved
 
 = version 1.3.5 =
 - Adding French and Dutch translations (Credit to Jan Spoelstra for the Dutch translations)
