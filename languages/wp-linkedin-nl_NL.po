@@ -1,0 +1,340 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: wp-linkedin\n"
+"POT-Creation-Date: 2013-05-13 03:23+0700\n"
+"PO-Revision-Date: 2013-05-14 14:41+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: wp-linkedin\n"
+
+#: class-admin.php:7 class-admin.php:12
+msgid "LinkedIn Options"
+msgstr "LinkedIn-opties"
+
+#: class-admin.php:7
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: class-admin.php:13
+msgid ""
+"Go to the <a href=\"https://www.linkedin.com/secure/developer\">LinkedIn "
+"Developer Network</a> to generate the following keys."
+msgstr ""
+"Gaan naar het <a href=\"https://www.linkedin.com/secure/developer\">LinkedIn "
+"Developer Network</a> om de volgende sleutels te genereren."
+
+#: class-admin.php:18
+msgid "Application key"
+msgstr "API-code"
+
+#: class-admin.php:24
+msgid "Application secret"
+msgstr "Geheime code"
+
+#: class-admin.php:30
+msgid "User token"
+msgstr "OAuth-gebruikerstoken"
+
+#: class-admin.php:36
+msgid "User secret"
+msgstr "OAuth-gebruikersgeheim"
+
+#: class-admin.php:42
+msgid "Profile fields"
+msgstr "Profielvelden"
+
+#: class-admin.php:45
+msgid "Comma separated list of fields to show on the profile."
+msgstr "Komma gescheiden lijst met velden om op profiel weer te geven."
+
+#: class-admin.php:46
+msgid ""
+"You can overide this setting in the shortcode with the `fields` attribute."
+msgstr ""
+"Je kunt deze instelling overschrijven in de shortcode met het "
+"`fields`attribuut."
+
+#: class-admin.php:47
+msgid ""
+"See the <a href=\"https://developers.linkedin.com/documents/profile-fields\" "
+"target=\"_blank\">LinkedIn API documentation</a> for the complete list of "
+"fields."
+msgstr ""
+"Zie de <a href=\"https://developers.linkedin.com/documents/profile-fields\" "
+"target=\"_blank\">LinkedIn API documentatie</a> voor de complete lijst met "
+"velden."
+
+#: class-admin.php:51
+msgid "Profile language"
+msgstr "Profieltaal"
+
+#: class-admin.php:63
+msgid ""
+"The language of the profile to display if you have several profiles in "
+"different languages."
+msgstr ""
+"De taal van het profiel om weer te geven, wanneer je meerdere profielen in "
+"verschillende talen hebt."
+
+#: class-admin.php:64
+msgid ""
+"You can overide this setting in the shortcode with the `lang` attribute."
+msgstr ""
+"Je kunt deze instelling overschrijven in de shortcode met het `lang` "
+"attribuut."
+
+#: class-admin.php:65
+msgid ""
+"See \"Selecting the profile language\" <a href=\"https://developer.linkedin."
+"com/documents/profile-api\" target=\"_blank\">LinkedIn API documentation</a> "
+"for details."
+msgstr ""
+"Zie \"Selecting the profile language\" <a href=\"https://developer.linkedin."
+"com/documents/profile-api\" target=\"_blank\">LinkedIn API documentatie</a> "
+"voor details."
+
+#: class-admin.php:72
+msgid "Save"
+msgstr "Opslaan"
+
+#: class-admin.php:79
+msgid "Default"
+msgstr "Verstek"
+
+#: class-admin.php:80
+msgid "Bahasa Indonesia"
+msgstr "Bahasa Indonesia"
+
+#: class-admin.php:81
+msgid "Czech"
+msgstr "Tsjechisch"
+
+#: class-admin.php:82
+msgid "Danish"
+msgstr "Deens"
+
+#: class-admin.php:83
+msgid "Dutch"
+msgstr "Nederlands"
+
+#: class-admin.php:84
+msgid "French"
+msgstr "Frans"
+
+#: class-admin.php:85
+msgid "German"
+msgstr "Duits"
+
+#: class-admin.php:86
+msgid "Italian"
+msgstr "Italiaans"
+
+#: class-admin.php:87
+msgid "Japanese"
+msgstr "Japans"
+
+#: class-admin.php:88
+msgid "Korean"
+msgstr "Koreaans"
+
+#: class-admin.php:89
+msgid "Malay"
+msgstr "Maleis"
+
+#: class-admin.php:90
+msgid "Norwegian"
+msgstr "Noors"
+
+#: class-admin.php:91
+msgid "Polish"
+msgstr "Pools"
+
+#: class-admin.php:92
+msgid "Portuguese"
+msgstr "Portugees"
+
+#: class-admin.php:93
+msgid "Romanian"
+msgstr "Roemeens"
+
+#: class-admin.php:94
+msgid "Russian"
+msgstr "Russisch"
+
+#: class-admin.php:95
+msgid "Spanish"
+msgstr "Spaans"
+
+#: class-admin.php:96
+msgid "Swedish"
+msgstr "Zweeds"
+
+#: class-admin.php:97
+msgid "Turkish"
+msgstr "Turks"
+
+#: class-admin.php:98
+msgid "Albanian"
+msgstr "Albanees"
+
+#: class-admin.php:99
+msgid "Armenian"
+msgstr "Armeens"
+
+#: class-admin.php:100
+msgid "Bosnian"
+msgstr "Bosnisch"
+
+#: class-admin.php:101
+msgid "Burmese (Myanmar)"
+msgstr "Birmaans (Myanmar)"
+
+#: class-admin.php:102
+msgid "Chinese (Simplified)"
+msgstr "Chinees (vereenvoudigd)"
+
+#: class-admin.php:103
+msgid "Chinese (Traditional)"
+msgstr "Chinees (traditioneel)"
+
+#: class-admin.php:104
+msgid "Croatian"
+msgstr "Kroatisch"
+
+#: class-admin.php:105
+msgid "Finnish"
+msgstr "Fins"
+
+#: class-admin.php:106
+msgid "Greek"
+msgstr "Grieks"
+
+#: class-admin.php:107
+msgid "Hindi"
+msgstr "Hindi"
+
+#: class-admin.php:108
+msgid "Hungarian"
+msgstr "Hongaars"
+
+#: class-admin.php:109
+msgid "Icelandic"
+msgstr "IJslands"
+
+#: class-admin.php:110
+msgid "Javanese"
+msgstr "Javaans"
+
+#: class-admin.php:111
+msgid "Kannada"
+msgstr "Kannada"
+
+#: class-admin.php:112
+msgid "Latvian"
+msgstr "Lets"
+
+#: class-admin.php:113
+msgid "Lithuanian"
+msgstr "Litouws"
+
+#: class-admin.php:114
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: class-admin.php:115
+msgid "Serbian"
+msgstr "Servisch"
+
+#: class-admin.php:116
+msgid "Slovak"
+msgstr "Slowaaks"
+
+#: class-admin.php:117
+msgid "Tagalog"
+msgstr "Tagalog"
+
+#: class-admin.php:118
+msgid "Tamil"
+msgstr "Tamil"
+
+#: class-admin.php:119
+msgid "Telugu"
+msgstr "Telugu"
+
+#: class-admin.php:120
+msgid "Thai"
+msgstr "Thais"
+
+#: class-admin.php:121
+msgid "Ukrainian"
+msgstr "Oekraïens"
+
+#: class-admin.php:122
+msgid "Vietnamese"
+msgstr "Vietnamees"
+
+#: class-admin.php:123
+msgid "Other"
+msgstr "Anders"
+
+#: class-recommendations-widget.php:7
+msgid "A slider with your LinkedIn recommendations"
+msgstr "Een slider met jouw LinkedIn-aanbevelingen"
+
+#: class-recommendations-widget.php:41
+msgid "Title:"
+msgstr "Titel:"
+
+#: class-recommendations-widget.php:45
+msgid "Width of widget (in px):"
+msgstr "Breedte van de widget (in px):"
+
+#: class-recommendations-widget.php:49
+msgid "Length of recommendations (in char):"
+msgstr "Lengte van aanbevelingen (in char):"
+
+#: class-recommendations-widget.php:53
+msgid "Scroller's speed:"
+msgstr "Scroller-snelheid:"
+
+#: templates/profile.php:11
+msgid "Summary"
+msgstr "Samenvatting"
+
+#: templates/profile.php:18
+msgid "Specialties"
+msgstr "Specialismen"
+
+#: templates/profile.php:25
+msgid "Experience"
+msgstr "Ervaring"
+
+#: templates/profile.php:28 templates/profile.php:67
+msgid "Present"
+msgstr "Huidig"
+
+#: templates/profile.php:41
+msgid "Skills &amp; Expertise"
+msgstr "Vaardigheden en deskundigheid"
+
+#: templates/profile.php:53
+msgid "Languages"
+msgstr "Talen"
+
+#: templates/profile.php:64
+msgid "Education"
+msgstr "Onderwijs / Algemeen onderwijs"
+
+#: templates/profile.php:70
+msgid "Activities and societies"
+msgstr "Activiteiten en verenigingen"
+
+#: templates/profile.php:82
+msgid "Recommendations"
+msgstr "Aanbevelingen"
