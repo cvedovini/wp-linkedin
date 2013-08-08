@@ -20,13 +20,13 @@
 	var $div = $('#<?php echo $divid; ?>');
 	<?php if ($width === 'auto'):
 		echo 'var width = $div.innerWidth();';
-	else:
+	elseif ($width !== 'css'):
 		echo 'var width = ' . $width . ';';
 	endif; ?>
 
 	$('.items blockquote', $div).each(function() {
 		var $this = $(this);
-		$this.outerWidth(width, true);
+		<?php if ($width !== 'css'): ?>$this.outerWidth(width, true);<?php endif; ?>
 		h = Math.max(h, $this.height());
 	});
 	$('#<?php echo $divid; ?>').height(h);

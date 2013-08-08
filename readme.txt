@@ -4,8 +4,8 @@ Contributors: cvedovini
 Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
-Tested up to: 3.5.2
-Stable tag: 1.3.6
+Tested up to: 3.6
+Stable tag: 1.3.7
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -33,8 +33,14 @@ There are two shortcodes available:
 To customize the rendering of both shortcodes you must create a `linkedin` folder in your theme and then copy the template file you want to modify.
 The default template files, `recommendations.php` and `profile.php`, are located in the plugin's `templates` folder.
 
+See this post for more details on customization: [The best way to integrate your LinkedIn profile with WordPress](http://vedovini.net/2013/03/the-best-way-to-integrate-your-linkedin-profile-with-wordpress/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
+
 
 == Changelog ==
+
+= version 1.3.7 =
+- Added a 'css' option for the widget width to disable setting the width using javascript. This allows to set the width using CSS, which is particularly useful with responsive themes.
+- Added a link to the post on vedovini.net about customizing the plugin's output
 
 = version 1.3.6 =
 - Fixing how the presence of data is tested and adding error messages when the profile cannot be retrieved
