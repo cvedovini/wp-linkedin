@@ -4,8 +4,8 @@ Contributors: cvedovini
 Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
-Tested up to: 3.5.1
-Stable tag: 1.3.3
+Tested up to: 3.6
+Stable tag: 1.3.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -33,8 +33,30 @@ There are two shortcodes available:
 To customize the rendering of both shortcodes you must create a `linkedin` folder in your theme and then copy the template file you want to modify.
 The default template files, `recommendations.php` and `profile.php`, are located in the plugin's `templates` folder.
 
+See this post for more details on customization: [The best way to integrate your LinkedIn profile with WordPress](http://vedovini.net/2013/03/the-best-way-to-integrate-your-linkedin-profile-with-wordpress/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
+
 
 == Changelog ==
+
+= version 1.3.7 =
+- Corrected a bug that interfers with other plugins using output buffering
+- Updated French and Dutch localizations
+
+= version 1.3.7 =
+- Added a 'css' option for the widget width to disable setting the width using javascript. This allows to set the width using CSS, which is particularly useful with responsive themes.
+- Added a link to the post on vedovini.net about customizing the plugin's output
+
+= version 1.3.6 =
+- Fixing how the presence of data is tested and adding error messages when the profile cannot be retrieved
+
+= version 1.3.5 =
+- Adding French and Dutch translations (Credit to Jan Spoelstra for the Dutch translations)
+- Fixing path issue while laoding the text domain
+- Added credit section to the readme file
+- Changed name of bundled classes to avoid name colisions
+
+= version 1.3.4 =
+- Enable an 'auto' mode for the width of the recommendations in order to accomodate responsive themes. However, it won't work in some occasion where the width of the parent cannot be calculated. To activate it just use 'auto' as the recommendations width.
 
 = version 1.3.3 =
 - Updating the css version
@@ -70,3 +92,13 @@ The default template files, `recommendations.php` and `profile.php`, are located
 
 = version 1.0.0 =
 - Initial release
+
+== Credits ==
+
+Following is the list of people and projects who helped me with this plugin, many thanks to them :)
+
+- [Jan Spoelstra](http://www.linkedin.com/in/janspoelstra): Contributed the Dutch translations
+- [The OAuth project](https://code.google.com/p/oauth/): I bundled a modified version of this library which is distributed under the [Apache  2.0 license](http://www.apache.org/licenses/LICENSE-2.0)
+- [The simple-linkedinphp library](https://code.google.com/p/simple-linkedinphp/): I bundled a modified version of this library which is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php)
+
+NOTE: Modifications to the bundled libraries have only been done to avoid name colisions.

@@ -1,6 +1,6 @@
 <?php
 
-class WPL_Recommendations_Widget extends WP_Widget {
+class WP_LinkedIn_Recommendations_Widget extends WP_Widget {
 
 	public function __construct() {
 		parent::__construct('wp-linkedin-recommendation-widget', 'LinkedIn Recommendations',
@@ -44,6 +44,7 @@ class WPL_Recommendations_Widget extends WP_Widget {
 <p>
 	<label for="<?php echo $this->get_field_id('width'); ?>"><?php _e('Width of widget (in px):', 'wp-linkedin'); ?></label>
 	<input id="<?php echo $this->get_field_id('width'); ?>" name="<?php echo $this->get_field_name('width'); ?>" type="text" value="<?php echo $instance['width']; ?>" />
+	<br/><small><em><?php _e('You can also specify \'auto\' to let javascript automatically compute the width or \'css\' to set it yourself using your theme\'s stylesheet.', 'wp-linkedin'); ?></em></small>
 </p>
 <p>
 	<label for="<?php echo $this->get_field_id('length'); ?>"><?php _e('Length of recommendations (in char):', 'wp-linkedin'); ?></label>
@@ -59,7 +60,7 @@ class WPL_Recommendations_Widget extends WP_Widget {
 	public function update($new_instance, $old_instance) {
 		$instance = array();
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['width'] = (int) $new_instance['width'];
+		$instance['width'] = $new_instance['width'];
 		$instance['length'] = (int) $new_instance['length'];
 		$instance['interval'] = (int) $new_instance['interval'];
 		return $instance;

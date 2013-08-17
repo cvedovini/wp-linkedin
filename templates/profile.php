@@ -20,7 +20,7 @@
 </div>
 <?php endif; ?>
 
-<?php if (isset($profile->positions) && is_array($profile->positions->values)): ?>
+<?php if (isset($profile->positions->values) && is_array($profile->positions->values)): ?>
 <div class="section">
 <div class="heading"><?php _e('Experience', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->positions->values as $v): ?>
@@ -36,7 +36,7 @@
 </div>
 <?php endif; ?>
 
-<?php if (isset($profile->skills) && is_array($profile->skills->values)): ?>
+<?php if (isset($profile->skills->values) && is_array($profile->skills->values)): ?>
 <div class="section">
 <div class="heading"><?php _e('Skills &amp; Expertise', 'wp-linkedin'); ?></div>
 <?php
@@ -48,7 +48,7 @@ foreach ($profile->skills->values as $v) {
 </div>
 <?php endif;?>
 
-<?php if (isset($profile->languages) && is_array($profile->languages->values)): ?>
+<?php if (isset($profile->languages->values) && is_array($profile->languages->values)): ?>
 <div class="section">
 <div class="heading"><?php _e('Languages', 'wp-linkedin'); ?></div>
 <ul>
@@ -59,17 +59,17 @@ foreach ($profile->skills->values as $v) {
 </div>
 <?php endif;?>
 
-<?php if (isset($profile->educations) && is_array($profile->educations->values)): ?>
+<?php if (isset($profile->educations->values) && is_array($profile->educations->values)): ?>
 <div class="section">
 <div class="heading"><?php _e('Education', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->educations->values as $v): ?>
 <div class="education">
 	<div class="school"><strong><?php echo $v->schoolName; ?></strong> (<?php echo $v->startDate->year; ?> - <?php echo isset($v->endDate) ? $v->endDate->year : __('Present', 'wp-linkedin'); ?>)</div>
 	<div class="degree"><?php echo $v->degree; ?>, <?php echo $v->fieldOfStudy; ?></div>
-	<?php if (isset($v->activities)): ?>
+	<?php if (isset($v->activities) && !empty($v->activities)): ?>
 		<div class="activities"><em><?php _e('Activities and societies', 'wp-linkedin'); ?>:</em> <?php echo $v->activities; ?></div>
 	<?php endif; ?>
-	<?php if (isset($v->notes)): ?>
+	<?php if (isset($v->notes) && !empty($v->notes)): ?>
 		<div class="notes"><?php echo $v->notes; ?></div>
 	<?php endif; ?>
 </div>
@@ -77,7 +77,7 @@ foreach ($profile->skills->values as $v) {
 </div>
 <?php endif; ?>
 
-<?php if (isset($profile->recommendationsReceived) && is_array($profile->recommendationsReceived->values)): ?>
+<?php if (isset($profile->recommendationsReceived->values) && is_array($profile->recommendationsReceived->values)): ?>
 <div class="section">
 <div class="heading"><?php _e('Recommendations', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->recommendationsReceived->values as $v): ?>
