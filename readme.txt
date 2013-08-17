@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
 Tested up to: 3.6
-Stable tag: 1.3.7
+Stable tag: 1.3.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -37,6 +37,10 @@ See this post for more details on customization: [The best way to integrate your
 
 
 == Changelog ==
+
+= version 1.3.7 =
+- Corrected a bug that interfers with other plugins using output buffering
+- Updated French and Dutch localizations
 
 = version 1.3.7 =
 - Added a 'css' option for the widget width to disable setting the width using javascript. This allows to set the width using CSS, which is particularly useful with responsive themes.

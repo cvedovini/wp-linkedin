@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.3.7
+Version: 1.3.8
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -116,16 +116,13 @@ function wp_linkedin_profile($atts) {
 	if (isset($profile) && is_object($profile)) {
 		$template = locate_template('linkedin/profile.php');
 
-		ob_flush();
 		ob_start();
 		if (!empty($template)) {
 			require $template;
 		} else {
 			require 'templates/profile.php';
 		}
-		$results = ob_get_contents();
-		ob_end_clean();
-		return $results;
+		return ob_get_clean();
 	} else {
 		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check your API keys and the list of profile fields to be fetched. If everything seems good try regenerating the keys.', 'wp-linkedin') . '</p>';
 	}
@@ -146,16 +143,13 @@ function wp_linkedin_recommendations($atts) {
 			$recommendations = $profile->recommendationsReceived->values;
 			$template = locate_template('linkedin/recommendations.php');
 
-			ob_flush();
 			ob_start();
 			if (!empty($template)) {
 				require $template;
 			} else {
 				require 'templates/recommendations.php';
 			}
-			$results = ob_get_contents();
-			ob_end_clean();
-			return $results;
+			return ob_get_clean();
 		} else {
 			return '<p>' . __('You don\'t have any recommendation to show.', 'wp-linkedin') . '</p>';
 		}

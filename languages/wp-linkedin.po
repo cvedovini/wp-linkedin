@@ -283,11 +283,17 @@ msgstr ""
 msgid "Width of widget (in px):"
 msgstr ""
 
-#: class-recommendations-widget.php:49
+#: class-recommendations-widget.php:47
+msgid ""
+"You can also specify 'auto' to let javascript automatically compute the "
+"width or 'css' to set it yourself using your theme's stylesheet."
+msgstr ""
+
+#: class-recommendations-widget.php:50
 msgid "Length of recommendations (in char):"
 msgstr ""
 
-#: class-recommendations-widget.php:53
+#: class-recommendations-widget.php:54
 msgid "Scroller's speed:"
 msgstr ""
 
@@ -325,4 +331,41 @@ msgstr ""
 
 #: templates/profile.php:82
 msgid "Recommendations"
+msgstr ""
+
+#: wp-linkedin.php:130 wp-linkedin.php:163
+msgid ""
+"There's something wrong and the profile could not be retreived, please check "
+"your API keys and the list of profile fields to be fetched. If everything "
+"seems good try regenerating the keys."
+msgstr ""
+
+#: wp-linkedin.php:160
+msgid "You don't have any recommendation to show."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "LinkedIn for Wordpress"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid ""
+"http://vedovini.net/plugins/?"
+"utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"This plugin enables you to add various part of your LinkedIn profile to your "
+"Wordpress blog."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Claude Vedovini"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid ""
+"http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-"
+"linkedin"
 msgstr ""
