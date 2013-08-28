@@ -26,14 +26,14 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 
 There are two shortcodes available:
 
-* [li_recommendations width="480" length="200" interval="1000"] displays a rotating scroller with the recommendations you received
-* [li_profile] displays your LinkedIn profile. Optional attributes are `fields` and `lang` to overide the general settings but you can pass any attribute and use it in customized templates.
+* `[li_recommendations width="480" length="200" interval="1000"]` displays a rotating scroller with the recommendations you received
+* `[li_profile]` displays your LinkedIn profile. Optional attributes are `fields` and `lang` to overide the general settings but you can pass any attribute and use it in customized templates.
 
 
 To customize the rendering of both shortcodes you must create a `linkedin` folder in your theme and then copy the template file you want to modify.
 The default template files, `recommendations.php` and `profile.php`, are located in the plugin's `templates` folder.
 
-See this post for more details on customization: [The best way to integrate your LinkedIn profile with WordPress](http://vedovini.net/2013/03/the-best-way-to-integrate-your-linkedin-profile-with-wordpress/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
+See this post for more details on customization: [Showing more of your LinkedIn profile with WP-LinkedIn](http://vedovini.net/2013/06/showing-more-of-your-linkedin-profile-with-wp-linkedin/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
 
 
 == Changelog ==
