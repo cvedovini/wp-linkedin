@@ -36,6 +36,7 @@ define('LINKEDIN_FIELDS', get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAU
 define('LINKEDIN_PROFILELANGUAGE', get_option('wp-linkedin_profilelanguage'));
 
 include 'class-recommendations-widget.php';
+include 'class-card-widget.php';
 
 
 class WPLinkedInPlugin {
@@ -59,11 +60,13 @@ class WPLinkedInPlugin {
 			add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
 			add_shortcode('li_recommendations', 'wp_linkedin_recommendations');
 			add_shortcode('li_profile', 'wp_linkedin_profile');
+			add_shortcode('li_card', 'wp_linkedin_card');
 		}
 	}
 
 	function widgets_init() {
 		register_widget('WP_LinkedIn_Recommendations_Widget');
+		register_widget('WP_LinkedIn_Card_Widget');
 	}
 
 	function admin_menu() {
@@ -110,7 +113,7 @@ function wp_linkedin_profile($atts) {
 			'lang' => LINKEDIN_PROFILELANGUAGE
 	), $atts));
 
-	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ', ' . $fields);
+	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ',' . $fields);
 
 	$profile = wp_linked_get_profile($fields, $lang);
 	if (isset($profile) && is_object($profile)) {
@@ -129,11 +132,39 @@ function wp_linkedin_profile($atts) {
 }
 
 
+function wp_linkedin_card($atts) {
+	// In case they want to pass customized attribute to their custom template
+	extract(shortcode_atts(array(
+			'picture_width' => '80',
+			'summary_length' => '200',
+			'fields' => 'summary',
+			'lang' => LINKEDIN_PROFILELANGUAGE
+	), $atts));
+
+	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ',' . $fields);
+
+	$profile = wp_linked_get_profile($fields, $lang);
+	if (isset($profile) && is_object($profile)) {
+		$template = locate_template('linkedin/card.php');
+
+		ob_start();
+		if (!empty($template)) {
+			require $template;
+		} else {
+			require 'templates/card.php';
+		}
+		return ob_get_clean();
+	} else {
+		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check your API keys and the list of profile fields to be fetched. If everything seems good try regenerating the keys.', 'wp-linkedin') . '</p>';
+	}
+}
+
+
 function wp_linkedin_recommendations($atts) {
 	extract(shortcode_atts(array(
-			'width' => '480',
+			'width' => 'auto',
 			'length' => '200',
-			'interval' => '1000'
+			'interval' => '4000'
 	), $atts));
 
 	$profile = wp_linked_get_profile(LINKEDIN_FIELDS_RECOMMENDATIONS);

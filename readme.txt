@@ -38,7 +38,11 @@ See this post for more details on customization: [Showing more of your LinkedIn 
 
 == Changelog ==
 
-= version 1.3.7 =
+= version 1.4 =
+- Corrected link to post about customization in the readme
+- Modified the javascript for the recommendation slider so that it uses `$(document).ready()`
+
+= version 1.3.8 =
 - Corrected a bug that interfers with other plugins using output buffering
 - Updated French and Dutch localizations
 

@@ -1,6 +1,6 @@
 <div class="linkedin"><div class="profile">
 <div class="cartouche">
-	<img class="picture" src="<?php echo $profile->pictureUrl; ?>" width="80px" height="80px" />
+	<img class="picture" src="<?php echo $profile->pictureUrl; ?>" width="80px" />
 	<div class="name"><a href="<?php echo $profile->publicProfileUrl; ?>"><?php echo $profile->firstName; ?> <?php echo $profile->lastName; ?></a></div>
 	<div class="headline"><?php echo $profile->headline; ?></div>
 	<div class="location"><?php echo $profile->location->name; ?> | <?php echo $profile->industry; ?></div>
