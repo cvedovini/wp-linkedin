@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
-"POT-Creation-Date: 2013-05-13 03:23+0700\n"
-"PO-Revision-Date: 2013-08-17 13:15+0700\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
+"POT-Creation-Date: 2013-09-04 09:54:40+00:00\n"
+"PO-Revision-Date: 2013-09-04 16:58+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -285,13 +286,29 @@ msgstr "Vietnamien"
 msgid "Other"
 msgstr "Autre"
 
+#: class-card-widget.php:7
+msgid "A widget displaying your LinkedIn card"
+msgstr "Votre carte de visite LinkedIn"
+
+#: class-card-widget.php:38 class-recommendations-widget.php:41
+msgid "Title:"
+msgstr "Titre:"
+
+#: class-card-widget.php:42
+msgid "Width of picture (in px):"
+msgstr "Largeur de la photo (en px):"
+
+#: class-card-widget.php:46
+msgid "Max length of summary (in char):"
+msgstr "Longueur du résumé (en nombre de caractères):"
+
+#: class-card-widget.php:48
+msgid "Specify '0' to hide the summary."
+msgstr "Indiquer '0' pour cacher le résumé."
+
 #: class-recommendations-widget.php:7
 msgid "A slider with your LinkedIn recommendations"
 msgstr "Liste déroulante de vos recommendations LinkedIn"
-
-#: class-recommendations-widget.php:41
-msgid "Title:"
-msgstr "Titre:"
 
 #: class-recommendations-widget.php:45
 msgid "Width of widget (in px):"
@@ -350,7 +367,7 @@ msgstr "Activités et associations"
 msgid "Recommendations"
 msgstr "Recommendations"
 
-#: wp-linkedin.php:130 wp-linkedin.php:163
+#: wp-linkedin.php:130 wp-linkedin.php:158 wp-linkedin.php:188
 msgid ""
 "There's something wrong and the profile could not be retreived, please check "
 "your API keys and the list of profile fields to be fetched. If everything "
@@ -360,7 +377,7 @@ msgstr ""
 "vérifier vos clés d'API ainsi que la liste des champs de profil à retrouver. "
 "Si tout semble correct essayer de régénérer les clés."
 
-#: wp-linkedin.php:160
+#: wp-linkedin.php:185
 msgid "You don't have any recommendation to show."
 msgstr "Vous n'avez pas de recommandation."
 

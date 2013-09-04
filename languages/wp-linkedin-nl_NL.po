@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
-"POT-Creation-Date: 2013-05-13 03:23+0700\n"
-"PO-Revision-Date: 2013-08-17 13:17+0700\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
+"POT-Creation-Date: 2013-09-04 09:54:40+00:00\n"
+"PO-Revision-Date: 2013-09-04 17:01+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -283,13 +284,29 @@ msgstr "Vietnamees"
 msgid "Other"
 msgstr "Anders"
 
+#: class-card-widget.php:7
+msgid "A widget displaying your LinkedIn card"
+msgstr "Een widget weergeven van uw LinkedIn-kaart"
+
+#: class-card-widget.php:38 class-recommendations-widget.php:41
+msgid "Title:"
+msgstr "Titel:"
+
+#: class-card-widget.php:42
+msgid "Width of picture (in px):"
+msgstr "Breedte van de afbeelding (in px):"
+
+#: class-card-widget.php:46
+msgid "Max length of summary (in char):"
+msgstr "Max. lengte van de samenvatting (in char):"
+
+#: class-card-widget.php:48
+msgid "Specify '0' to hide the summary."
+msgstr "Geef op '0 'om de samenvatting te verbergen."
+
 #: class-recommendations-widget.php:7
 msgid "A slider with your LinkedIn recommendations"
 msgstr "Een slider met jouw LinkedIn-aanbevelingen"
-
-#: class-recommendations-widget.php:41
-msgid "Title:"
-msgstr "Titel:"
 
 #: class-recommendations-widget.php:45
 msgid "Width of widget (in px):"
@@ -347,7 +364,7 @@ msgstr "Activiteiten en verenigingen"
 msgid "Recommendations"
 msgstr "Aanbevelingen"
 
-#: wp-linkedin.php:130 wp-linkedin.php:163
+#: wp-linkedin.php:130 wp-linkedin.php:158 wp-linkedin.php:188
 msgid ""
 "There's something wrong and the profile could not be retreived, please check "
 "your API keys and the list of profile fields to be fetched. If everything "
@@ -357,7 +374,7 @@ msgstr ""
 "API-sleutels en de lijst van profiel velden worden opgehaald. Als alles goed "
 "lijkt te proberen de regeneratie van de toetsen."
 
-#: wp-linkedin.php:160
+#: wp-linkedin.php:185
 msgid "You don't have any recommendation to show."
 msgstr "Je hebt geen aanbeveling om te laten zien."
 
