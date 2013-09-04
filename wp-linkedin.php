@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.3.3
+Version: 1.4
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -36,6 +36,7 @@ define('LINKEDIN_FIELDS', get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAU
 define('LINKEDIN_PROFILELANGUAGE', get_option('wp-linkedin_profilelanguage'));
 
 include 'class-recommendations-widget.php';
+include 'class-card-widget.php';
 
 
 class WPLinkedInPlugin {
@@ -48,7 +49,7 @@ class WPLinkedInPlugin {
 	function init() {
 		// Make plugin available for translation
 		// Translations can be filed in the /languages/ directory
-		load_plugin_textdomain('wp-linkedin', false, dirname(plugin_basename(__FILE__)) . '/languages' );
+		load_plugin_textdomain('wp-linkedin', false, dirname(plugin_basename(__FILE__)) . '/languages/' );
 
 		if (is_admin()) {
 			add_action('admin_menu', array(&$this, 'admin_menu'));
@@ -59,11 +60,13 @@ class WPLinkedInPlugin {
 			add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
 			add_shortcode('li_recommendations', 'wp_linkedin_recommendations');
 			add_shortcode('li_profile', 'wp_linkedin_profile');
+			add_shortcode('li_card', 'wp_linkedin_card');
 		}
 	}
 
 	function widgets_init() {
-		register_widget('WPL_Recommendations_Widget');
+		register_widget('WP_LinkedIn_Recommendations_Widget');
+		register_widget('WP_LinkedIn_Card_Widget');
 	}
 
 	function admin_menu() {
@@ -88,9 +91,9 @@ function wp_linked_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) {
 			'callbackUrl'  => NULL
 	);
 
-	$linkedin = new LinkedIn($API_CONFIG);
+	$linkedin = new WP_LinkedIn_LinkedIn($API_CONFIG);
 	$linkedin->setTokenAccess(array('oauth_token' => LINKEDIN_USERTOKEN, 'oauth_token_secret' => LINKEDIN_USERSECRET));
-	$linkedin->setResponseFormat(LINKEDIN::_RESPONSE_JSON);
+	$linkedin->setResponseFormat(WP_LinkedIn_LinkedIn::_RESPONSE_JSON);
 	$linkedin->setProfileLanguage($lang);
 
 	$response = $linkedin->profile("~:($options)");
@@ -110,47 +113,79 @@ function wp_linkedin_profile($atts) {
 			'lang' => LINKEDIN_PROFILELANGUAGE
 	), $atts));
 
-	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ', ' . $fields);
+	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ',' . $fields);
 
 	$profile = wp_linked_get_profile($fields, $lang);
-	$template = locate_template('linkedin/profile.php');
+	if (isset($profile) && is_object($profile)) {
+		$template = locate_template('linkedin/profile.php');
 
-	ob_flush();
-	ob_start();
-	if (!empty($template)) {
-		require $template;
+		ob_start();
+		if (!empty($template)) {
+			require $template;
+		} else {
+			require 'templates/profile.php';
+		}
+		return ob_get_clean();
 	} else {
-		require 'templates/profile.php';
+		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check your API keys and the list of profile fields to be fetched. If everything seems good try regenerating the keys.', 'wp-linkedin') . '</p>';
 	}
-	$results = ob_get_contents();
-	ob_end_clean();
-	return $results;
+}
+
+
+function wp_linkedin_card($atts) {
+	// In case they want to pass customized attribute to their custom template
+	extract(shortcode_atts(array(
+			'picture_width' => '80',
+			'summary_length' => '200',
+			'fields' => 'summary',
+			'lang' => LINKEDIN_PROFILELANGUAGE
+	), $atts));
+
+	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ',' . $fields);
+
+	$profile = wp_linked_get_profile($fields, $lang);
+	if (isset($profile) && is_object($profile)) {
+		$template = locate_template('linkedin/card.php');
+
+		ob_start();
+		if (!empty($template)) {
+			require $template;
+		} else {
+			require 'templates/card.php';
+		}
+		return ob_get_clean();
+	} else {
+		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check your API keys and the list of profile fields to be fetched. If everything seems good try regenerating the keys.', 'wp-linkedin') . '</p>';
+	}
 }
 
 
 function wp_linkedin_recommendations($atts) {
 	extract(shortcode_atts(array(
-			'width' => '480',
+			'width' => 'auto',
 			'length' => '200',
-			'interval' => '1000'
+			'interval' => '4000'
 	), $atts));
 
 	$profile = wp_linked_get_profile(LINKEDIN_FIELDS_RECOMMENDATIONS);
 
-	if (isset($profile->recommendationsReceived) && is_array($profile->recommendationsReceived->values)) {
-		$recommendations = $profile->recommendationsReceived->values;
-		$template = locate_template('linkedin/recommendations.php');
+	if (isset($profile) && is_object($profile)) {
+		if (isset($profile->recommendationsReceived->values) && is_array($profile->recommendationsReceived->values)) {
+			$recommendations = $profile->recommendationsReceived->values;
+			$template = locate_template('linkedin/recommendations.php');
 
-		ob_flush();
-		ob_start();
-		if (!empty($template)) {
-			require $template;
+			ob_start();
+			if (!empty($template)) {
+				require $template;
+			} else {
+				require 'templates/recommendations.php';
+			}
+			return ob_get_clean();
 		} else {
-			require 'templates/recommendations.php';
+			return '<p>' . __('You don\'t have any recommendation to show.', 'wp-linkedin') . '</p>';
 		}
-		$results = ob_get_contents();
-		ob_end_clean();
-		return $results;
+	} else {
+		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check your API keys and the list of profile fields to be fetched. If everything seems good try regenerating the keys.', 'wp-linkedin') . '</p>';
 	}
 }
 

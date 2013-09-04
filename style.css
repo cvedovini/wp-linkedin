@@ -82,6 +82,8 @@
 	display: block;
 	float: left;
 	margin-left: -95px;
+	width: 80px;
+	height: auto;
 }
 
 .linkedin .profile .cartouche .name {
@@ -89,7 +91,31 @@
 	font-weight: bold;
 }
 
-.linkedin .profile .cartouche .healine {
+.linkedin .profile .cartouche .headline {
 	font-size: larger;
+	font-weight: bolder;
+}
+
+.linkedin .card {
+	background-color: #F0F0F0;
+	padding: 4px;
+}
+
+.linkedin .card .cartouche {
+	min-height: 50px;
+}
+
+.linkedin .card .cartouche .picture {
+	display: block;
+	float: left;
+	margin: 0 8px 8px 0;
+}
+
+.linkedin .card .cartouche .name {
+	font-size: larger;
+	font-weight: bolder;
+}
+
+.linkedin .card .cartouche .headline {
 	font-weight: bolder;
 }
