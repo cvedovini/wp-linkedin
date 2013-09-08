@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
 Tested up to: 3.6
-Stable tag: 1.4
+Stable tag: 1.4.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -38,6 +38,10 @@ See this post for more details on customization: [Showing more of your LinkedIn 
 
 
 == Changelog ==
+
+= version 1.4.1 =
+- fixing language codes in settings
+- simplifying the javascript for the recommendation slider
 
 = version 1.4 =
 - Corrected link to post about customization in the readme
