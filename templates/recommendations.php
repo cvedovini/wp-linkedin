@@ -15,23 +15,21 @@
 	</div>
 </div>
 <script>
-(function($) {
-	$(document).ready(function() {
-		var h = 0;
-		var $scrollable = $('#<?php echo $divid; ?>');
+jQuery(document).ready(function($) {
+	var h = 0;
+	var $scrollable = $('#<?php echo $divid; ?>');
 <?php if ($width === 'auto'): ?>
-		var width = $scrollable.width();
+	var width = $scrollable.width();
 <?php elseif (is_numeric($width)): ?>
-		var width = <?php echo $width; ?>;
+	var width = <?php echo $width; ?>;
 <?php endif; ?>
-		$('.items blockquote', $scrollable).each(function() {
+	$('.items blockquote', $scrollable).each(function() {
 <?php if ($width !== 'css'): ?>
-			$(this).outerWidth(width, true);
+		$(this).outerWidth(width, true);
 <?php endif; ?>
-			h = Math.max(h, $(this).height());
-		});
-		$scrollable.height(h);
-		$scrollable.scrollable({circular:true}).autoscroll({autoplay:true,autopause:true,interval:<?php  echo $interval; ?>});
+		h = Math.max(h, $(this).height());
 	});
-})(jQuery);
+	$scrollable.height(h);
+	$scrollable.scrollable({circular:true}).autoscroll({autoplay:true,autopause:true,interval:<?php  echo $interval; ?>});
+});
 </script>

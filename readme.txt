@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
 Tested up to: 3.6
-Stable tag: 1.3.8
+Stable tag: 1.4.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -27,7 +27,8 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 There are two shortcodes available:
 
 * `[li_recommendations width="480" length="200" interval="1000"]` displays a rotating scroller with the recommendations you received
-* `[li_profile]` displays your LinkedIn profile. Optional attributes are `fields` and `lang` to overide the general settings but you can pass any attribute and use it in customized templates.
+* `[li_profile]` displays your LinkedIn profile. Optional attributes are `fields` and `lang` to overide the general settings. But you can pass any attribute and use it in customized templates.
+* `[li_card]` displays a simple LinkedIn card. Optional attributes are `picture_width` and `summary_length`, and `fields` and `lang` to overide the general settings. But you can pass any attribute and use it in customized templates.
 
 
 To customize the rendering of both shortcodes you must create a `linkedin` folder in your theme and then copy the template file you want to modify.
@@ -38,9 +39,14 @@ See this post for more details on customization: [Showing more of your LinkedIn 
 
 == Changelog ==
 
+= version 1.4.1 =
+- fixing language codes in settings
+- simplifying the javascript for the recommendation slider
+
 = version 1.4 =
 - Corrected link to post about customization in the readme
 - Modified the javascript for the recommendation slider so that it uses `$(document).ready()`
+- Added a widget and shortcode displaying a simple LinkedIn card
 
 = version 1.3.8 =
 - Corrected a bug that interfers with other plugins using output buffering
