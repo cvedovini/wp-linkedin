@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-09-04 09:54:40+00:00\n"
-"PO-Revision-Date: 2013-09-04 17:01+0700\n"
+"POT-Creation-Date: 2013-09-10 03:12:40+00:00\n"
+"PO-Revision-Date: 2013-09-10 10:17+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,11 @@ msgstr "LinkedIn-opties"
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: class-admin.php:13
+#: class-admin.php:15
+msgid "Options"
+msgstr "Opties"
+
+#: class-admin.php:18
 msgid ""
 "Go to the <a href=\"https://www.linkedin.com/secure/developer\">LinkedIn "
 "Developer Network</a> to generate the following keys."
@@ -30,38 +34,38 @@ msgstr ""
 "Gaan naar het <a href=\"https://www.linkedin.com/secure/developer\">LinkedIn "
 "Developer Network</a> om de volgende sleutels te genereren."
 
-#: class-admin.php:18
+#: class-admin.php:22
 msgid "Application key"
 msgstr "API-code"
 
-#: class-admin.php:24
+#: class-admin.php:28
 msgid "Application secret"
 msgstr "Geheime code"
 
-#: class-admin.php:30
+#: class-admin.php:34
 msgid "User token"
 msgstr "OAuth-gebruikerstoken"
 
-#: class-admin.php:36
+#: class-admin.php:40
 msgid "User secret"
 msgstr "OAuth-gebruikersgeheim"
 
-#: class-admin.php:42
+#: class-admin.php:46
 msgid "Profile fields"
 msgstr "Profielvelden"
 
-#: class-admin.php:45
+#: class-admin.php:49
 msgid "Comma separated list of fields to show on the profile."
 msgstr "Komma gescheiden lijst met velden om op profiel weer te geven."
 
-#: class-admin.php:46
+#: class-admin.php:50
 msgid ""
 "You can overide this setting in the shortcode with the `fields` attribute."
 msgstr ""
 "Je kunt deze instelling overschrijven in de shortcode met het "
 "`fields`attribuut."
 
-#: class-admin.php:47
+#: class-admin.php:51
 msgid ""
 "See the <a href=\"https://developers.linkedin.com/documents/profile-fields\" "
 "target=\"_blank\">LinkedIn API documentation</a> for the complete list of "
@@ -71,11 +75,11 @@ msgstr ""
 "target=\"_blank\">LinkedIn API documentatie</a> voor de complete lijst met "
 "velden."
 
-#: class-admin.php:51
+#: class-admin.php:55
 msgid "Profile language"
 msgstr "Profieltaal"
 
-#: class-admin.php:63
+#: class-admin.php:67
 msgid ""
 "The language of the profile to display if you have several profiles in "
 "different languages."
@@ -83,14 +87,14 @@ msgstr ""
 "De taal van het profiel om weer te geven, wanneer je meerdere profielen in "
 "verschillende talen hebt."
 
-#: class-admin.php:64
+#: class-admin.php:68
 msgid ""
 "You can overide this setting in the shortcode with the `lang` attribute."
 msgstr ""
 "Je kunt deze instelling overschrijven in de shortcode met het `lang` "
 "attribuut."
 
-#: class-admin.php:65
+#: class-admin.php:69
 msgid ""
 "See \"Selecting the profile language\" <a href=\"https://developer.linkedin."
 "com/documents/profile-api\" target=\"_blank\">LinkedIn API documentation</a> "
@@ -100,187 +104,195 @@ msgstr ""
 "com/documents/profile-api\" target=\"_blank\">LinkedIn API documentatie</a> "
 "voor details."
 
-#: class-admin.php:72
-msgid "Save"
-msgstr "Opslaan"
+#: class-admin.php:75
+msgid "Save Changes"
+msgstr "Wijzigingen opslaan"
 
-#: class-admin.php:79
+#: class-admin.php:83
+msgid "Do you like this Plugin?"
+msgstr "Hou je van deze plugin?"
+
+#: class-admin.php:85
+msgid "Please consider a donation."
+msgstr "Overweeg dan een donatie."
+
+#: class-admin.php:108
 msgid "Default"
 msgstr "Verstek"
 
-#: class-admin.php:80
+#: class-admin.php:109
 msgid "Bahasa Indonesia"
 msgstr "Bahasa Indonesia"
 
-#: class-admin.php:81
+#: class-admin.php:110
 msgid "Czech"
 msgstr "Tsjechisch"
 
-#: class-admin.php:82
+#: class-admin.php:111
 msgid "Danish"
 msgstr "Deens"
 
-#: class-admin.php:83
+#: class-admin.php:112
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: class-admin.php:84
+#: class-admin.php:113
 msgid "French"
 msgstr "Frans"
 
-#: class-admin.php:85
+#: class-admin.php:114
 msgid "German"
 msgstr "Duits"
 
-#: class-admin.php:86
+#: class-admin.php:115
 msgid "Italian"
 msgstr "Italiaans"
 
-#: class-admin.php:87
+#: class-admin.php:116
 msgid "Japanese"
 msgstr "Japans"
 
-#: class-admin.php:88
+#: class-admin.php:117
 msgid "Korean"
 msgstr "Koreaans"
 
-#: class-admin.php:89
+#: class-admin.php:118
 msgid "Malay"
 msgstr "Maleis"
 
-#: class-admin.php:90
+#: class-admin.php:119
 msgid "Norwegian"
 msgstr "Noors"
 
-#: class-admin.php:91
+#: class-admin.php:120
 msgid "Polish"
 msgstr "Pools"
 
-#: class-admin.php:92
+#: class-admin.php:121
 msgid "Portuguese"
 msgstr "Portugees"
 
-#: class-admin.php:93
+#: class-admin.php:122
 msgid "Romanian"
 msgstr "Roemeens"
 
-#: class-admin.php:94
+#: class-admin.php:123
 msgid "Russian"
 msgstr "Russisch"
 
-#: class-admin.php:95
+#: class-admin.php:124
 msgid "Spanish"
 msgstr "Spaans"
 
-#: class-admin.php:96
+#: class-admin.php:125
 msgid "Swedish"
 msgstr "Zweeds"
 
-#: class-admin.php:97
+#: class-admin.php:126
 msgid "Turkish"
 msgstr "Turks"
 
-#: class-admin.php:98
+#: class-admin.php:127
 msgid "Albanian"
 msgstr "Albanees"
 
-#: class-admin.php:99
+#: class-admin.php:128
 msgid "Armenian"
 msgstr "Armeens"
 
-#: class-admin.php:100
+#: class-admin.php:129
 msgid "Bosnian"
 msgstr "Bosnisch"
 
-#: class-admin.php:101
+#: class-admin.php:130
 msgid "Burmese (Myanmar)"
 msgstr "Birmaans (Myanmar)"
 
-#: class-admin.php:102
+#: class-admin.php:131
 msgid "Chinese (Simplified)"
 msgstr "Chinees (vereenvoudigd)"
 
-#: class-admin.php:103
+#: class-admin.php:132
 msgid "Chinese (Traditional)"
 msgstr "Chinees (traditioneel)"
 
-#: class-admin.php:104
+#: class-admin.php:133
 msgid "Croatian"
 msgstr "Kroatisch"
 
-#: class-admin.php:105
+#: class-admin.php:134
 msgid "Finnish"
 msgstr "Fins"
 
-#: class-admin.php:106
+#: class-admin.php:135
 msgid "Greek"
 msgstr "Grieks"
 
-#: class-admin.php:107
+#: class-admin.php:136
 msgid "Hindi"
 msgstr "Hindi"
 
-#: class-admin.php:108
+#: class-admin.php:137
 msgid "Hungarian"
 msgstr "Hongaars"
 
-#: class-admin.php:109
+#: class-admin.php:138
 msgid "Icelandic"
 msgstr "IJslands"
 
-#: class-admin.php:110
+#: class-admin.php:139
 msgid "Javanese"
 msgstr "Javaans"
 
-#: class-admin.php:111
+#: class-admin.php:140
 msgid "Kannada"
 msgstr "Kannada"
 
-#: class-admin.php:112
+#: class-admin.php:141
 msgid "Latvian"
 msgstr "Lets"
 
-#: class-admin.php:113
+#: class-admin.php:142
 msgid "Lithuanian"
 msgstr "Litouws"
 
-#: class-admin.php:114
+#: class-admin.php:143
 msgid "Malayalam"
 msgstr "Malayalam"
 
-#: class-admin.php:115
+#: class-admin.php:144
 msgid "Serbian"
 msgstr "Servisch"
 
-#: class-admin.php:116
+#: class-admin.php:145
 msgid "Slovak"
 msgstr "Slowaaks"
 
-#: class-admin.php:117
+#: class-admin.php:146
 msgid "Tagalog"
 msgstr "Tagalog"
 
-#: class-admin.php:118
+#: class-admin.php:147
 msgid "Tamil"
 msgstr "Tamil"
 
-#: class-admin.php:119
+#: class-admin.php:148
 msgid "Telugu"
 msgstr "Telugu"
 
-#: class-admin.php:120
+#: class-admin.php:149
 msgid "Thai"
 msgstr "Thais"
 
-#: class-admin.php:121
+#: class-admin.php:150
 msgid "Ukrainian"
 msgstr "Oekraïens"
 
-#: class-admin.php:122
+#: class-admin.php:151
 msgid "Vietnamese"
 msgstr "Vietnamees"
 
-#: class-admin.php:123
+#: class-admin.php:152
 msgid "Other"
 msgstr "Anders"
 
@@ -409,3 +421,6 @@ msgid ""
 msgstr ""
 "http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-"
 "linkedin"
+
+#~ msgid "Save"
+#~ msgstr "Opslaan"
