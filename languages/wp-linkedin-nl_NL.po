@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-09-11 11:31:57+00:00\n"
-"PO-Revision-Date: 2013-09-11 18:33+0700\n"
+"POT-Creation-Date: 2013-09-11 13:30:22+00:00\n"
+"PO-Revision-Date: 2013-09-11 20:32+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;_e\n"
 "X-Poedit-Basepath: .\n"
 
-#: class-admin.php:8 class-admin.php:48
+#: class-admin.php:8 class-admin.php:77
 msgid "LinkedIn Options"
 msgstr "LinkedIn-opties"
 
@@ -33,37 +33,40 @@ msgstr ""
 "Uw LinkedIn toegang token is ongeldig of verlopen, kunt u <a href=\"%s"
 "\">klik hier</ a> om een nieuwe te krijgen."
 
-#: class-admin.php:39
-msgid ""
-"An error has occured while retreiving the access token, please try again."
+#: class-admin.php:34
+msgid "The access token has been successfully updated."
+msgstr "De toegang token is bijgewerkt."
+
+#: class-admin.php:38
+msgid "An error has occured while updating the access token, please try again."
 msgstr ""
-"Er is een fout opgetreden tijdens het opvragen van de toegang token, probeer "
-"het opnieuw."
+"Er is een fout opgetreden tijdens het bijwerken van de toegang token, "
+"probeer het opnieuw."
 
 #: class-admin.php:42
-msgid "Invalid state."
-msgstr "Ongeldige status."
+msgid "The cache has been cleared."
+msgstr "De cache is gewist."
 
-#: class-admin.php:51
+#: class-admin.php:80
 msgid "Options"
 msgstr "Opties"
 
-#: class-admin.php:58
+#: class-admin.php:87
 msgid "Profile fields"
 msgstr "Profielvelden"
 
-#: class-admin.php:61
+#: class-admin.php:90
 msgid "Comma separated list of fields to show on the profile."
 msgstr "Komma gescheiden lijst met velden om op profiel weer te geven."
 
-#: class-admin.php:62
+#: class-admin.php:91
 msgid ""
 "You can overide this setting in the shortcode with the `fields` attribute."
 msgstr ""
 "Je kunt deze instelling overschrijven in de shortcode met het "
 "`fields`attribuut."
 
-#: class-admin.php:63
+#: class-admin.php:92
 msgid ""
 "See the <a href=\"https://developers.linkedin.com/documents/profile-fields\" "
 "target=\"_blank\">LinkedIn API documentation</a> for the complete list of "
@@ -73,11 +76,11 @@ msgstr ""
 "target=\"_blank\">LinkedIn API documentatie</a> voor de complete lijst met "
 "velden."
 
-#: class-admin.php:67
+#: class-admin.php:96
 msgid "Profile language"
 msgstr "Profieltaal"
 
-#: class-admin.php:79
+#: class-admin.php:108
 msgid ""
 "The language of the profile to display if you have several profiles in "
 "different languages."
@@ -85,14 +88,14 @@ msgstr ""
 "De taal van het profiel om weer te geven, wanneer je meerdere profielen in "
 "verschillende talen hebt."
 
-#: class-admin.php:80
+#: class-admin.php:109
 msgid ""
 "You can overide this setting in the shortcode with the `lang` attribute."
 msgstr ""
 "Je kunt deze instelling overschrijven in de shortcode met het `lang` "
 "attribuut."
 
-#: class-admin.php:81
+#: class-admin.php:110
 msgid ""
 "See \"Selecting the profile language\" <a href=\"https://developer.linkedin."
 "com/documents/profile-api\" target=\"_blank\">LinkedIn API documentation</a> "
@@ -102,207 +105,203 @@ msgstr ""
 "com/documents/profile-api\" target=\"_blank\">LinkedIn API documentatie</a> "
 "voor details."
 
-#: class-admin.php:85
-msgid "Save Changes"
-msgstr "Wijzigingen opslaan"
-
-#: class-admin.php:90
+#: class-admin.php:119
 msgid "Administration"
 msgstr "Administratie"
 
-#: class-admin.php:93
+#: class-admin.php:122
 msgid "Regenerate LinkedIn Access Token"
 msgstr "Regenereren LinkedIn Access Token"
 
-#: class-admin.php:94
+#: class-admin.php:123
 msgid "Clear the Cache"
 msgstr "Leeg de cache"
 
-#: class-admin.php:102
+#: class-admin.php:131
 msgid "Do you like this Plugin?"
 msgstr "Hou je van deze plugin?"
 
-#: class-admin.php:104
+#: class-admin.php:133
 msgid "Please consider a donation."
 msgstr "Overweeg dan een donatie."
 
-#: class-admin.php:127
+#: class-admin.php:156
 msgid "Default"
 msgstr "Verstek"
 
-#: class-admin.php:128
+#: class-admin.php:157
 msgid "Bahasa Indonesia"
 msgstr "Bahasa Indonesia"
 
-#: class-admin.php:129
+#: class-admin.php:158
 msgid "Czech"
 msgstr "Tsjechisch"
 
-#: class-admin.php:130
+#: class-admin.php:159
 msgid "Danish"
 msgstr "Deens"
 
-#: class-admin.php:131
+#: class-admin.php:160
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: class-admin.php:132
+#: class-admin.php:161
 msgid "French"
 msgstr "Frans"
 
-#: class-admin.php:133
+#: class-admin.php:162
 msgid "German"
 msgstr "Duits"
 
-#: class-admin.php:134
+#: class-admin.php:163
 msgid "Italian"
 msgstr "Italiaans"
 
-#: class-admin.php:135
+#: class-admin.php:164
 msgid "Japanese"
 msgstr "Japans"
 
-#: class-admin.php:136
+#: class-admin.php:165
 msgid "Korean"
 msgstr "Koreaans"
 
-#: class-admin.php:137
+#: class-admin.php:166
 msgid "Malay"
 msgstr "Maleis"
 
-#: class-admin.php:138
+#: class-admin.php:167
 msgid "Norwegian"
 msgstr "Noors"
 
-#: class-admin.php:139
+#: class-admin.php:168
 msgid "Polish"
 msgstr "Pools"
 
-#: class-admin.php:140
+#: class-admin.php:169
 msgid "Portuguese"
 msgstr "Portugees"
 
-#: class-admin.php:141
+#: class-admin.php:170
 msgid "Romanian"
 msgstr "Roemeens"
 
-#: class-admin.php:142
+#: class-admin.php:171
 msgid "Russian"
 msgstr "Russisch"
 
-#: class-admin.php:143
+#: class-admin.php:172
 msgid "Spanish"
 msgstr "Spaans"
 
-#: class-admin.php:144
+#: class-admin.php:173
 msgid "Swedish"
 msgstr "Zweeds"
 
-#: class-admin.php:145
+#: class-admin.php:174
 msgid "Turkish"
 msgstr "Turks"
 
-#: class-admin.php:146
+#: class-admin.php:175
 msgid "Albanian"
 msgstr "Albanees"
 
-#: class-admin.php:147
+#: class-admin.php:176
 msgid "Armenian"
 msgstr "Armeens"
 
-#: class-admin.php:148
+#: class-admin.php:177
 msgid "Bosnian"
 msgstr "Bosnisch"
 
-#: class-admin.php:149
+#: class-admin.php:178
 msgid "Burmese (Myanmar)"
 msgstr "Birmaans (Myanmar)"
 
-#: class-admin.php:150
+#: class-admin.php:179
 msgid "Chinese (Simplified)"
 msgstr "Chinees (vereenvoudigd)"
 
-#: class-admin.php:151
+#: class-admin.php:180
 msgid "Chinese (Traditional)"
 msgstr "Chinees (traditioneel)"
 
-#: class-admin.php:152
+#: class-admin.php:181
 msgid "Croatian"
 msgstr "Kroatisch"
 
-#: class-admin.php:153
+#: class-admin.php:182
 msgid "Finnish"
 msgstr "Fins"
 
-#: class-admin.php:154
+#: class-admin.php:183
 msgid "Greek"
 msgstr "Grieks"
 
-#: class-admin.php:155
+#: class-admin.php:184
 msgid "Hindi"
 msgstr "Hindi"
 
-#: class-admin.php:156
+#: class-admin.php:185
 msgid "Hungarian"
 msgstr "Hongaars"
 
-#: class-admin.php:157
+#: class-admin.php:186
 msgid "Icelandic"
 msgstr "IJslands"
 
-#: class-admin.php:158
+#: class-admin.php:187
 msgid "Javanese"
 msgstr "Javaans"
 
-#: class-admin.php:159
+#: class-admin.php:188
 msgid "Kannada"
 msgstr "Kannada"
 
-#: class-admin.php:160
+#: class-admin.php:189
 msgid "Latvian"
 msgstr "Lets"
 
-#: class-admin.php:161
+#: class-admin.php:190
 msgid "Lithuanian"
 msgstr "Litouws"
 
-#: class-admin.php:162
+#: class-admin.php:191
 msgid "Malayalam"
 msgstr "Malayalam"
 
-#: class-admin.php:163
+#: class-admin.php:192
 msgid "Serbian"
 msgstr "Servisch"
 
-#: class-admin.php:164
+#: class-admin.php:193
 msgid "Slovak"
 msgstr "Slowaaks"
 
-#: class-admin.php:165
+#: class-admin.php:194
 msgid "Tagalog"
 msgstr "Tagalog"
 
-#: class-admin.php:166
+#: class-admin.php:195
 msgid "Tamil"
 msgstr "Tamil"
 
-#: class-admin.php:167
+#: class-admin.php:196
 msgid "Telugu"
 msgstr "Telugu"
 
-#: class-admin.php:168
+#: class-admin.php:197
 msgid "Thai"
 msgstr "Thais"
 
-#: class-admin.php:169
+#: class-admin.php:198
 msgid "Ukrainian"
 msgstr "Oekraïens"
 
-#: class-admin.php:170
+#: class-admin.php:199
 msgid "Vietnamese"
 msgstr "Vietnamees"
 
-#: class-admin.php:171
+#: class-admin.php:200
 msgid "Other"
 msgstr "Anders"
 
@@ -431,6 +430,12 @@ msgid ""
 msgstr ""
 "http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-"
 "linkedin"
+
+#~ msgid "Invalid state."
+#~ msgstr "Ongeldige status."
+
+#~ msgid "Save Changes"
+#~ msgstr "Wijzigingen opslaan"
 
 #~ msgid "Management"
 #~ msgstr "Administratie"
