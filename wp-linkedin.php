@@ -104,7 +104,7 @@ function wp_linkedin_profile($atts) {
 		}
 		return ob_get_clean();
 	} else {
-		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check your API keys and the list of profile fields to be fetched. If everything seems good try regenerating the keys.', 'wp-linkedin') . '</p>';
+		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin') . '</p>';
 	}
 }
 

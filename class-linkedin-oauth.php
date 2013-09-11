@@ -3,6 +3,7 @@
 class WPLinkedInOAuth {
 	const LINKEDIN_APPKEY = '57zh7f1nvty5';
 	const LINKEDIN_APPSECRET = 'FL0gcEC2b0G18KPa';
+	const CACHETIMEOUT = 43200; // 12 hours
 
 	function get_access_token() {
 		return get_transient('wp-linkedin_oauthtoken');
@@ -37,12 +38,12 @@ class WPLinkedInOAuth {
 	}
 
 	function clear_cache() {
-		delete_option('wp-linkedin-cache');
+		delete_option('wp-linkedin_cache');
 	}
 
 	function get_profile($options='id', $lang='') {
 		$profile = false;
-		$cache = get_option('wp-linkedin-cache');
+		$cache = get_option('wp-linkedin_cache');
 		if (!is_array($cache)) $cache = array();
 
 		// Do we have an up-to-date profile?
@@ -57,8 +58,10 @@ class WPLinkedInOAuth {
 		$fetched = $this->fetch_profile($options, $lang);
 		if ($fetched) {
 			$profile = $fetched;
-			$cache[$options.$lang] = array('expires' => time() + 3600, 'profile' => $profile);
-			update_option('wp-linkedin-cache', $cache);
+			$cache[$options.$lang] = array(
+					'expires' => time() + WPLinkedInOAuth::CACHETIMEOUT,
+					'profile' => $profile);
+			update_option('wp-linkedin_cache', $cache);
 		}
 
 		// But if we cannot fetch one, let's return the outdated one if any.

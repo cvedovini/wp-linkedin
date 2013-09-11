@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
 Tested up to: 3.6
-Stable tag: 1.4.3
+Stable tag: 1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -20,7 +20,7 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 
 1. Upload the `wp-linkedin` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Generate an access token for the LinkedIn API (those tokens expire after 60 days so you will have to regenrate them from time to time)
+1. Generate an access token for the LinkedIn API (those tokens expire after 60 days so you will have to regenerate them from time to time)
 1. The `Profile fields` field is the list of fields that will be available to the template for rendering (see below for template customization).
 
 There are two shortcodes available:
@@ -39,7 +39,8 @@ See this post for more details on customization: [Showing more of your LinkedIn 
 == Changelog ==
 
 = version 1.5 =
-- Changing the way the LinkedIn API keys and tokens are retreived in order to simplify installation
+- Changing the way the LinkedIn API keys and token are managed in order to simplify installation
+- Added a profile cache to improve performances and limit API calls
 
 = version 1.4.3 =
 - Updating string translations
