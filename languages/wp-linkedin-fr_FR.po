@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-09-10 03:12:40+00:00\n"
-"PO-Revision-Date: 2013-09-10 10:16+0700\n"
+"POT-Creation-Date: 2013-09-11 09:49:03+00:00\n"
+"PO-Revision-Date: 2013-09-11 17:15+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -16,58 +16,57 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: templates\n"
 
-#: class-admin.php:7 class-admin.php:12
+#: class-admin.php:8 class-admin.php:40
 msgid "LinkedIn Options"
 msgstr "Options LinkedIn"
 
-#: class-admin.php:7
+#: class-admin.php:8
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: class-admin.php:15
+#: class-admin.php:18
+msgid ""
+"Your LinkedIn access token is invalid or has expired, please <a href=\"%s"
+"\">click here</a> to get a new one."
+msgstr ""
+"Votre jeton d'accès à LinkedIn est non valid ou a expiré, merci de <a href="
+"\"%s\">cliquer ici</a> afin d'en générer un nouveau."
+
+#: class-admin.php:33
+msgid ""
+"An error has occured while retreiving the access token, please try again."
+msgstr ""
+"Une erreur est survenue lors de la récupération du jeton d'accès, merci "
+"d'essayer à nouveau."
+
+#: class-admin.php:36
+msgid "Invalid state."
+msgstr "Etat non valide."
+
+#: class-admin.php:43
 msgid "Options"
 msgstr "Options"
 
-#: class-admin.php:18
-msgid ""
-"Go to the <a href=\"https://www.linkedin.com/secure/developer\">LinkedIn "
-"Developer Network</a> to generate the following keys."
-msgstr ""
-"Visiter <a href=\"https://www.linkedin.com/secure/developer\">le Developer "
-"Network de LinkedIn</a> afin de générer les clés d'API suivantes."
+#: class-admin.php:47
+msgid "Regenerate LinkedIn Access Token"
+msgstr "Régénérer le jeton d'accès LinkedIn"
 
-#: class-admin.php:22
-msgid "Application key"
-msgstr "Clé d'accès"
-
-#: class-admin.php:28
-msgid "Application secret"
-msgstr "Code de validation"
-
-#: class-admin.php:34
-msgid "User token"
-msgstr "Jeton utilisateur"
-
-#: class-admin.php:40
-msgid "User secret"
-msgstr "Code de validation utilisateur"
-
-#: class-admin.php:46
+#: class-admin.php:51
 msgid "Profile fields"
 msgstr "Champs du profile"
 
-#: class-admin.php:49
+#: class-admin.php:54
 msgid "Comma separated list of fields to show on the profile."
 msgstr "Liste des champs à afficher dans le profile, séparés par des virgules."
 
-#: class-admin.php:50
+#: class-admin.php:55
 msgid ""
 "You can overide this setting in the shortcode with the `fields` attribute."
 msgstr ""
 "Vous pouvez surcharger ce réglage dans le shortcode en utilisant l'attribut "
 "`fields`"
 
-#: class-admin.php:51
+#: class-admin.php:56
 msgid ""
 "See the <a href=\"https://developers.linkedin.com/documents/profile-fields\" "
 "target=\"_blank\">LinkedIn API documentation</a> for the complete list of "
@@ -77,11 +76,11 @@ msgstr ""
 "target=\"_blank\">la documentation de l'API LinkedIn</a> pour la liste "
 "exhaustive des champs."
 
-#: class-admin.php:55
+#: class-admin.php:60
 msgid "Profile language"
 msgstr "Langage du profile"
 
-#: class-admin.php:67
+#: class-admin.php:72
 msgid ""
 "The language of the profile to display if you have several profiles in "
 "different languages."
@@ -89,14 +88,14 @@ msgstr ""
 "Le langage à afficher si vous avez plusieurs profiles dans différents "
 "langages."
 
-#: class-admin.php:68
+#: class-admin.php:73
 msgid ""
 "You can overide this setting in the shortcode with the `lang` attribute."
 msgstr ""
 "Vous pouvez surcharger ce réglage dans le shortcode en utilisant l'attribut "
 "`lang`"
 
-#: class-admin.php:69
+#: class-admin.php:74
 msgid ""
 "See \"Selecting the profile language\" <a href=\"https://developer.linkedin."
 "com/documents/profile-api\" target=\"_blank\">LinkedIn API documentation</a> "
@@ -106,195 +105,195 @@ msgstr ""
 "linkedin.com/documents/profile-api\" target=\"_blank\">la documentation de "
 "l'API LinkedIn</a> pour plus d'information."
 
-#: class-admin.php:75
+#: class-admin.php:80
 msgid "Save Changes"
 msgstr "Sauvegarder les changements"
 
-#: class-admin.php:83
+#: class-admin.php:88
 msgid "Do you like this Plugin?"
 msgstr "Appréciez-vous cette extension?"
 
-#: class-admin.php:85
+#: class-admin.php:90
 msgid "Please consider a donation."
 msgstr "Merci de penser à une donation."
 
-#: class-admin.php:108
+#: class-admin.php:113
 msgid "Default"
 msgstr "Langue par défaut"
 
-#: class-admin.php:109
+#: class-admin.php:114
 msgid "Bahasa Indonesia"
 msgstr "Indonésien"
 
-#: class-admin.php:110
+#: class-admin.php:115
 msgid "Czech"
 msgstr "Tchèque"
 
-#: class-admin.php:111
+#: class-admin.php:116
 msgid "Danish"
 msgstr "Danois"
 
-#: class-admin.php:112
+#: class-admin.php:117
 msgid "Dutch"
 msgstr "Néerlandais"
 
-#: class-admin.php:113
+#: class-admin.php:118
 msgid "French"
 msgstr "Français"
 
-#: class-admin.php:114
+#: class-admin.php:119
 msgid "German"
 msgstr "Allemand"
 
-#: class-admin.php:115
+#: class-admin.php:120
 msgid "Italian"
 msgstr "Italien"
 
-#: class-admin.php:116
+#: class-admin.php:121
 msgid "Japanese"
 msgstr "Japonais"
 
-#: class-admin.php:117
+#: class-admin.php:122
 msgid "Korean"
 msgstr "Coréen"
 
-#: class-admin.php:118
+#: class-admin.php:123
 msgid "Malay"
 msgstr "Malais"
 
-#: class-admin.php:119
+#: class-admin.php:124
 msgid "Norwegian"
 msgstr "Norvégien"
 
-#: class-admin.php:120
+#: class-admin.php:125
 msgid "Polish"
 msgstr "Polonais"
 
-#: class-admin.php:121
+#: class-admin.php:126
 msgid "Portuguese"
 msgstr "Portugais"
 
-#: class-admin.php:122
+#: class-admin.php:127
 msgid "Romanian"
 msgstr "Roumain"
 
-#: class-admin.php:123
+#: class-admin.php:128
 msgid "Russian"
 msgstr "Russe"
 
-#: class-admin.php:124
+#: class-admin.php:129
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: class-admin.php:125
+#: class-admin.php:130
 msgid "Swedish"
 msgstr "Suédois"
 
-#: class-admin.php:126
+#: class-admin.php:131
 msgid "Turkish"
 msgstr "Turc"
 
-#: class-admin.php:127
+#: class-admin.php:132
 msgid "Albanian"
 msgstr "Albanais"
 
-#: class-admin.php:128
+#: class-admin.php:133
 msgid "Armenian"
 msgstr "Arménien"
 
-#: class-admin.php:129
+#: class-admin.php:134
 msgid "Bosnian"
 msgstr "Bosniaque"
 
-#: class-admin.php:130
+#: class-admin.php:135
 msgid "Burmese (Myanmar)"
 msgstr "Birman"
 
-#: class-admin.php:131
+#: class-admin.php:136
 msgid "Chinese (Simplified)"
 msgstr "Chinois (Simplifié)"
 
-#: class-admin.php:132
+#: class-admin.php:137
 msgid "Chinese (Traditional)"
 msgstr "Chinois (Traditionel)"
 
-#: class-admin.php:133
+#: class-admin.php:138
 msgid "Croatian"
 msgstr "Croate"
 
-#: class-admin.php:134
+#: class-admin.php:139
 msgid "Finnish"
 msgstr "Finnois"
 
-#: class-admin.php:135
+#: class-admin.php:140
 msgid "Greek"
 msgstr "Grecque"
 
-#: class-admin.php:136
+#: class-admin.php:141
 msgid "Hindi"
 msgstr "Hindou"
 
-#: class-admin.php:137
+#: class-admin.php:142
 msgid "Hungarian"
 msgstr "Hongrois"
 
-#: class-admin.php:138
+#: class-admin.php:143
 msgid "Icelandic"
 msgstr "Islandais"
 
-#: class-admin.php:139
+#: class-admin.php:144
 msgid "Javanese"
 msgstr "Javanais"
 
-#: class-admin.php:140
+#: class-admin.php:145
 msgid "Kannada"
 msgstr "Kannada"
 
-#: class-admin.php:141
+#: class-admin.php:146
 msgid "Latvian"
 msgstr "Letton"
 
-#: class-admin.php:142
+#: class-admin.php:147
 msgid "Lithuanian"
 msgstr "Lituanien"
 
-#: class-admin.php:143
+#: class-admin.php:148
 msgid "Malayalam"
 msgstr "Malayalam"
 
-#: class-admin.php:144
+#: class-admin.php:149
 msgid "Serbian"
 msgstr "Serbe"
 
-#: class-admin.php:145
+#: class-admin.php:150
 msgid "Slovak"
 msgstr "Slovaque"
 
-#: class-admin.php:146
+#: class-admin.php:151
 msgid "Tagalog"
 msgstr "Tagalog"
 
-#: class-admin.php:147
+#: class-admin.php:152
 msgid "Tamil"
 msgstr "Tamoul"
 
-#: class-admin.php:148
+#: class-admin.php:153
 msgid "Telugu"
 msgstr "Télougou"
 
-#: class-admin.php:149
+#: class-admin.php:154
 msgid "Thai"
 msgstr "Thaïlandais"
 
-#: class-admin.php:150
+#: class-admin.php:155
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
-#: class-admin.php:151
+#: class-admin.php:156
 msgid "Vietnamese"
 msgstr "Vietnamien"
 
-#: class-admin.php:152
+#: class-admin.php:157
 msgid "Other"
 msgstr "Autre"
 
@@ -379,7 +378,7 @@ msgstr "Activités et associations"
 msgid "Recommendations"
 msgstr "Recommendations"
 
-#: wp-linkedin.php:130 wp-linkedin.php:158 wp-linkedin.php:188
+#: wp-linkedin.php:107
 msgid ""
 "There's something wrong and the profile could not be retreived, please check "
 "your API keys and the list of profile fields to be fetched. If everything "
@@ -389,7 +388,17 @@ msgstr ""
 "vérifier vos clés d'API ainsi que la liste des champs de profil à retrouver. "
 "Si tout semble correct essayer de régénérer les clés."
 
-#: wp-linkedin.php:185
+#: wp-linkedin.php:134 wp-linkedin.php:164
+msgid ""
+"There's something wrong and the profile could not be retreived, please check "
+"the list of profile fields to be fetched. If everything seems good try "
+"regenerating the access token."
+msgstr ""
+"Il y a eu une erreur et votre profil n'a pas pu être accédé, merci de "
+"vérifier la liste des champs de profil à retrouver. Si tout semble correct "
+"essayer de régénérer le jeton d'accès."
+
+#: wp-linkedin.php:161
 msgid "You don't have any recommendation to show."
 msgstr "Vous n'avez pas de recommandation."
 
@@ -424,6 +433,26 @@ msgid ""
 msgstr ""
 "http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-"
 "linkedin"
+
+#~ msgid ""
+#~ "Go to the <a href=\"https://www.linkedin.com/secure/developer\">LinkedIn "
+#~ "Developer Network</a> to generate the following keys."
+#~ msgstr ""
+#~ "Visiter <a href=\"https://www.linkedin.com/secure/developer\">le "
+#~ "Developer Network de LinkedIn</a> afin de générer les clés d'API "
+#~ "suivantes."
+
+#~ msgid "Application key"
+#~ msgstr "Clé d'accès"
+
+#~ msgid "Application secret"
+#~ msgstr "Code de validation"
+
+#~ msgid "User token"
+#~ msgstr "Jeton utilisateur"
+
+#~ msgid "User secret"
+#~ msgstr "Code de validation utilisateur"
 
 #~ msgid "Save"
 #~ msgstr "Sauvegarder"
