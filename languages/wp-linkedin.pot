@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LinkedIn for Wordpress 1.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-09-11 10:15:08+00:00\n"
+"POT-Creation-Date: 2013-09-11 10:17:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -355,14 +355,7 @@ msgstr ""
 msgid "Recommendations"
 msgstr ""
 
-#: wp-linkedin.php:107
-msgid ""
-"There's something wrong and the profile could not be retreived, please check "
-"your API keys and the list of profile fields to be fetched. If everything "
-"seems good try regenerating the keys."
-msgstr ""
-
-#: wp-linkedin.php:134 wp-linkedin.php:164
+#: wp-linkedin.php:107 wp-linkedin.php:134 wp-linkedin.php:164
 msgid ""
 "There's something wrong and the profile could not be retreived, please check "
 "the list of profile fields to be fetched. If everything seems good try "
