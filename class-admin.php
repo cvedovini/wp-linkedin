@@ -10,12 +10,11 @@ class WPLinkedInAdmin {
 	}
 
 	function get_authorization_url() {
-		$state = wp_create_nonce('linkedin-oauth');
-		return $this->oauth->get_authorization_url($redirect_uri, $state);
+		return $this->oauth->get_authorization_url(wp_create_nonce('linkedin-oauth'));
 	}
 
 	function admin_notices() {
-		if (!$oauth->is_access_token_valid()) {
+		if (!$this->oauth->is_access_token_valid()) {
 			$format = __('Your LinkedIn access token is invalid or has expired, please <a href="%s">click here</a> to get a new one.', 'wp-linkedin');
 			$notice = sprintf($format, $this->get_authorization_url()); ?>
 			<div class="error">
@@ -27,7 +26,10 @@ class WPLinkedInAdmin {
 	function options_page() {
 		if (isset($_GET['code']) && isset($_GET['state'])) {
 			if (wp_verify_nonce($_GET['state'], 'linkedin-oauth')) {
-				if (!$this->oauth->set_access_token($_GET['code'])) { ?>
+				if ($this->oauth->set_access_token($_GET['code'])) {
+					$this->oauth->clear_cache();
+					wp_redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin'));
+				} else {?>
 					<div class="error"><p><?php _e('An error has occured while retreiving the access token, please try again.', 'wp-linkedin'); ?></p></div>
 				<?php }
 			} else { ?>
@@ -41,8 +43,8 @@ class WPLinkedInAdmin {
 			<h3 style="cursor:default;"><span><?php _e('Options', 'wp-linkedin'); ?></span></h3>
 			<div class="inside">
 				<form method="post" action="options.php"><?php wp_nonce_field('update-options'); ?>
-				<?php if ($oauth->is_access_token_valid()): ?>
-					<p class="submit"><a href="<?php echo $this->get_authorization_url(); ?>" class="button button-primary"><?php _e('Regenerate LinkedIn access token.', 'wp-linkedin'); ?></a></p>
+				<?php if ($this->oauth->is_access_token_valid()): ?>
+					<p class="submit"><a href="<?php echo $this->get_authorization_url(); ?>" class="button button-primary"><?php _e('Regenerate LinkedIn Access Token', 'wp-linkedin'); ?></a></p>
 				<?php endif; ?>
 				<table class="form-table">
 					<tr valign="top">
