@@ -83,7 +83,13 @@ class WPLinkedInOAuth {
 
 			$response = wp_remote_get($url, array('headers' => $headers));
 			if (!is_wp_error($response)) {
-				return json_decode($response['body']);
+				$response = json_decode($response);
+				if ($response->response->code == 200) {
+					return $response->body;
+				} elseif ($response->response->code == 401) {
+					// Invalidate token
+					delete_transient('wp-linkedin_oauthtoken');
+				}
 			}
 		}
 

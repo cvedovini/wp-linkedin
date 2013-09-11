@@ -34,7 +34,8 @@ class WPLinkedInAdmin {
 		if (isset($_GET['code']) && isset($_GET['state'])) {
 			if (wp_verify_nonce($_GET['state'], 'linkedin-oauth')) {
 				if ($this->oauth->set_access_token($_GET['code'])) {
-					wp_redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin&clear_cache'));
+					echo "<script>window.location='" . site_url('/wp-admin/options-general.php?page=wp-linkedin&clear_cache') . "';</script>";
+					exit;
 				} else {?>
 					<div class="error"><p><?php _e('An error has occured while retreiving the access token, please try again.', 'wp-linkedin'); ?></p></div>
 				<?php }
