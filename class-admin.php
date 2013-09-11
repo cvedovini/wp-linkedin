@@ -27,14 +27,15 @@ class WPLinkedInAdmin {
 		if (isset($_GET['code']) && isset($_GET['state'])) {
 			if (wp_verify_nonce($_GET['state'], 'linkedin-oauth')) {
 				if ($this->oauth->set_access_token($_GET['code'])) {
-					$this->oauth->clear_cache();
-					wp_redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin'));
+					wp_redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin&clear_cache'));
 				} else {?>
 					<div class="error"><p><?php _e('An error has occured while retreiving the access token, please try again.', 'wp-linkedin'); ?></p></div>
 				<?php }
 			} else { ?>
 				<div class="error"><p><?php _e('Invalid state.', 'wp-linkedin'); ?></p></div>
 			<?php }
+		} elseif (isset($_GET['clear_cache'])) {
+			$this->oauth->clear_cache();
 		} ?>
 <div class="wrap">
 	<h2><?php _e('LinkedIn Options', 'wp-linkedin'); ?></h2>
@@ -43,9 +44,8 @@ class WPLinkedInAdmin {
 			<h3 style="cursor:default;"><span><?php _e('Options', 'wp-linkedin'); ?></span></h3>
 			<div class="inside">
 				<form method="post" action="options.php"><?php wp_nonce_field('update-options'); ?>
-				<?php if ($this->oauth->is_access_token_valid()): ?>
-					<p class="submit"><a href="<?php echo $this->get_authorization_url(); ?>" class="button button-primary"><?php _e('Regenerate LinkedIn Access Token', 'wp-linkedin'); ?></a></p>
-				<?php endif; ?>
+				<input type="hidden" name="action" value="update" />
+				<input type="hidden" name="page_options" value="wp-linkedin_fields,wp-linkedin_profilelanguage" />
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row"><?php _e('Profile fields', 'wp-linkedin'); ?></th>
@@ -75,13 +75,20 @@ class WPLinkedInAdmin {
 						</td>
 					</tr>
 				</table>
-				<input type="hidden" name="action" value="update" />
-				<input type="hidden" name="page_options" value="wp-linkedin_fields,wp-linkedin_profilelanguage" />
 				<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e('Save Changes'); ?>"></p>
 				</form>
 			</div> <!-- .inside -->
 		</div> <!-- .postbox -->
-	</div></div> <!-- #main-container -->
+		<div class="postbox">
+			<h3 style="cursor:default;"><span><?php _e('Management', 'wp-linkedin'); ?></span></h3>
+			<div class="inside">
+				<p>
+					<span class="submit"><a href="<?php echo $this->get_authorization_url(); ?>" class="button button-primary"><?php _e('Regenerate LinkedIn Access Token', 'wp-linkedin'); ?></a></span>
+					<span class="submit"><a href="<?php echo site_url('/wp-admin/options-general.php?page=wp-linkedin&clear_cache'); ?>" class="button button-primary"><?php _e('Clear Profile Cache', 'wp-linkedin'); ?></a></span>
+				</p>
+			</div> <!-- .inside -->
+		</div> <!-- .postbox -->
+		</div></div> <!-- #main-container -->
 
 	<div id="side-container" class="postbox-container metabox-holder" style="width:24%;"><div style="margin:0 8px;">
 		<div class="postbox">
