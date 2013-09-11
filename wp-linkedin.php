@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.4.3
+Version: 1.5
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -22,12 +22,6 @@ Version: 1.4.3
 #
 # See the GNU lesser General Public License for more details.
 */
-
-
-define('LINKEDIN_APPKEY', get_option('wp-linkedin_appkey'));
-define('LINKEDIN_APPSECRET', get_option('wp-linkedin_appsecret'));
-define('LINKEDIN_USERTOKEN', get_option('wp-linkedin_usertoken'));
-define('LINKEDIN_USERSECRET', get_option('wp-linkedin_usersecret'));
 
 define('LINKEDIN_FIELDS_BASIC', 'id, first-name, last-name, picture-url, headline, location, industry, public-profile-url');
 define('LINKEDIN_FIELDS_RECOMMENDATIONS', 'recommendations-received:(recommendation-text,recommender:(first-name,last-name,public-profile-url))');
@@ -70,6 +64,7 @@ class WPLinkedInPlugin {
 	}
 
 	function admin_menu() {
+		require_once 'class-linkedin-oauth.php';
 		require_once 'class-admin.php';
 		$this->admin = new WPLinkedInAdmin($this);
 	}
@@ -83,31 +78,13 @@ class WPLinkedInPlugin {
 
 
 function wp_linked_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) {
-	require_once 'linkedin_3.2.0.class.php';
-
-	$API_CONFIG = array(
-			'appKey'       => LINKEDIN_APPKEY,
-			'appSecret'    => LINKEDIN_APPSECRET,
-			'callbackUrl'  => NULL
-	);
-
-	$linkedin = new WP_LinkedIn_LinkedIn($API_CONFIG);
-	$linkedin->setTokenAccess(array('oauth_token' => LINKEDIN_USERTOKEN, 'oauth_token_secret' => LINKEDIN_USERSECRET));
-	$linkedin->setResponseFormat(WP_LinkedIn_LinkedIn::_RESPONSE_JSON);
-	$linkedin->setProfileLanguage($lang);
-
-	$response = $linkedin->profile("~:($options)");
-
-	if($response['success'] === TRUE) {
-		return json_decode($response['linkedin']);
-	} else {
-		return false;
-	}
+	require_once 'class-linkedin-oauth.php';
+	$oauth = new WPLinkedInOAuth();
+	return $oauth->get_profile($options, $lang);
 }
 
 
 function wp_linkedin_profile($atts) {
-	// In case they want to pass customized attribute to their custom template
 	extract(shortcode_atts(array(
 			'fields' => LINKEDIN_FIELDS,
 			'lang' => LINKEDIN_PROFILELANGUAGE
@@ -133,7 +110,6 @@ function wp_linkedin_profile($atts) {
 
 
 function wp_linkedin_card($atts) {
-	// In case they want to pass customized attribute to their custom template
 	extract(shortcode_atts(array(
 			'picture_width' => '80',
 			'summary_length' => '200',
@@ -155,7 +131,7 @@ function wp_linkedin_card($atts) {
 		}
 		return ob_get_clean();
 	} else {
-		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check your API keys and the list of profile fields to be fetched. If everything seems good try regenerating the keys.', 'wp-linkedin') . '</p>';
+		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin') . '</p>';
 	}
 }
 
@@ -185,12 +161,12 @@ function wp_linkedin_recommendations($atts) {
 			return '<p>' . __('You don\'t have any recommendation to show.', 'wp-linkedin') . '</p>';
 		}
 	} else {
-		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check your API keys and the list of profile fields to be fetched. If everything seems good try regenerating the keys.', 'wp-linkedin') . '</p>';
+		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin') . '</p>';
 	}
 }
 
 
-function wp_linkedin_excerpt($str, $length) {
+function wp_linkedin_excerpt($str, $length, $postfix='[...]') {
 	$length++;
 
 	if (mb_strlen($str) > $length) {
@@ -202,7 +178,7 @@ function wp_linkedin_excerpt($str, $length) {
 		} else {
 			echo $subex;
 		}
-		echo '[...]';
+		echo $postfix;
 	} else {
 		echo $str;
 	}

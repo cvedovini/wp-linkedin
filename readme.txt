@@ -20,8 +20,7 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 
 1. Upload the `wp-linkedin` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Go to the LinkedIn Developer Network and sign-up for a LinkedIn Application Key <https://www.linkedin.com/secure/developer>
-1. Go to the settings page for the plugin and fill in the key, secrets and token fields.
+1. Generate an access token for the LinkedIn API (those tokens expire after 60 days so you will have to regenrate them from time to time)
 1. The `Profile fields` field is the list of fields that will be available to the template for rendering (see below for template customization).
 
 There are two shortcodes available:
@@ -38,6 +37,9 @@ See this post for more details on customization: [Showing more of your LinkedIn 
 
 
 == Changelog ==
+
+= version 1.5 =
+- Changing the way the LinkedIn API keys and tokens are retreived in order to simplify installation
 
 = version 1.4.3 =
 - Updating string translations

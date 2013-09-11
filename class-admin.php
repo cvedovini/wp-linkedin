@@ -4,10 +4,36 @@ class WPLinkedInAdmin {
 
 	function WPLinkedInAdmin($plugin) {
 		$this->plugin = $plugin;
+		$this->oauth = new WPLinkedInOAuth();
 		add_submenu_page('options-general.php', __('LinkedIn Options', 'wp-linkedin'), __('LinkedIn', 'wp-linkedin'), 'manage_options', 'wp-linkedin', array(&$this, 'options_page'));
+		add_action('admin_notices', array(&$this, 'admin_notices'));
 	}
 
-	function options_page() { ?>
+	function get_authorization_url() {
+		$state = wp_create_nonce('linkedin-oauth');
+		return $this->oauth->get_authorization_url($redirect_uri, $state);
+	}
+
+	function admin_notices() {
+		if (!$oauth->is_access_token_valid()) {
+			$format = __('Your LinkedIn access token is invalid or has expired, please <a href="%s">click here</a> to get a new one.', 'wp-linkedin');
+			$notice = sprintf($format, $this->get_authorization_url()); ?>
+			<div class="error">
+		        <p><?php echo $notice; ?></p>
+		    </div>
+		<?php }
+	}
+
+	function options_page() {
+		if (isset($_GET['code']) && isset($_GET['state'])) {
+			if (wp_verify_nonce($_GET['state'], 'linkedin-oauth')) {
+				if (!$this->oauth->set_access_token($_GET['code'])) { ?>
+					<div class="error"><p><?php _e('An error has occured while retreiving the access token, please try again.', 'wp-linkedin'); ?></p></div>
+				<?php }
+			} else { ?>
+				<div class="error"><p><?php _e('Invalid state.', 'wp-linkedin'); ?></p></div>
+			<?php }
+		} ?>
 <div class="wrap">
 	<h2><?php _e('LinkedIn Options', 'wp-linkedin'); ?></h2>
 	<div id="main-container" class="postbox-container metabox-holder" style="width:75%;"><div style="margin:0 8px;">
@@ -15,33 +41,10 @@ class WPLinkedInAdmin {
 			<h3 style="cursor:default;"><span><?php _e('Options', 'wp-linkedin'); ?></span></h3>
 			<div class="inside">
 				<form method="post" action="options.php"><?php wp_nonce_field('update-options'); ?>
-				<p><?php _e('Go to the <a href="https://www.linkedin.com/secure/developer">LinkedIn Developer Network</a> to generate the following keys.', 'wp-linkedin'); ?></p>
-
+				<?php if ($oauth->is_access_token_valid()): ?>
+					<p class="submit"><a href="<?php echo $this->get_authorization_url(); ?>" class="button button-primary"><?php _e('Regenerate LinkedIn access token.', 'wp-linkedin'); ?></a></p>
+				<?php endif; ?>
 				<table class="form-table">
-					<tr valign="top">
-						<th scope="row"><?php _e('Application key', 'wp-linkedin'); ?></th>
-						<td><input id="wp-linkedin_appkey" name="wp-linkedin_appkey" type="text"
-								value="<?php echo get_option('wp-linkedin_appkey'); ?>" />
-						</td>
-					</tr>
-					<tr valign="top">
-						<th scope="row"><?php _e('Application secret', 'wp-linkedin'); ?></th>
-						<td><input id="wp-linkedin_appsecret" name="wp-linkedin_appsecret" type="text"
-								value="<?php echo get_option('wp-linkedin_appsecret'); ?>" />
-						</td>
-					</tr>
-					<tr valign="top">
-						<th scope="row"><?php _e('User token', 'wp-linkedin'); ?></th>
-						<td><input id="wp-linkedin_usertoken" name="wp-linkedin_usertoken" type="text"
-								value="<?php echo get_option('wp-linkedin_usertoken'); ?>" />
-						</td>
-					</tr>
-					<tr valign="top">
-						<th scope="row"><?php _e('User secret', 'wp-linkedin'); ?></th>
-						<td><input id="wp-linkedin_usersecret" name="wp-linkedin_usersecret" type="text"
-								value="<?php echo get_option('wp-linkedin_usersecret'); ?>" />
-						</td>
-					</tr>
 					<tr valign="top">
 						<th scope="row"><?php _e('Profile fields', 'wp-linkedin'); ?></th>
 						<td><textarea id="wp-linkedin_fields" name="wp-linkedin_fields" rows="5"
@@ -71,7 +74,7 @@ class WPLinkedInAdmin {
 					</tr>
 				</table>
 				<input type="hidden" name="action" value="update" />
-				<input type="hidden" name="page_options" value="wp-linkedin_appkey,wp-linkedin_appsecret,wp-linkedin_usertoken,wp-linkedin_usersecret,wp-linkedin_fields,wp-linkedin_profilelanguage" />
+				<input type="hidden" name="page_options" value="wp-linkedin_fields,wp-linkedin_profilelanguage" />
 				<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e('Save Changes'); ?>"></p>
 				</form>
 			</div> <!-- .inside -->
