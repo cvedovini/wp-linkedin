@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
 Tested up to: 3.6
-Stable tag: 1.4.3
+Stable tag: 1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,7 +39,7 @@ See this post for more details on customization: [Showing more of your LinkedIn 
 == Changelog ==
 
 = version 1.5 =
-- Changing the way the LinkedIn API keys and tokens are retreived in order to simplify installation
+- Changing the way the LinkedIn API keys and token are managed in order to simplify installation
 - Added a profile cache to improve performances and limit API calls
 
 = version 1.4.3 =
