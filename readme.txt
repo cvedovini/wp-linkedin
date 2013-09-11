@@ -117,7 +117,3 @@ See this post for more details on customization: [Showing more of your LinkedIn 
 Following is the list of people and projects who helped me with this plugin, many thanks to them :)
 
 - [Jan Spoelstra](http://www.linkedin.com/in/janspoelstra): Contributed the Dutch translations
-- [The OAuth project](https://code.google.com/p/oauth/): I bundled a modified version of this library which is distributed under the [Apache  2.0 license](http://www.apache.org/licenses/LICENSE-2.0)
-- [The simple-linkedinphp library](https://code.google.com/p/simple-linkedinphp/): I bundled a modified version of this library which is distributed under the [MIT License](http://www.opensource.org/licenses/mit-license.php)
-
-NOTE: Modifications to the bundled libraries have only been done to avoid name colisions.
