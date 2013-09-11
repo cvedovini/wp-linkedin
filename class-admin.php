@@ -7,6 +7,13 @@ class WPLinkedInAdmin {
 		$this->oauth = new WPLinkedInOAuth();
 		add_submenu_page('options-general.php', __('LinkedIn Options', 'wp-linkedin'), __('LinkedIn', 'wp-linkedin'), 'manage_options', 'wp-linkedin', array(&$this, 'options_page'));
 		add_action('admin_notices', array(&$this, 'admin_notices'));
+		add_filter('plugin_action_links_wp-linkedin/wp-linkedin.php', array(&$this, 'add_settings_link'));
+	}
+
+	function add_settings_link($links) {
+		$url = site_url('/wp-admin/options-general.php?page=wp-linkedin');
+		$links[] = '<a href="' . $url . '">' . __('Settings') . '</a>';
+		return $links;
 	}
 
 	function get_authorization_url() {
@@ -80,11 +87,11 @@ class WPLinkedInAdmin {
 			</div> <!-- .inside -->
 		</div> <!-- .postbox -->
 		<div class="postbox">
-			<h3 style="cursor:default;"><span><?php _e('Management', 'wp-linkedin'); ?></span></h3>
+			<h3 style="cursor:default;"><span><?php _e('Administration', 'wp-linkedin'); ?></span></h3>
 			<div class="inside">
 				<p>
 					<span class="submit"><a href="<?php echo $this->get_authorization_url(); ?>" class="button button-primary"><?php _e('Regenerate LinkedIn Access Token', 'wp-linkedin'); ?></a></span>
-					<span class="submit"><a href="<?php echo site_url('/wp-admin/options-general.php?page=wp-linkedin&clear_cache'); ?>" class="button button-primary"><?php _e('Clear Profile Cache', 'wp-linkedin'); ?></a></span>
+					<span class="submit"><a href="<?php echo site_url('/wp-admin/options-general.php?page=wp-linkedin&clear_cache'); ?>" class="button button-primary"><?php _e('Clear the Cache', 'wp-linkedin'); ?></a></span>
 				</p>
 			</div> <!-- .inside -->
 		</div> <!-- .postbox -->

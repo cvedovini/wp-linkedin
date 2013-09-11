@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-09-11 10:17:08+00:00\n"
-"PO-Revision-Date: 2013-09-11 17:17+0700\n"
+"POT-Creation-Date: 2013-09-11 11:03:16+00:00\n"
+"PO-Revision-Date: 2013-09-11 18:17+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -12,9 +12,8 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;_e\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SearchPath-0: wp-linkedin\n"
 
-#: class-admin.php:8 class-admin.php:40
+#: class-admin.php:8 class-admin.php:41
 msgid "LinkedIn Options"
 msgstr "LinkedIn-opties"
 
@@ -30,24 +29,20 @@ msgstr ""
 "Uw LinkedIn toegang token is ongeldig of verlopen, kunt u <a href=\"%s"
 "\">klik hier</ a> om een nieuwe te krijgen."
 
-#: class-admin.php:33
+#: class-admin.php:32
 msgid ""
 "An error has occured while retreiving the access token, please try again."
 msgstr ""
 "Er is een fout opgetreden tijdens het opvragen van de toegang token, probeer "
 "het opnieuw."
 
-#: class-admin.php:36
+#: class-admin.php:35
 msgid "Invalid state."
 msgstr "Ongeldige status."
 
-#: class-admin.php:43
+#: class-admin.php:44
 msgid "Options"
 msgstr "Opties"
-
-#: class-admin.php:47
-msgid "Regenerate LinkedIn Access Token"
-msgstr "Regenereren LinkedIn Access Token"
 
 #: class-admin.php:51
 msgid "Profile fields"
@@ -103,195 +98,207 @@ msgstr ""
 "com/documents/profile-api\" target=\"_blank\">LinkedIn API documentatie</a> "
 "voor details."
 
-#: class-admin.php:80
+#: class-admin.php:78
 msgid "Save Changes"
 msgstr "Wijzigingen opslaan"
 
-#: class-admin.php:88
+#: class-admin.php:83
+msgid "Administration"
+msgstr "Administratie"
+
+#: class-admin.php:86
+msgid "Regenerate LinkedIn Access Token"
+msgstr "Regenereren LinkedIn Access Token"
+
+#: class-admin.php:87
+msgid "Clear the Cache"
+msgstr "Leeg de cache"
+
+#: class-admin.php:95
 msgid "Do you like this Plugin?"
 msgstr "Hou je van deze plugin?"
 
-#: class-admin.php:90
+#: class-admin.php:97
 msgid "Please consider a donation."
 msgstr "Overweeg dan een donatie."
 
-#: class-admin.php:113
+#: class-admin.php:120
 msgid "Default"
 msgstr "Verstek"
 
-#: class-admin.php:114
+#: class-admin.php:121
 msgid "Bahasa Indonesia"
 msgstr "Bahasa Indonesia"
 
-#: class-admin.php:115
+#: class-admin.php:122
 msgid "Czech"
 msgstr "Tsjechisch"
 
-#: class-admin.php:116
+#: class-admin.php:123
 msgid "Danish"
 msgstr "Deens"
 
-#: class-admin.php:117
+#: class-admin.php:124
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: class-admin.php:118
+#: class-admin.php:125
 msgid "French"
 msgstr "Frans"
 
-#: class-admin.php:119
+#: class-admin.php:126
 msgid "German"
 msgstr "Duits"
 
-#: class-admin.php:120
+#: class-admin.php:127
 msgid "Italian"
 msgstr "Italiaans"
 
-#: class-admin.php:121
+#: class-admin.php:128
 msgid "Japanese"
 msgstr "Japans"
 
-#: class-admin.php:122
+#: class-admin.php:129
 msgid "Korean"
 msgstr "Koreaans"
 
-#: class-admin.php:123
+#: class-admin.php:130
 msgid "Malay"
 msgstr "Maleis"
 
-#: class-admin.php:124
+#: class-admin.php:131
 msgid "Norwegian"
 msgstr "Noors"
 
-#: class-admin.php:125
+#: class-admin.php:132
 msgid "Polish"
 msgstr "Pools"
 
-#: class-admin.php:126
+#: class-admin.php:133
 msgid "Portuguese"
 msgstr "Portugees"
 
-#: class-admin.php:127
+#: class-admin.php:134
 msgid "Romanian"
 msgstr "Roemeens"
 
-#: class-admin.php:128
+#: class-admin.php:135
 msgid "Russian"
 msgstr "Russisch"
 
-#: class-admin.php:129
+#: class-admin.php:136
 msgid "Spanish"
 msgstr "Spaans"
 
-#: class-admin.php:130
+#: class-admin.php:137
 msgid "Swedish"
 msgstr "Zweeds"
 
-#: class-admin.php:131
+#: class-admin.php:138
 msgid "Turkish"
 msgstr "Turks"
 
-#: class-admin.php:132
+#: class-admin.php:139
 msgid "Albanian"
 msgstr "Albanees"
 
-#: class-admin.php:133
+#: class-admin.php:140
 msgid "Armenian"
 msgstr "Armeens"
 
-#: class-admin.php:134
+#: class-admin.php:141
 msgid "Bosnian"
 msgstr "Bosnisch"
 
-#: class-admin.php:135
+#: class-admin.php:142
 msgid "Burmese (Myanmar)"
 msgstr "Birmaans (Myanmar)"
 
-#: class-admin.php:136
+#: class-admin.php:143
 msgid "Chinese (Simplified)"
 msgstr "Chinees (vereenvoudigd)"
 
-#: class-admin.php:137
+#: class-admin.php:144
 msgid "Chinese (Traditional)"
 msgstr "Chinees (traditioneel)"
 
-#: class-admin.php:138
+#: class-admin.php:145
 msgid "Croatian"
 msgstr "Kroatisch"
 
-#: class-admin.php:139
+#: class-admin.php:146
 msgid "Finnish"
 msgstr "Fins"
 
-#: class-admin.php:140
+#: class-admin.php:147
 msgid "Greek"
 msgstr "Grieks"
 
-#: class-admin.php:141
+#: class-admin.php:148
 msgid "Hindi"
 msgstr "Hindi"
 
-#: class-admin.php:142
+#: class-admin.php:149
 msgid "Hungarian"
 msgstr "Hongaars"
 
-#: class-admin.php:143
+#: class-admin.php:150
 msgid "Icelandic"
 msgstr "IJslands"
 
-#: class-admin.php:144
+#: class-admin.php:151
 msgid "Javanese"
 msgstr "Javaans"
 
-#: class-admin.php:145
+#: class-admin.php:152
 msgid "Kannada"
 msgstr "Kannada"
 
-#: class-admin.php:146
+#: class-admin.php:153
 msgid "Latvian"
 msgstr "Lets"
 
-#: class-admin.php:147
+#: class-admin.php:154
 msgid "Lithuanian"
 msgstr "Litouws"
 
-#: class-admin.php:148
+#: class-admin.php:155
 msgid "Malayalam"
 msgstr "Malayalam"
 
-#: class-admin.php:149
+#: class-admin.php:156
 msgid "Serbian"
 msgstr "Servisch"
 
-#: class-admin.php:150
+#: class-admin.php:157
 msgid "Slovak"
 msgstr "Slowaaks"
 
-#: class-admin.php:151
+#: class-admin.php:158
 msgid "Tagalog"
 msgstr "Tagalog"
 
-#: class-admin.php:152
+#: class-admin.php:159
 msgid "Tamil"
 msgstr "Tamil"
 
-#: class-admin.php:153
+#: class-admin.php:160
 msgid "Telugu"
 msgstr "Telugu"
 
-#: class-admin.php:154
+#: class-admin.php:161
 msgid "Thai"
 msgstr "Thais"
 
-#: class-admin.php:155
+#: class-admin.php:162
 msgid "Ukrainian"
 msgstr "Oekraïens"
 
-#: class-admin.php:156
+#: class-admin.php:163
 msgid "Vietnamese"
 msgstr "Vietnamees"
 
-#: class-admin.php:157
+#: class-admin.php:164
 msgid "Other"
 msgstr "Anders"
 
@@ -420,6 +427,9 @@ msgid ""
 msgstr ""
 "http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-"
 "linkedin"
+
+#~ msgid "Management"
+#~ msgstr "Administratie"
 
 #~ msgid ""
 #~ "There's something wrong and the profile could not be retreived, please "
