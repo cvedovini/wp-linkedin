@@ -9,6 +9,10 @@ class WPLinkedInOAuth {
 		return get_transient('wp-linkedin_oauthtoken');
 	}
 
+	function invalidate_access_token() {
+		delete_transient('wp-linkedin_oauthtoken');
+	}
+
 	function set_access_token($code) {
 		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?grant_type=authorization_code&' . $this->urlencode(array(
 			'code' => $code,
@@ -83,12 +87,11 @@ class WPLinkedInOAuth {
 
 			$response = wp_remote_get($url, array('headers' => $headers));
 			if (!is_wp_error($response)) {
-				$response = json_decode($response);
-				if ($response->response->code == 200) {
-					return $response->body;
-				} elseif ($response->response->code == 401) {
+				if ($response['response']['code'] == 200) {
+					return json_decode($response['body']);
+				} elseif ($response['response']['code'] == 401) {
 					// Invalidate token
-					delete_transient('wp-linkedin_oauthtoken');
+					$this->invalidate_access_token();
 				}
 			}
 		}

@@ -25,27 +25,55 @@ class WPLinkedInAdmin {
 			$format = __('Your LinkedIn access token is invalid or has expired, please <a href="%s">click here</a> to get a new one.', 'wp-linkedin');
 			$notice = sprintf($format, $this->get_authorization_url()); ?>
 			<div class="error">
-		        <p><?php echo $notice; ?></p>
+		        <p><strong><?php echo $notice; ?></strong></p>
 		    </div>
 		<?php }
+
+		if (!isset($_GET['settings-updated'])) {
+			if (isset($_GET['oauth_success'])) { ?>
+				<div class="updated"><p><strong><?php _e('The access token has been successfully updated.', 'wp-linkedin'); ?></strong></p></div>
+			<?php }
+
+			if (isset($_GET['oauth_error'])) { ?>
+				<div class="error"><p><strong><?php _e('An error has occured while updating the access token, please try again.', 'wp-linkedin'); ?></strong></p></div>
+			<?php }
+
+			if (isset($_GET['cache_cleared'])) { ?>
+				<div class="updated"><p><strong><?php _e('The cache has been cleared.', 'wp-linkedin'); ?></strong></p></div>
+			<?php }
+		}
+	}
+
+	function redirect($location) {
+		if (headers_sent()) {
+			// If the headers have already been sent then use Javascript
+			echo "<script>window.location='$location';</script>";
+		} else {
+			// Other wise, just a normal redirect
+			wp_redirect($location);
+		}
+
+		exit;
 	}
 
 	function options_page() {
 		if (isset($_GET['code']) && isset($_GET['state'])) {
 			if (wp_verify_nonce($_GET['state'], 'linkedin-oauth')) {
 				if ($this->oauth->set_access_token($_GET['code'])) {
-					echo "<script>window.location='" . site_url('/wp-admin/options-general.php?page=wp-linkedin&clear_cache') . "';</script>";
-					exit;
-				} else {?>
-					<div class="error"><p><?php _e('An error has occured while retreiving the access token, please try again.', 'wp-linkedin'); ?></p></div>
-				<?php }
-			} else { ?>
-				<div class="error"><p><?php _e('Invalid state.', 'wp-linkedin'); ?></p></div>
-			<?php }
+					$this->oauth->clear_cache();
+					$this->redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin&oauth_success'));
+				} else {
+					$this->redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin&oauth_error'));
+				}
+			} else {
+				$this->redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin&oauth_error'));
+			}
 		} elseif (isset($_GET['clear_cache'])) {
 			$this->oauth->clear_cache();
+			$this->redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin&cache_cleared'));
 		} ?>
 <div class="wrap">
+	<?php screen_icon(); ?>
 	<h2><?php _e('LinkedIn Options', 'wp-linkedin'); ?></h2>
 	<div id="main-container" class="postbox-container metabox-holder" style="width:75%;"><div style="margin:0 8px;">
 		<div class="postbox">
@@ -83,7 +111,7 @@ class WPLinkedInAdmin {
 						</td>
 					</tr>
 				</table>
-				<p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="<?php _e('Save Changes'); ?>"></p>
+				<?php submit_button(); ?>
 				</form>
 			</div> <!-- .inside -->
 		</div> <!-- .postbox -->
