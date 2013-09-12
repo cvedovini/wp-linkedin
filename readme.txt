@@ -38,6 +38,9 @@ See this post for more details on customization: [Showing more of your LinkedIn 
 
 == Changelog ==
 
+= version 1.5.1 =
+- improved error handling where retrieving oauth token.
+
 = version 1.5 =
 - Changing the way the LinkedIn API keys and token are managed in order to simplify installation
 - Added a profile cache to improve performances and limit API calls

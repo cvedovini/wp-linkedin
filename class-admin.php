@@ -34,8 +34,11 @@ class WPLinkedInAdmin {
 				<div class="updated"><p><strong><?php _e('The access token has been successfully updated.', 'wp-linkedin'); ?></strong></p></div>
 			<?php }
 
-			if (isset($_GET['oauth_error'])) { ?>
-				<div class="error"><p><strong><?php _e('An error has occured while updating the access token, please try again.', 'wp-linkedin'); ?></strong></p></div>
+			if (isset($_GET['oauth_error'])) {
+				$message = isset($_GET['message']) ? $_GET['message'] : false; ?>
+				<div class="error">
+					<p><strong><?php _e('An error has occured while updating the access token, please try again.', 'wp-linkedin'); ?></strong>
+					<?php echo ($message) ? '<br/>' . __('Error message: ', 'wp-linkedin') . $message : ''; ?></p></div>
 			<?php }
 
 			if (isset($_GET['cache_cleared'])) { ?>
@@ -44,7 +47,11 @@ class WPLinkedInAdmin {
 		}
 	}
 
-	function redirect($location) {
+	function redirect($code, $message=false) {
+		$path = '/wp-admin/options-general.php?page=wp-linkedin&' . urlencode($code);
+		if ($message) $path .= '&' . urlencode($message);
+		$location = site_url($path);
+
 		if (headers_sent()) {
 			// If the headers have already been sent then use Javascript
 			echo "<script>window.location='$location';</script>";
@@ -59,18 +66,20 @@ class WPLinkedInAdmin {
 	function options_page() {
 		if (isset($_GET['code']) && isset($_GET['state'])) {
 			if (wp_verify_nonce($_GET['state'], 'linkedin-oauth')) {
-				if ($this->oauth->set_access_token($_GET['code'])) {
+				$retcode = $this->oauth->set_access_token($_GET['code']);
+
+				if (!is_wp_error($retcode)) {
 					$this->oauth->clear_cache();
-					$this->redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin&oauth_success'));
+					$this->redirect('oauth_success');
 				} else {
-					$this->redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin&oauth_error'));
+					$this->redirect('oauth_error', $retcode.get_error_message());
 				}
 			} else {
-				$this->redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin&oauth_error'));
+				$this->redirect('oauth_error', __('Invalid state code'));
 			}
 		} elseif (isset($_GET['clear_cache'])) {
 			$this->oauth->clear_cache();
-			$this->redirect(site_url('/wp-admin/options-general.php?page=wp-linkedin&cache_cleared'));
+			$this->redirect('cache_cleared');
 		} ?>
 <div class="wrap">
 	<?php screen_icon(); ?>

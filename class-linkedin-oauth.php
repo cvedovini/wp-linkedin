@@ -23,10 +23,15 @@ class WPLinkedInOAuth {
 		$response = wp_remote_get($url);
 		if (!is_wp_error($response)) {
 			$response = json_decode($response['body']);
-			return set_transient('wp-linkedin_oauthtoken', $response->access_token, $response->expires_in);
-		}
 
-		return false;
+			if (isset($response->error)) {
+				return WP_Error($response->error, $response->error_description);
+			} else {
+				return set_transient('wp-linkedin_oauthtoken', $response->access_token, $response->expires_in);
+			}
+		} else {
+			return $response;
+		}
 	}
 
 	function is_access_token_valid() {
