@@ -25,7 +25,7 @@ class WPLinkedInOAuth {
 			$response = json_decode($response['body']);
 
 			if (isset($response->error)) {
-				return WP_Error($response->error, $response->error_description);
+				return new WP_Error($response->error, $response->error_description);
 			} else {
 				return set_transient('wp-linkedin_oauthtoken', $response->access_token, $response->expires_in);
 			}

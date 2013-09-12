@@ -49,7 +49,7 @@ class WPLinkedInAdmin {
 
 	function redirect($code, $message=false) {
 		$path = '/wp-admin/options-general.php?page=wp-linkedin&' . urlencode($code);
-		if ($message) $path .= '&' . urlencode($message);
+		if ($message) $path .= '&message=' . urlencode($message);
 		$location = site_url($path);
 
 		if (headers_sent()) {
@@ -72,7 +72,7 @@ class WPLinkedInAdmin {
 					$this->oauth->clear_cache();
 					$this->redirect('oauth_success');
 				} else {
-					$this->redirect('oauth_error', $retcode.get_error_message());
+					$this->redirect('oauth_error', $retcode->get_error_message());
 				}
 			} else {
 				$this->redirect('oauth_error', __('Invalid state code'));
