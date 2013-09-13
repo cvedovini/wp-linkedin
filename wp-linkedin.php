@@ -38,6 +38,7 @@ class WPLinkedInPlugin {
 	function WPLinkedInPlugin() {
 		add_action('init', array(&$this, 'init'));
 		add_action('widgets_init', array(&$this, 'widgets_init'));
+		add_action('admin_menu', array(&$this, 'admin_init'));
 	}
 
 	function init() {
@@ -45,9 +46,7 @@ class WPLinkedInPlugin {
 		// Translations can be filed in the /languages/ directory
 		load_plugin_textdomain('wp-linkedin', false, dirname(plugin_basename(__FILE__)) . '/languages/' );
 
-		if (is_admin()) {
-			add_action('admin_menu', array(&$this, 'admin_menu'));
-		} else {
+		if (!is_admin()) {
 			wp_register_script('jquery.tools', 'http://cdn.jquerytools.org/1.2.7/all/jquery.tools.min.js', array('jquery'), '1.2.7');
 			wp_register_script('jquery-dimension-etc', plugins_url('jquery.dimensions.etc.min.js', __FILE__), array('jquery'), '1.0.0');
 			wp_register_style('wp-linkedin', plugins_url('style.css', __FILE__), false, '1.0.2');
@@ -63,7 +62,7 @@ class WPLinkedInPlugin {
 		register_widget('WP_LinkedIn_Card_Widget');
 	}
 
-	function admin_menu() {
+	function admin_init() {
 		require_once 'class-linkedin-oauth.php';
 		require_once 'class-admin.php';
 		$this->admin = new WPLinkedInAdmin($this);

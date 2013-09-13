@@ -5,8 +5,12 @@ class WPLinkedInAdmin {
 	function WPLinkedInAdmin($plugin) {
 		$this->plugin = $plugin;
 		$this->oauth = new WPLinkedInOAuth();
-		add_submenu_page('options-general.php', __('LinkedIn Options', 'wp-linkedin'), __('LinkedIn', 'wp-linkedin'), 'manage_options', 'wp-linkedin', array(&$this, 'options_page'));
+		$this->add_settings();
 		add_action('admin_notices', array(&$this, 'admin_notices'));
+	}
+
+	function add_settings() {
+		add_submenu_page('options-general.php', __('LinkedIn Options', 'wp-linkedin'), __('LinkedIn', 'wp-linkedin'), 'manage_options', 'wp-linkedin', array(&$this, 'options_page'));
 		add_filter('plugin_action_links_wp-linkedin/wp-linkedin.php', array(&$this, 'add_settings_link'));
 	}
 

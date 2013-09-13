@@ -41,7 +41,7 @@ class WPLinkedInOAuth {
 	function get_authorization_url($state) {
 		return 'https://www.linkedin.com/uas/oauth2/authorization?response_type=code&' . $this->urlencode(array(
 				'client_id' => WPLinkedInOAuth::LINKEDIN_APPKEY,
-				'scope' => 'r_fullprofile',
+				'scope' => 'r_fullprofile r_network',
 				'state' => $state,
 				'redirect_uri' => site_url('/wp-admin/options-general.php?page=wp-linkedin')));
 	}
