@@ -31,6 +31,7 @@ define('LINKEDIN_PROFILELANGUAGE', get_option('wp-linkedin_profilelanguage'));
 
 include 'class-recommendations-widget.php';
 include 'class-card-widget.php';
+include 'class-profile-widget.php';
 
 
 class WPLinkedInPlugin {
@@ -60,6 +61,7 @@ class WPLinkedInPlugin {
 	function widgets_init() {
 		register_widget('WP_LinkedIn_Recommendations_Widget');
 		register_widget('WP_LinkedIn_Card_Widget');
+		register_widget('WP_LinkedIn_Profile_Widget');
 	}
 
 	function admin_init() {

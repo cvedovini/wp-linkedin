@@ -9,14 +9,14 @@ class WP_LinkedIn_Recommendations_Widget extends WP_Widget {
 
 	public function widget($args, $instance) {
 		extract($args);
-		$options = wp_parse_args( (array) get_option('recommendations_widget_options'), array(
+		$options = wp_parse_args((array) get_option('recommendations_widget_options'), array(
 				'title' => '',
 				'width' => 480,
 				'length' => 200,
 				'interval' => 1000
 			));
 
-		$instance = wp_parse_args( (array) $instance, $options);
+		$instance = wp_parse_args((array) $instance, $options);
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 
 		echo $before_widget;
@@ -26,14 +26,14 @@ class WP_LinkedIn_Recommendations_Widget extends WP_Widget {
 	}
 
 	public function form($instance) {
-		$options = wp_parse_args( (array) get_option('recommendations_widget_options'), array(
+		$options = wp_parse_args((array) get_option('recommendations_widget_options'), array(
 				'title' => '',
 				'width' => 480,
 				'length' => 200,
 				'interval' => 1000
 			));
 
-		$instance = wp_parse_args( (array) $instance, $options);
+		$instance = wp_parse_args((array) $instance, $options);
 		$title = esc_attr($instance['title']);
 
 ?>

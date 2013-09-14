@@ -9,12 +9,11 @@ class WP_LinkedIn_Card_Widget extends WP_Widget {
 
 	public function widget($args, $instance) {
 		extract($args);
-		$options = wp_parse_args( (array) get_option('card_widget_options'), array(
+		$instance = wp_parse_args((array) $instance, array(
 				'title' => '',
+				'picture_width' => 80,
 				'summary_length' => 200
 			));
-
-		$instance = wp_parse_args( (array) $instance, $options);
 		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 
 		echo $before_widget;
@@ -24,13 +23,11 @@ class WP_LinkedIn_Card_Widget extends WP_Widget {
 	}
 
 	public function form($instance) {
-		$options = wp_parse_args( (array) get_option('card_widget_options'), array(
+		$instance = wp_parse_args((array) $instance, array(
 				'title' => '',
 				'picture_width' => 80,
 				'summary_length' => 200
 			));
-
-		$instance = wp_parse_args( (array) $instance, $options);
 		$title = esc_attr($instance['title']);
 
 ?>
@@ -48,7 +45,7 @@ class WP_LinkedIn_Card_Widget extends WP_Widget {
 	<br/><small><em><?php _e('Specify \'0\' to hide the summary.', 'wp-linkedin'); ?></em></small>
 </p>
 <?php
-}
+	}
 
 	public function update($new_instance, $old_instance) {
 		$instance = array();

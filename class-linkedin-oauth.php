@@ -1,9 +1,19 @@
 <?php
 
+define('WP_LINKEDIN_CACHETIMEOUT', 43200); // 12 hours
+
+// Let people define their own APPKEY if needed
+if (!defined('WP_LINKEDIN_APPKEY')) {
+	if (WP_DEBUG) {
+		define('WP_LINKEDIN_APPKEY', 'h4p3wuu2ibxy');
+		define('WP_LINKEDIN_APPSECRET', 'scSZiR3tUB3gcCJ9');
+	} else {
+		define('WP_LINKEDIN_APPKEY', '57zh7f1nvty5');
+		define('WP_LINKEDIN_APPSECRET', 'FL0gcEC2b0G18KPa');
+	}
+}
+
 class WPLinkedInOAuth {
-	const LINKEDIN_APPKEY = '57zh7f1nvty5';
-	const LINKEDIN_APPSECRET = 'FL0gcEC2b0G18KPa';
-	const CACHETIMEOUT = 43200; // 12 hours
 
 	function get_access_token() {
 		return get_transient('wp-linkedin_oauthtoken');
@@ -17,8 +27,8 @@ class WPLinkedInOAuth {
 		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?grant_type=authorization_code&' . $this->urlencode(array(
 			'code' => $code,
 			'redirect_uri' => site_url('/wp-admin/options-general.php?page=wp-linkedin'),
-			'client_id' => WPLinkedInOAuth::LINKEDIN_APPKEY,
-			'client_secret' => WPLinkedInOAuth::LINKEDIN_APPSECRET));
+			'client_id' => WP_LINKEDIN_APPKEY,
+			'client_secret' => WP_LINKEDIN_APPSECRET));
 
 		$response = wp_remote_get($url);
 		if (!is_wp_error($response)) {
@@ -40,7 +50,7 @@ class WPLinkedInOAuth {
 
 	function get_authorization_url($state) {
 		return 'https://www.linkedin.com/uas/oauth2/authorization?response_type=code&' . $this->urlencode(array(
-				'client_id' => WPLinkedInOAuth::LINKEDIN_APPKEY,
+				'client_id' => WP_LINKEDIN_APPKEY,
 				'scope' => 'r_fullprofile r_network',
 				'state' => $state,
 				'redirect_uri' => site_url('/wp-admin/options-general.php?page=wp-linkedin')));
@@ -68,7 +78,7 @@ class WPLinkedInOAuth {
 		if ($fetched) {
 			$profile = $fetched;
 			$cache[$options.$lang] = array(
-					'expires' => time() + WPLinkedInOAuth::CACHETIMEOUT,
+					'expires' => time() + WP_LINKEDIN_CACHETIMEOUT,
 					'profile' => $profile);
 			update_option('wp-linkedin_cache', $cache);
 		}
