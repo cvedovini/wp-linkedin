@@ -14,7 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 This plugin provides you with shortcodes to insert your full LinkedIn profile and a rotating scroller of your LinkedIn recommendations in any Wordpress page or post.
 
-There are two shortcodes available:
+There are 3 shortcodes available:
 
 * `[li_recommendations width="480" length="200" interval="1000"]` displays a rotating scroller with the recommendations you received
 * `[li_profile]` displays your LinkedIn profile. Optional attributes are `fields` and `lang` to overide the general settings. But you can pass any attribute and use it in customized templates.
@@ -39,6 +39,10 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 
 
 == Changelog ==
+
+= version 1.5.2 =
+- tweaking templates and CSS
+
 
 = version 1.5.1 =
 - improved error handling when updating oauth token.

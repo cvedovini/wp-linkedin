@@ -39,7 +39,7 @@
 }
 
 .linkedin .profile .section {
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 
 .linkedin .profile .section .heading {
@@ -52,12 +52,12 @@
 
 .linkedin .profile .position,
 	.linkedin .profile .education {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
 .linkedin .profile .position .industry,
 	.linkedin .profile .education .degree,
-	.linkedin .profile .cartouche .location {
+	.linkedin .profile #cartouche .location {
 	color: #999;
 	font-size: smaller;
 }
@@ -66,14 +66,13 @@
 	font-weight: bolder;
 }
 
-.linkedin .profile .cartouche {
+.linkedin .profile #cartouche {
 	background-color: #F0F0F0;
 	min-height: 80px;
 	padding: 15px 15px 15px 110px;
-	margin-bottom: 15px;
 }
 
-.linkedin .profile .cartouche .picture {
+.linkedin .profile #cartouche .picture {
 	display: block;
 	float: left;
 	margin-left: -95px;
@@ -81,12 +80,12 @@
 	height: auto;
 }
 
-.linkedin .profile .cartouche .name {
+.linkedin .profile #cartouche .name {
 	font-size: x-large;
 	font-weight: bold;
 }
 
-.linkedin .profile .cartouche .headline {
+.linkedin .profile #cartouche .headline {
 	font-size: larger;
 	font-weight: bolder;
 }
@@ -96,21 +95,21 @@
 	padding: 4px;
 }
 
-.linkedin .card .cartouche {
+.linkedin .card #cartouche {
 	min-height: 50px;
 }
 
-.linkedin .card .cartouche .picture {
+.linkedin .card #cartouche .picture {
 	display: block;
 	float: left;
 	margin: 0 8px 8px 0;
 }
 
-.linkedin .card .cartouche .name {
+.linkedin .card #cartouche .name {
 	font-size: larger;
 	font-weight: bolder;
 }
 
-.linkedin .card .cartouche .headline {
+.linkedin .card #cartouche .headline {
 	font-weight: bolder;
 }
