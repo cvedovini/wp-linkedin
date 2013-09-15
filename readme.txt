@@ -9,9 +9,23 @@ Stable tag: 1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
+
 == Description ==
 
 This plugin provides you with shortcodes to insert your full LinkedIn profile and a rotating scroller of your LinkedIn recommendations in any Wordpress page or post.
+
+There are two shortcodes available:
+
+* `[li_recommendations width="480" length="200" interval="1000"]` displays a rotating scroller with the recommendations you received
+* `[li_profile]` displays your LinkedIn profile. Optional attributes are `fields` and `lang` to overide the general settings. But you can pass any attribute and use it in customized templates.
+* `[li_card]` displays a simple LinkedIn card. Optional attributes are `picture_width` and `summary_length`, and `fields` and `lang` to overide the general settings. But you can pass any attribute and use it in customized templates.
+
+To customize the rendering of both shortcodes you must create a `linkedin` folder in your theme and then copy the template file you want to modify.
+The default template files, `recommendations.php` and `profile.php`, are located in the plugin's `templates` folder.
+
+See this post for more details on customization: [Showing more of your LinkedIn profile with WP-LinkedIn](http://vedovini.net/2013/06/showing-more-of-your-linkedin-profile-with-wp-linkedin/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
+
+There are also 3 widgets. One widget displaying the recommendations scroller and two widgets to show a "profile card". One of which is the standard LinkedIn JavaScript profile widget, the other is using a customizable template.
 
 
 == Installation ==
@@ -21,25 +35,18 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 1. Upload the `wp-linkedin` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Generate an access token for the LinkedIn API (those tokens expire after 60 days so you will have to regenerate them from time to time)
-1. The `Profile fields` field is the list of fields that will be available to the template for rendering (see below for template customization).
-
-There are two shortcodes available:
-
-* `[li_recommendations width="480" length="200" interval="1000"]` displays a rotating scroller with the recommendations you received
-* `[li_profile]` displays your LinkedIn profile. Optional attributes are `fields` and `lang` to overide the general settings. But you can pass any attribute and use it in customized templates.
-* `[li_card]` displays a simple LinkedIn card. Optional attributes are `picture_width` and `summary_length`, and `fields` and `lang` to overide the general settings. But you can pass any attribute and use it in customized templates.
-
-
-To customize the rendering of both shortcodes you must create a `linkedin` folder in your theme and then copy the template file you want to modify.
-The default template files, `recommendations.php` and `profile.php`, are located in the plugin's `templates` folder.
-
-See this post for more details on customization: [Showing more of your LinkedIn profile with WP-LinkedIn](http://vedovini.net/2013/06/showing-more-of-your-linkedin-profile-with-wp-linkedin/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
+1. The `Profile fields` field is the list of fields that will be available to the profile template for rendering - see this post for more details on customization: [Showing more of your LinkedIn profile with WP-LinkedIn](http://vedovini.net/2013/06/showing-more-of-your-linkedin-profile-with-wp-linkedin/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
 
 
 == Changelog ==
 
 = version 1.5.1 =
 - improved error handling when updating oauth token.
+- using another set of APP key/secret when `WP_DEBUG` is turned on (allows for having a dev environment without the access token being invalidated each time you switch)
+- allowing to override the APP key and secret by defining `WP_LINKEDIN_APPKEY` and `WP_LINKEDIN_APPSECRET` in `wp-config.php`
+- added a profile widget using the LinkedIn JavaScript API
+- changed the `readme.txt` file to move some details from the "Installation" page to the "Description" page
+- changed from using `pre-wrap` in the stylesheet to using `nl2br` in templates in order to better preserve the text formatting
 
 = version 1.5 =
 - Changing the way the LinkedIn API keys and token are managed in order to simplify installation
@@ -114,6 +121,7 @@ See this post for more details on customization: [Showing more of your LinkedIn 
 
 = version 1.0.0 =
 - Initial release
+
 
 == Credits ==
 

@@ -66,11 +66,6 @@
 	font-weight: bolder;
 }
 
-.linkedin .profile .summary,
-	.linkedin .profile .specialties {
-	white-space: pre-wrap;
-}
-
 .linkedin .profile .cartouche {
 	background-color: #F0F0F0;
 	min-height: 80px;

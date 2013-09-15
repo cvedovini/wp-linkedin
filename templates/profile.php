@@ -9,14 +9,14 @@
 <?php if (isset($profile->summary)): ?>
 <div class="section">
 <div class="heading"><?php _e('Summary', 'wp-linkedin'); ?></div>
-<div class="summary"><?php echo $profile->summary; ?></div>
+<div class="summary"><?php echo nl2br($profile->summary); ?></div>
 </div>
 <?php endif; ?>
 
 <?php if (isset($profile->specialties)): ?>
 <div class="section">
 <div class="heading"><?php _e('Specialties', 'wp-linkedin'); ?></div>
-<div class="specialties"><?php echo $profile->specialties; ?></div>
+<div class="specialties"><?php echo nl2br($profile->specialties); ?></div>
 </div>
 <?php endif; ?>
 
@@ -29,7 +29,7 @@
 	<div class="company"><?php echo $v->company->name; ?></div>
 	<div class="industry"><?php if (isset($v->company->type)) { echo $v->company->type.', '; } if (isset($v->company->size)) { echo $v->company->size.', '; } echo $v->company->industry; ?></div>
 	<?php if (isset($v->summary)): ?>
-		<div class="summary"><?php echo $v->summary; ?></div>
+		<div class="summary"><?php echo nl2br($v->summary); ?></div>
 	<?php endif; ?>
 </div>
 <?php endforeach; ?>
@@ -70,7 +70,7 @@ foreach ($profile->skills->values as $v) {
 		<div class="activities"><em><?php _e('Activities and societies', 'wp-linkedin'); ?>:</em> <?php echo $v->activities; ?></div>
 	<?php endif; ?>
 	<?php if (isset($v->notes) && !empty($v->notes)): ?>
-		<div class="notes"><?php echo $v->notes; ?></div>
+		<div class="notes"><?php echo nl2br($v->notes); ?></div>
 	<?php endif; ?>
 </div>
 <?php endforeach; ?>
@@ -82,7 +82,7 @@ foreach ($profile->skills->values as $v) {
 <div class="heading"><?php _e('Recommendations', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->recommendationsReceived->values as $v): ?>
 <blockquote>
-	<div class="recommendation"><?php  echo $v->recommendationText; ?></div>
+	<div class="recommendation"><?php  echo nl2br($v->recommendationText); ?></div>
 	<div class="recommender"><?php
 			if (isset($v->recommender->publicProfileUrl)) echo '<a href="' . $v->recommender->publicProfileUrl . '" target="_blank">';
 			echo $v->recommender->firstName . ' ' . $v->recommender->lastName;
