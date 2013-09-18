@@ -30,13 +30,14 @@ class WPLinkedInOAuth {
 			'client_id' => WP_LINKEDIN_APPKEY,
 			'client_secret' => WP_LINKEDIN_APPSECRET));
 
-		$response = wp_remote_get($url);
+		$response = wp_remote_get($url, array('ssl_verify' => LINKEDIN_SSL_VERIFYPEER));
 		if (!is_wp_error($response)) {
 			$response = json_decode($response['body']);
 
 			if (isset($response->error)) {
 				return new WP_Error($response->error, $response->error_description);
 			} else {
+				update_option('wp-linkedin_invalid_token_mail_sent', false);
 				return set_transient('wp-linkedin_oauthtoken', $response->access_token, $response->expires_in);
 			}
 		} else {
@@ -109,6 +110,19 @@ class WPLinkedInOAuth {
 					$this->invalidate_access_token();
 				}
 			}
+		}
+
+		if (LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY && !get_option('wp-linkedin_invalid_token_mail_sent', false)) {
+			$blog_name = get_option('blogname');
+			$admin_email = get_option('admin_email');
+			$header = array("From: $blog_name <$admin_email>");
+			$subject = '[WP LinkedIn] ' . __('Invalid or expired access token', 'wp-linkedin');
+
+			$message = __("The access token for the WP LinkedIn plugin is either invalid or has expired, please click on the following link to renew it.\n\n%s\n\nThis link will only be valid for a limited period of time.\n-Thank you.", 'wp-linkedin');
+			$message = sprintf($message, $this->get_authorization_url(wp_create_nonce('linkedin-oauth')));
+
+			$sent = wp_mail($admin_email, $subject, $message, $header);
+			update_option('wp-linkedin_invalid_token_mail_sent', $sent);
 		}
 
 		return false;

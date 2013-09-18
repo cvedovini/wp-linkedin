@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.5.1
+Version: 1.5.2
 
 # The code in this plugin is free software; you can redistribute the code aspects of
 # the plugin and/or modify the code under the terms of the GNU Lesser General
@@ -28,6 +28,8 @@ define('LINKEDIN_FIELDS_RECOMMENDATIONS', 'recommendations-received:(recommendat
 define('LINKEDIN_FIELDS_DEFAULT', 'summary, specialties, languages, skills, educations, positions, ' . LINKEDIN_FIELDS_RECOMMENDATIONS);
 define('LINKEDIN_FIELDS', get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAULT));
 define('LINKEDIN_PROFILELANGUAGE', get_option('wp-linkedin_profilelanguage'));
+define('LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY', get_option('wp-linkedin_sendmail_on_token_expiry', false));
+define('LINKEDIN_SSL_VERIFYPEER', get_option('wp-linkedin_ssl_verifypeer', true));
 
 include 'class-recommendations-widget.php';
 include 'class-card-widget.php';
@@ -50,7 +52,7 @@ class WPLinkedInPlugin {
 		if (!is_admin()) {
 			wp_register_script('jquery.tools', 'http://cdn.jquerytools.org/1.2.7/all/jquery.tools.min.js', array('jquery'), '1.2.7');
 			wp_register_script('jquery-dimension-etc', plugins_url('jquery.dimensions.etc.min.js', __FILE__), array('jquery'), '1.0.0');
-			wp_register_style('wp-linkedin', plugins_url('style.css', __FILE__), false, '1.5.1');
+			wp_register_style('wp-linkedin', plugins_url('style.css', __FILE__), false, '1.5.2');
 			add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
 			add_shortcode('li_recommendations', 'wp_linkedin_recommendations');
 			add_shortcode('li_profile', 'wp_linkedin_profile');
