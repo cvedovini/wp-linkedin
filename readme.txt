@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
 Tested up to: 3.6.1
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,6 +39,9 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 
 
 == Changelog ==
+
+= Version 1.5.3 =
+- Fixing wrong name of parameter for wp_remote_get when exchanging code for token m(
 
 = Version 1.5.2 =
 - Tweaking templates and CSS

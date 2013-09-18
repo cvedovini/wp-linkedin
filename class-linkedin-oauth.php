@@ -30,7 +30,7 @@ class WPLinkedInOAuth {
 			'client_id' => WP_LINKEDIN_APPKEY,
 			'client_secret' => WP_LINKEDIN_APPSECRET));
 
-		$response = wp_remote_get($url, array('ssl_verify' => LINKEDIN_SSL_VERIFYPEER));
+		$response = wp_remote_get($url, array('sslverify' => LINKEDIN_SSL_VERIFYPEER));
 		if (!is_wp_error($response)) {
 			$response = json_decode($response['body']);
 
