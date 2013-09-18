@@ -94,7 +94,7 @@ class WPLinkedInAdmin {
 			<div class="inside">
 				<form method="post" action="options.php"><?php wp_nonce_field('update-options'); ?>
 				<input type="hidden" name="action" value="update" />
-				<input type="hidden" name="page_options" value="wp-linkedin_fields,wp-linkedin_profilelanguage" />
+				<input type="hidden" name="page_options" value="wp-linkedin_fields,wp-linkedin_profilelanguage,wp-linkedin_ssl_verifypeer,wp-linkedin_sendmail_on_token_expiry" />
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row"><?php _e('Profile fields', 'wp-linkedin'); ?></th>
@@ -121,6 +121,22 @@ class WPLinkedInAdmin {
 							<p><em><?php _e('The language of the profile to display if you have several profiles in different languages.', 'wp-linkedin'); ?><br/>
 							<?php _e('You can overide this setting in the shortcode with the `lang` attribute.', 'wp-linkedin'); ?><br/>
 							<?php _e('See "Selecting the profile language" <a href="https://developer.linkedin.com/documents/profile-api" target="_blank">LinkedIn API documentation</a> for details.', 'wp-linkedin'); ?></em></p>
+						</td>
+					</tr>
+					<tr valign="top">
+						<th scope="row"><?php _e('Send mail on token expiry', 'wp-linkedin'); ?>:</th>
+						<td>
+							<label><input type="checkbox" name="wp-linkedin_sendmail_on_token_expiry"
+								value="1" <?php checked(LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY); ?> />&nbsp;
+								<?php _e('Check this option if you want the plugin to send you an email when the token has expired or is invalid.', 'wp-linkedin') ?></label>
+						</td>
+					</tr>
+					<tr valign="top">
+						<th scope="row"><?php _e('Verify SSL peer', 'wp-linkedin'); ?>:</th>
+						<td>
+							<label><input type="checkbox" name="wp-linkedin_ssl_verifypeer"
+								value="1" <?php checked(LINKEDIN_SSL_VERIFYPEER); ?> />&nbsp;
+								<?php _e('Uncheck this option only if you have SSL certificate issues on your server.', 'wp-linkedin') ?></label>
 						</td>
 					</tr>
 				</table>

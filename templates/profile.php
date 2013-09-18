@@ -1,5 +1,5 @@
 <div class="linkedin"><div class="profile">
-<div class="cartouche">
+<div id ="cartouche" class="section">
 	<img class="picture" src="<?php echo $profile->pictureUrl; ?>" width="80px" />
 	<div class="name"><a href="<?php echo $profile->publicProfileUrl; ?>"><?php echo $profile->firstName; ?> <?php echo $profile->lastName; ?></a></div>
 	<div class="headline"><?php echo $profile->headline; ?></div>
@@ -7,21 +7,21 @@
 </div>
 
 <?php if (isset($profile->summary)): ?>
-<div class="section">
+<div id="summary" class="section">
 <div class="heading"><?php _e('Summary', 'wp-linkedin'); ?></div>
 <div class="summary"><?php echo nl2br($profile->summary); ?></div>
 </div>
 <?php endif; ?>
 
 <?php if (isset($profile->specialties)): ?>
-<div class="section">
+<div id="specialties" class="section">
 <div class="heading"><?php _e('Specialties', 'wp-linkedin'); ?></div>
 <div class="specialties"><?php echo nl2br($profile->specialties); ?></div>
 </div>
 <?php endif; ?>
 
 <?php if (isset($profile->positions->values) && is_array($profile->positions->values)): ?>
-<div class="section">
+<div id="positions" class="section">
 <div class="heading"><?php _e('Experience', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->positions->values as $v): ?>
 <div class="position">
@@ -37,7 +37,7 @@
 <?php endif; ?>
 
 <?php if (isset($profile->skills->values) && is_array($profile->skills->values)): ?>
-<div class="section">
+<div id="skills" class="section">
 <div class="heading"><?php _e('Skills &amp; Expertise', 'wp-linkedin'); ?></div>
 <?php
 $skills = array();
@@ -49,7 +49,7 @@ foreach ($profile->skills->values as $v) {
 <?php endif;?>
 
 <?php if (isset($profile->languages->values) && is_array($profile->languages->values)): ?>
-<div class="section">
+<div id="languages" class="section">
 <div class="heading"><?php _e('Languages', 'wp-linkedin'); ?></div>
 <ul>
 <?php foreach ($profile->languages->values as $v): ?>
@@ -60,7 +60,7 @@ foreach ($profile->skills->values as $v) {
 <?php endif;?>
 
 <?php if (isset($profile->educations->values) && is_array($profile->educations->values)): ?>
-<div class="section">
+<div id="educations" class="section">
 <div class="heading"><?php _e('Education', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->educations->values as $v): ?>
 <div class="education">
@@ -78,7 +78,7 @@ foreach ($profile->skills->values as $v) {
 <?php endif; ?>
 
 <?php if (isset($profile->recommendationsReceived->values) && is_array($profile->recommendationsReceived->values)): ?>
-<div class="section">
+<div id="recommendations" class="section">
 <div class="heading"><?php _e('Recommendations', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->recommendationsReceived->values as $v): ?>
 <blockquote>

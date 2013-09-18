@@ -1,5 +1,5 @@
 <div class="linkedin"><div class="card">
-<div class="cartouche" style="padding-left:<?php echo ($picture_width + 8); ?>px">
+<div id="cartouche" style="padding-left:<?php echo ($picture_width + 8); ?>px">
 	<img class="picture" style="margin-left:-<?php echo ($picture_width + 8); ?>px" src="<?php echo $profile->pictureUrl; ?>" width="<?php echo $picture_width; ?>px"/>
 	<div class="name"><a href="<?php echo $profile->publicProfileUrl; ?>"><?php echo $profile->firstName; ?> <?php echo $profile->lastName; ?></a></div>
 	<div class="headline"><?php echo $profile->headline; ?></div>

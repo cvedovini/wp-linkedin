@@ -4,8 +4,8 @@ Contributors: cvedovini
 Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
 Tags: linkedin,resume,recommendations,profile
 Requires at least: 2.7
-Tested up to: 3.6
-Stable tag: 1.5
+Tested up to: 3.6.1
+Stable tag: 1.5.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -14,7 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 This plugin provides you with shortcodes to insert your full LinkedIn profile and a rotating scroller of your LinkedIn recommendations in any Wordpress page or post.
 
-There are two shortcodes available:
+There are 3 shortcodes available:
 
 * `[li_recommendations width="480" length="200" interval="1000"]` displays a rotating scroller with the recommendations you received
 * `[li_profile]` displays your LinkedIn profile. Optional attributes are `fields` and `lang` to overide the general settings. But you can pass any attribute and use it in customized templates.
@@ -40,87 +40,95 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 
 == Changelog ==
 
-= version 1.5.1 =
-- improved error handling when updating oauth token.
-- using another set of APP key/secret when `WP_DEBUG` is turned on (allows for having a dev environment without the access token being invalidated each time you switch)
-- allowing to override the APP key and secret by defining `WP_LINKEDIN_APPKEY` and `WP_LINKEDIN_APPSECRET` in `wp-config.php`
-- added a profile widget using the LinkedIn JavaScript API
-- changed the `readme.txt` file to move some details from the "Installation" page to the "Description" page
-- changed from using `pre-wrap` in the stylesheet to using `nl2br` in templates in order to better preserve the text formatting
+= Version 1.5.3 =
+- Fixing wrong name of parameter for wp_remote_get when exchanging code for token m(
 
-= version 1.5 =
-- Changing the way the LinkedIn API keys and token are managed in order to simplify installation
-- Added a profile cache to improve performances and limit API calls
+= Version 1.5.2 =
+- Tweaking templates and CSS
+- Option to disable SSL verification (on some servers the proper ssl certificates are not installed thus preventing SSL verification).
+- Option to have the plugin send an email when the access token becomes invalid or expires.
 
-= version 1.4.3 =
-- Updating string translations
+= Version 1.5.1 =
+- Improved error handling when updating oauth token.
+- Using another set of APP key/secret when `WP_DEBUG` is turned on (allows for having a dev environment without the access token being invalidated each time you switch).
+- Allowing to override the APP key and secret by defining `WP_LINKEDIN_APPKEY` and `WP_LINKEDIN_APPSECRET` in `wp-config.php`.
+- Added a profile widget using the LinkedIn JavaScript API.
+- Changed the `readme.txt` file to move some details from the "Installation" page to the "Description" page.
+- Changed from using `pre-wrap` in the stylesheet to using `nl2br` in templates in order to better preserve the text formatting.
 
-= version 1.4.2 =
-- Nice looking option page with donate button and Twitter widget
+= Version 1.5 =
+- Changing the way the LinkedIn API keys and token are managed in order to simplify installation.
+- Added a profile cache to improve performances and limit API calls.
 
-= version 1.4.1 =
-- fixing language codes in settings
-- simplifying the javascript for the recommendation slider
+= Version 1.4.3 =
+- Updating string translations.
 
-= version 1.4 =
-- Corrected link to post about customization in the readme
-- Modified the javascript for the recommendation slider so that it uses `$(document).ready()`
-- Added a widget and shortcode displaying a simple LinkedIn card
+= Version 1.4.2 =
+- Nice looking option page with donate button and Twitter widget.
 
-= version 1.3.8 =
-- Corrected a bug that interfers with other plugins using output buffering
-- Updated French and Dutch localizations
+= Version 1.4.1 =
+- Fixing language codes in settings.
+- Simplifying the javascript for the recommendation slider.
 
-= version 1.3.7 =
+= Version 1.4 =
+- Corrected link to post about customization in the readme.
+- Modified the javascript for the recommendation slider so that it uses `$(document).ready()`.
+- Added a widget and shortcode displaying a simple LinkedIn card.
+
+= Version 1.3.8 =
+- Corrected a bug that interfers with other plugins using output buffering.
+- Updated French and Dutch localizations.
+
+= Version 1.3.7 =
 - Added a 'css' option for the widget width to disable setting the width using javascript. This allows to set the width using CSS, which is particularly useful with responsive themes.
-- Added a link to the post on vedovini.net about customizing the plugin's output
+- Added a link to the post on vedovini.net about customizing the plugin's output.
 
-= version 1.3.6 =
-- Fixing how the presence of data is tested and adding error messages when the profile cannot be retrieved
+= Version 1.3.6 =
+- Fixing how the presence of data is tested and adding error messages when the profile cannot be retrieved.
 
-= version 1.3.5 =
-- Adding French and Dutch translations (Credit to Jan Spoelstra for the Dutch translations)
-- Fixing path issue while laoding the text domain
-- Added credit section to the readme file
-- Changed name of bundled classes to avoid name colisions
+= Version 1.3.5 =
+- Adding French and Dutch translations (Credit to Jan Spoelstra for the Dutch translations).
+- Fixing path issue while laoding the text domain.
+- Added credit section to the readme file.
+- Changed name of bundled classes to avoid name colisions.
 
-= version 1.3.4 =
+= Version 1.3.4 =
 - Enable an 'auto' mode for the width of the recommendations in order to accomodate responsive themes. However, it won't work in some occasion where the width of the parent cannot be calculated. To activate it just use 'auto' as the recommendations width.
 
-= version 1.3.3 =
-- Updating the css version
+= Version 1.3.3 =
+- Updating the css version.
 
-= version 1.3.2 =
-- Forcing `clear: none` on recommendations blocquote otherwise the scroller might not work
-- Adding support for linking to recommender's profiles in the template and adding the fields in the default list of fields. If you want to add that to your output make sure to change the `recommendations-recieved` field to `recommendations-received:(recommendation-text,recommender:(first-name,last-name,public-profile-url))`
+= Version 1.3.2 =
+- Forcing `clear: none` on recommendations blocquote otherwise the scroller might not work.
+- Adding support for linking to recommender's profiles in the template and adding the fields in the default list of fields. If you want to add that to your output make sure to change the `recommendations-recieved` field to `recommendations-received:(recommendation-text,recommender:(first-name,last-name,public-profile-url))`.
 
-= version 1.3.1 =
-- Upgrading the widget to use WP_Widget class, enabling several widgets instances
-- Modified the script and CSS to be more respectful of theming
+= Version 1.3.1 =
+- Upgrading the widget to use WP_Widget class, enabling several widgets instances.
+- Modified the script and CSS to be more respectful of theming.
 
-= version 1.3 =
+= Version 1.3 =
 - Added the possibility to select the profile language in the settings and the `[li_profile]` shortcode.
 
-= version 1.2.1 =
-- Added a test to avoid PHP error when no recommendations
+= Version 1.2.1 =
+- Added a test to avoid PHP error when no recommendations.
 
-= version 1.2.0 =
-- Removed some unecessary code that prevented the fetching of some profile fields
-- Moved the inclusion of the default CSS to the template to enable one to remove and totally replace it
-- Added the option to provide a `field` attribute to the `[li_profile]` shortcode to override the list from the settings and enable having several different profiles
+= Version 1.2.0 =
+- Removed some unecessary code that prevented the fetching of some profile fields.
+- Moved the inclusion of the default CSS to the template to enable one to remove and totally replace it.
+- Added the option to provide a `field` attribute to the `[li_profile]` shortcode to override the list from the settings and enable having several different profiles.
 
-= version 1.1.0 =
-- Adding the `interval` attribute to the shortcode and the widget to control the scroller's speed
+= Version 1.1.0 =
+- Adding the `interval` attribute to the shortcode and the widget to control the scroller's speed.
 
-= version 1.0.2 =
-- Changing version of jQuery Tools to avoid conflicting with WP's jQuery
-- Adding a sidebar widget with the recommendation slider
+= Version 1.0.2 =
+- Changing version of jQuery Tools to avoid conflicting with WP's jQuery.
+- Adding a sidebar widget with the recommendation slider.
 
-= version 1.0.1 =
-- Removing left over HTML comment in recommendations template file
+= Version 1.0.1 =
+- Removing left over HTML comment in recommendations template file.
 
-= version 1.0.0 =
-- Initial release
+= Version 1.0.0 =
+- Initial release.
 
 
 == Credits ==
