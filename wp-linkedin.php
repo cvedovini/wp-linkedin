@@ -28,6 +28,8 @@ define('LINKEDIN_FIELDS_RECOMMENDATIONS', 'recommendations-received:(recommendat
 define('LINKEDIN_FIELDS_DEFAULT', 'summary, specialties, languages, skills, educations, positions, ' . LINKEDIN_FIELDS_RECOMMENDATIONS);
 define('LINKEDIN_FIELDS', get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAULT));
 define('LINKEDIN_PROFILELANGUAGE', get_option('wp-linkedin_profilelanguage'));
+define('LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY', get_option('wp-linkedin_sendmail_on_token_expiry', false));
+define('LINKEDIN_SSL_VERIFYPEER', get_option('wp-linkedin_ssl_verifypeer', true));
 
 include 'class-recommendations-widget.php';
 include 'class-card-widget.php';
