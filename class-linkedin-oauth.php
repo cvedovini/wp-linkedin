@@ -32,13 +32,15 @@ class WPLinkedInOAuth {
 
 		$response = wp_remote_get($url, array('sslverify' => LINKEDIN_SSL_VERIFYPEER));
 		if (!is_wp_error($response)) {
-			$response = json_decode($response['body']);
+			$body = json_decode($response['body']);
 
-			if (isset($response->error)) {
-				return new WP_Error($response->error, $response->error_description);
-			} else {
+			if (isset($body->access_token)) {
 				update_option('wp-linkedin_invalid_token_mail_sent', false);
-				return set_transient('wp-linkedin_oauthtoken', $response->access_token, $response->expires_in);
+				return set_transient('wp-linkedin_oauthtoken', $body->access_token, $body->expires_in);
+			} elseif (isset($body->error)) {
+				return new WP_Error($body->error, $body->error_description);
+			} else {
+				return new WP_Error('unknown', __('An unknown error has occured and no token was retrieved.'));
 			}
 		} else {
 			return $response;
@@ -103,12 +105,23 @@ class WPLinkedInOAuth {
 
 			$response = wp_remote_get($url, array('headers' => $headers));
 			if (!is_wp_error($response)) {
-				if ($response['response']['code'] == 200) {
-					return json_decode($response['body']);
-				} elseif ($response['response']['code'] == 401) {
-					// Invalidate token
-					$this->invalidate_access_token();
+				$return_code = $response['response']['code'];
+				$body = json_decode($response['body']);
+
+				if ($return_code == 200) {
+					return $body;
+				} else{
+					if ($return_code == 401) {
+						// Invalidate token
+						$this->invalidate_access_token();
+					}
+
+					if (isset($body->error)) {
+						error_log('[WP LinkedIn] ' . $body->error . ': ' . $body->error_description);
+					}
 				}
+			} else {
+				error_log('[WP LinkedIn] ' . $response->get_error_code() . ': ' . $response->get_error_message());
 			}
 		}
 
