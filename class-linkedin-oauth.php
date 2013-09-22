@@ -19,6 +19,14 @@ class WPLinkedInOAuth {
 		return get_transient('wp-linkedin_oauthtoken');
 	}
 
+	function set_last_error($error=false) {
+		if ($error) {
+			update_option('wp-linkedin_last_error', $error);
+		} else {
+			delete_option('wp-linkedin_last_error');
+		}
+	}
+
 	function get_last_error() {
 		return get_option('wp-linkedin_last_error', false);
 	}
@@ -28,6 +36,7 @@ class WPLinkedInOAuth {
 	}
 
 	function set_access_token($code) {
+		$this->set_last_error();
 		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?grant_type=authorization_code&' . $this->urlencode(array(
 			'code' => $code,
 			'redirect_uri' => site_url('/wp-admin/options-general.php?page=wp-linkedin'),
@@ -113,7 +122,7 @@ class WPLinkedInOAuth {
 				$body = json_decode($response['body']);
 
 				if ($return_code == 200) {
-					delete_option('wp-linkedin_last_error');
+					$this->set_last_error();
 					return $body;
 				} else{
 					if ($return_code == 401) {
@@ -121,10 +130,10 @@ class WPLinkedInOAuth {
 						$this->invalidate_access_token();
 					}
 
-					if (isset($body->error)) {
-						$error = $body->error . ': ' . $body->error_description;
+					if (isset($body->message)) {
+						$error = $body->message;
 					} else {
-						$error = sprintf(__('HTTP request returned error code %d'), $return_code);
+						$error = sprintf(__('HTTP request returned error code %d.'), $return_code);
 					}
 				}
 			} else {
@@ -133,7 +142,7 @@ class WPLinkedInOAuth {
 		}
 
 		if (isset($error)) {
-			update_option('wp-linkedin_last_error', $error);
+			$this->set_last_error($error);
 			error_log('[WP LinkedIn] ' . $error);
 		}
 
