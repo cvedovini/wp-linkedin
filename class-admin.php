@@ -25,13 +25,20 @@ class WPLinkedInAdmin {
 	}
 
 	function admin_notices() {
-		if (!$this->oauth->is_access_token_valid()) {
-			$format = __('Your LinkedIn access token is invalid or has expired, please <a href="%s">click here</a> to get a new one.', 'wp-linkedin');
-			$notice = sprintf($format, $this->get_authorization_url()); ?>
-			<div class="error">
-		        <p><strong><?php echo $notice; ?></strong></p>
-		    </div>
-		<?php }
+		if ($this->oauth->get_last_error() || !$this->oauth->is_access_token_valid()) { ?>
+			<div class="error" style="font-weight:bold;"><ul>
+				<?php if ($this->oauth->get_last_error()): ?>
+		        <li><?php echo __('An error has occured while retrieving the profile:', 'wp-linkedin'); ?> <?php echo $this->oauth->get_last_error(); ?></li>
+				<?php endif; ?>
+
+				<?php if (!$this->oauth->is_access_token_valid()):
+				$format = __('Your LinkedIn access token is invalid or has expired, please <a href="%s">click here</a> to get a new one.', 'wp-linkedin');
+				$notice = sprintf($format, $this->get_authorization_url()); ?>
+		        <li><?php echo $notice; ?></li>
+				<?php endif ?>
+
+			</ul></div><?php
+		}
 
 		if (!isset($_GET['settings-updated'])) {
 			if (isset($_GET['oauth_success'])) { ?>

@@ -19,6 +19,10 @@ class WPLinkedInOAuth {
 		return get_transient('wp-linkedin_oauthtoken');
 	}
 
+	function get_last_error() {
+		return get_option('wp-linkedin_last_error', false);
+	}
+
 	function invalidate_access_token() {
 		delete_transient('wp-linkedin_oauthtoken');
 	}
@@ -109,6 +113,7 @@ class WPLinkedInOAuth {
 				$body = json_decode($response['body']);
 
 				if ($return_code == 200) {
+					delete_option('wp-linkedin_last_error');
 					return $body;
 				} else{
 					if ($return_code == 401) {
@@ -117,12 +122,19 @@ class WPLinkedInOAuth {
 					}
 
 					if (isset($body->error)) {
-						error_log('[WP LinkedIn] ' . $body->error . ': ' . $body->error_description);
+						$error = $body->error . ': ' . $body->error_description;
+					} else {
+						$error = sprintf(__('HTTP request returned error code %d'), $return_code);
 					}
 				}
 			} else {
-				error_log('[WP LinkedIn] ' . $response->get_error_code() . ': ' . $response->get_error_message());
+				$error = $response->get_error_code() . ': ' . $response->get_error_message();
 			}
+		}
+
+		if (isset($error)) {
+			update_option('wp-linkedin_last_error', $error);
+			error_log('[WP LinkedIn] ' . $error);
 		}
 
 		if (LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY && !get_option('wp-linkedin_invalid_token_mail_sent', false)) {
