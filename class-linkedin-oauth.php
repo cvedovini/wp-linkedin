@@ -116,7 +116,7 @@ class WPLinkedInOAuth {
 				$headers['Accept-Language'] = str_replace('_', '-', $lang);
 			}
 
-			$response = wp_remote_get($url, array('headers' => $headers));
+			$response = wp_remote_get($url, array('sslverify' => LINKEDIN_SSL_VERIFYPEER, 'headers' => $headers));
 			if (!is_wp_error($response)) {
 				$return_code = $response['response']['code'];
 				$body = json_decode($response['body']);
