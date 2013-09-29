@@ -20,10 +20,6 @@ class WPLinkedInAdmin {
 		return $links;
 	}
 
-	function get_authorization_url() {
-		return $this->oauth->get_authorization_url(wp_create_nonce('linkedin-oauth'));
-	}
-
 	function admin_notices() {
 		if ($this->oauth->get_last_error() || !$this->oauth->is_access_token_valid()) { ?>
 			<div class="error" style="font-weight:bold;"><ul>
@@ -33,7 +29,7 @@ class WPLinkedInAdmin {
 
 				<?php if (!$this->oauth->is_access_token_valid()):
 				$format = __('Your LinkedIn access token is invalid or has expired, please <a href="%s">click here</a> to get a new one.', 'wp-linkedin');
-				$notice = sprintf($format, $this->get_authorization_url()); ?>
+				$notice = sprintf($format, $this->oauth->get_authorization_url()); ?>
 		        <li><?php echo $notice; ?></li>
 				<?php endif ?>
 
@@ -76,7 +72,7 @@ class WPLinkedInAdmin {
 
 	function options_page() {
 		if (isset($_GET['code']) && isset($_GET['state'])) {
-			if (wp_verify_nonce($_GET['state'], 'linkedin-oauth')) {
+			if ($this->oauth->check_state_token($_GET['state'])) {
 				$retcode = $this->oauth->set_access_token($_GET['code']);
 
 				if (!is_wp_error($retcode)) {
@@ -155,7 +151,7 @@ class WPLinkedInAdmin {
 			<h3 style="cursor:default;"><span><?php _e('Administration', 'wp-linkedin'); ?></span></h3>
 			<div class="inside">
 				<p>
-					<span class="submit"><a href="<?php echo $this->get_authorization_url(); ?>" class="button button-primary"><?php _e('Regenerate LinkedIn Access Token', 'wp-linkedin'); ?></a></span>
+					<span class="submit"><a href="<?php echo $this->oauth->get_authorization_url(); ?>" class="button button-primary"><?php _e('Regenerate LinkedIn Access Token', 'wp-linkedin'); ?></a></span>
 					<span class="submit"><a href="<?php echo site_url('/wp-admin/options-general.php?page=wp-linkedin&clear_cache'); ?>" class="button button-primary"><?php _e('Clear the Cache', 'wp-linkedin'); ?></a></span>
 				</p>
 			</div> <!-- .inside -->
