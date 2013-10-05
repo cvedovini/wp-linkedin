@@ -40,6 +40,9 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 
 == Changelog ==
 
+= Version 1.5.6 =
+- Updating Dutch translations
+
 = Version 1.5.5 =
 - Bug fix: Invalid url to refresh token in token expiry alert email.
 
