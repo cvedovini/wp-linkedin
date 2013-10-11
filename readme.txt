@@ -41,10 +41,11 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 == Changelog ==
 
 = Version 1.6 =
-- Updating Dutch translations
-- Using `wpautop`instead of `nl2br` in templates
+- Updating Dutch translations.
+- Using `wpautop`instead of `nl2br` in templates.
 - Adding template loading function with debug output of the template path. You must have WP_DEBUG set to true to see what template file is used. The file path will be printed inside an HTML comment just before the template output.
-- Adding hook to enable extensions to override the LinkedIn API oauth token
+- Ability to add your LinkedIn card after each of your posts.
+- Adding hook to enable extensions to override the LinkedIn API oauth token.
 
 = Version 1.5.5 =
 - Bug fix: Invalid url to refresh token in token expiry alert email.

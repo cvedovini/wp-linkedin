@@ -97,7 +97,7 @@ class WPLinkedInAdmin {
 			<div class="inside">
 				<form method="post" action="options.php"><?php wp_nonce_field('update-options'); ?>
 				<input type="hidden" name="action" value="update" />
-				<input type="hidden" name="page_options" value="wp-linkedin_fields,wp-linkedin_profilelanguage,wp-linkedin_ssl_verifypeer,wp-linkedin_sendmail_on_token_expiry" />
+				<input type="hidden" name="page_options" value="wp-linkedin_fields,wp-linkedin_profilelanguage,wp-linkedin_ssl_verifypeer,wp-linkedin_sendmail_on_token_expiry,wp-linkedin_add_card_to_content" />
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row"><?php _e('Profile fields', 'wp-linkedin'); ?></th>
@@ -140,6 +140,14 @@ class WPLinkedInAdmin {
 							<label><input type="checkbox" name="wp-linkedin_ssl_verifypeer"
 								value="1" <?php checked(LINKEDIN_SSL_VERIFYPEER); ?> />&nbsp;
 								<?php _e('Uncheck this option only if you have SSL certificate issues on your server.', 'wp-linkedin') ?></label>
+						</td>
+					</tr>
+					<tr valign="top">
+						<th scope="row"><?php _e('LinkedIn card in posts', 'wp-linkedin'); ?>:</th>
+						<td>
+							<label><input type="checkbox" name="wp-linkedin_add_card_to_content"
+								value="1" <?php checked(LINKEDIN_ADD_CARD_TO_CONTENT); ?> />&nbsp;
+								<?php _e('Check this option to display your LinkedIn card after each post.', 'wp-linkedin') ?></label>
 						</td>
 					</tr>
 				</table>

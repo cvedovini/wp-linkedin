@@ -1,6 +1,6 @@
 <div class="linkedin"><div class="card">
 <div id="cartouche" style="padding-left:<?php echo ($picture_width + 8); ?>px">
-	<img class="picture" style="margin-left:-<?php echo ($picture_width + 8); ?>px" src="<?php echo $profile->pictureUrl; ?>" width="<?php echo $picture_width; ?>px"/>
+	<div style="margin-left:-<?php echo ($picture_width + 8); ?>px"><a href="<?php echo $profile->publicProfileUrl; ?>"><img class="picture" src="<?php echo $profile->pictureUrl; ?>" width="<?php echo $picture_width; ?>px"/></a></div>
 	<div class="name"><a href="<?php echo $profile->publicProfileUrl; ?>"><?php echo $profile->firstName; ?> <?php echo $profile->lastName; ?></a></div>
 	<div class="headline"><?php echo $profile->headline; ?></div>
 </div>

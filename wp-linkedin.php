@@ -30,6 +30,7 @@ define('LINKEDIN_FIELDS', get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAU
 define('LINKEDIN_PROFILELANGUAGE', get_option('wp-linkedin_profilelanguage'));
 define('LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY', get_option('wp-linkedin_sendmail_on_token_expiry', false));
 define('LINKEDIN_SSL_VERIFYPEER', get_option('wp-linkedin_ssl_verifypeer', true));
+define('LINKEDIN_ADD_CARD_TO_CONTENT', get_option('wp-linkedin_add_card_to_content', false));
 
 include 'class-recommendations-widget.php';
 include 'class-card-widget.php';
@@ -57,7 +58,19 @@ class WPLinkedInPlugin {
 			add_shortcode('li_recommendations', 'wp_linkedin_recommendations');
 			add_shortcode('li_profile', 'wp_linkedin_profile');
 			add_shortcode('li_card', 'wp_linkedin_card');
+
+			if (LINKEDIN_ADD_CARD_TO_CONTENT) {
+				add_filter('the_content', array(&$this, 'filter_content'), 1);
+			}
 		}
+	}
+
+	function filter_content($content) {
+		if (LINKEDIN_ADD_CARD_TO_CONTENT) {
+			$content .= wp_linkedin_card(array('summary_length' => 2000));
+		}
+
+		return $content;
 	}
 
 	function widgets_init() {
