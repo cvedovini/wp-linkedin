@@ -15,10 +15,6 @@ if (!defined('WP_LINKEDIN_APPKEY')) {
 
 class WPLinkedInOAuth {
 
-	function get_access_token() {
-		return get_transient('wp-linkedin_oauthtoken');
-	}
-
 	function set_last_error($error=false) {
 		if ($error) {
 			update_option('wp-linkedin_last_error', $error);
@@ -31,8 +27,15 @@ class WPLinkedInOAuth {
 		return get_option('wp-linkedin_last_error', false);
 	}
 
+	function get_access_token() {
+		return apply_filters('linkedin_oauthtoken', get_transient('wp-linkedin_oauthtoken'));
+	}
+
 	function invalidate_access_token() {
-		delete_transient('wp-linkedin_oauthtoken');
+		if (!has_filter('linkedin_oauthtoken')) {
+			// If the token is filtered then let's assume somebody else is taking care of it's lifecycle
+			delete_transient('wp-linkedin_oauthtoken');
+		}
 	}
 
 	function set_access_token($code) {
@@ -61,7 +64,12 @@ class WPLinkedInOAuth {
 	}
 
 	function is_access_token_valid() {
-		return $this->get_access_token() !== false;
+		if (!has_filter('linkedin_oauthtoken')) {
+			return $this->get_access_token() !== false;
+		} else {
+			// If the token is filtered then let's assume somebody else is taking care of it's lifecycle
+			return true;
+		}
 	}
 
 	function get_state_token() {

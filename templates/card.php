@@ -6,7 +6,7 @@
 </div>
 
 <?php if (isset($profile->summary) && $summary_length): ?>
-<div class="summary"><?php echo nl2br(wp_linkedin_excerpt($profile->summary, $summary_length)); ?></div>
+<div class="summary"><?php echo wpautop(wp_linkedin_excerpt($profile->summary, $summary_length)); ?></div>
 <?php endif; ?>
 
 </div></div>
