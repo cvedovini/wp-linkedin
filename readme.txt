@@ -1,4 +1,4 @@
-=== WP LinkedIn plugin ===
+=== WP LinkedIn ===
 Author: Claude Vedovini
 Contributors: cvedovini
 Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin

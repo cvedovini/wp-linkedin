@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: LinkedIn for Wordpress
+Plugin Name: WP LinkedIn
 Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
