@@ -40,7 +40,8 @@ class WPLinkedInOAuth {
 
 	function set_access_token($code) {
 		$this->set_last_error();
-		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?grant_type=authorization_code&' . $this->urlencode(array(
+		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?' . $this->urlencode(array(
+			'grant_type' => 'authorization_code',
 			'code' => $code,
 			'redirect_uri' => site_url('/wp-admin/options-general.php?page=wp-linkedin'),
 			'client_id' => WP_LINKEDIN_APPKEY,
@@ -82,7 +83,8 @@ class WPLinkedInOAuth {
 	}
 
 	function get_authorization_url() {
-		return 'https://www.linkedin.com/uas/oauth2/authorization?response_type=code&' . $this->urlencode(array(
+		return 'https://www.linkedin.com/uas/oauth2/authorization?' . $this->urlencode(array(
+				'response_type' => 'code',
 				'client_id' => WP_LINKEDIN_APPKEY,
 				'scope' => 'r_fullprofile r_network',
 				'state' => $this->get_state_token(),
@@ -95,25 +97,31 @@ class WPLinkedInOAuth {
 
 	function get_profile($options='id', $lang='') {
 		$profile = false;
-		$cache = get_option('wp-linkedin_cache');
-		if (!is_array($cache)) $cache = array();
 
-		// Do we have an up-to-date profile?
-		if (isset($cache[$options.$lang])) {
-			$expires = $cache[$options.$lang]['expires'];
-			$profile = $cache[$options.$lang]['profile'];
-			// If yes let's return it.
-			if (time() < $expires) return $profile;
+		if (!has_filter('linkedin_oauthtoken')) {
+			$cache = get_option('wp-linkedin_cache');
+			if (!is_array($cache)) $cache = array();
+
+			// Do we have an up-to-date profile?
+			if (isset($cache[$options.$lang])) {
+				$expires = $cache[$options.$lang]['expires'];
+				$profile = $cache[$options.$lang]['profile'];
+				// If yes let's return it.
+				if (time() < $expires) return $profile;
+			}
 		}
 
 		// Else, let's try to fetch one.
 		$fetched = $this->fetch_profile($options, $lang);
 		if ($fetched) {
 			$profile = $fetched;
-			$cache[$options.$lang] = array(
-					'expires' => time() + WP_LINKEDIN_CACHETIMEOUT,
-					'profile' => $profile);
-			update_option('wp-linkedin_cache', $cache);
+
+			if (!has_filter('linkedin_oauthtoken')) {
+				$cache[$options.$lang] = array(
+						'expires' => time() + WP_LINKEDIN_CACHETIMEOUT,
+						'profile' => $profile);
+				update_option('wp-linkedin_cache', $cache);
+			}
 		}
 
 		// But if we cannot fetch one, let's return the outdated one if any.

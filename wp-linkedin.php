@@ -93,7 +93,16 @@ class WPLinkedInPlugin {
 }
 
 
-function wp_linked_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) {
+function wp_linkedin_error($message) {
+	if (WP_DEBUG) {
+		return "<p>$message</p>";
+	} else {
+		return "<!-- $message -->";
+	}
+
+}
+
+function wp_linkedin_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) {
 	require_once 'class-linkedin-oauth.php';
 	$oauth = new WPLinkedInOAuth();
 	return $oauth->get_profile($options, $lang);
@@ -101,7 +110,11 @@ function wp_linked_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) {
 
 
 function wp_linkedin_load_template($name, $args) {
-	$template = locate_template('linkedin/'. $name . '.php');
+	$template = apply_filters('linkedin_template', $name);
+
+	if (!$template) {
+		$template = locate_template('linkedin/'. $name . '.php');
+	}
 
 	if (!$template) {
 		$template = dirname( __FILE__ ) . '/templates/' . $name . '.php';
@@ -123,11 +136,11 @@ function wp_linkedin_profile($atts) {
 
 	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ',' . $fields);
 
-	$profile = wp_linked_get_profile($fields, $lang);
+	$profile = wp_linkedin_get_profile($fields, $lang);
 	if (isset($profile) && is_object($profile)) {
 		return wp_linkedin_load_template('profile', array('profile' => $profile));
 	} else {
-		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin') . '</p>';
+		return wp_linkedin_error(__('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin'));
 	}
 }
 
@@ -141,12 +154,12 @@ function wp_linkedin_card($atts) {
 
 	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ',' . $fields);
 
-	$profile = wp_linked_get_profile($fields, $lang);
+	$profile = wp_linkedin_get_profile($fields, $lang);
 	if (isset($profile) && is_object($profile)) {
 		return wp_linkedin_load_template('card', array('profile' => $profile,
 				'picture_width' => $picture_width, 'summary_length' => $summary_length));
 	} else {
-		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin') . '</p>';
+		return wp_linkedin_error(__('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin'));
 	}
 }
 
@@ -158,17 +171,17 @@ function wp_linkedin_recommendations($atts) {
 			'interval' => '4000'
 	), $atts, 'li_recommendations'));
 
-	$profile = wp_linked_get_profile(LINKEDIN_FIELDS_RECOMMENDATIONS);
+	$profile = wp_linkedin_get_profile(LINKEDIN_FIELDS_RECOMMENDATIONS);
 
 	if (isset($profile) && is_object($profile)) {
 		if (isset($profile->recommendationsReceived->values) && is_array($profile->recommendationsReceived->values)) {
 			return wp_linkedin_load_template('recommendations', array('recommendations' => $profile->recommendationsReceived->values,
 					'width' => $width, 'length' => $length, 'interval' => $interval));
 		} else {
-			return '<p>' . __('You don\'t have any recommendation to show.', 'wp-linkedin') . '</p>';
+			return wp_linkedin_error(__('You don\'t have any recommendation to show.', 'wp-linkedin'));
 		}
 	} else {
-		return '<p>' . __('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin') . '</p>';
+		return wp_linkedin_error(__('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin'));
 	}
 }
 
