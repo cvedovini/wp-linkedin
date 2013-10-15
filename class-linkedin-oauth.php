@@ -97,18 +97,17 @@ class WPLinkedInOAuth {
 
 	function get_profile($options='id', $lang='') {
 		$profile = false;
+		$cache_key = apply_filters('linkedin_cachekey', sha1($options.$lang));
 
-		if (!has_filter('linkedin_oauthtoken')) {
-			$cache = get_option('wp-linkedin_cache');
-			if (!is_array($cache)) $cache = array();
+		$cache = get_option('wp-linkedin_cache');
+		if (!is_array($cache)) $cache = array();
 
-			// Do we have an up-to-date profile?
-			if (isset($cache[$options.$lang])) {
-				$expires = $cache[$options.$lang]['expires'];
-				$profile = $cache[$options.$lang]['profile'];
-				// If yes let's return it.
-				if (time() < $expires) return $profile;
-			}
+		// Do we have an up-to-date profile?
+		if (isset($cache[$cache_key])) {
+			$expires = $cache[$cache_key]['expires'];
+			$profile = $cache[$cache_key]['profile'];
+			// If yes let's return it.
+			if (time() < $expires) return $profile;
 		}
 
 		// Else, let's try to fetch one.
@@ -116,12 +115,10 @@ class WPLinkedInOAuth {
 		if ($fetched) {
 			$profile = $fetched;
 
-			if (!has_filter('linkedin_oauthtoken')) {
-				$cache[$options.$lang] = array(
-						'expires' => time() + WP_LINKEDIN_CACHETIMEOUT,
-						'profile' => $profile);
-				update_option('wp-linkedin_cache', $cache);
-			}
+			$cache[$cache_key] = array(
+					'expires' => time() + WP_LINKEDIN_CACHETIMEOUT,
+					'profile' => $profile);
+			update_option('wp-linkedin_cache', $cache);
 		}
 
 		// But if we cannot fetch one, let's return the outdated one if any.
