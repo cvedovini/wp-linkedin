@@ -110,15 +110,13 @@ function wp_linkedin_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) 
 
 
 function wp_linkedin_load_template($name, $args) {
-	$template = apply_filters('linkedin_template', $name);
-
-	if (!$template) {
-		$template = locate_template('linkedin/'. $name . '.php');
-	}
+	$template = locate_template('linkedin/'. $name . '.php');
 
 	if (!$template) {
 		$template = dirname( __FILE__ ) . '/templates/' . $name . '.php';
 	}
+
+	$template = apply_filters('linkedin_template', $template);
 
 	extract($args);
 	ob_start();
