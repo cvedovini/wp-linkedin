@@ -202,6 +202,28 @@ function wp_linkedin_excerpt($str, $length, $postfix='[...]') {
 	}
 }
 
+function wp_linkedin_cause($cause_name) {
+	static $causes;
+	if (!isset($causes)) {
+		$causes = array(
+			'animalRights' => __('Animal Welfare', 'wp-linkedin'),
+			'artsAndCulture' => __('Arts and Culture', 'wp-linkedin'),
+			'children' => __('Children', 'wp-linkedin'),
+			'civilRights' => __('Civil Rights and Social Action', 'wp-linkedin'),
+			'humanitarianRelief' => __('Disaster and Humanitarian Relief', 'wp-linkedin'),
+			'economicEmpowerment' => __('Economic Empowerment', 'wp-linkedin'),
+			'education' => __('Education', 'wp-linkedin'),
+			'environment' => __('Environment', 'wp-linkedin'),
+			'health' => __('Health', 'wp-linkedin'),
+			'humanRights' => __('Human Rights', 'wp-linkedin'),
+			'politics' => __('Politics', 'wp-linkedin'),
+			'povertyAlleviation' => __('Poverty Alleviation', 'wp-linkedin'),
+			'scienceAndTechnology' => __('Science and Technology', 'wp-linkedin'),
+			'socialServices' => __('Social Services', 'wp-linkedin'));
+	}
+
+	return $causes[$cause_name];
+}
 
 global $the_wp_linked_plugin;
 $the_wp_linked_plugin = new WPLinkedInPlugin();

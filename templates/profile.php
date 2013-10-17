@@ -36,6 +36,21 @@
 </div>
 <?php endif; ?>
 
+<?php if (isset($profile->volunteer->volunteerExperiences->values) && is_array($profile->volunteer->volunteerExperiences->values)): ?>
+<div id="volunteer-experiences" class="section">
+<div class="heading"><?php _e('Volunteer Experiences', 'wp-linkedin'); ?></div>
+<?php foreach ($profile->volunteer->volunteerExperiences->values as $v): ?>
+<div class="volunteer">
+	<div class="role"><strong><?php echo $v->role; ?></strong> (<?php echo $v->startDate->year; ?> - <?php echo isset($v->endDate) ? $v->endDate->year : __('Present', 'wp-linkedin'); ?>)</div>
+	<div class="organization"><?php echo $v->organization->name; ?><?php if (isset($v->cause)): ?>
+	| <span class="cause"><?php echo wp_linkedin_cause($v->cause->name); ?></span>
+	<?php endif; ?></div>
+
+</div>
+<?php endforeach; ?>
+</div>
+<?php endif; ?>
+
 <?php if (isset($profile->skills->values) && is_array($profile->skills->values)): ?>
 <div id="skills" class="section">
 <div class="heading"><?php _e('Skills &amp; Expertise', 'wp-linkedin'); ?></div>
