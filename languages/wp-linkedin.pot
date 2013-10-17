@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP LinkedIn 1.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-10-15 10:53:21+00:00\n"
+"POT-Creation-Date: 2013-10-17 13:07:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -414,39 +414,95 @@ msgstr ""
 msgid "Experience"
 msgstr ""
 
-#: templates/profile.php:28 templates/profile.php:67
+#: templates/profile.php:28 templates/profile.php:44 templates/profile.php:82
 msgid "Present"
 msgstr ""
 
 #: templates/profile.php:41
+msgid "Volunteer Experiences"
+msgstr ""
+
+#: templates/profile.php:56
 msgid "Skills &amp; Expertise"
 msgstr ""
 
-#: templates/profile.php:53
+#: templates/profile.php:68
 msgid "Languages"
 msgstr ""
 
-#: templates/profile.php:64
+#: templates/profile.php:79 wp-linkedin.php:215
 msgid "Education"
 msgstr ""
 
-#: templates/profile.php:70
+#: templates/profile.php:85
 msgid "Activities and societies"
 msgstr ""
 
-#: templates/profile.php:82
+#: templates/profile.php:97
 msgid "Recommendations"
 msgstr ""
 
-#: wp-linkedin.php:143 wp-linkedin.php:162 wp-linkedin.php:184
+#: wp-linkedin.php:141 wp-linkedin.php:160 wp-linkedin.php:182
 msgid ""
 "There's something wrong and the profile could not be retreived, please check "
 "the list of profile fields to be fetched. If everything seems good try "
 "regenerating the access token."
 msgstr ""
 
-#: wp-linkedin.php:181
+#: wp-linkedin.php:179
 msgid "You don't have any recommendation to show."
+msgstr ""
+
+#: wp-linkedin.php:209
+msgid "Animal Welfare"
+msgstr ""
+
+#: wp-linkedin.php:210
+msgid "Arts and Culture"
+msgstr ""
+
+#: wp-linkedin.php:211
+msgid "Children"
+msgstr ""
+
+#: wp-linkedin.php:212
+msgid "Civil Rights and Social Action"
+msgstr ""
+
+#: wp-linkedin.php:213
+msgid "Disaster and Humanitarian Relief"
+msgstr ""
+
+#: wp-linkedin.php:214
+msgid "Economic Empowerment"
+msgstr ""
+
+#: wp-linkedin.php:216
+msgid "Environment"
+msgstr ""
+
+#: wp-linkedin.php:217
+msgid "Health"
+msgstr ""
+
+#: wp-linkedin.php:218
+msgid "Human Rights"
+msgstr ""
+
+#: wp-linkedin.php:219
+msgid "Politics"
+msgstr ""
+
+#: wp-linkedin.php:220
+msgid "Poverty Alleviation"
+msgstr ""
+
+#: wp-linkedin.php:221
+msgid "Science and Technology"
+msgstr ""
+
+#: wp-linkedin.php:222
+msgid "Social Services"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

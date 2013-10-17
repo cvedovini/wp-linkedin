@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-10-15 10:53:21+00:00\n"
-"PO-Revision-Date: 2013-10-15 17:56+0700\n"
+"POT-Creation-Date: 2013-10-17 13:07:33+00:00\n"
+"PO-Revision-Date: 2013-10-17 20:19+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -449,31 +449,35 @@ msgstr "Spécialités"
 msgid "Experience"
 msgstr "Expérience"
 
-#: templates/profile.php:28 templates/profile.php:67
+#: templates/profile.php:28 templates/profile.php:44 templates/profile.php:82
 msgid "Present"
 msgstr "Maintenant"
 
 #: templates/profile.php:41
+msgid "Volunteer Experiences"
+msgstr "Expérience de volontariat"
+
+#: templates/profile.php:56
 msgid "Skills &amp; Expertise"
 msgstr "Compétences et Expertise"
 
-#: templates/profile.php:53
+#: templates/profile.php:68
 msgid "Languages"
 msgstr "Langues"
 
-#: templates/profile.php:64
+#: templates/profile.php:79 wp-linkedin.php:215
 msgid "Education"
 msgstr "Education"
 
-#: templates/profile.php:70
+#: templates/profile.php:85
 msgid "Activities and societies"
 msgstr "Activités et associations"
 
-#: templates/profile.php:82
+#: templates/profile.php:97
 msgid "Recommendations"
 msgstr "Recommendations"
 
-#: wp-linkedin.php:143 wp-linkedin.php:162 wp-linkedin.php:184
+#: wp-linkedin.php:141 wp-linkedin.php:160 wp-linkedin.php:182
 msgid ""
 "There's something wrong and the profile could not be retreived, please check "
 "the list of profile fields to be fetched. If everything seems good try "
@@ -483,9 +487,61 @@ msgstr ""
 "vérifier la liste des champs de profil à retrouver. Si tout semble correct "
 "essayer de régénérer le jeton d'accès."
 
-#: wp-linkedin.php:181
+#: wp-linkedin.php:179
 msgid "You don't have any recommendation to show."
 msgstr "Vous n'avez pas de recommandation."
+
+#: wp-linkedin.php:209
+msgid "Animal Welfare"
+msgstr "Protection animale"
+
+#: wp-linkedin.php:210
+msgid "Arts and Culture"
+msgstr "Arts et Culture"
+
+#: wp-linkedin.php:211
+msgid "Children"
+msgstr "Enfants"
+
+#: wp-linkedin.php:212
+msgid "Civil Rights and Social Action"
+msgstr "Droits civils et action sociale"
+
+#: wp-linkedin.php:213
+msgid "Disaster and Humanitarian Relief"
+msgstr "Catastrophes et aide humanitaire"
+
+#: wp-linkedin.php:214
+msgid "Economic Empowerment"
+msgstr "Autonomisation économique"
+
+#: wp-linkedin.php:216
+msgid "Environment"
+msgstr "Environnement"
+
+#: wp-linkedin.php:217
+msgid "Health"
+msgstr "Santé"
+
+#: wp-linkedin.php:218
+msgid "Human Rights"
+msgstr "Droits de l'homme"
+
+#: wp-linkedin.php:219
+msgid "Politics"
+msgstr "Politique"
+
+#: wp-linkedin.php:220
+msgid "Poverty Alleviation"
+msgstr "Réduction de la pauvreté"
+
+#: wp-linkedin.php:221
+msgid "Science and Technology"
+msgstr "Science et technologie"
+
+#: wp-linkedin.php:222
+msgid "Social Services"
+msgstr "Services sociaux"
 
 #. Plugin Name of the plugin/theme
 msgid "WP LinkedIn"
