@@ -51,18 +51,21 @@
 }
 
 .linkedin .profile .position,
-	.linkedin .profile .education {
+	.linkedin .profile .education,
+	.linkedin .profile .volunteer {
 	margin-bottom: 20px;
 }
 
-.linkedin .profile .position .industry,
-	.linkedin .profile .education .degree,
-	.linkedin .profile #cartouche .location {
+.linkedin .profile #cartouche .location,
+	.linkedin .profile .position .industry,
+	.linkedin .profile .volunteer .cause,
+	.linkedin .profile .education .degree {
 	color: #999;
 	font-size: smaller;
 }
 
-.linkedin .profile .position .company {
+.linkedin .profile .position .company,
+	.linkedin .profile .volunteer .organization {
 	font-weight: bolder;
 }
 

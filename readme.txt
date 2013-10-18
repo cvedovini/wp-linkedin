@@ -36,7 +36,7 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Generate an access token for the LinkedIn API (those tokens expire after 60 days so you will have to regenerate them from time to time)
 1. The `Profile fields` field is the list of fields that will be available to the profile template for rendering - see this post for more details on customization: [Showing more of your LinkedIn profile with WP-LinkedIn](http://vedovini.net/2013/06/showing-more-of-your-linkedin-profile-with-wp-linkedin/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
-1. Added the section for volunteer experiences in the profile template (must add the relevant profile fields to activate it)
+1. Added the section for volunteer experiences in the profile template. You must add the relevant profile fields to activate it, the minimum is `volunteer`. To get the full data then use `volunteer:(volunteer-experiences:(organization,cause,role,start-date,end-date,description))`.
 
 
 == Changelog ==
