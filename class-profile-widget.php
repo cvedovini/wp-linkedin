@@ -18,7 +18,7 @@ class WP_LinkedIn_Profile_Widget extends WP_Widget {
 
 		echo $before_widget;
 		if ($title) echo $before_title . $title . $after_title;
-		$profile = wp_linked_get_profile('publicProfileUrl');
+		$profile = wp_linkedin_get_profile('publicProfileUrl');
 		echo '<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>';
 		echo '<script type="IN/MemberProfile" data-id="' . $profile->publicProfileUrl;
 		echo '" data-format="inline" data-related="' . $show_connections . '"></script>';
