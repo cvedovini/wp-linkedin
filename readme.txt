@@ -43,14 +43,14 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 
 = Version 1.6 =
 - Updated Dutch translations.
-- Using `wpautop`instead of `nl2br` in templates.
+- Using `wpautop` instead of `nl2br` in templates.
 - Added template loading function with debug output of the template path. You must have `WP_DEBUG` set to `true` to see what template file is used. The file path will be printed inside an HTML comment just before the template output.
 - Error messages are now visible only when `WP_DEBUG` set to `true` otherwise they are printed as HTML comments.
 - Ability to add your LinkedIn card after each of your posts.
 - Added hook `linkedin_oauthtoken` to enable extensions to override the LinkedIn API oauth token.
 - Added hook `linkedin_template` to enable extensions to override the template to be used.
-- Making the scroller truly responsive when width is set to 'auto'.
-- Putting the scripts in the footer.
+- Made the scroller truly responsive when width is set to `auto`.
+- Put the scripts in the footer and moved calls to `wp_enqueue_script` and `wp_enqueue_style` to templates for more flexibility.
 
 = Version 1.5.5 =
 - Bug fix: Invalid url to refresh token in token expiry alert email.

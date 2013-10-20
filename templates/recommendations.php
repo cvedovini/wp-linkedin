@@ -1,4 +1,6 @@
 <?php
+	wp_enqueue_script('responsive-scrollable');
+	wp_enqueue_style('wp-linkedin');
 	$divid = wp_generate_password(12, false);
 ?>
 <div class="linkedin">
