@@ -49,6 +49,8 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 - Ability to add your LinkedIn card after each of your posts.
 - Added hook `linkedin_oauthtoken` to enable extensions to override the LinkedIn API oauth token.
 - Added hook `linkedin_template` to enable extensions to override the template to be used.
+- Making the scroller truly responsive when width is set to 'auto'.
+- Putting the scripts in the footer.
 
 = Version 1.5.5 =
 - Bug fix: Invalid url to refresh token in token expiry alert email.
