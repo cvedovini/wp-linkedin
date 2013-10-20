@@ -56,7 +56,7 @@ class WPLinkedInPlugin {
 			wp_register_script('responsive-scrollable', plugins_url('responsive-scrollable.js', __FILE__), array('jquery.tools', 'jquery-dimension-etc'), '1.0.0', true);
 			wp_register_style('wp-linkedin', plugins_url('style.css', __FILE__), false, '1.5.2');
 			add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
-			
+
 			add_shortcode('li_recommendations', 'wp_linkedin_recommendations');
 			add_shortcode('li_profile', 'wp_linkedin_profile');
 			add_shortcode('li_card', 'wp_linkedin_card');
@@ -95,7 +95,7 @@ class WPLinkedInPlugin {
 
 function wp_linkedin_error($message) {
 	if (WP_DEBUG) {
-		return "<p>$message</p>";
+		return "<p class='error'>$message</p>";
 	} else {
 		return "<!-- $message -->";
 	}
@@ -112,7 +112,7 @@ function wp_linkedin_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) 
 function wp_linkedin_load_template($name, $args) {
 	$template = locate_template('linkedin/'. $name . '.php');
 
-	if (!$template) {
+	if (empty($template)) {
 		$template = dirname( __FILE__ ) . '/templates/' . $name . '.php';
 	}
 

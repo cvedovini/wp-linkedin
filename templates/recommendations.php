@@ -8,8 +8,13 @@
 		<?php foreach ($recommendations as $recommendation): ?>
 			<blockquote>
 				<div class="recommendation"><?php  wpautop(wp_linkedin_excerpt($recommendation->recommendationText, $length)); ?></div>
-				<div class="recommender"><a href="<?php echo $recommendation->recommender->publicProfileUrl; ?>"
-					target="_blank"><?php echo $recommendation->recommender->firstName; ?> <?php echo $recommendation->recommender->lastName; ?></a></div>
+				<div class="recommender"><?php if (isset($recommendation->recommender->publicProfileUrl)): ?>
+					<a href="<?php echo $recommendation->recommender->publicProfileUrl; ?>"
+						target="_blank"><?php echo $recommendation->recommender->firstName; ?>
+						<?php echo $recommendation->recommender->lastName; ?></a>
+					<?php else: ?>
+					<?php _e('Anonymous', 'wp-linkedin'); ?>
+				<?php endif; ?></div>
 			</blockquote>
 		<?php  endforeach; ?>
 		</div>
