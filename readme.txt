@@ -50,7 +50,7 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 - Added hook `linkedin_oauthtoken` to enable extensions to override the LinkedIn API oauth token.
 - Added hook `linkedin_template` to enable extensions to override the template to be used.
 - Made the scroller truly responsive when width is set to `auto`.
-- Put the scripts in the footer and moved calls to `wp_enqueue_script` and `wp_enqueue_style` to templates for more flexibility.
+- Put the scripts in the footer and moved calls to `wp_enqueue_script` to templates for more flexibility.
 
 = Version 1.5.5 =
 - Bug fix: Invalid url to refresh token in token expiry alert email.

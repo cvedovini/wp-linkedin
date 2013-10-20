@@ -55,7 +55,8 @@ class WPLinkedInPlugin {
 			wp_register_script('jquery-dimension-etc', plugins_url('jquery.dimensions.etc.min.js', __FILE__), array('jquery'), '1.0.0', true);
 			wp_register_script('responsive-scrollable', plugins_url('responsive-scrollable.js', __FILE__), array('jquery.tools', 'jquery-dimension-etc'), '1.0.0', true);
 			wp_register_style('wp-linkedin', plugins_url('style.css', __FILE__), false, '1.5.2');
-
+			add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
+			
 			add_shortcode('li_recommendations', 'wp_linkedin_recommendations');
 			add_shortcode('li_profile', 'wp_linkedin_profile');
 			add_shortcode('li_card', 'wp_linkedin_card');
@@ -84,6 +85,10 @@ class WPLinkedInPlugin {
 		require_once 'class-linkedin-oauth.php';
 		require_once 'class-admin.php';
 		$this->admin = new WPLinkedInAdmin($this);
+	}
+
+	function enqueue_scripts() {
+		wp_enqueue_style('wp-linkedin');
 	}
 }
 
