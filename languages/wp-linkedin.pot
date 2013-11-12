@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP LinkedIn 1.6\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-10-17 13:07:33+00:00\n"
+"POT-Creation-Date: 2013-11-12 08:24:17+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -332,7 +332,7 @@ msgid "A widget displaying your LinkedIn card"
 msgstr ""
 
 #: class-card-widget.php:35 class-profile-widget.php:37
-#: class-recommendations-widget.php:41
+#: class-recommendations-widget.php:41 class-updates-widget.php:35
 msgid "Title:"
 msgstr ""
 
@@ -348,19 +348,19 @@ msgstr ""
 msgid "Specify '0' to hide the summary."
 msgstr ""
 
-#: class-linkedin-oauth.php:60
+#: class-linkedin-oauth.php:58
 msgid "An unknown error has occured and no token was retrieved."
 msgstr ""
 
-#: class-linkedin-oauth.php:158
+#: class-linkedin-oauth.php:156 class-linkedin-oauth.php:199
 msgid "HTTP request returned error code %d."
 msgstr ""
 
-#: class-linkedin-oauth.php:175
+#: class-linkedin-oauth.php:217
 msgid "Invalid or expired access token"
 msgstr ""
 
-#: class-linkedin-oauth.php:177
+#: class-linkedin-oauth.php:219
 msgid ""
 "The access token for the WP LinkedIn plugin is either invalid or has "
 "expired, please click on the following link to renew it.\n"
@@ -377,7 +377,7 @@ msgid ""
 msgstr ""
 
 #: class-profile-widget.php:42
-msgid "Show connections:"
+msgid "Show connections"
 msgstr ""
 
 #: class-recommendations-widget.php:7
@@ -402,6 +402,62 @@ msgstr ""
 msgid "Scroller's speed:"
 msgstr ""
 
+#: class-updates-widget.php:7
+msgid "A widget displaying your LinkedIn network updates"
+msgstr ""
+
+#: class-updates-widget.php:39
+msgid "Number of updates to show:"
+msgstr ""
+
+#: class-updates-widget.php:44
+msgid "Show my updates only"
+msgstr ""
+
+#: templates/network_updates.php:29
+msgid "%1$s is now connected to %2$s."
+msgstr ""
+
+#: templates/network_updates.php:35
+msgid "%s is now a connection."
+msgstr ""
+
+#: templates/network_updates.php:40
+msgid "%s has joined LinkedIn."
+msgstr ""
+
+#: templates/network_updates.php:45 templates/network_updates.php:50
+msgid "%1$s says: %2$s"
+msgstr ""
+
+#: templates/network_updates.php:55
+msgid "%1$s likes: %2$s"
+msgstr ""
+
+#: templates/network_updates.php:62
+msgid "%1$s joined the group %2$s."
+msgstr ""
+
+#: templates/network_updates.php:76
+msgid "%s has a new profile picture."
+msgstr ""
+
+#: templates/network_updates.php:83 templates/network_updates.php:111
+msgid "%s has an updated profile."
+msgstr ""
+
+#: templates/network_updates.php:90
+msgid "%1$s recommends %2$s."
+msgstr ""
+
+#: templates/network_updates.php:98
+msgid "%1$s posted a job: %2$s at %3$s."
+msgstr ""
+
+#: templates/network_updates.php:105
+msgid "%1$s is now following %2$s."
+msgstr ""
+
 #: templates/profile.php:11
 msgid "Summary"
 msgstr ""
@@ -414,7 +470,7 @@ msgstr ""
 msgid "Experience"
 msgstr ""
 
-#: templates/profile.php:28 templates/profile.php:44 templates/profile.php:82
+#: templates/profile.php:28 templates/profile.php:45 templates/profile.php:87
 msgid "Present"
 msgstr ""
 
@@ -422,86 +478,96 @@ msgstr ""
 msgid "Volunteer Experiences"
 msgstr ""
 
-#: templates/profile.php:56
+#: templates/profile.php:61
 msgid "Skills &amp; Expertise"
 msgstr ""
 
-#: templates/profile.php:68
+#: templates/profile.php:73
 msgid "Languages"
 msgstr ""
 
-#: templates/profile.php:79 wp-linkedin.php:215
+#: templates/profile.php:84 wp-linkedin.php:244
 msgid "Education"
 msgstr ""
 
-#: templates/profile.php:85
+#: templates/profile.php:90
 msgid "Activities and societies"
 msgstr ""
 
-#: templates/profile.php:97
+#: templates/profile.php:102
 msgid "Recommendations"
 msgstr ""
 
-#: wp-linkedin.php:141 wp-linkedin.php:160 wp-linkedin.php:182
+#: templates/profile.php:111 templates/recommendations.php:16
+msgid "Anonymous"
+msgstr ""
+
+#: wp-linkedin.php:152 wp-linkedin.php:172 wp-linkedin.php:194
 msgid ""
 "There's something wrong and the profile could not be retreived, please check "
 "the list of profile fields to be fetched. If everything seems good try "
 "regenerating the access token."
 msgstr ""
 
-#: wp-linkedin.php:179
+#: wp-linkedin.php:191
 msgid "You don't have any recommendation to show."
 msgstr ""
 
-#: wp-linkedin.php:209
+#: wp-linkedin.php:211
+msgid ""
+"There's something wrong and the network updates could not be retreived. Try "
+"regenerating the access token."
+msgstr ""
+
+#: wp-linkedin.php:238
 msgid "Animal Welfare"
 msgstr ""
 
-#: wp-linkedin.php:210
+#: wp-linkedin.php:239
 msgid "Arts and Culture"
 msgstr ""
 
-#: wp-linkedin.php:211
+#: wp-linkedin.php:240
 msgid "Children"
 msgstr ""
 
-#: wp-linkedin.php:212
+#: wp-linkedin.php:241
 msgid "Civil Rights and Social Action"
 msgstr ""
 
-#: wp-linkedin.php:213
+#: wp-linkedin.php:242
 msgid "Disaster and Humanitarian Relief"
 msgstr ""
 
-#: wp-linkedin.php:214
+#: wp-linkedin.php:243
 msgid "Economic Empowerment"
 msgstr ""
 
-#: wp-linkedin.php:216
+#: wp-linkedin.php:245
 msgid "Environment"
 msgstr ""
 
-#: wp-linkedin.php:217
+#: wp-linkedin.php:246
 msgid "Health"
 msgstr ""
 
-#: wp-linkedin.php:218
+#: wp-linkedin.php:247
 msgid "Human Rights"
 msgstr ""
 
-#: wp-linkedin.php:219
+#: wp-linkedin.php:248
 msgid "Politics"
 msgstr ""
 
-#: wp-linkedin.php:220
+#: wp-linkedin.php:249
 msgid "Poverty Alleviation"
 msgstr ""
 
-#: wp-linkedin.php:221
+#: wp-linkedin.php:250
 msgid "Science and Technology"
 msgstr ""
 
-#: wp-linkedin.php:222
+#: wp-linkedin.php:251
 msgid "Social Services"
 msgstr ""
 

@@ -205,7 +205,7 @@ function wp_linkedin_updates($atts) {
 	$updates = wp_linkedin_get_network_updates($count, $only_self);
 
 	if (isset($updates) && is_object($updates)) {
-		return wp_linkedin_load_template('network_updates', array('updates' => $updates,
+		return wp_linkedin_load_template('network-updates', array('updates' => $updates,
 				'only_self' => $only_self, 'count' => $count));
 	} else {
 		return wp_linkedin_error(__('There\'s something wrong and the network updates could not be retreived. Try regenerating the access token.', 'wp-linkedin'));
