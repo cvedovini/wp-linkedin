@@ -39,7 +39,7 @@ class WP_LinkedIn_Profile_Widget extends WP_Widget {
 </p>
 <p>
 	<label><input id="<?php echo $this->get_field_id('show_connections'); ?>" name="<?php echo $this->get_field_name('show_connections'); ?>"
-		type="checkbox" <?php checked($instance['show_connections']); ?>" /> <?php _e('Show connections:', 'wp-linkedin'); ?></label>
+		type="checkbox" <?php checked($instance['show_connections']); ?>" /> <?php _e('Show connections', 'wp-linkedin'); ?></label>
 </p>
 <?php
 	}

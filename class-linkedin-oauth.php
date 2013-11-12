@@ -1,16 +1,13 @@
 <?php
 
-define('WP_LINKEDIN_CACHETIMEOUT', 43200); // 12 hours
+if (!defined('WP_LINKEDIN_CACHETIMEOUT')) {
+	define('WP_LINKEDIN_CACHETIMEOUT', 43200); // 12 hours
+}
 
 // Let people define their own APPKEY if needed
 if (!defined('WP_LINKEDIN_APPKEY')) {
-	if (WP_DEBUG) {
-		define('WP_LINKEDIN_APPKEY', 'h4p3wuu2ibxy');
-		define('WP_LINKEDIN_APPSECRET', 'scSZiR3tUB3gcCJ9');
-	} else {
-		define('WP_LINKEDIN_APPKEY', '57zh7f1nvty5');
-		define('WP_LINKEDIN_APPSECRET', 'FL0gcEC2b0G18KPa');
-	}
+	define('WP_LINKEDIN_APPKEY', '57zh7f1nvty5');
+	define('WP_LINKEDIN_APPSECRET', 'FL0gcEC2b0G18KPa');
 }
 
 class WPLinkedInOAuth {
@@ -18,6 +15,7 @@ class WPLinkedInOAuth {
 	function set_last_error($error=false) {
 		if ($error) {
 			update_option('wp-linkedin_last_error', $error);
+			error_log('[WP LinkedIn] ' . $error);
 		} else {
 			delete_option('wp-linkedin_last_error');
 		}
@@ -86,7 +84,7 @@ class WPLinkedInOAuth {
 		return 'https://www.linkedin.com/uas/oauth2/authorization?' . $this->urlencode(array(
 				'response_type' => 'code',
 				'client_id' => WP_LINKEDIN_APPKEY,
-				'scope' => 'r_fullprofile r_network',
+				'scope' => 'r_fullprofile r_network rw_nus',
 				'state' => $this->get_state_token(),
 				'redirect_uri' => site_url('/wp-admin/options-general.php?page=wp-linkedin')));
 	}
@@ -129,7 +127,7 @@ class WPLinkedInOAuth {
 		$access_token = $this->get_access_token();
 
 		if ($access_token) {
-			$url = "https://api.linkedin.com/v1/people/~:($options)?oauth2_access_token=$access_token";
+			$url = "https://api.linkedin.com/v1/people/~:($options)?" . $this->urlencode(array('oauth2_access_token' => $access_token));
 			$headers = array(
 					'Content-Type' => 'text/plain; charset=UTF-8',
 					'x-li-format' => 'json');
@@ -163,11 +161,55 @@ class WPLinkedInOAuth {
 			}
 		}
 
-		if (isset($error)) {
-			$this->set_last_error($error);
-			error_log('[WP LinkedIn] ' . $error);
+		if (isset($error)) $this->set_last_error($error);
+		$this->send_invalid_token_email();
+		return false;
+	}
+
+	function get_network_updates($count=50, $only_self=true) {
+		$access_token = $this->get_access_token();
+
+		if ($access_token) {
+			$params = array('oauth2_access_token' => $access_token, 'count' => $count);
+			if ($only_self) $params['scope'] = 'self';
+
+			$url = 'https://api.linkedin.com/v1/people/~/network/updates?' . $this->urlencode($params);
+
+			$headers = array(
+					'Content-Type' => 'text/plain; charset=UTF-8',
+					'x-li-format' => 'json');
+
+			$response = wp_remote_get($url, array('sslverify' => LINKEDIN_SSL_VERIFYPEER, 'headers' => $headers));
+			if (!is_wp_error($response)) {
+				$return_code = $response['response']['code'];
+				$body = json_decode($response['body']);
+
+				if ($return_code == 200) {
+					$this->set_last_error();
+					return $body;
+				} else{
+					if ($return_code == 401) {
+						// Invalidate token
+						$this->invalidate_access_token();
+					}
+
+					if (isset($body->message)) {
+						$error = $body->message;
+					} else {
+						$error = sprintf(__('HTTP request returned error code %d.'), $return_code);
+					}
+				}
+			} else {
+				$error = $response->get_error_code() . ': ' . $response->get_error_message();
+			}
 		}
 
+		if (isset($error)) $this->set_last_error($error);
+		$this->send_invalid_token_email();
+		return false;
+	}
+
+	function send_invalid_token_email() {
 		if (LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY && !get_option('wp-linkedin_invalid_token_mail_sent', false)) {
 			$blog_name = get_option('blogname');
 			$admin_email = get_option('admin_email');
@@ -180,8 +222,6 @@ class WPLinkedInOAuth {
 			$sent = wp_mail($admin_email, $subject, $message, $header);
 			update_option('wp-linkedin_invalid_token_mail_sent', $sent);
 		}
-
-		return false;
 	}
 
 	function urlencode($params) {

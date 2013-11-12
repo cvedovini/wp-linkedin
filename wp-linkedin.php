@@ -35,6 +35,7 @@ define('LINKEDIN_ADD_CARD_TO_CONTENT', get_option('wp-linkedin_add_card_to_conte
 include 'class-recommendations-widget.php';
 include 'class-card-widget.php';
 include 'class-profile-widget.php';
+include 'class-updates-widget.php';
 
 
 class WPLinkedInPlugin {
@@ -60,6 +61,7 @@ class WPLinkedInPlugin {
 			add_shortcode('li_recommendations', 'wp_linkedin_recommendations');
 			add_shortcode('li_profile', 'wp_linkedin_profile');
 			add_shortcode('li_card', 'wp_linkedin_card');
+			add_shortcode('li_updates', 'wp_linkedin_updates');
 
 			if (LINKEDIN_ADD_CARD_TO_CONTENT) {
 				add_filter('the_content', array(&$this, 'filter_content'), 1);
@@ -79,6 +81,7 @@ class WPLinkedInPlugin {
 		register_widget('WP_LinkedIn_Recommendations_Widget');
 		register_widget('WP_LinkedIn_Card_Widget');
 		register_widget('WP_LinkedIn_Profile_Widget');
+		register_widget('WP_LinkedIn_Updates_Widget');
 	}
 
 	function admin_init() {
@@ -102,10 +105,18 @@ function wp_linkedin_error($message) {
 
 }
 
+
 function wp_linkedin_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) {
 	require_once 'class-linkedin-oauth.php';
 	$oauth = new WPLinkedInOAuth();
 	return $oauth->get_profile($options, $lang);
+}
+
+
+function wp_linkedin_get_network_updates($count=50, $only_self=true) {
+	require_once 'class-linkedin-oauth.php';
+	$oauth = new WPLinkedInOAuth();
+	return $oauth->get_network_updates($count, $only_self);
 }
 
 
@@ -141,6 +152,7 @@ function wp_linkedin_profile($atts) {
 		return wp_linkedin_error(__('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin'));
 	}
 }
+
 
 function wp_linkedin_card($atts) {
 	extract(shortcode_atts(array(
@@ -180,6 +192,23 @@ function wp_linkedin_recommendations($atts) {
 		}
 	} else {
 		return wp_linkedin_error(__('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin'));
+	}
+}
+
+
+function wp_linkedin_updates($atts) {
+	extract(shortcode_atts(array(
+			'only_self' => true,
+			'count' => 50
+	), $atts, 'li_updates'));
+
+	$updates = wp_linkedin_get_network_updates($count, $only_self);
+
+	if (isset($updates) && is_object($updates)) {
+		return wp_linkedin_load_template('network_updates', array('updates' => $updates,
+				'only_self' => $only_self, 'count' => $count));
+	} else {
+		return wp_linkedin_error(__('There\'s something wrong and the network updates could not be retreived. Try regenerating the access token.', 'wp-linkedin'));
 	}
 }
 

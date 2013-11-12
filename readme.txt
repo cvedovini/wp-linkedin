@@ -14,18 +14,19 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 This plugin provides you with shortcodes to insert your full LinkedIn profile and a rotating scroller of your LinkedIn recommendations in any Wordpress page or post.
 
-There are 3 shortcodes available:
+The following shortcodes are available:
 
 * `[li_recommendations width="480" length="200" interval="1000"]` displays a rotating scroller with the recommendations you received
-* `[li_profile]` displays your LinkedIn profile. Optional attributes are `fields` and `lang` to overide the general settings. But you can pass any attribute and use it in customized templates.
-* `[li_card]` displays a simple LinkedIn card. Optional attributes are `picture_width` and `summary_length`, and `fields` and `lang` to overide the general settings. But you can pass any attribute and use it in customized templates.
+* `[li_profile]` displays your LinkedIn profile. Optional attributes are `fields` and `lang` to overide the general settings.
+* `[li_card]` displays a simple LinkedIn card. Optional attributes are `picture_width` and `summary_length`, and `fields` and `lang` to overide the general settings.
+* `[li_updates]` displays your network updates. Optional attributes are `count` and `only_self`.
 
-To customize the rendering of both shortcodes you must create a `linkedin` folder in your theme and then copy the template file you want to modify.
-The default template files, `recommendations.php` and `profile.php`, are located in the plugin's `templates` folder.
+To customize the rendering of the shortcodes you must create a `linkedin` folder in your theme and then copy the template file you want to modify.
+The default template files are located in the plugin's `templates` folder.
 
 See this post for more details on customization: [Showing more of your LinkedIn profile with WP-LinkedIn](http://vedovini.net/2013/06/showing-more-of-your-linkedin-profile-with-wp-linkedin/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
 
-There are also 3 widgets. One widget displaying the recommendations scroller and two widgets to show a "profile card". One of which is the standard LinkedIn JavaScript profile widget, the other is using a customizable template.
+There are also several widgets. One widget displays the recommendations scroller, one displays your network updates, and two widgets show a "profile card" - one of which is the standard LinkedIn JavaScript profile widget, the other uses a customizable template.
 
 
 == Installation ==
@@ -51,6 +52,7 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 - Added hook `linkedin_template` to enable extensions to override the template to be used.
 - Made the scroller truly responsive when width is set to `auto`.
 - Put the scripts in the footer and moved calls to `wp_enqueue_script` to templates for more flexibility.
+- Added network updates shortcode and widget.
 
 = Version 1.5.5 =
 - Bug fix: Invalid url to refresh token in token expiry alert email.
