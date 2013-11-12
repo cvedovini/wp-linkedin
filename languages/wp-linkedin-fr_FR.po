@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-11-12 08:24:17+00:00\n"
-"PO-Revision-Date: 2013-11-12 19:59+0700\n"
+"POT-Creation-Date: 2013-11-12 13:20:32+00:00\n"
+"PO-Revision-Date: 2013-11-12 20:21+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -449,47 +449,52 @@ msgstr "Nombre de mises-à-jour à afficher:"
 msgid "Show my updates only"
 msgstr "Afficher mes mises-à-jour uniquement"
 
-#: templates/network_updates.php:29
+#: templates/network-updates.php:7 templates/profile.php:111
+#: templates/recommendations.php:16
+msgid "Anonymous"
+msgstr "Anonyme"
+
+#: templates/network-updates.php:34
 msgid "%1$s is now connected to %2$s."
 msgstr "%1$s est maintenant connecté à %2$s."
 
-#: templates/network_updates.php:35
+#: templates/network-updates.php:40
 msgid "%s is now a connection."
 msgstr "%s fait maintenant parti de votre réseau."
 
-#: templates/network_updates.php:40
+#: templates/network-updates.php:45
 msgid "%s has joined LinkedIn."
 msgstr "%s a rejoint LinkedIn."
 
-#: templates/network_updates.php:45 templates/network_updates.php:50
+#: templates/network-updates.php:50 templates/network-updates.php:55
 msgid "%1$s says: %2$s"
 msgstr "%1$s dit: %2$s"
 
-#: templates/network_updates.php:55
+#: templates/network-updates.php:60
 msgid "%1$s likes: %2$s"
 msgstr "%1$s aime: %2$s"
 
-#: templates/network_updates.php:62
+#: templates/network-updates.php:67
 msgid "%1$s joined the group %2$s."
 msgstr "%1$s à rejoint le groupe %2$s."
 
-#: templates/network_updates.php:76
+#: templates/network-updates.php:81
 msgid "%s has a new profile picture."
 msgstr "%s a une nouvelle photo de profile."
 
-#: templates/network_updates.php:83 templates/network_updates.php:111
+#: templates/network-updates.php:88 templates/network-updates.php:116
 msgid "%s has an updated profile."
 msgstr "%s a mis-à-jour son profile."
 
-#: templates/network_updates.php:90
+#: templates/network-updates.php:95
 msgid "%1$s recommends %2$s."
 msgstr "%1$s recommende %2$s."
 
-#: templates/network_updates.php:98
+#: templates/network-updates.php:103
 msgid "%1$s posted a job: %2$s at %3$s."
 msgstr "%1$s a posté un emplois: %2$s chez %3$s."
 
-#: templates/network_updates.php:105
+#: templates/network-updates.php:110
 msgid "%1$s is now following %2$s."
 msgstr "%1$s est maintenant abonné aux mises-à-jour de %2$s."
 
@@ -532,10 +537,6 @@ msgstr "Activités et associations"
 #: templates/profile.php:102
 msgid "Recommendations"
 msgstr "Recommendations"
-
-#: templates/profile.php:111 templates/recommendations.php:16
-msgid "Anonymous"
-msgstr "Anonyme"
 
 #: wp-linkedin.php:152 wp-linkedin.php:172 wp-linkedin.php:194
 msgid ""
