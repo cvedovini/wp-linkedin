@@ -22,10 +22,10 @@ if (!function_exists('find_links')) {
 	}
 }
 ?>
-
 <div class="linkedin"><ul class="updates">
 <?php foreach ($updates->values as $update):
 $p = isset($update->updateContent->person) ? $update->updateContent->person : '';
+if ($p->firstName == 'private') continue;
 
 switch ($update->updateType) {
 	case 'CONN':
