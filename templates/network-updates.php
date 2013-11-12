@@ -1,10 +1,16 @@
 <?php
 if (!function_exists('profile_name')) {
 	function profile_name($v) {
-		if (isset($v->siteStandardProfileRequest->url)) {
-			return sprintf('<a href="%3$s">%1$s %2$s</a>', $v->firstName, $v->lastName, $v->siteStandardProfileRequest->url);
+		if ($v->firstName != 'private') {
+			$fullName = $v->firstName . ' ' . $v->lastName;
 		} else {
-			return sprintf('%1$s %2$s', $v->firstName, $v->lastName);
+			$fullName = __('Anonymous', 'wp-linkedin');
+		}
+
+		if (isset($v->siteStandardProfileRequest->url)) {
+			return sprintf('<a href="%s">%s</a>', $v->siteStandardProfileRequest->url, $fullName);
+		} else {
+			return $fullName;
 		}
 	}
 }
@@ -16,11 +22,10 @@ if (!function_exists('find_links')) {
 	}
 }
 ?>
-
 <div class="linkedin"><ul class="updates">
 <?php foreach ($updates->values as $update):
 $p = isset($update->updateContent->person) ? $update->updateContent->person : '';
-if (is_object($p) && ($p->firstName == 'private')) continue;
+if ($p->firstName == 'private') continue;
 
 switch ($update->updateType) {
 	case 'CONN':
@@ -52,7 +57,7 @@ switch ($update->updateType) {
 		break;
 	case 'VIRL':
 		echo '<li class="type-'.strtolower($update->updateType) . '">';
-		printf(__('%1$s likes: %4$s', 'wp-linkedin'), profile_name($p),
+		printf(__('%1$s likes: %2$s', 'wp-linkedin'), profile_name($p),
 				find_links($p->updateAction->originalUpdate->updateContent->currentShare->comment));
 		echo '</li>';
 		break;

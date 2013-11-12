@@ -2,10 +2,10 @@
 Author: Claude Vedovini
 Contributors: cvedovini
 Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Tags: linkedin,resume,recommendations,profile
+Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 3.6.1
-Stable tag: 1.5.5
+Stable tag: 1.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,6 +28,8 @@ See this post for more details on customization: [Showing more of your LinkedIn 
 
 There are also several widgets. One widget displays the recommendations scroller, one displays your network updates, and two widgets show a "profile card" - one of which is the standard LinkedIn JavaScript profile widget, the other uses a customizable template.
 
+**ATTENTION:** Since v1.6 the call to add the javascript for the recommendations slider to the page as been moved to the `recommendations.php` template. If you customized that template you must add the following line to the top of your custom template: `wp_enqueue_script('responsive-scrollable');`
+
 
 == Installation ==
 
@@ -37,8 +39,43 @@ This plugin follows the [standard WordPress installation method](http://codex.wo
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Generate an access token for the LinkedIn API (those tokens expire after 60 days so you will have to regenerate them from time to time)
 1. The `Profile fields` field is the list of fields that will be available to the profile template for rendering - see this post for more details on customization: [Showing more of your LinkedIn profile with WP-LinkedIn](http://vedovini.net/2013/06/showing-more-of-your-linkedin-profile-with-wp-linkedin/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
-1. Added the section for volunteer experiences in the profile template. You must add the relevant profile fields to activate it, the minimum is `volunteer`. To get the full data then use `volunteer:(volunteer-experiences:(organization,cause,role,start-date,end-date,description))`.
 
+
+== Frequently Asked Questions ==
+
+= Does the plugin support multiple user profiles? =
+
+No, it doesn't.
+
+= How to add other sections from my profile? =
+
+The volunteer experiences section is already in the template but is not activated by default.
+To activate it you must add the relevant profile fields to activate it, the minimum is `volunteer`.
+To get the full data then use `volunteer:(volunteer-experiences:(organization,cause,role,start-date,end-date,description))`.
+
+For other sections see [Showing more of your LinkedIn profile with WP-LinkedIn](http://vedovini.net/2013/06/showing-more-of-your-linkedin-profile-with-wp-linkedin/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin).
+
+= I have a slider somewhere and it doesn't work anymore when I add the recommendations' scroller =
+
+It's usually due to an incompatibility between the different javascript components used.
+To solve the incompatibility it's better to choose one of the component and use only this one.
+To change the component that is used by the recommendations' scroller you will need to customize the `recommendations.php` template.
+
+= I am constantly asked to get a new access token =
+
+There can be several reasons to that problem, check the following:
+
+- Make sure your server's time is correct.
+- Try to uncheck the `Verify SSL peer` option on the plugin's settings page.
+
+= Since I updated to v1.6 the recommendation slider does not work anymore =
+
+Since v1.6 the call to add the javascript for the recommendations slider to the page as been moved to the `recommendations.php` template.
+If you customized that template you must add the following line to the top of your custom template: `wp_enqueue_script('responsive-scrollable');`
+
+= The updates shortcode (or the updates widget) doesn't show anything =
+
+Try regenerating the access token from the settings page, the plugin needs new authorization to access your network updates.
 
 == Changelog ==
 
