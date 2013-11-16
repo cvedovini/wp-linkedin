@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-11-12 13:20:32+00:00\n"
-"PO-Revision-Date: 2013-11-12 20:21+0700\n"
+"POT-Creation-Date: 2013-11-16 07:17:34+00:00\n"
+"PO-Revision-Date: 2013-11-16 14:21+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -172,183 +172,197 @@ msgstr "Appréciez-vous cette extension?"
 msgid "Please consider a donation."
 msgstr "Merci de penser à une donation."
 
-#: class-admin.php:196
+#: class-admin.php:183
+msgid ""
+"We also need volunteers to translate that plugin into more languages.\n"
+"\t\t\t\t\t\tIf you wish to help then contact <a href=\"https://twitter.com/"
+"cvedovini\">@cvedovini</a>\n"
+"\t\t\t\t\t\ton Twitter or use that <a href=\"http://vedovini.net/contact/"
+"\">contact form</a>."
+msgstr ""
+"Nous avons également besoin de volontaires pour traduire cette extension "
+"dans plus de langues. Si vous souhaitez aider merci de contacter <a href="
+"\"https://twitter.com/cvedovini\">@cvedovini</a> sur Twitter ou bien "
+"utilisez ce <a href=\"http://vedovini.net/contact/\">formulaire de contact</"
+"a>."
+
+#: class-admin.php:199
 msgid "Default"
 msgstr "Langue par défaut"
 
-#: class-admin.php:197
+#: class-admin.php:200
 msgid "Bahasa Indonesia"
 msgstr "Indonésien"
 
-#: class-admin.php:198
+#: class-admin.php:201
 msgid "Czech"
 msgstr "Tchèque"
 
-#: class-admin.php:199
+#: class-admin.php:202
 msgid "Danish"
 msgstr "Danois"
 
-#: class-admin.php:200
+#: class-admin.php:203
 msgid "Dutch"
 msgstr "Néerlandais"
 
-#: class-admin.php:201
+#: class-admin.php:204
 msgid "French"
 msgstr "Français"
 
-#: class-admin.php:202
+#: class-admin.php:205
 msgid "German"
 msgstr "Allemand"
 
-#: class-admin.php:203
+#: class-admin.php:206
 msgid "Italian"
 msgstr "Italien"
 
-#: class-admin.php:204
+#: class-admin.php:207
 msgid "Japanese"
 msgstr "Japonais"
 
-#: class-admin.php:205
+#: class-admin.php:208
 msgid "Korean"
 msgstr "Coréen"
 
-#: class-admin.php:206
+#: class-admin.php:209
 msgid "Malay"
 msgstr "Malais"
 
-#: class-admin.php:207
+#: class-admin.php:210
 msgid "Norwegian"
 msgstr "Norvégien"
 
-#: class-admin.php:208
+#: class-admin.php:211
 msgid "Polish"
 msgstr "Polonais"
 
-#: class-admin.php:209
+#: class-admin.php:212
 msgid "Portuguese"
 msgstr "Portugais"
 
-#: class-admin.php:210
+#: class-admin.php:213
 msgid "Romanian"
 msgstr "Roumain"
 
-#: class-admin.php:211
+#: class-admin.php:214
 msgid "Russian"
 msgstr "Russe"
 
-#: class-admin.php:212
+#: class-admin.php:215
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: class-admin.php:213
+#: class-admin.php:216
 msgid "Swedish"
 msgstr "Suédois"
 
-#: class-admin.php:214
+#: class-admin.php:217
 msgid "Turkish"
 msgstr "Turc"
 
-#: class-admin.php:215
+#: class-admin.php:218
 msgid "Albanian"
 msgstr "Albanais"
 
-#: class-admin.php:216
+#: class-admin.php:219
 msgid "Armenian"
 msgstr "Arménien"
 
-#: class-admin.php:217
+#: class-admin.php:220
 msgid "Bosnian"
 msgstr "Bosniaque"
 
-#: class-admin.php:218
+#: class-admin.php:221
 msgid "Burmese (Myanmar)"
 msgstr "Birman"
 
-#: class-admin.php:219
+#: class-admin.php:222
 msgid "Chinese (Simplified)"
 msgstr "Chinois (Simplifié)"
 
-#: class-admin.php:220
+#: class-admin.php:223
 msgid "Chinese (Traditional)"
 msgstr "Chinois (Traditionel)"
 
-#: class-admin.php:221
+#: class-admin.php:224
 msgid "Croatian"
 msgstr "Croate"
 
-#: class-admin.php:222
+#: class-admin.php:225
 msgid "Finnish"
 msgstr "Finnois"
 
-#: class-admin.php:223
+#: class-admin.php:226
 msgid "Greek"
 msgstr "Grecque"
 
-#: class-admin.php:224
+#: class-admin.php:227
 msgid "Hindi"
 msgstr "Hindou"
 
-#: class-admin.php:225
+#: class-admin.php:228
 msgid "Hungarian"
 msgstr "Hongrois"
 
-#: class-admin.php:226
+#: class-admin.php:229
 msgid "Icelandic"
 msgstr "Islandais"
 
-#: class-admin.php:227
+#: class-admin.php:230
 msgid "Javanese"
 msgstr "Javanais"
 
-#: class-admin.php:228
+#: class-admin.php:231
 msgid "Kannada"
 msgstr "Kannada"
 
-#: class-admin.php:229
+#: class-admin.php:232
 msgid "Latvian"
 msgstr "Letton"
 
-#: class-admin.php:230
+#: class-admin.php:233
 msgid "Lithuanian"
 msgstr "Lituanien"
 
-#: class-admin.php:231
+#: class-admin.php:234
 msgid "Malayalam"
 msgstr "Malayalam"
 
-#: class-admin.php:232
+#: class-admin.php:235
 msgid "Serbian"
 msgstr "Serbe"
 
-#: class-admin.php:233
+#: class-admin.php:236
 msgid "Slovak"
 msgstr "Slovaque"
 
-#: class-admin.php:234
+#: class-admin.php:237
 msgid "Tagalog"
 msgstr "Tagalog"
 
-#: class-admin.php:235
+#: class-admin.php:238
 msgid "Tamil"
 msgstr "Tamoul"
 
-#: class-admin.php:236
+#: class-admin.php:239
 msgid "Telugu"
 msgstr "Télougou"
 
-#: class-admin.php:237
+#: class-admin.php:240
 msgid "Thai"
 msgstr "Thaïlandais"
 
-#: class-admin.php:238
+#: class-admin.php:241
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
-#: class-admin.php:239
+#: class-admin.php:242
 msgid "Vietnamese"
 msgstr "Vietnamien"
 
-#: class-admin.php:240
+#: class-admin.php:243
 msgid "Other"
 msgstr "Autre"
 

@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WP LinkedIn package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP LinkedIn 1.6\n"
+"Project-Id-Version: WP LinkedIn 1.6.1\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-11-12 13:20:32+00:00\n"
+"POT-Creation-Date: 2013-11-16 07:17:34+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -147,183 +147,192 @@ msgstr ""
 msgid "Please consider a donation."
 msgstr ""
 
-#: class-admin.php:196
-msgid "Default"
-msgstr ""
-
-#: class-admin.php:197
-msgid "Bahasa Indonesia"
-msgstr ""
-
-#: class-admin.php:198
-msgid "Czech"
+#: class-admin.php:183
+msgid ""
+"We also need volunteers to translate that plugin into more languages.\n"
+"\t\t\t\t\t\tIf you wish to help then contact <a href=\"https://twitter.com/"
+"cvedovini\">@cvedovini</a>\n"
+"\t\t\t\t\t\ton Twitter or use that <a href=\"http://vedovini.net/contact/"
+"\">contact form</a>."
 msgstr ""
 
 #: class-admin.php:199
-msgid "Danish"
+msgid "Default"
 msgstr ""
 
 #: class-admin.php:200
-msgid "Dutch"
+msgid "Bahasa Indonesia"
 msgstr ""
 
 #: class-admin.php:201
-msgid "French"
+msgid "Czech"
 msgstr ""
 
 #: class-admin.php:202
-msgid "German"
+msgid "Danish"
 msgstr ""
 
 #: class-admin.php:203
-msgid "Italian"
+msgid "Dutch"
 msgstr ""
 
 #: class-admin.php:204
-msgid "Japanese"
+msgid "French"
 msgstr ""
 
 #: class-admin.php:205
-msgid "Korean"
+msgid "German"
 msgstr ""
 
 #: class-admin.php:206
-msgid "Malay"
+msgid "Italian"
 msgstr ""
 
 #: class-admin.php:207
-msgid "Norwegian"
+msgid "Japanese"
 msgstr ""
 
 #: class-admin.php:208
-msgid "Polish"
+msgid "Korean"
 msgstr ""
 
 #: class-admin.php:209
-msgid "Portuguese"
+msgid "Malay"
 msgstr ""
 
 #: class-admin.php:210
-msgid "Romanian"
+msgid "Norwegian"
 msgstr ""
 
 #: class-admin.php:211
-msgid "Russian"
+msgid "Polish"
 msgstr ""
 
 #: class-admin.php:212
-msgid "Spanish"
+msgid "Portuguese"
 msgstr ""
 
 #: class-admin.php:213
-msgid "Swedish"
+msgid "Romanian"
 msgstr ""
 
 #: class-admin.php:214
-msgid "Turkish"
+msgid "Russian"
 msgstr ""
 
 #: class-admin.php:215
-msgid "Albanian"
+msgid "Spanish"
 msgstr ""
 
 #: class-admin.php:216
-msgid "Armenian"
+msgid "Swedish"
 msgstr ""
 
 #: class-admin.php:217
-msgid "Bosnian"
+msgid "Turkish"
 msgstr ""
 
 #: class-admin.php:218
-msgid "Burmese (Myanmar)"
+msgid "Albanian"
 msgstr ""
 
 #: class-admin.php:219
-msgid "Chinese (Simplified)"
+msgid "Armenian"
 msgstr ""
 
 #: class-admin.php:220
-msgid "Chinese (Traditional)"
+msgid "Bosnian"
 msgstr ""
 
 #: class-admin.php:221
-msgid "Croatian"
+msgid "Burmese (Myanmar)"
 msgstr ""
 
 #: class-admin.php:222
-msgid "Finnish"
+msgid "Chinese (Simplified)"
 msgstr ""
 
 #: class-admin.php:223
-msgid "Greek"
+msgid "Chinese (Traditional)"
 msgstr ""
 
 #: class-admin.php:224
-msgid "Hindi"
+msgid "Croatian"
 msgstr ""
 
 #: class-admin.php:225
-msgid "Hungarian"
+msgid "Finnish"
 msgstr ""
 
 #: class-admin.php:226
-msgid "Icelandic"
+msgid "Greek"
 msgstr ""
 
 #: class-admin.php:227
-msgid "Javanese"
+msgid "Hindi"
 msgstr ""
 
 #: class-admin.php:228
-msgid "Kannada"
+msgid "Hungarian"
 msgstr ""
 
 #: class-admin.php:229
-msgid "Latvian"
+msgid "Icelandic"
 msgstr ""
 
 #: class-admin.php:230
-msgid "Lithuanian"
+msgid "Javanese"
 msgstr ""
 
 #: class-admin.php:231
-msgid "Malayalam"
+msgid "Kannada"
 msgstr ""
 
 #: class-admin.php:232
-msgid "Serbian"
+msgid "Latvian"
 msgstr ""
 
 #: class-admin.php:233
-msgid "Slovak"
+msgid "Lithuanian"
 msgstr ""
 
 #: class-admin.php:234
-msgid "Tagalog"
+msgid "Malayalam"
 msgstr ""
 
 #: class-admin.php:235
-msgid "Tamil"
+msgid "Serbian"
 msgstr ""
 
 #: class-admin.php:236
-msgid "Telugu"
+msgid "Slovak"
 msgstr ""
 
 #: class-admin.php:237
-msgid "Thai"
+msgid "Tagalog"
 msgstr ""
 
 #: class-admin.php:238
-msgid "Ukrainian"
+msgid "Tamil"
 msgstr ""
 
 #: class-admin.php:239
-msgid "Vietnamese"
+msgid "Telugu"
 msgstr ""
 
 #: class-admin.php:240
+msgid "Thai"
+msgstr ""
+
+#: class-admin.php:241
+msgid "Ukrainian"
+msgstr ""
+
+#: class-admin.php:242
+msgid "Vietnamese"
+msgstr ""
+
+#: class-admin.php:243
 msgid "Other"
 msgstr ""
 
