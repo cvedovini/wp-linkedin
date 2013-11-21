@@ -10,48 +10,63 @@ if (!defined('WP_LINKEDIN_APPKEY')) {
 	define('WP_LINKEDIN_APPSECRET', 'FL0gcEC2b0G18KPa');
 }
 
-class WPLinkedInOAuth {
+class WPLinkedInConnection {
 
-	function set_last_error($error=false) {
+	public function __construct() {
+		$this->app_key = WP_LINKEDIN_APPKEY;
+		$this->app_secret = WP_LINKEDIN_APPSECRET;
+	}
+
+	protected function set_cache($key, $value, $expires=0) {
+		return set_transient($key, $value);
+	}
+
+	protected function get_cache($key, $default=false) {
+		$value = get_transient($key);
+		return ($value !== false) ? $value : $default;
+	}
+
+	protected function delete_cache($key) {
+		return delete_transient($key);
+	}
+
+	public function set_last_error($error=false) {
 		if ($error) {
-			update_option('wp-linkedin_last_error', $error);
+			$this->set_cache('wp-linkedin_last_error', $error);
 			error_log('[WP LinkedIn] ' . $error);
 		} else {
-			delete_option('wp-linkedin_last_error');
+			$this->delete_cache('wp-linkedin_last_error');
 		}
 	}
 
-	function get_last_error() {
-		return get_option('wp-linkedin_last_error', false);
+	public function get_last_error() {
+		return $this->get_cache('wp-linkedin_last_error');
 	}
 
-	function get_access_token() {
-		return apply_filters('linkedin_oauthtoken', get_transient('wp-linkedin_oauthtoken'));
+	public function get_access_token() {
+		return $this->get_cache('wp-linkedin_oauthtoken');
 	}
 
-	function invalidate_access_token() {
-		if (!has_filter('linkedin_oauthtoken')) {
-			// If the token is filtered then let's assume somebody else is taking care of it's lifecycle
-			delete_transient('wp-linkedin_oauthtoken');
-		}
+	public function invalidate_access_token() {
+		$this->delete_cache('wp-linkedin_oauthtoken');
 	}
 
-	function set_access_token($code) {
+	public function set_access_token($code) {
 		$this->set_last_error();
 		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?' . $this->urlencode(array(
 			'grant_type' => 'authorization_code',
 			'code' => $code,
 			'redirect_uri' => site_url('/wp-admin/options-general.php?page=wp-linkedin'),
-			'client_id' => WP_LINKEDIN_APPKEY,
-			'client_secret' => WP_LINKEDIN_APPSECRET));
+			'client_id' => $this->app_key,
+			'client_secret' => $this->app_secret));
 
 		$response = wp_remote_get($url, array('sslverify' => LINKEDIN_SSL_VERIFYPEER));
 		if (!is_wp_error($response)) {
 			$body = json_decode($response['body']);
 
 			if (isset($body->access_token)) {
-				update_option('wp-linkedin_invalid_token_mail_sent', false);
-				return set_transient('wp-linkedin_oauthtoken', $body->access_token, $body->expires_in);
+				$this->set_cache('wp-linkedin_invalid_token_mail_sent', false);
+				return $this->set_cache('wp-linkedin_oauthtoken', $body->access_token, $body->expires_in);
 			} elseif (isset($body->error)) {
 				return new WP_Error($body->error, $body->error_description);
 			} else {
@@ -62,42 +77,37 @@ class WPLinkedInOAuth {
 		}
 	}
 
-	function is_access_token_valid() {
-		if (!has_filter('linkedin_oauthtoken')) {
-			return $this->get_access_token() !== false;
-		} else {
-			// If the token is filtered then let's assume somebody else is taking care of it's lifecycle
-			return true;
-		}
+	public function is_access_token_valid() {
+		return $this->get_access_token() !== false;
 	}
 
-	function get_state_token() {
+	protected function get_state_token() {
 		$time = intval(time() / 172800);
 		return sha1('linkedin-oauth' . NONCE_SALT . $time);
 	}
 
-	function check_state_token($token) {
+	public function check_state_token($token) {
 		return ($token == $this->get_state_token());
 	}
 
-	function get_authorization_url() {
+	public function get_authorization_url() {
 		return 'https://www.linkedin.com/uas/oauth2/authorization?' . $this->urlencode(array(
 				'response_type' => 'code',
-				'client_id' => WP_LINKEDIN_APPKEY,
+				'client_id' => $this->app_key,
 				'scope' => 'r_fullprofile r_network rw_nus',
 				'state' => $this->get_state_token(),
 				'redirect_uri' => site_url('/wp-admin/options-general.php?page=wp-linkedin')));
 	}
 
-	function clear_cache() {
-		delete_option('wp-linkedin_cache');
+	public function clear_cache() {
+		$this->delete_cache('wp-linkedin_cache');
 	}
 
-	function get_profile($options='id', $lang='') {
+	public function get_profile($options='id', $lang='') {
 		$profile = false;
-		$cache_key = apply_filters('linkedin_cachekey', sha1($options.$lang));
+		$cache_key = sha1($options.$lang);
 
-		$cache = get_option('wp-linkedin_cache');
+		$cache = $this->get_cache('wp-linkedin_cache');
 		if (!is_array($cache)) $cache = array();
 
 		// Do we have an up-to-date profile?
@@ -116,14 +126,14 @@ class WPLinkedInOAuth {
 			$cache[$cache_key] = array(
 					'expires' => time() + WP_LINKEDIN_CACHETIMEOUT,
 					'profile' => $profile);
-			update_option('wp-linkedin_cache', $cache);
+			$this->set_cache('wp-linkedin_cache', $cache);
 		}
 
 		// But if we cannot fetch one, let's return the outdated one if any.
 		return $profile;
 	}
 
-	function fetch_profile($options='id', $lang='') {
+	protected function fetch_profile($options='id', $lang='') {
 		$access_token = $this->get_access_token();
 
 		if ($access_token) {
@@ -166,7 +176,7 @@ class WPLinkedInOAuth {
 		return false;
 	}
 
-	function get_network_updates($count=50, $only_self=true) {
+	public function get_network_updates($count=50, $only_self=true) {
 		$access_token = $this->get_access_token();
 
 		if ($access_token) {
@@ -209,8 +219,8 @@ class WPLinkedInOAuth {
 		return false;
 	}
 
-	function send_invalid_token_email() {
-		if (LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY && !get_option('wp-linkedin_invalid_token_mail_sent', false)) {
+	protected function send_invalid_token_email() {
+		if (LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY && !$this->get_cache('wp-linkedin_invalid_token_mail_sent')) {
 			$blog_name = get_option('blogname');
 			$admin_email = get_option('admin_email');
 			$header = array("From: $blog_name <$admin_email>");
@@ -220,11 +230,11 @@ class WPLinkedInOAuth {
 			$message = sprintf($message, $this->get_authorization_url());
 
 			$sent = wp_mail($admin_email, $subject, $message, $header);
-			update_option('wp-linkedin_invalid_token_mail_sent', $sent);
+			$this->set_cache('wp-linkedin_invalid_token_mail_sent', $sent);
 		}
 	}
 
-	function urlencode($params) {
+	protected function urlencode($params) {
 		if (is_array($params)) {
 			$p = array();
 			foreach($params as $k => $v) {
@@ -235,4 +245,8 @@ class WPLinkedInOAuth {
 			return urlencode($params);
 		}
 	}
+}
+
+function wp_linkedin_connection() {
+	return apply_filters('linkedin_connection', new WPLinkedInConnection());
 }

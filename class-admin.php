@@ -4,7 +4,7 @@ class WPLinkedInAdmin {
 
 	function WPLinkedInAdmin($plugin) {
 		$this->plugin = $plugin;
-		$this->oauth = new WPLinkedInOAuth();
+		$this->linkedin = wp_linkedin_connection();
 		$this->add_settings();
 		add_action('admin_notices', array(&$this, 'admin_notices'));
 	}
@@ -21,15 +21,15 @@ class WPLinkedInAdmin {
 	}
 
 	function admin_notices() {
-		if ($this->oauth->get_last_error() || !$this->oauth->is_access_token_valid()) { ?>
+		if ($this->linkedin->get_last_error() || !$this->linkedin->is_access_token_valid()) { ?>
 			<div class="error" style="font-weight:bold;"><ul>
-				<?php if ($this->oauth->get_last_error()): ?>
-		        <li><?php echo __('An error has occured while retrieving the profile:', 'wp-linkedin'); ?> <?php echo $this->oauth->get_last_error(); ?></li>
+				<?php if ($this->linkedin->get_last_error()): ?>
+		        <li><?php echo __('An error has occured while retrieving the profile:', 'wp-linkedin'); ?> <?php echo $this->linkedin->get_last_error(); ?></li>
 				<?php endif; ?>
 
-				<?php if (!$this->oauth->is_access_token_valid()):
+				<?php if (!$this->linkedin->is_access_token_valid()):
 				$format = __('Your LinkedIn access token is invalid or has expired, please <a href="%s">click here</a> to get a new one.', 'wp-linkedin');
-				$notice = sprintf($format, $this->oauth->get_authorization_url()); ?>
+				$notice = sprintf($format, $this->linkedin->get_authorization_url()); ?>
 		        <li><?php echo $notice; ?></li>
 				<?php endif ?>
 
@@ -72,11 +72,11 @@ class WPLinkedInAdmin {
 
 	function options_page() {
 		if (isset($_GET['code']) && isset($_GET['state'])) {
-			if ($this->oauth->check_state_token($_GET['state'])) {
-				$retcode = $this->oauth->set_access_token($_GET['code']);
+			if ($this->linkedin->check_state_token($_GET['state'])) {
+				$retcode = $this->linkedin->set_access_token($_GET['code']);
 
 				if (!is_wp_error($retcode)) {
-					$this->oauth->clear_cache();
+					$this->linkedin->clear_cache();
 					$this->redirect('oauth_success');
 				} else {
 					$this->redirect('oauth_error', $retcode->get_error_message());
@@ -85,7 +85,7 @@ class WPLinkedInAdmin {
 				$this->redirect('oauth_error', __('Invalid state code'));
 			}
 		} elseif (isset($_GET['clear_cache'])) {
-			$this->oauth->clear_cache();
+			$this->linkedin->clear_cache();
 			$this->redirect('cache_cleared');
 		} ?>
 <div class="wrap">
@@ -159,7 +159,7 @@ class WPLinkedInAdmin {
 			<h3 style="cursor:default;"><span><?php _e('Administration', 'wp-linkedin'); ?></span></h3>
 			<div class="inside">
 				<p>
-					<span class="submit"><a href="<?php echo $this->oauth->get_authorization_url(); ?>" class="button button-primary"><?php _e('Regenerate LinkedIn Access Token', 'wp-linkedin'); ?></a></span>
+					<span class="submit"><a href="<?php echo $this->linkedin->get_authorization_url(); ?>" class="button button-primary"><?php _e('Regenerate LinkedIn Access Token', 'wp-linkedin'); ?></a></span>
 					<span class="submit"><a href="<?php echo site_url('/wp-admin/options-general.php?page=wp-linkedin&clear_cache'); ?>" class="button button-primary"><?php _e('Clear the Cache', 'wp-linkedin'); ?></a></span>
 				</p>
 			</div> <!-- .inside -->

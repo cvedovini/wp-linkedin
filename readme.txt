@@ -92,6 +92,7 @@ template.
 There can be several reasons to that problem, check the following:
 
 - Make sure your server's time is correct.
+- If you are using an external cache system make sure it's properly configured.
 - Try to uncheck the `Verify SSL peer` option on the plugin's settings page.
 
 = Since I updated to v1.6 the recommendation slider does not work anymore =
@@ -120,7 +121,12 @@ profile.
 
 = Version 1.6.1 =
 - Added links for volunteer translators.
-- Added screenshots
+- Added screenshots.
+- Added language proficiencies to the profile template,
+use `languages:(language,proficiency)` in the list of fields to activate
+it.
+- Dutch translations updated.
+- Changed the way extensions can hook to the plugin.
 
 = Version 1.6 =
 - Updated Dutch translations.

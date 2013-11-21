@@ -32,6 +32,7 @@ define('LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY', get_option('wp-linkedin_sendmail_on_
 define('LINKEDIN_SSL_VERIFYPEER', get_option('wp-linkedin_ssl_verifypeer', true));
 define('LINKEDIN_ADD_CARD_TO_CONTENT', get_option('wp-linkedin_add_card_to_content', false));
 
+include 'class-linkedin-connection.php';
 include 'class-recommendations-widget.php';
 include 'class-card-widget.php';
 include 'class-profile-widget.php';
@@ -85,7 +86,6 @@ class WPLinkedInPlugin {
 	}
 
 	function admin_init() {
-		require_once 'class-linkedin-oauth.php';
 		require_once 'class-admin.php';
 		$this->admin = new WPLinkedInAdmin($this);
 	}
@@ -107,16 +107,14 @@ function wp_linkedin_error($message) {
 
 
 function wp_linkedin_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) {
-	require_once 'class-linkedin-oauth.php';
-	$oauth = new WPLinkedInOAuth();
-	return $oauth->get_profile($options, $lang);
+	$linkedin = wp_linkedin_connection();
+	return $linkedin->get_profile($options, $lang);
 }
 
 
 function wp_linkedin_get_network_updates($count=50, $only_self=true) {
-	require_once 'class-linkedin-oauth.php';
-	$oauth = new WPLinkedInOAuth();
-	return $oauth->get_network_updates($count, $only_self);
+	$linkedin = wp_linkedin_connection();
+	return $linkedin->get_network_updates($count, $only_self);
 }
 
 
