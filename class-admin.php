@@ -10,8 +10,19 @@ class WPLinkedInAdmin {
 	}
 
 	function add_settings() {
-		add_submenu_page('options-general.php', __('LinkedIn Options', 'wp-linkedin'), __('LinkedIn', 'wp-linkedin'), 'manage_options', 'wp-linkedin', array(&$this, 'options_page'));
 		add_filter('plugin_action_links_wp-linkedin/wp-linkedin.php', array(&$this, 'add_settings_link'));
+		add_submenu_page('options-general.php', __('LinkedIn Options', 'wp-linkedin'), __('LinkedIn', 'wp-linkedin'), 'manage_options', 'wp-linkedin', array(&$this, 'options_page'));
+		add_settings_section('default', '', '', 'wp-linkedin');
+		$this->add_settings_field('wp-linkedin_fields', __('Profile fields', 'wp-linkedin'), 'add_settings_field_fields');
+		$this->add_settings_field('wp-linkedin_profilelanguage', __('Profile language', 'wp-linkedin'), 'add_settings_field_profilelanguage');
+		$this->add_settings_field('wp-linkedin_sendmail_on_token_expiry', __('Send mail on token expiry', 'wp-linkedin'), 'add_settings_field_sendmail_on_token_expiry');
+		$this->add_settings_field('wp-linkedin_ssl_verifypeer', __('Verify SSL peer', 'wp-linkedin'), 'add_settings_field_ssl_verifypeer');
+		$this->add_settings_field('wp-linkedin_add_card_to_content', __('LinkedIn card in posts', 'wp-linkedin'), 'add_settings_field_add_card_to_content');
+	}
+
+	function add_settings_field($id, $title, $callback) {
+		register_setting('wp-linkedin', $id);
+		add_settings_field($id, $title, array(&$this, $callback), 'wp-linkedin');
 	}
 
 	function add_settings_link($links) {
@@ -19,6 +30,51 @@ class WPLinkedInAdmin {
 		$links[] = '<a href="' . $url . '">' . __('Settings') . '</a>';
 		return $links;
 	}
+
+	function add_settings_field_fields() { ?>
+		<textarea id="wp-linkedin_fields" name="wp-linkedin_fields" rows="5"
+		cols="50"><?php echo get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAULT); ?></textarea>
+		<p><em><?php _e('Comma separated list of fields to show on the profile.', 'wp-linkedin'); ?><br/>
+		<?php _e('You can overide this setting in the shortcode with the `fields` attribute.', 'wp-linkedin'); ?><br/>
+		<?php _e('See the <a href="https://developers.linkedin.com/documents/profile-fields" target="_blank">LinkedIn API documentation</a> for the complete list of fields.', 'wp-linkedin'); ?></em></p>
+	<?php }
+
+	function add_settings_field_profilelanguage() { ?>
+		<select id="wp-linkedin_profilelanguage" name="wp-linkedin_profilelanguage">
+		<?php
+			$lang = get_option('wp-linkedin_profilelanguage');
+			$languages = $this->getLanguages();
+
+			echo '<option value="" ' . selected($lang, '', false) . '>' . __('Default', 'wp-linkedin') . '</option>';
+
+			foreach ($languages as $k => $v) {
+				echo '<option value="' . $k . '" ' . selected($lang, $k, false) . '>' . $v . '</option>';
+			}
+		?>
+		</select>
+		<p><em><?php _e('The language of the profile to display if you have several profiles in different languages.', 'wp-linkedin'); ?><br/>
+		<?php _e('You can overide this setting in the shortcode with the `lang` attribute.', 'wp-linkedin'); ?><br/>
+		<?php _e('See "Selecting the profile language" <a href="https://developer.linkedin.com/documents/profile-api" target="_blank">LinkedIn API documentation</a> for details.', 'wp-linkedin'); ?></em></p>
+	<?php }
+
+	function add_settings_field_sendmail_on_token_expiry() { ?>
+		<label><input type="checkbox" name="wp-linkedin_sendmail_on_token_expiry"
+			value="1" <?php checked(LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY); ?> />&nbsp;
+			<?php _e('Check this option if you want the plugin to send you an email when the token has expired or is invalid.', 'wp-linkedin') ?></label>
+	<?php }
+
+	function add_settings_field_ssl_verifypeer() { ?>
+		<label><input type="checkbox" name="wp-linkedin_ssl_verifypeer"
+			value="1" <?php checked(LINKEDIN_SSL_VERIFYPEER); ?> />&nbsp;
+			<?php _e('Uncheck this option only if you have SSL certificate issues on your server.', 'wp-linkedin') ?></label>
+	<?php }
+
+	function add_settings_field_add_card_to_content() { ?>
+		<label><input type="checkbox" name="wp-linkedin_add_card_to_content"
+			value="1" <?php checked(LINKEDIN_ADD_CARD_TO_CONTENT); ?> />&nbsp;
+			<?php _e('Check this option to display your LinkedIn card after each post.', 'wp-linkedin') ?></label>
+	<?php }
+
 
 	function admin_notices() {
 		if ($this->linkedin->get_last_error() || !$this->linkedin->is_access_token_valid()) { ?>
@@ -95,64 +151,11 @@ class WPLinkedInAdmin {
 		<div class="postbox">
 			<h3 style="cursor:default;"><span><?php _e('Options', 'wp-linkedin'); ?></span></h3>
 			<div class="inside">
-				<form method="post" action="options.php"><?php wp_nonce_field('update-options'); ?>
-				<input type="hidden" name="action" value="update" />
-				<input type="hidden" name="page_options" value="wp-linkedin_fields,wp-linkedin_profilelanguage,wp-linkedin_ssl_verifypeer,wp-linkedin_sendmail_on_token_expiry,wp-linkedin_add_card_to_content" />
-				<table class="form-table">
-					<tr valign="top">
-						<th scope="row"><?php _e('Profile fields', 'wp-linkedin'); ?></th>
-						<td><textarea id="wp-linkedin_fields" name="wp-linkedin_fields" rows="5"
-								cols="50"><?php echo get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAULT); ?></textarea>
-							<p><em><?php _e('Comma separated list of fields to show on the profile.', 'wp-linkedin'); ?><br/>
-							<?php _e('You can overide this setting in the shortcode with the `fields` attribute.', 'wp-linkedin'); ?><br/>
-							<?php _e('See the <a href="https://developers.linkedin.com/documents/profile-fields" target="_blank">LinkedIn API documentation</a> for the complete list of fields.', 'wp-linkedin'); ?></em></p>
-						</td>
-					</tr>
-					<tr valign="top">
-						<th scope="row"><?php _e('Profile language', 'wp-linkedin'); ?></th>
-						<td><select id="wp-linkedin_profilelanguage" name="wp-linkedin_profilelanguage">
-							<?php
-								$lang = get_option('wp-linkedin_profilelanguage');
-								$languages = $this->getLanguages();
-
-								foreach ($languages as $k => $v) {
-									$selected = ($k == $lang) ? ' selected=""' : '';
-									echo '<option value="'.$k.'"'.$selected.'>'.__($v, 'wp-linkedin').'</option>';
-								}
-							?>
-							</select>
-							<p><em><?php _e('The language of the profile to display if you have several profiles in different languages.', 'wp-linkedin'); ?><br/>
-							<?php _e('You can overide this setting in the shortcode with the `lang` attribute.', 'wp-linkedin'); ?><br/>
-							<?php _e('See "Selecting the profile language" <a href="https://developer.linkedin.com/documents/profile-api" target="_blank">LinkedIn API documentation</a> for details.', 'wp-linkedin'); ?></em></p>
-						</td>
-					</tr>
-					<tr valign="top">
-						<th scope="row"><?php _e('Send mail on token expiry', 'wp-linkedin'); ?>:</th>
-						<td>
-							<label><input type="checkbox" name="wp-linkedin_sendmail_on_token_expiry"
-								value="1" <?php checked(LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY); ?> />&nbsp;
-								<?php _e('Check this option if you want the plugin to send you an email when the token has expired or is invalid.', 'wp-linkedin') ?></label>
-						</td>
-					</tr>
-					<tr valign="top">
-						<th scope="row"><?php _e('Verify SSL peer', 'wp-linkedin'); ?>:</th>
-						<td>
-							<label><input type="checkbox" name="wp-linkedin_ssl_verifypeer"
-								value="1" <?php checked(LINKEDIN_SSL_VERIFYPEER); ?> />&nbsp;
-								<?php _e('Uncheck this option only if you have SSL certificate issues on your server.', 'wp-linkedin') ?></label>
-						</td>
-					</tr>
-					<tr valign="top">
-						<th scope="row"><?php _e('LinkedIn card in posts', 'wp-linkedin'); ?>:</th>
-						<td>
-							<label><input type="checkbox" name="wp-linkedin_add_card_to_content"
-								value="1" <?php checked(LINKEDIN_ADD_CARD_TO_CONTENT); ?> />&nbsp;
-								<?php _e('Check this option to display your LinkedIn card after each post.', 'wp-linkedin') ?></label>
-						</td>
-					</tr>
-				</table>
-				<?php submit_button(); ?>
-				</form>
+				<form method="POST" action="options.php"><?php
+				settings_fields('wp-linkedin');
+				do_settings_sections('wp-linkedin');
+				submit_button();
+				?></form>
 			</div> <!-- .inside -->
 		</div> <!-- .postbox -->
 		<div class="postbox">
@@ -195,8 +198,10 @@ class WPLinkedInAdmin {
 	}
 
 	function getLanguages() {
-		return array(
-				'' => __('Default', 'wp-linkedin'),
+		static $languages;
+
+		if (!isset($languages)) {
+			$languages = array(
 				'in-ID' => __('Bahasa Indonesia', 'wp-linkedin'),
 				'cs-CZ' => __('Czech', 'wp-linkedin'),
 				'da-DK' => __('Danish', 'wp-linkedin'),
@@ -241,6 +246,10 @@ class WPLinkedInAdmin {
 				'uk-UA' => __('Ukrainian', 'wp-linkedin'),
 				'vi-VN' => __('Vietnamese', 'wp-linkedin'),
 				'xx-XX' => __('Other', 'wp-linkedin')
-		);
+			);
+			asort($languages);
+		}
+
+		return $languages;
 	}
 }

@@ -72,7 +72,7 @@ No, it doesn't.
 
 The volunteer experiences section is already in the template but is not
 activated by default.To activate it you must add the relevant profile fields to
-activate it, the minimum is `volunteer`. To get the full data then
+activate it, the minimum is `volunteer`. To get the full data
 use `volunteer:(volunteer-experiences:(organization,cause,role,start-date,
 end-date,description))`.
 
