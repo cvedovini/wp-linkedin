@@ -54,8 +54,7 @@ class WPLinkedInPlugin {
 
 		if (!is_admin()) {
 			wp_register_script('jquery.tools', 'http://cdn.jquerytools.org/1.2.7/all/jquery.tools.min.js', array('jquery'), '1.2.7', true);
-			wp_register_script('jquery-dimension-etc', plugins_url('jquery.dimensions.etc.min.js', __FILE__), array('jquery'), '1.0.0', true);
-			wp_register_script('responsive-scrollable', plugins_url('responsive-scrollable.js', __FILE__), array('jquery.tools', 'jquery-dimension-etc'), '1.0.0', true);
+			wp_register_script('responsive-scrollable', plugins_url('responsive-scrollable.js', __FILE__), array('jquery.tools'), '1.0.0', true);
 			wp_register_style('wp-linkedin', plugins_url('style.css', __FILE__), false, '1.5.2');
 			add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
 

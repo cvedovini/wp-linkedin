@@ -127,6 +127,7 @@ use `languages:(language,proficiency)` in the list of fields to activate
 it.
 - Dutch translations updated.
 - Changed the way extensions can hook to the plugin.
+- Removed the `jquery.dimensions.etc` plugin.
 
 = Version 1.6 =
 - Updated Dutch translations.

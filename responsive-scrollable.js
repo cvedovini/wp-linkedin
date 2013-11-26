@@ -6,7 +6,7 @@
 			if (width == 'auto') width = $scrollable.width();
 			$('.items blockquote', $scrollable).each(function() {
 				var $slide = $(this);
-				if (width !== 'css') $slide.outerWidth(width, true);
+				if (width !== 'css') $slide.outerWidth(width);
 				h = Math.max(h, $slide.height());
 			});
 			$scrollable.height(h);
