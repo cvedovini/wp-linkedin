@@ -36,6 +36,8 @@
 
 .linkedin .scrollable .items blockquote {
 	float: left;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .linkedin .profile .section {
