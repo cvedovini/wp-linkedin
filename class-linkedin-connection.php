@@ -53,7 +53,7 @@ class WPLinkedInConnection {
 
 	public function set_access_token($code) {
 		$this->set_last_error();
-		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?' . $this->urlencode(array(
+		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?' . http_build_query(array(
 			'grant_type' => 'authorization_code',
 			'code' => $code,
 			'redirect_uri' => site_url('/wp-admin/options-general.php?page=wp-linkedin'),
@@ -91,7 +91,7 @@ class WPLinkedInConnection {
 	}
 
 	public function get_authorization_url() {
-		return 'https://www.linkedin.com/uas/oauth2/authorization?' . $this->urlencode(array(
+		return 'https://www.linkedin.com/uas/oauth2/authorization?' . http_build_query(array(
 				'response_type' => 'code',
 				'client_id' => $this->app_key,
 				'scope' => 'r_fullprofile r_network rw_nus',
@@ -137,7 +137,7 @@ class WPLinkedInConnection {
 		$access_token = $this->get_access_token();
 
 		if ($access_token) {
-			$url = "https://api.linkedin.com/v1/people/~:($options)?" . $this->urlencode(array('oauth2_access_token' => $access_token));
+			$url = "https://api.linkedin.com/v1/people/~:($options)?" . http_build_query(array('oauth2_access_token' => $access_token));
 			$headers = array(
 					'Content-Type' => 'text/plain; charset=UTF-8',
 					'x-li-format' => 'json');
@@ -183,7 +183,7 @@ class WPLinkedInConnection {
 			$params = array('oauth2_access_token' => $access_token, 'count' => $count);
 			if ($only_self) $params['scope'] = 'self';
 
-			$url = 'https://api.linkedin.com/v1/people/~/network/updates?' . $this->urlencode($params);
+			$url = 'https://api.linkedin.com/v1/people/~/network/updates?' . http_build_query($params);
 
 			$headers = array(
 					'Content-Type' => 'text/plain; charset=UTF-8',
@@ -234,17 +234,6 @@ class WPLinkedInConnection {
 		}
 	}
 
-	protected function urlencode($params) {
-		if (is_array($params)) {
-			$p = array();
-			foreach($params as $k => $v) {
-				$p[] = $k . '=' . urlencode($v);
-			}
-			return implode('&', $p);
-		} else {
-			return urlencode($params);
-		}
-	}
 }
 
 function wp_linkedin_connection() {
