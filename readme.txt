@@ -128,6 +128,7 @@ it.
 - Dutch translations updated.
 - Changed the way extensions can hook to the plugin.
 - Removed the `jquery.dimensions.etc` plugin.
+- Added Italian translations.
 
 = Version 1.6 =
 - Updated Dutch translations.
@@ -279,4 +280,6 @@ Following is the list of people and projects who helped me with this plugin,
 many thanks to them :)
 
 - [Jan Spoelstra](http://www.linkedin.com/in/janspoelstra): Contributed the
-Dutch translations
+Dutch translations.
+- [Nathalie Aynié](http://nathalieaynie.com/): Contributed the Italian
+translations.
