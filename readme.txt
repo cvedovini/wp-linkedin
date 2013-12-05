@@ -123,7 +123,7 @@ profile.
 
 == Changelog ==
 
-= Version 1.6.1 =
+= Version 1.7 =
 - Added links for volunteer translators.
 - Added screenshots.
 - Added language proficiencies to the profile template,
@@ -133,6 +133,7 @@ it.
 - Changed the way extensions can hook to the plugin.
 - Removed the `jquery.dimensions.etc` plugin.
 - Added Italian translations.
+- Added Brazilian Portuguese translations.
 
 = Version 1.6 =
 - Updated Dutch translations.
