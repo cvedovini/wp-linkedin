@@ -138,7 +138,7 @@ class WPLinkedInAdmin {
 					$this->redirect('oauth_error', $retcode->get_error_message());
 				}
 			} else {
-				$this->redirect('oauth_error', __('Invalid state code'));
+				$this->redirect('oauth_error', __('Invalid state', 'wp-linkedin'));
 			}
 		} elseif (isset($_GET['clear_cache'])) {
 			$this->linkedin->clear_cache();

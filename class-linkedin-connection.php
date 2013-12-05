@@ -51,12 +51,16 @@ class WPLinkedInConnection {
 		$this->delete_cache('wp-linkedin_oauthtoken');
 	}
 
+	public function get_token_process_url() {
+		return site_url('/wp-admin/options-general.php?page=wp-linkedin');
+	}
+
 	public function set_access_token($code) {
 		$this->set_last_error();
 		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?' . http_build_query(array(
 			'grant_type' => 'authorization_code',
 			'code' => $code,
-			'redirect_uri' => site_url('/wp-admin/options-general.php?page=wp-linkedin'),
+			'redirect_uri' => $this->get_token_process_url(),
 			'client_id' => $this->app_key,
 			'client_secret' => $this->app_secret));
 
@@ -96,7 +100,7 @@ class WPLinkedInConnection {
 				'client_id' => $this->app_key,
 				'scope' => 'r_fullprofile r_network rw_nus',
 				'state' => $this->get_state_token(),
-				'redirect_uri' => site_url('/wp-admin/options-general.php?page=wp-linkedin')));
+				'redirect_uri' => $this->get_token_process_url()));
 	}
 
 	public function clear_cache() {

@@ -46,6 +46,10 @@ slider to the page as been moved to the `recommendations.php` template. If you
 customized that template you must add the following line to the top of your
 custom template: `wp_enqueue_script('responsive-scrollable');`
 
+We welcome volunteers to translate that plugin into more languages. If you wish
+to help then contact [@cvedovini](https://twitter.com/cvedovini) on Twitter or
+use that [contact form](http://vedovini.net/contact/).
+
 
 == Installation ==
 
@@ -283,3 +287,5 @@ many thanks to them :)
 Dutch translations.
 - [Nathalie Aynié](http://nathalieaynie.com/): Contributed the Italian
 translations.
+- [Graciela Morel Centurion](ar.linkedin.com/pub/graciela-morel-centurion/4/61b/b9):
+Contributed the Brazilian Portuguese translations.
