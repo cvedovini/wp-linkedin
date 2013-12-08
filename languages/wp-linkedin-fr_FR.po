@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-11-16 07:17:34+00:00\n"
-"PO-Revision-Date: 2013-11-16 14:21+0700\n"
+"POT-Creation-Date: 2013-12-08 17:51:55+00:00\n"
+"PO-Revision-Date: 2013-12-09 00:53+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -15,72 +15,50 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: .\n"
 
-#: class-admin.php:13 class-admin.php:93
+#: class-admin.php:14 class-admin.php:149
 msgid "LinkedIn Options"
 msgstr "Options LinkedIn"
 
-#: class-admin.php:13
+#: class-admin.php:14
 msgid "LinkedIn"
 msgstr "LinkedIn"
 
-#: class-admin.php:19
-msgid "Settings"
-msgstr "Réglages"
-
-#: class-admin.php:27
-msgid "An error has occured while retrieving the profile:"
-msgstr "Une erreur est survenue lors de la récupération du profile:"
-
-#: class-admin.php:31
-msgid ""
-"Your LinkedIn access token is invalid or has expired, please <a href=\"%s"
-"\">click here</a> to get a new one."
-msgstr ""
-"Votre jeton d'accès à LinkedIn est non valid ou a expiré, merci de <a href="
-"\"%s\">cliquer ici</a> afin d'en générer un nouveau."
-
-#: class-admin.php:41
-msgid "The access token has been successfully updated."
-msgstr "Le jeton d'accès a été mis à jour avec succès."
-
-#: class-admin.php:47
-msgid "An error has occured while updating the access token, please try again."
-msgstr ""
-"Une erreur est survenue lors de la mise à jour du jeton d'accès, merci "
-"d'essayer à nouveau."
-
-#: class-admin.php:48
-msgid "Error message: "
-msgstr "Message d'erreur:"
-
-#: class-admin.php:52
-msgid "The cache has been cleared."
-msgstr "Le cache a été vidé."
-
-#: class-admin.php:85
-msgid "Invalid state code"
-msgstr "Etat non valide"
-
-#: class-admin.php:96
-msgid "Options"
-msgstr "Options"
-
-#: class-admin.php:103
+#: class-admin.php:16
 msgid "Profile fields"
 msgstr "Champs du profile"
 
-#: class-admin.php:106
+#: class-admin.php:17
+msgid "Profile language"
+msgstr "Langage du profile"
+
+#: class-admin.php:18
+msgid "Send mail on token expiry"
+msgstr "Envoyer un e-mail à l'expiration du token"
+
+#: class-admin.php:19
+msgid "Verify SSL peer"
+msgstr "Vérifier le pair SSL"
+
+#: class-admin.php:20
+msgid "LinkedIn card in posts"
+msgstr "Carte de visite dans les articles"
+
+#: class-admin.php:30
+msgid "Settings"
+msgstr "Réglages"
+
+#: class-admin.php:37
 msgid "Comma separated list of fields to show on the profile."
 msgstr "Liste des champs à afficher dans le profile, séparés par des virgules."
 
-#: class-admin.php:107
+#: class-admin.php:38
 msgid ""
 "You can overide this setting in the shortcode with the `fields` attribute."
 msgstr ""
 "Vous pouvez surcharger ce réglage dans le shortcode en utilisant l'attribut "
 "`fields`"
 
-#: class-admin.php:108
+#: class-admin.php:39
 msgid ""
 "See the <a href=\"https://developers.linkedin.com/documents/profile-fields\" "
 "target=\"_blank\">LinkedIn API documentation</a> for the complete list of "
@@ -90,11 +68,11 @@ msgstr ""
 "target=\"_blank\">la documentation de l'API LinkedIn</a> pour la liste "
 "exhaustive des champs."
 
-#: class-admin.php:112
-msgid "Profile language"
-msgstr "Langage du profile"
+#: class-admin.php:48
+msgid "Default"
+msgstr "Langue par défaut"
 
-#: class-admin.php:124
+#: class-admin.php:55
 msgid ""
 "The language of the profile to display if you have several profiles in "
 "different languages."
@@ -102,14 +80,14 @@ msgstr ""
 "Le langage à afficher si vous avez plusieurs profiles dans différents "
 "langages."
 
-#: class-admin.php:125
+#: class-admin.php:56
 msgid ""
 "You can overide this setting in the shortcode with the `lang` attribute."
 msgstr ""
 "Vous pouvez surcharger ce réglage dans le shortcode en utilisant l'attribut "
 "`lang`"
 
-#: class-admin.php:126
+#: class-admin.php:57
 msgid ""
 "See \"Selecting the profile language\" <a href=\"https://developer.linkedin."
 "com/documents/profile-api\" target=\"_blank\">LinkedIn API documentation</a> "
@@ -119,11 +97,7 @@ msgstr ""
 "linkedin.com/documents/profile-api\" target=\"_blank\">la documentation de "
 "l'API LinkedIn</a> pour plus d'information."
 
-#: class-admin.php:130
-msgid "Send mail on token expiry"
-msgstr "Envoyer un e-mail à l'expiration du token"
-
-#: class-admin.php:134
+#: class-admin.php:63
 msgid ""
 "Check this option if you want the plugin to send you an email when the token "
 "has expired or is invalid."
@@ -131,48 +105,79 @@ msgstr ""
 "Cochez cette option si vous voulez que l'extension vous envoie un e-mail "
 "lorsque le jeton a expiré ou n'est pas valide."
 
-#: class-admin.php:138
-msgid "Verify SSL peer"
-msgstr "Vérifier le pair SSL"
-
-#: class-admin.php:142
+#: class-admin.php:69
 msgid ""
 "Uncheck this option only if you have SSL certificate issues on your server."
 msgstr ""
 "Décocher cette option si vous avez des problèmes de certificat SSL sur votre "
 "serveur."
 
-#: class-admin.php:146
-msgid "LinkedIn card in posts"
-msgstr "Carte de visite dans les articles"
-
-#: class-admin.php:150
+#: class-admin.php:75
 msgid "Check this option to display your LinkedIn card after each post."
 msgstr ""
 "Cocher cette option pour afficher votre carte de visite LinkedIn après le "
 "contenu de chaque article."
 
-#: class-admin.php:159
+#: class-admin.php:83
+msgid "An error has occured while retrieving the profile:"
+msgstr "Une erreur est survenue lors de la récupération du profile:"
+
+#: class-admin.php:87
+msgid ""
+"Your LinkedIn access token is invalid or has expired, please <a href=\"%s"
+"\">click here</a> to get a new one."
+msgstr ""
+"Votre jeton d'accès à LinkedIn est non valid ou a expiré, merci de <a href="
+"\"%s\">cliquer ici</a> afin d'en générer un nouveau."
+
+#: class-admin.php:97
+msgid "The access token has been successfully updated."
+msgstr "Le jeton d'accès a été mis à jour avec succès."
+
+#: class-admin.php:103
+msgid "An error has occured while updating the access token, please try again."
+msgstr ""
+"Une erreur est survenue lors de la mise à jour du jeton d'accès, merci "
+"d'essayer à nouveau."
+
+#: class-admin.php:104
+msgid "Error message: "
+msgstr "Message d'erreur:"
+
+#: class-admin.php:108
+msgid "The cache has been cleared."
+msgstr "Le cache a été vidé."
+
+#: class-admin.php:141
+#, fuzzy
+msgid "Invalid state"
+msgstr "Etat non valide"
+
+#: class-admin.php:152
+msgid "Options"
+msgstr "Options"
+
+#: class-admin.php:162
 msgid "Administration"
 msgstr "Administration"
 
-#: class-admin.php:162
+#: class-admin.php:165
 msgid "Regenerate LinkedIn Access Token"
 msgstr "Régénérer le jeton d'accès à LinkedIn"
 
-#: class-admin.php:163
+#: class-admin.php:166
 msgid "Clear the Cache"
 msgstr "Vider le cache"
 
-#: class-admin.php:171
+#: class-admin.php:174
 msgid "Do you like this Plugin?"
 msgstr "Appréciez-vous cette extension?"
 
-#: class-admin.php:173
+#: class-admin.php:176
 msgid "Please consider a donation."
 msgstr "Merci de penser à une donation."
 
-#: class-admin.php:183
+#: class-admin.php:186
 msgid ""
 "We also need volunteers to translate that plugin into more languages.\n"
 "\t\t\t\t\t\tIf you wish to help then contact <a href=\"https://twitter.com/"
@@ -186,183 +191,179 @@ msgstr ""
 "utilisez ce <a href=\"http://vedovini.net/contact/\">formulaire de contact</"
 "a>."
 
-#: class-admin.php:199
-msgid "Default"
-msgstr "Langue par défaut"
-
-#: class-admin.php:200
+#: class-admin.php:205
 msgid "Bahasa Indonesia"
 msgstr "Indonésien"
 
-#: class-admin.php:201
+#: class-admin.php:206
 msgid "Czech"
 msgstr "Tchèque"
 
-#: class-admin.php:202
+#: class-admin.php:207
 msgid "Danish"
 msgstr "Danois"
 
-#: class-admin.php:203
+#: class-admin.php:208
 msgid "Dutch"
 msgstr "Néerlandais"
 
-#: class-admin.php:204
+#: class-admin.php:209
 msgid "French"
 msgstr "Français"
 
-#: class-admin.php:205
+#: class-admin.php:210
 msgid "German"
 msgstr "Allemand"
 
-#: class-admin.php:206
+#: class-admin.php:211
 msgid "Italian"
 msgstr "Italien"
 
-#: class-admin.php:207
+#: class-admin.php:212
 msgid "Japanese"
 msgstr "Japonais"
 
-#: class-admin.php:208
+#: class-admin.php:213
 msgid "Korean"
 msgstr "Coréen"
 
-#: class-admin.php:209
+#: class-admin.php:214
 msgid "Malay"
 msgstr "Malais"
 
-#: class-admin.php:210
+#: class-admin.php:215
 msgid "Norwegian"
 msgstr "Norvégien"
 
-#: class-admin.php:211
+#: class-admin.php:216
 msgid "Polish"
 msgstr "Polonais"
 
-#: class-admin.php:212
+#: class-admin.php:217
 msgid "Portuguese"
 msgstr "Portugais"
 
-#: class-admin.php:213
+#: class-admin.php:218
 msgid "Romanian"
 msgstr "Roumain"
 
-#: class-admin.php:214
+#: class-admin.php:219
 msgid "Russian"
 msgstr "Russe"
 
-#: class-admin.php:215
+#: class-admin.php:220
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: class-admin.php:216
+#: class-admin.php:221
 msgid "Swedish"
 msgstr "Suédois"
 
-#: class-admin.php:217
+#: class-admin.php:222
 msgid "Turkish"
 msgstr "Turc"
 
-#: class-admin.php:218
+#: class-admin.php:223
 msgid "Albanian"
 msgstr "Albanais"
 
-#: class-admin.php:219
+#: class-admin.php:224
 msgid "Armenian"
 msgstr "Arménien"
 
-#: class-admin.php:220
+#: class-admin.php:225
 msgid "Bosnian"
 msgstr "Bosniaque"
 
-#: class-admin.php:221
+#: class-admin.php:226
 msgid "Burmese (Myanmar)"
 msgstr "Birman"
 
-#: class-admin.php:222
+#: class-admin.php:227
 msgid "Chinese (Simplified)"
 msgstr "Chinois (Simplifié)"
 
-#: class-admin.php:223
+#: class-admin.php:228
 msgid "Chinese (Traditional)"
 msgstr "Chinois (Traditionel)"
 
-#: class-admin.php:224
+#: class-admin.php:229
 msgid "Croatian"
 msgstr "Croate"
 
-#: class-admin.php:225
+#: class-admin.php:230
 msgid "Finnish"
 msgstr "Finnois"
 
-#: class-admin.php:226
+#: class-admin.php:231
 msgid "Greek"
 msgstr "Grecque"
 
-#: class-admin.php:227
+#: class-admin.php:232
 msgid "Hindi"
 msgstr "Hindou"
 
-#: class-admin.php:228
+#: class-admin.php:233
 msgid "Hungarian"
 msgstr "Hongrois"
 
-#: class-admin.php:229
+#: class-admin.php:234
 msgid "Icelandic"
 msgstr "Islandais"
 
-#: class-admin.php:230
+#: class-admin.php:235
 msgid "Javanese"
 msgstr "Javanais"
 
-#: class-admin.php:231
+#: class-admin.php:236
 msgid "Kannada"
 msgstr "Kannada"
 
-#: class-admin.php:232
+#: class-admin.php:237
 msgid "Latvian"
 msgstr "Letton"
 
-#: class-admin.php:233
+#: class-admin.php:238
 msgid "Lithuanian"
 msgstr "Lituanien"
 
-#: class-admin.php:234
+#: class-admin.php:239
 msgid "Malayalam"
 msgstr "Malayalam"
 
-#: class-admin.php:235
+#: class-admin.php:240
 msgid "Serbian"
 msgstr "Serbe"
 
-#: class-admin.php:236
+#: class-admin.php:241
 msgid "Slovak"
 msgstr "Slovaque"
 
-#: class-admin.php:237
+#: class-admin.php:242
 msgid "Tagalog"
 msgstr "Tagalog"
 
-#: class-admin.php:238
+#: class-admin.php:243
 msgid "Tamil"
 msgstr "Tamoul"
 
-#: class-admin.php:239
+#: class-admin.php:244
 msgid "Telugu"
 msgstr "Télougou"
 
-#: class-admin.php:240
+#: class-admin.php:245
 msgid "Thai"
 msgstr "Thaïlandais"
 
-#: class-admin.php:241
+#: class-admin.php:246
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
-#: class-admin.php:242
+#: class-admin.php:247
 msgid "Vietnamese"
 msgstr "Vietnamien"
 
-#: class-admin.php:243
+#: class-admin.php:248
 msgid "Other"
 msgstr "Autre"
 
@@ -387,19 +388,19 @@ msgstr "Longueur du résumé (en nombre de caractères):"
 msgid "Specify '0' to hide the summary."
 msgstr "Indiquer '0' pour cacher le résumé."
 
-#: class-linkedin-oauth.php:58
+#: class-linkedin-connection.php:77
 msgid "An unknown error has occured and no token was retrieved."
 msgstr "Une erreur inconnue s'est produite et le jeton n'a pu être récupéré."
 
-#: class-linkedin-oauth.php:156 class-linkedin-oauth.php:199
+#: class-linkedin-connection.php:170 class-linkedin-connection.php:213
 msgid "HTTP request returned error code %d."
 msgstr "La requette HTTP a retourné un code d'erreur %d."
 
-#: class-linkedin-oauth.php:217
+#: class-linkedin-connection.php:231
 msgid "Invalid or expired access token"
 msgstr "Jeton d'accès invalid ou expiré"
 
-#: class-linkedin-oauth.php:219
+#: class-linkedin-connection.php:233
 msgid ""
 "The access token for the WP LinkedIn plugin is either invalid or has "
 "expired, please click on the following link to renew it.\n"
@@ -463,8 +464,8 @@ msgstr "Nombre de mises-à-jour à afficher:"
 msgid "Show my updates only"
 msgstr "Afficher mes mises-à-jour uniquement"
 
-#: templates/network-updates.php:7 templates/profile.php:111
-#: templates/recommendations.php:16
+#: templates/network-updates.php:7 templates/profile.php:114
+#: templates/recommendations.php:17
 msgid "Anonymous"
 msgstr "Anonyme"
 
@@ -524,7 +525,7 @@ msgstr "Spécialités"
 msgid "Experience"
 msgstr "Expérience"
 
-#: templates/profile.php:28 templates/profile.php:45 templates/profile.php:87
+#: templates/profile.php:28 templates/profile.php:45 templates/profile.php:90
 msgid "Present"
 msgstr "Maintenant"
 
@@ -540,19 +541,19 @@ msgstr "Compétences et Expertise"
 msgid "Languages"
 msgstr "Langues"
 
-#: templates/profile.php:84 wp-linkedin.php:244
+#: templates/profile.php:87 wp-linkedin.php:241
 msgid "Education"
 msgstr "Education"
 
-#: templates/profile.php:90
+#: templates/profile.php:93
 msgid "Activities and societies"
 msgstr "Activités et associations"
 
-#: templates/profile.php:102
+#: templates/profile.php:105
 msgid "Recommendations"
 msgstr "Recommendations"
 
-#: wp-linkedin.php:152 wp-linkedin.php:172 wp-linkedin.php:194
+#: wp-linkedin.php:149 wp-linkedin.php:169 wp-linkedin.php:191
 msgid ""
 "There's something wrong and the profile could not be retreived, please check "
 "the list of profile fields to be fetched. If everything seems good try "
@@ -562,11 +563,11 @@ msgstr ""
 "vérifier la liste des champs de profil à retrouver. Si tout semble correct "
 "essayer de régénérer le jeton d'accès."
 
-#: wp-linkedin.php:191
+#: wp-linkedin.php:188
 msgid "You don't have any recommendation to show."
 msgstr "Vous n'avez pas de recommandation."
 
-#: wp-linkedin.php:211
+#: wp-linkedin.php:208
 msgid ""
 "There's something wrong and the network updates could not be retreived. Try "
 "regenerating the access token."
@@ -574,55 +575,55 @@ msgstr ""
 "Il y a eu une erreur et votre profil n'a pas pu être accédé. Essayer de "
 "régénérer le jeton d'accès."
 
-#: wp-linkedin.php:238
+#: wp-linkedin.php:235
 msgid "Animal Welfare"
 msgstr "Protection animale"
 
-#: wp-linkedin.php:239
+#: wp-linkedin.php:236
 msgid "Arts and Culture"
 msgstr "Arts et Culture"
 
-#: wp-linkedin.php:240
+#: wp-linkedin.php:237
 msgid "Children"
 msgstr "Enfants"
 
-#: wp-linkedin.php:241
+#: wp-linkedin.php:238
 msgid "Civil Rights and Social Action"
 msgstr "Droits civils et action sociale"
 
-#: wp-linkedin.php:242
+#: wp-linkedin.php:239
 msgid "Disaster and Humanitarian Relief"
 msgstr "Catastrophes et aide humanitaire"
 
-#: wp-linkedin.php:243
+#: wp-linkedin.php:240
 msgid "Economic Empowerment"
 msgstr "Autonomisation économique"
 
-#: wp-linkedin.php:245
+#: wp-linkedin.php:242
 msgid "Environment"
 msgstr "Environnement"
 
-#: wp-linkedin.php:246
+#: wp-linkedin.php:243
 msgid "Health"
 msgstr "Santé"
 
-#: wp-linkedin.php:247
+#: wp-linkedin.php:244
 msgid "Human Rights"
 msgstr "Droits de l'homme"
 
-#: wp-linkedin.php:248
+#: wp-linkedin.php:245
 msgid "Politics"
 msgstr "Politique"
 
-#: wp-linkedin.php:249
+#: wp-linkedin.php:246
 msgid "Poverty Alleviation"
 msgstr "Réduction de la pauvreté"
 
-#: wp-linkedin.php:250
+#: wp-linkedin.php:247
 msgid "Science and Technology"
 msgstr "Science et technologie"
 
-#: wp-linkedin.php:251
+#: wp-linkedin.php:248
 msgid "Social Services"
 msgstr "Services sociaux"
 
