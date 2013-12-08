@@ -7,7 +7,7 @@
 			$('.items blockquote', $scrollable).each(function() {
 				var $slide = $(this);
 				if (width !== 'css') $slide.outerWidth(width);
-				h = Math.max(h, $slide.height());
+				h = Math.max(h, $slide.outerHeight());
 			});
 			$scrollable.height(h);
 		}
@@ -26,3 +26,10 @@
 		});
 	}
 })(jQuery);
+
+jQuery(document).ready(function($) {
+	$('.linkedin .scrollable').each(function() {
+		var $this = $(this);
+		$this.responsiveScrollable($this.data('width'), $this.data('interval'));
+	});
+});

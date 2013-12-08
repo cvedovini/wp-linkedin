@@ -107,7 +107,7 @@ function wp_linkedin_error($message) {
 
 function wp_linkedin_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) {
 	$linkedin = wp_linkedin_connection();
-	return $linkedin->get_profile($options, $lang);
+	return (is_object($linkedin)) ? $linkedin->get_profile($options, $lang) : false;
 }
 
 

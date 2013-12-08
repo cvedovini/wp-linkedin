@@ -134,6 +134,8 @@ it.
 - Removed the `jquery.dimensions.etc` plugin.
 - Added Italian translations.
 - Added Brazilian Portuguese translations.
+- Fixed an issue where the recommendation slider won't work when the jQuery
+library is included in the footer of the blog.
 
 = Version 1.6 =
 - Updated Dutch translations.

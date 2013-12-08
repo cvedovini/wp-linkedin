@@ -1,9 +1,10 @@
 <?php
 	wp_enqueue_script('responsive-scrollable');
-	$divid = wp_generate_password(12, false);
 ?>
 <div class="linkedin">
-	<div id="<?php echo $divid; ?>" class="scrollable" style='width:<?php echo (is_numeric($width)) ? "{$width}px" : '100%'; ?>'>
+	<div class="scrollable"
+		data-width="<?php echo $width; ?>" data-interval="<?php  echo $interval; ?>"
+		style='width:<?php echo (is_numeric($width)) ? "{$width}px" : '100%'; ?>'>
 		<div class="items">
 		<?php foreach ($recommendations as $recommendation): ?>
 			<blockquote>
@@ -20,8 +21,3 @@
 		</div>
 	</div>
 </div>
-<script>
-jQuery(document).ready(function($) {
-	$('#<?php echo $divid; ?>').responsiveScrollable(<?php echo is_numeric($width) ? $width : "'$width'"; ?>, <?php  echo $interval; ?>);
-});
-</script>
