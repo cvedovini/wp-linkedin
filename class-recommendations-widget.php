@@ -17,12 +17,16 @@ class WP_LinkedIn_Recommendations_Widget extends WP_Widget {
 			));
 
 		$instance = wp_parse_args((array) $instance, $options);
-		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
+		$recommendations = wp_linkedin_recommendations($instance);
 
-		echo $before_widget;
-		if ($title) echo $before_title . $title . $after_title;
-		echo wp_linkedin_recommendations($instance);
-		echo $after_widget;
+		if (!empty($recommendations)) {
+			$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
+
+			echo $before_widget;
+			if ($title) echo $before_title . $title . $after_title;
+			echo $recommendations;
+			echo $after_widget;
+		}
 	}
 
 	public function form($instance) {

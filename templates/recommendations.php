@@ -1,5 +1,6 @@
 <?php
 	wp_enqueue_script('responsive-scrollable');
+	shuffle($recommendations);
 ?>
 <div class="linkedin">
 	<div class="scrollable"

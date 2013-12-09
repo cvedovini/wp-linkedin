@@ -14,12 +14,17 @@ class WP_LinkedIn_Card_Widget extends WP_Widget {
 				'picture_width' => 80,
 				'summary_length' => 200
 			));
-		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 
-		echo $before_widget;
-		if ($title) echo $before_title . $title . $after_title;
-		echo wp_linkedin_card($instance);
-		echo $after_widget;
+		$card = wp_linkedin_card($instance);
+
+		if (!empty($card)) {
+			$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
+
+			echo $before_widget;
+			if ($title) echo $before_title . $title . $after_title;
+			echo $card;
+			echo $after_widget;
+		}
 	}
 
 	public function form($instance) {

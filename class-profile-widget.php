@@ -13,16 +13,23 @@ class WP_LinkedIn_Profile_Widget extends WP_Widget {
 				'title' => '',
 				'show_connections' => true
 			));
-		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
-		$show_connections = ($instance['show_connections']) ? 'true' : 'false';
 
-		echo $before_widget;
-		if ($title) echo $before_title . $title . $after_title;
 		$profile = wp_linkedin_get_profile('publicProfileUrl');
-		echo '<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>';
-		echo '<script type="IN/MemberProfile" data-id="' . $profile->publicProfileUrl;
-		echo '" data-format="inline" data-related="' . $show_connections . '"></script>';
-		echo $after_widget;
+		if ($profile !== false) {
+			$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
+			$show_connections = ($instance['show_connections']) ? 'true' : 'false';
+
+			echo $before_widget;
+			if ($title) echo $before_title . $title . $after_title;
+			if (is_wp_error($profile)) {
+				echo wp_linkedin_error($profile->get_error_message());
+			} else {
+				echo '<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>';
+				echo '<script type="IN/MemberProfile" data-id="' . $profile->publicProfileUrl;
+				echo '" data-format="inline" data-related="' . $show_connections . '"></script>';
+			}
+			echo $after_widget;
+		}
 	}
 
 	public function form($instance) {

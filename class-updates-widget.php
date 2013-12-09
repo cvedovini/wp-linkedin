@@ -14,12 +14,16 @@ class WP_LinkedIn_Updates_Widget extends WP_Widget {
 				'count' => 50,
 				'only_self' => true
 			));
-		$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
 
-		echo $before_widget;
-		if ($title) echo $before_title . $title . $after_title;
-		echo wp_linkedin_updates($instance);
-		echo $after_widget;
+		$updates = wp_linkedin_updates($instance);
+
+		if (!empty($updates)) {
+			$title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
+			echo $before_widget;
+			if ($title) echo $before_title . $title . $after_title;
+			echo $updates;
+			echo $after_widget;
+		}
 	}
 
 	public function form($instance) {

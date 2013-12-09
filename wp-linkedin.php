@@ -107,13 +107,13 @@ function wp_linkedin_error($message) {
 
 function wp_linkedin_get_profile($options='id', $lang=LINKEDIN_PROFILELANGUAGE) {
 	$linkedin = wp_linkedin_connection();
-	return (is_object($linkedin)) ? $linkedin->get_profile($options, $lang) : false;
+	return ($linkedin !== false) ? $linkedin->get_profile($options, $lang) : false;
 }
 
 
 function wp_linkedin_get_network_updates($count=50, $only_self=true) {
 	$linkedin = wp_linkedin_connection();
-	return $linkedin->get_network_updates($count, $only_self);
+	return ($linkedin !== false) ? $linkedin->get_network_updates($count, $only_self) : false;
 }
 
 
@@ -141,12 +141,12 @@ function wp_linkedin_profile($atts) {
 	), $atts, 'li_profile'));
 
 	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ',' . $fields);
-
 	$profile = wp_linkedin_get_profile($fields, $lang);
-	if (isset($profile) && is_object($profile)) {
+
+	if (is_wp_error($profile)) {
+		return wp_linkedin_error($profile->get_error_message());
+	} elseif ($profile && is_object($profile)) {
 		return wp_linkedin_load_template('profile', array('profile' => $profile));
-	} else {
-		return wp_linkedin_error(__('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin'));
 	}
 }
 
@@ -160,13 +160,13 @@ function wp_linkedin_card($atts) {
 	), $atts, 'li_card'));
 
 	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ',' . $fields);
-
 	$profile = wp_linkedin_get_profile($fields, $lang);
-	if (isset($profile) && is_object($profile)) {
+
+	if (is_wp_error($profile)) {
+		return wp_linkedin_error($profile->get_error_message());
+	} elseif ($profile && is_object($profile)) {
 		return wp_linkedin_load_template('card', array('profile' => $profile,
 				'picture_width' => $picture_width, 'summary_length' => $summary_length));
-	} else {
-		return wp_linkedin_error(__('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin'));
 	}
 }
 
@@ -180,15 +180,15 @@ function wp_linkedin_recommendations($atts) {
 
 	$profile = wp_linkedin_get_profile(LINKEDIN_FIELDS_RECOMMENDATIONS);
 
-	if (isset($profile) && is_object($profile)) {
+	if (is_wp_error($profile)) {
+		return wp_linkedin_error($profile->get_error_message());
+	} elseif ($profile && is_object($profile)) {
 		if (isset($profile->recommendationsReceived->values) && is_array($profile->recommendationsReceived->values)) {
 			return wp_linkedin_load_template('recommendations', array('recommendations' => $profile->recommendationsReceived->values,
 					'width' => $width, 'length' => $length, 'interval' => $interval));
 		} else {
 			return wp_linkedin_error(__('You don\'t have any recommendation to show.', 'wp-linkedin'));
 		}
-	} else {
-		return wp_linkedin_error(__('There\'s something wrong and the profile could not be retreived, please check the list of profile fields to be fetched. If everything seems good try regenerating the access token.', 'wp-linkedin'));
 	}
 }
 
@@ -201,11 +201,11 @@ function wp_linkedin_updates($atts) {
 
 	$updates = wp_linkedin_get_network_updates($count, $only_self);
 
-	if (isset($updates) && is_object($updates)) {
+	if (is_wp_error($updates)) {
+		return wp_linkedin_error($updates->get_error_message());
+	} elseif ($updates && is_object($updates)) {
 		return wp_linkedin_load_template('network-updates', array('updates' => $updates,
 				'only_self' => $only_self, 'count' => $count));
-	} else {
-		return wp_linkedin_error(__('There\'s something wrong and the network updates could not be retreived. Try regenerating the access token.', 'wp-linkedin'));
 	}
 }
 

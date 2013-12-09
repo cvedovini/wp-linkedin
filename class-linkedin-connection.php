@@ -32,6 +32,8 @@ class WPLinkedInConnection {
 
 	public function set_last_error($error=false) {
 		if ($error) {
+			if (is_wp_error($error)) $error = $error->get_error_message();
+
 			$this->set_cache('wp-linkedin_last_error', $error);
 			error_log('[WP LinkedIn] ' . $error);
 		} else {
@@ -72,9 +74,9 @@ class WPLinkedInConnection {
 				$this->set_cache('wp-linkedin_invalid_token_mail_sent', false);
 				return $this->set_cache('wp-linkedin_oauthtoken', $body->access_token, $body->expires_in);
 			} elseif (isset($body->error)) {
-				return new WP_Error($body->error, $body->error_description);
+				return new WP_Error('set_access_token', $body->error . ': ' . $body->error_description);
 			} else {
-				return new WP_Error('unknown', __('An unknown error has occured and no token was retrieved.'));
+				return new WP_Error('set_access_token', __('An unknown error has occured and no token was retrieved.', 'wp-linkedin'));
 			}
 		} else {
 			return $response;
@@ -124,17 +126,22 @@ class WPLinkedInConnection {
 
 		// Else, let's try to fetch one.
 		$fetched = $this->fetch_profile($options, $lang);
-		if ($fetched) {
+		if (!is_wp_error($fetched)) {
 			$profile = $fetched;
 
 			$cache[$cache_key] = array(
 					'expires' => time() + WP_LINKEDIN_CACHETIMEOUT,
 					'profile' => $profile);
 			$this->set_cache('wp-linkedin_cache', $cache);
+			return $profile;
+		} elseif ($profile) {
+			// If we cannot fetch one, let's return the outdated one if any.
+			return $profile;
+		} else {
+			// Else just return the error
+			return $fetched;
 		}
 
-		// But if we cannot fetch one, let's return the outdated one if any.
-		return $profile;
 	}
 
 	protected function fetch_profile($options='id', $lang='') {
@@ -162,22 +169,26 @@ class WPLinkedInConnection {
 					if ($return_code == 401) {
 						// Invalidate token
 						$this->invalidate_access_token();
+						$this->send_invalid_token_email();
 					}
 
 					if (isset($body->message)) {
-						$error = $body->message;
+						$error = new WP_Error('fetch_profile', $body->message);
 					} else {
-						$error = sprintf(__('HTTP request returned error code %d.'), $return_code);
+						$error = new WP_Error('fetch_profile', sprintf(__('HTTP request returned error code %d.', 'wp-linkedin'), $return_code));
 					}
+
+					$this->set_last_error($error);
+					return $error;
 				}
 			} else {
-				$error = $response->get_error_code() . ': ' . $response->get_error_message();
+				$this->set_last_error($response);
+				return new WP_Error('fetch_profile', $response->get_error_message());
 			}
+		} else {
+			$this->send_invalid_token_email();
+			return new WP_Error('fetch_profile', __('No token or token has expired.', 'wp-linkedin'));
 		}
-
-		if (isset($error)) $this->set_last_error($error);
-		$this->send_invalid_token_email();
-		return false;
 	}
 
 	public function get_network_updates($count=50, $only_self=true) {
@@ -205,22 +216,26 @@ class WPLinkedInConnection {
 					if ($return_code == 401) {
 						// Invalidate token
 						$this->invalidate_access_token();
+						$this->send_invalid_token_email();
 					}
 
 					if (isset($body->message)) {
-						$error = $body->message;
+						$error = new WP_Error('get_network_updates', $body->message);
 					} else {
-						$error = sprintf(__('HTTP request returned error code %d.'), $return_code);
+						$error = new WP_Error('get_network_updates', sprintf(__('HTTP request returned error code %d.', 'wp-linkedin'), $return_code));
 					}
+
+					$this->set_last_error($error);
+					return $error;
 				}
 			} else {
-				$error = $response->get_error_code() . ': ' . $response->get_error_message();
+				$this->set_last_error($response);
+				return new WP_Error('get_network_updates', $response->get_error_message());
 			}
+		} else {
+			$this->send_invalid_token_email();
+			return new WP_Error('get_network_updates', __('No token or token has expired.', 'wp-linkedin'));
 		}
-
-		if (isset($error)) $this->set_last_error($error);
-		$this->send_invalid_token_email();
-		return false;
 	}
 
 	protected function send_invalid_token_email() {
@@ -230,7 +245,7 @@ class WPLinkedInConnection {
 			$header = array("From: $blog_name <$admin_email>");
 			$subject = '[WP LinkedIn] ' . __('Invalid or expired access token', 'wp-linkedin');
 
-			$message = __("The access token for the WP LinkedIn plugin is either invalid or has expired, please click on the following link to renew it.\n\n%s\n\nThis link will only be valid for a limited period of time.\n-Thank you.", 'wp-linkedin');
+			$message = __('The access token for the WP LinkedIn plugin is either invalid or has expired, please click on the following link to renew it.\n\n%s\n\nThis link will only be valid for a limited period of time.\n-Thank you.', 'wp-linkedin');
 			$message = sprintf($message, $this->get_authorization_url());
 
 			$sent = wp_mail($admin_email, $subject, $message, $header);
