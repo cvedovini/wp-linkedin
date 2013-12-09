@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-12-08 17:51:55+00:00\n"
-"PO-Revision-Date: 2013-12-09 00:53+0700\n"
+"POT-Creation-Date: 2013-12-09 10:23:15+00:00\n"
+"PO-Revision-Date: 2013-12-09 17:26+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -149,7 +149,6 @@ msgid "The cache has been cleared."
 msgstr "Le cache a été vidé."
 
 #: class-admin.php:141
-#, fuzzy
 msgid "Invalid state"
 msgstr "Etat non valide"
 
@@ -371,36 +370,40 @@ msgstr "Autre"
 msgid "A widget displaying your LinkedIn card"
 msgstr "Votre carte de visite LinkedIn"
 
-#: class-card-widget.php:35 class-profile-widget.php:37
-#: class-recommendations-widget.php:41 class-updates-widget.php:35
+#: class-card-widget.php:40 class-profile-widget.php:44
+#: class-recommendations-widget.php:45 class-updates-widget.php:39
 msgid "Title:"
 msgstr "Titre:"
 
-#: class-card-widget.php:39
+#: class-card-widget.php:44
 msgid "Width of picture (in px):"
 msgstr "Largeur de la photo (en px):"
 
-#: class-card-widget.php:43
+#: class-card-widget.php:48
 msgid "Max length of summary (in char):"
 msgstr "Longueur du résumé (en nombre de caractères):"
 
-#: class-card-widget.php:45
+#: class-card-widget.php:50
 msgid "Specify '0' to hide the summary."
 msgstr "Indiquer '0' pour cacher le résumé."
 
-#: class-linkedin-connection.php:77
+#: class-linkedin-connection.php:79
 msgid "An unknown error has occured and no token was retrieved."
 msgstr "Une erreur inconnue s'est produite et le jeton n'a pu être récupéré."
 
-#: class-linkedin-connection.php:170 class-linkedin-connection.php:213
+#: class-linkedin-connection.php:178 class-linkedin-connection.php:225
 msgid "HTTP request returned error code %d."
 msgstr "La requette HTTP a retourné un code d'erreur %d."
 
-#: class-linkedin-connection.php:231
+#: class-linkedin-connection.php:190 class-linkedin-connection.php:237
+msgid "No token or token has expired."
+msgstr ""
+
+#: class-linkedin-connection.php:246
 msgid "Invalid or expired access token"
 msgstr "Jeton d'accès invalid ou expiré"
 
-#: class-linkedin-connection.php:233
+#: class-linkedin-connection.php:248
 msgid ""
 "The access token for the WP LinkedIn plugin is either invalid or has "
 "expired, please click on the following link to renew it.\n"
@@ -423,7 +426,7 @@ msgid ""
 "A widget displaying your LinkedIn profile using the LinkedIn Javascript API"
 msgstr "La version JavaScript de la carte de visite LinkedIn"
 
-#: class-profile-widget.php:42
+#: class-profile-widget.php:49
 msgid "Show connections"
 msgstr "Afficher les connections"
 
@@ -431,11 +434,11 @@ msgstr "Afficher les connections"
 msgid "A slider with your LinkedIn recommendations"
 msgstr "Liste déroulante de vos recommendations LinkedIn"
 
-#: class-recommendations-widget.php:45
+#: class-recommendations-widget.php:49
 msgid "Width of widget (in px):"
 msgstr "Largeur du composant (en px):"
 
-#: class-recommendations-widget.php:47
+#: class-recommendations-widget.php:51
 msgid ""
 "You can also specify 'auto' to let javascript automatically compute the "
 "width or 'css' to set it yourself using your theme's stylesheet."
@@ -444,11 +447,11 @@ msgstr ""
 "largeur ou \"css\" pour pouvoir l'indiquer vous-même dans la feuille de "
 "style de votre thème."
 
-#: class-recommendations-widget.php:50
+#: class-recommendations-widget.php:54
 msgid "Length of recommendations (in char):"
 msgstr "Longueur de la recommendation (en nombre de caractères):"
 
-#: class-recommendations-widget.php:54
+#: class-recommendations-widget.php:58
 msgid "Scroller's speed:"
 msgstr "Vitesse de défilement (en ms):"
 
@@ -456,16 +459,16 @@ msgstr "Vitesse de défilement (en ms):"
 msgid "A widget displaying your LinkedIn network updates"
 msgstr "Les mises-à-jour de votre réseau LinkedIn"
 
-#: class-updates-widget.php:39
+#: class-updates-widget.php:43
 msgid "Number of updates to show:"
 msgstr "Nombre de mises-à-jour à afficher:"
 
-#: class-updates-widget.php:44
+#: class-updates-widget.php:48
 msgid "Show my updates only"
 msgstr "Afficher mes mises-à-jour uniquement"
 
 #: templates/network-updates.php:7 templates/profile.php:114
-#: templates/recommendations.php:17
+#: templates/recommendations.php:18
 msgid "Anonymous"
 msgstr "Anonyme"
 
@@ -553,27 +556,9 @@ msgstr "Activités et associations"
 msgid "Recommendations"
 msgstr "Recommendations"
 
-#: wp-linkedin.php:149 wp-linkedin.php:169 wp-linkedin.php:191
-msgid ""
-"There's something wrong and the profile could not be retreived, please check "
-"the list of profile fields to be fetched. If everything seems good try "
-"regenerating the access token."
-msgstr ""
-"Il y a eu une erreur et votre profil n'a pas pu être accédé, merci de "
-"vérifier la liste des champs de profil à retrouver. Si tout semble correct "
-"essayer de régénérer le jeton d'accès."
-
-#: wp-linkedin.php:188
+#: wp-linkedin.php:190
 msgid "You don't have any recommendation to show."
 msgstr "Vous n'avez pas de recommandation."
-
-#: wp-linkedin.php:208
-msgid ""
-"There's something wrong and the network updates could not be retreived. Try "
-"regenerating the access token."
-msgstr ""
-"Il y a eu une erreur et votre profil n'a pas pu être accédé. Essayer de "
-"régénérer le jeton d'accès."
 
 #: wp-linkedin.php:235
 msgid "Animal Welfare"
@@ -658,6 +643,22 @@ msgid ""
 msgstr ""
 "http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-"
 "linkedin"
+
+#~ msgid ""
+#~ "There's something wrong and the profile could not be retreived, please "
+#~ "check the list of profile fields to be fetched. If everything seems good "
+#~ "try regenerating the access token."
+#~ msgstr ""
+#~ "Il y a eu une erreur et votre profil n'a pas pu être accédé, merci de "
+#~ "vérifier la liste des champs de profil à retrouver. Si tout semble "
+#~ "correct essayer de régénérer le jeton d'accès."
+
+#~ msgid ""
+#~ "There's something wrong and the network updates could not be retreived. "
+#~ "Try regenerating the access token."
+#~ msgstr ""
+#~ "Il y a eu une erreur et votre profil n'a pas pu être accédé. Essayer de "
+#~ "régénérer le jeton d'accès."
 
 #~ msgid "Save Changes"
 #~ msgstr "Sauvegarder les changements"

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP LinkedIn\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-12-08 17:51:55+00:00\n"
-"PO-Revision-Date: 2013-12-09 00:52+0700\n"
+"POT-Creation-Date: 2013-12-09 10:23:15+00:00\n"
+"PO-Revision-Date: 2013-12-09 17:30+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -181,9 +181,9 @@ msgid ""
 msgstr ""
 "Também precisamos de voluntários para traduzir o plugin em mais idiomas. \n"
 "\t\t\t\t\t\t si você deseja ajudar, entre em contato com <a href=\"https://"
-"twitter.com/cvedovini\"> @cvedovini</a> \n"
-"\t\t\t\t\t\t em twitter ou use o <a href=\"http://vedovini.net/contact/\"> "
-"formulário de contato</a>."
+"twitter.com/cvedovini\">@cvedovini</a> \n"
+"\t\t\t\t\t\t em twitter ou use o <a href=\"http://vedovini.net/contact/"
+"\">formulário de contato</a>."
 
 #: class-admin.php:205
 msgid "Bahasa Indonesia"
@@ -365,36 +365,40 @@ msgstr "Outros"
 msgid "A widget displaying your LinkedIn card"
 msgstr "Um widget exibe seu cartão do LinkedIn"
 
-#: class-card-widget.php:35 class-profile-widget.php:37
-#: class-recommendations-widget.php:41 class-updates-widget.php:35
+#: class-card-widget.php:40 class-profile-widget.php:44
+#: class-recommendations-widget.php:45 class-updates-widget.php:39
 msgid "Title:"
 msgstr "Título"
 
-#: class-card-widget.php:39
+#: class-card-widget.php:44
 msgid "Width of picture (in px):"
 msgstr "Resolução de imagem (em px):"
 
-#: class-card-widget.php:43
+#: class-card-widget.php:48
 msgid "Max length of summary (in char):"
 msgstr "Comprimento máximo do resumo (no char):"
 
-#: class-card-widget.php:45
+#: class-card-widget.php:50
 msgid "Specify '0' to hide the summary."
 msgstr "Especificar '0' para ocultar o resumo"
 
-#: class-linkedin-connection.php:77
+#: class-linkedin-connection.php:79
 msgid "An unknown error has occured and no token was retrieved."
 msgstr "Ocorreu um erro desconhecido e nenhum token foi obtido."
 
-#: class-linkedin-connection.php:170 class-linkedin-connection.php:213
+#: class-linkedin-connection.php:178 class-linkedin-connection.php:225
 msgid "HTTP request returned error code %d."
 msgstr "Retornou o codigo de erro %d da solicitação HTTP."
 
-#: class-linkedin-connection.php:231
+#: class-linkedin-connection.php:190 class-linkedin-connection.php:237
+msgid "No token or token has expired."
+msgstr "Sem token ou token expirou."
+
+#: class-linkedin-connection.php:246
 msgid "Invalid or expired access token"
 msgstr "Token de acesso inválido ou expirado "
 
-#: class-linkedin-connection.php:233
+#: class-linkedin-connection.php:248
 msgid ""
 "The access token for the WP LinkedIn plugin is either invalid or has "
 "expired, please click on the following link to renew it.\n"
@@ -405,7 +409,12 @@ msgid ""
 "-Thank you."
 msgstr ""
 "O token de acesso para o plugin WP LinkedIn é inválido ou expirou, por favor "
-"clique no seguinte link para renová-lo"
+"clique no seguinte link para renová-lo.\n"
+"\n"
+"%s\n"
+"\n"
+"Este link só será válido por um período limitado de tempo.\n"
+"-Obrigado."
 
 #: class-profile-widget.php:7
 msgid ""
@@ -413,7 +422,7 @@ msgid ""
 msgstr ""
 "Um widget exibe seu perfil do LinkedIn usando a Javascript API do LinkedIn"
 
-#: class-profile-widget.php:42
+#: class-profile-widget.php:49
 msgid "Show connections"
 msgstr "Mostrar conexões"
 
@@ -421,11 +430,11 @@ msgstr "Mostrar conexões"
 msgid "A slider with your LinkedIn recommendations"
 msgstr "Um slider com suas recomendações do LinkedIn"
 
-#: class-recommendations-widget.php:45
+#: class-recommendations-widget.php:49
 msgid "Width of widget (in px):"
 msgstr "Resolução do widget (em px)"
 
-#: class-recommendations-widget.php:47
+#: class-recommendations-widget.php:51
 msgid ""
 "You can also specify 'auto' to let javascript automatically compute the "
 "width or 'css' to set it yourself using your theme's stylesheet."
@@ -434,11 +443,11 @@ msgstr ""
 "automaticamente a resolução ou 'css' para defini-la você mesmo usando folha "
 "de estilos."
 
-#: class-recommendations-widget.php:50
+#: class-recommendations-widget.php:54
 msgid "Length of recommendations (in char):"
 msgstr "Comprimento das recomendações (em char):"
 
-#: class-recommendations-widget.php:54
+#: class-recommendations-widget.php:58
 msgid "Scroller's speed:"
 msgstr "Velocidade de delocamento"
 
@@ -446,16 +455,16 @@ msgstr "Velocidade de delocamento"
 msgid "A widget displaying your LinkedIn network updates"
 msgstr "Um widget exibe suas atualizações de rede do LinkedIn"
 
-#: class-updates-widget.php:39
+#: class-updates-widget.php:43
 msgid "Number of updates to show:"
 msgstr "Quantidade de atualizações a exibir"
 
-#: class-updates-widget.php:44
+#: class-updates-widget.php:48
 msgid "Show my updates only"
 msgstr "Mostrar só as minhas atualizações"
 
 #: templates/network-updates.php:7 templates/profile.php:114
-#: templates/recommendations.php:17
+#: templates/recommendations.php:18
 msgid "Anonymous"
 msgstr "Anônimo"
 
@@ -543,27 +552,9 @@ msgstr "Atividades e grupos"
 msgid "Recommendations"
 msgstr "Recomendações"
 
-#: wp-linkedin.php:149 wp-linkedin.php:169 wp-linkedin.php:191
-msgid ""
-"There's something wrong and the profile could not be retreived, please check "
-"the list of profile fields to be fetched. If everything seems good try "
-"regenerating the access token."
-msgstr ""
-"É possivel que algo esteja errado e o perfil não pôde ser obtido. Por favor, "
-"verifique a lista dos campos do perfil a ser buscado. Se tudo estiver "
-"correto tente, regenerando o token de acesso."
-
-#: wp-linkedin.php:188
+#: wp-linkedin.php:190
 msgid "You don't have any recommendation to show."
 msgstr "Você não tem recomendações para exibir."
-
-#: wp-linkedin.php:208
-msgid ""
-"There's something wrong and the network updates could not be retreived. Try "
-"regenerating the access token."
-msgstr ""
-"É possivel que algo esteja errado e as atualizações de rede não podem ser "
-"obtidas. Tente regenerar o token de acesso."
 
 #: wp-linkedin.php:235
 msgid "Animal Welfare"
@@ -648,3 +639,19 @@ msgid ""
 msgstr ""
 "http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-"
 "linkedin"
+
+#~ msgid ""
+#~ "There's something wrong and the profile could not be retreived, please "
+#~ "check the list of profile fields to be fetched. If everything seems good "
+#~ "try regenerating the access token."
+#~ msgstr ""
+#~ "É possivel que algo esteja errado e o perfil não pôde ser obtido. Por "
+#~ "favor, verifique a lista dos campos do perfil a ser buscado. Se tudo "
+#~ "estiver correto tente, regenerando o token de acesso."
+
+#~ msgid ""
+#~ "There's something wrong and the network updates could not be retreived. "
+#~ "Try regenerating the access token."
+#~ msgstr ""
+#~ "É possivel que algo esteja errado e as atualizações de rede não podem ser "
+#~ "obtidas. Tente regenerar o token de acesso."
