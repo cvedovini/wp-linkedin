@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP LinkedIn 1.7\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-12-09 10:23:15+00:00\n"
+"POT-Creation-Date: 2013-12-09 18:29:39+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -152,187 +152,189 @@ msgid "Please consider a donation."
 msgstr ""
 
 #: class-admin.php:186
-msgid ""
-"We also need volunteers to translate that plugin into more languages.\n"
-"\t\t\t\t\t\tIf you wish to help then contact <a href=\"https://twitter.com/"
-"cvedovini\">@cvedovini</a>\n"
-"\t\t\t\t\t\ton Twitter or use that <a href=\"http://vedovini.net/contact/"
-"\">contact form</a>."
+msgid "We also need volunteers to translate that plugin into more languages."
 msgstr ""
 
-#: class-admin.php:205
+#: class-admin.php:187
+msgid ""
+"If you wish to help then contact <a href=\"https://twitter.com/cvedovini"
+"\">@cvedovini</a> on Twitter or use that <a href=\"http://vedovini.net/"
+"contact/\">contact form</a>."
+msgstr ""
+
+#: class-admin.php:204
 msgid "Bahasa Indonesia"
 msgstr ""
 
-#: class-admin.php:206
+#: class-admin.php:205
 msgid "Czech"
 msgstr ""
 
-#: class-admin.php:207
+#: class-admin.php:206
 msgid "Danish"
 msgstr ""
 
-#: class-admin.php:208
+#: class-admin.php:207
 msgid "Dutch"
 msgstr ""
 
-#: class-admin.php:209
+#: class-admin.php:208
 msgid "French"
 msgstr ""
 
-#: class-admin.php:210
+#: class-admin.php:209
 msgid "German"
 msgstr ""
 
-#: class-admin.php:211
+#: class-admin.php:210
 msgid "Italian"
 msgstr ""
 
-#: class-admin.php:212
+#: class-admin.php:211
 msgid "Japanese"
 msgstr ""
 
-#: class-admin.php:213
+#: class-admin.php:212
 msgid "Korean"
 msgstr ""
 
-#: class-admin.php:214
+#: class-admin.php:213
 msgid "Malay"
 msgstr ""
 
-#: class-admin.php:215
+#: class-admin.php:214
 msgid "Norwegian"
 msgstr ""
 
-#: class-admin.php:216
+#: class-admin.php:215
 msgid "Polish"
 msgstr ""
 
-#: class-admin.php:217
+#: class-admin.php:216
 msgid "Portuguese"
 msgstr ""
 
-#: class-admin.php:218
+#: class-admin.php:217
 msgid "Romanian"
 msgstr ""
 
-#: class-admin.php:219
+#: class-admin.php:218
 msgid "Russian"
 msgstr ""
 
-#: class-admin.php:220
+#: class-admin.php:219
 msgid "Spanish"
 msgstr ""
 
-#: class-admin.php:221
+#: class-admin.php:220
 msgid "Swedish"
 msgstr ""
 
-#: class-admin.php:222
+#: class-admin.php:221
 msgid "Turkish"
 msgstr ""
 
-#: class-admin.php:223
+#: class-admin.php:222
 msgid "Albanian"
 msgstr ""
 
-#: class-admin.php:224
+#: class-admin.php:223
 msgid "Armenian"
 msgstr ""
 
-#: class-admin.php:225
+#: class-admin.php:224
 msgid "Bosnian"
 msgstr ""
 
-#: class-admin.php:226
+#: class-admin.php:225
 msgid "Burmese (Myanmar)"
 msgstr ""
 
-#: class-admin.php:227
+#: class-admin.php:226
 msgid "Chinese (Simplified)"
 msgstr ""
 
-#: class-admin.php:228
+#: class-admin.php:227
 msgid "Chinese (Traditional)"
 msgstr ""
 
-#: class-admin.php:229
+#: class-admin.php:228
 msgid "Croatian"
 msgstr ""
 
-#: class-admin.php:230
+#: class-admin.php:229
 msgid "Finnish"
 msgstr ""
 
-#: class-admin.php:231
+#: class-admin.php:230
 msgid "Greek"
 msgstr ""
 
-#: class-admin.php:232
+#: class-admin.php:231
 msgid "Hindi"
 msgstr ""
 
-#: class-admin.php:233
+#: class-admin.php:232
 msgid "Hungarian"
 msgstr ""
 
-#: class-admin.php:234
+#: class-admin.php:233
 msgid "Icelandic"
 msgstr ""
 
-#: class-admin.php:235
+#: class-admin.php:234
 msgid "Javanese"
 msgstr ""
 
-#: class-admin.php:236
+#: class-admin.php:235
 msgid "Kannada"
 msgstr ""
 
-#: class-admin.php:237
+#: class-admin.php:236
 msgid "Latvian"
 msgstr ""
 
-#: class-admin.php:238
+#: class-admin.php:237
 msgid "Lithuanian"
 msgstr ""
 
-#: class-admin.php:239
+#: class-admin.php:238
 msgid "Malayalam"
 msgstr ""
 
-#: class-admin.php:240
+#: class-admin.php:239
 msgid "Serbian"
 msgstr ""
 
-#: class-admin.php:241
+#: class-admin.php:240
 msgid "Slovak"
 msgstr ""
 
-#: class-admin.php:242
+#: class-admin.php:241
 msgid "Tagalog"
 msgstr ""
 
-#: class-admin.php:243
+#: class-admin.php:242
 msgid "Tamil"
 msgstr ""
 
-#: class-admin.php:244
+#: class-admin.php:243
 msgid "Telugu"
 msgstr ""
 
-#: class-admin.php:245
+#: class-admin.php:244
 msgid "Thai"
 msgstr ""
 
-#: class-admin.php:246
+#: class-admin.php:245
 msgid "Ukrainian"
 msgstr ""
 
-#: class-admin.php:247
+#: class-admin.php:246
 msgid "Vietnamese"
 msgstr ""
 
-#: class-admin.php:248
+#: class-admin.php:247
 msgid "Other"
 msgstr ""
 
@@ -376,12 +378,15 @@ msgstr ""
 #: class-linkedin-connection.php:248
 msgid ""
 "The access token for the WP LinkedIn plugin is either invalid or has "
-"expired, please click on the following link to renew it.\n"
-"\n"
-"%s\n"
-"\n"
-"This link will only be valid for a limited period of time.\n"
-"-Thank you."
+"expired, please click on the following link to renew it."
+msgstr ""
+
+#: class-linkedin-connection.php:250
+msgid "This link will only be valid for a limited period of time."
+msgstr ""
+
+#: class-linkedin-connection.php:251
+msgid "-Thank you."
 msgstr ""
 
 #: class-profile-widget.php:7
@@ -504,7 +509,7 @@ msgstr ""
 msgid "Languages"
 msgstr ""
 
-#: templates/profile.php:87 wp-linkedin.php:241
+#: templates/profile.php:87 wp-linkedin.php:242
 msgid "Education"
 msgstr ""
 
@@ -516,59 +521,59 @@ msgstr ""
 msgid "Recommendations"
 msgstr ""
 
-#: wp-linkedin.php:190
+#: wp-linkedin.php:191
 msgid "You don't have any recommendation to show."
 msgstr ""
 
-#: wp-linkedin.php:235
+#: wp-linkedin.php:236
 msgid "Animal Welfare"
 msgstr ""
 
-#: wp-linkedin.php:236
+#: wp-linkedin.php:237
 msgid "Arts and Culture"
 msgstr ""
 
-#: wp-linkedin.php:237
+#: wp-linkedin.php:238
 msgid "Children"
 msgstr ""
 
-#: wp-linkedin.php:238
+#: wp-linkedin.php:239
 msgid "Civil Rights and Social Action"
 msgstr ""
 
-#: wp-linkedin.php:239
+#: wp-linkedin.php:240
 msgid "Disaster and Humanitarian Relief"
 msgstr ""
 
-#: wp-linkedin.php:240
+#: wp-linkedin.php:241
 msgid "Economic Empowerment"
 msgstr ""
 
-#: wp-linkedin.php:242
+#: wp-linkedin.php:243
 msgid "Environment"
 msgstr ""
 
-#: wp-linkedin.php:243
+#: wp-linkedin.php:244
 msgid "Health"
 msgstr ""
 
-#: wp-linkedin.php:244
+#: wp-linkedin.php:245
 msgid "Human Rights"
 msgstr ""
 
-#: wp-linkedin.php:245
+#: wp-linkedin.php:246
 msgid "Politics"
 msgstr ""
 
-#: wp-linkedin.php:246
+#: wp-linkedin.php:247
 msgid "Poverty Alleviation"
 msgstr ""
 
-#: wp-linkedin.php:247
+#: wp-linkedin.php:248
 msgid "Science and Technology"
 msgstr ""
 
-#: wp-linkedin.php:248
+#: wp-linkedin.php:249
 msgid "Social Services"
 msgstr ""
 

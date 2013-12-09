@@ -245,8 +245,10 @@ class WPLinkedInConnection {
 			$header = array("From: $blog_name <$admin_email>");
 			$subject = '[WP LinkedIn] ' . __('Invalid or expired access token', 'wp-linkedin');
 
-			$message = __("The access token for the WP LinkedIn plugin is either invalid or has expired, please click on the following link to renew it.\n\n%s\n\nThis link will only be valid for a limited period of time.\n-Thank you.", 'wp-linkedin');
-			$message = sprintf($message, $this->get_authorization_url());
+			$message = __('The access token for the WP LinkedIn plugin is either invalid or has expired, please click on the following link to renew it.', 'wp-linkedin');
+			$message .= "\n\n" . $this->get_authorization_url();
+			$message .= "\n\n" . __('This link will only be valid for a limited period of time.', 'wp-linkedin');
+			$message .= "\n" . __('-Thank you.', 'wp-linkedin');
 
 			$sent = wp_mail($admin_email, $subject, $message, $header);
 			$this->set_cache('wp-linkedin_invalid_token_mail_sent', $sent);

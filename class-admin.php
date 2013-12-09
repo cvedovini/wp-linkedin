@@ -183,9 +183,8 @@ class WPLinkedInAdmin {
 					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 					</form>
 				</div>
-				<p><?php _e('We also need volunteers to translate that plugin into more languages.
-						If you wish to help then contact <a href="https://twitter.com/cvedovini">@cvedovini</a>
-						on Twitter or use that <a href="http://vedovini.net/contact/">contact form</a>.', 'wp-linkedin'); ?></p>
+				<p><?php _e('We also need volunteers to translate that plugin into more languages.', 'wp-linkedin'); ?>
+					<?php _e('If you wish to help then contact <a href="https://twitter.com/cvedovini">@cvedovini</a> on Twitter or use that <a href="http://vedovini.net/contact/">contact form</a>.', 'wp-linkedin'); ?></p>
 			</div> <!-- .inside -->
 		</div> <!-- .postbox -->
 		<div>
