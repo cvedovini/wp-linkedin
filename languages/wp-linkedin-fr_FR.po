@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
 "POT-Creation-Date: 2013-12-09 10:23:15+00:00\n"
-"PO-Revision-Date: 2013-12-09 17:26+0700\n"
+"PO-Revision-Date: 2013-12-10 17:38+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -401,7 +401,7 @@ msgstr ""
 
 #: class-linkedin-connection.php:246
 msgid "Invalid or expired access token"
-msgstr "Jeton d'accès invalid ou expiré"
+msgstr "Jeton d'accès invalide ou expiré"
 
 #: class-linkedin-connection.php:248
 msgid ""
