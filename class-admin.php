@@ -17,7 +17,7 @@ class WPLinkedInAdmin {
 		$this->add_settings_field('wp-linkedin_profilelanguage', __('Profile language', 'wp-linkedin'), 'add_settings_field_profilelanguage');
 		$this->add_settings_field('wp-linkedin_sendmail_on_token_expiry', __('Send mail on token expiry', 'wp-linkedin'), 'add_settings_field_sendmail_on_token_expiry');
 		$this->add_settings_field('wp-linkedin_ssl_verifypeer', __('Verify SSL peer', 'wp-linkedin'), 'add_settings_field_ssl_verifypeer');
-		$this->add_settings_field('wp-linkedin_add_card_to_content', __('LinkedIn card in posts', 'wp-linkedin'), 'add_settings_field_add_card_to_content');
+		$this->add_settings_field('wp-linkedin_add_card_to_content', __('LinkedIn cards', 'wp-linkedin'), 'add_settings_field_add_card_to_content');
 	}
 
 	function add_settings_field($id, $title, $callback) {
@@ -69,10 +69,14 @@ class WPLinkedInAdmin {
 			<?php _e('Uncheck this option only if you have SSL certificate issues on your server.', 'wp-linkedin') ?></label>
 	<?php }
 
-	function add_settings_field_add_card_to_content() { ?>
-		<label><input type="checkbox" name="wp-linkedin_add_card_to_content"
-			value="1" <?php checked(LINKEDIN_ADD_CARD_TO_CONTENT); ?> />&nbsp;
-			<?php _e('Check this option to display your LinkedIn card after each post.', 'wp-linkedin') ?></label>
+	function add_settings_field_add_card_to_content() {
+		$post_types = $this->plugin->get_post_types();
+		$wp_post_types = get_post_types(array('public' => true), 'objects'); ?>
+		<p><em><?php _e('Check the content types where you want your LinkedIn card inserted.', 'wp-linkedin') ?></em></p>
+		<?php foreach ($wp_post_types as $name => $post_type): ?>
+		<p><label><input type="checkbox" name="wp-linkedin_add_card_to_content[]"
+			value="<?php echo $name; ?>" <?php checked(in_array($name, $post_types)); ?> /><?php echo $post_type->labels->name; ?></label></p>
+		<?php endforeach; ?>
 	<?php }
 
 

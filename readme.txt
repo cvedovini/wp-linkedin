@@ -123,6 +123,10 @@ profile.
 
 == Changelog ==
 
+= Version 1.8 =
+- Added a setting to let you choose on which post types your LinkedIn card will
+be inserted (before it was only inserted on posts).
+
 = Version 1.7 =
 - Added links for volunteer translators.
 - Added screenshots.

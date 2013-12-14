@@ -31,7 +31,6 @@ define('LINKEDIN_FIELDS', get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAU
 define('LINKEDIN_PROFILELANGUAGE', get_option('wp-linkedin_profilelanguage'));
 define('LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY', get_option('wp-linkedin_sendmail_on_token_expiry', false));
 define('LINKEDIN_SSL_VERIFYPEER', get_option('wp-linkedin_ssl_verifypeer', true));
-define('LINKEDIN_ADD_CARD_TO_CONTENT', get_option('wp-linkedin_add_card_to_content', false));
 
 include 'class-linkedin-connection.php';
 include 'class-recommendations-widget.php';
@@ -64,14 +63,27 @@ class WPLinkedInPlugin {
 			add_shortcode('li_card', 'wp_linkedin_card');
 			add_shortcode('li_updates', 'wp_linkedin_updates');
 
-			if (LINKEDIN_ADD_CARD_TO_CONTENT) {
+			$post_types = $this->get_post_types();
+			if (!empty($post_types)) {
 				add_filter('the_content', array(&$this, 'filter_content'), 1);
 			}
 		}
 	}
 
+	function get_post_types() {
+		$post_types = get_option('wp-linkedin_add_card_to_content', false);
+
+		if (!is_array($post_types) && $post_types !== false) {
+			$post_types = ($post_types) ? array('post') : false;
+		}
+
+		return $post_types;
+	}
+
 	function filter_content($content) {
-		if (is_single()) {
+		$post_types = $this->get_post_types();
+
+		if (in_array(get_post_type(), $post_types)) {
 			$content .= wp_linkedin_card(array('summary_length' => 2000));
 		}
 
