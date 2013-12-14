@@ -72,12 +72,12 @@ class WPLinkedInAdmin {
 	function add_settings_field_add_card_to_content() {
 		$post_types = $this->plugin->get_post_types();
 		$wp_post_types = get_post_types(array('public' => true), 'objects'); ?>
-		<p><em><?php _e('Check the content types where you want your LinkedIn card inserted.', 'wp-linkedin') ?></em></p>
-		<?php foreach ($wp_post_types as $name => $post_type): ?>
-		<p><label><input type="checkbox" name="wp-linkedin_add_card_to_content[]"
-			value="<?php echo $name; ?>" <?php checked(in_array($name, $post_types)); ?> /><?php echo $post_type->labels->name; ?></label></p>
-		<?php endforeach; ?>
-	<?php }
+		<p><?php foreach ($wp_post_types as $name => $post_type): ?>
+		<label><input type="checkbox" name="wp-linkedin_add_card_to_content[]"
+			value="<?php echo $name; ?>" <?php checked(in_array($name, $post_types)); ?> /><?php echo $post_type->labels->name; ?></label>&nbsp;
+		<?php endforeach; ?></p>
+		<p><em><?php _e('Check the content types where you want your LinkedIn card inserted.', 'wp-linkedin') ?></em></p><?php
+	}
 
 
 	function admin_notices() {
