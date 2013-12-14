@@ -75,6 +75,7 @@ class WPLinkedInAdmin {
 		<p><?php foreach ($wp_post_types as $name => $post_type): ?>
 		<label><input type="checkbox" name="wp-linkedin_add_card_to_content[]"
 			value="<?php echo $name; ?>" <?php checked(in_array($name, $post_types)); ?> /><?php echo $post_type->labels->name; ?></label>
+
 		<?php endforeach; ?></p>
 		<p><em><?php _e('Check the content types where you want your LinkedIn card inserted.', 'wp-linkedin') ?></em></p><?php
 	}
