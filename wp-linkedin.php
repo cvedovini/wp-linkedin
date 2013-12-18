@@ -266,3 +266,20 @@ function wp_linkedin_cause($cause_name) {
 
 global $the_wp_linked_plugin;
 $the_wp_linked_plugin = new WPLinkedInPlugin();
+
+
+function smarter_load_textdomain($mofile, $domain) {
+	if ($domain == 'wp-linkedin' && !is_readable($mofile)) {
+		extract(pathinfo($mofile));
+		$pos = strrpos($filename, '_');
+
+		if ($pos !== false) {
+			# cut off the locale part, leaving the language part only
+			$filename = substr($filename, 0, $pos);
+			$mofile = $dirname . '/' . $filename . '.' . $extension;
+		}
+	}
+
+	return $mofile;
+}
+add_filter('load_textdomain_mofile', 'smarter_load_textdomain', 10, 2);
