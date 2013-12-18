@@ -97,9 +97,7 @@ class WPLinkedInPlugin {
 	}
 
 	function filter_content($content) {
-		$post_types = $this->get_post_types();
-
-		if (in_array(get_post_type(), $post_types)) {
+		if (is_singular($this->get_post_types())) {
 			$content .= wp_linkedin_card(array('summary_length' => 2000));
 		}
 
