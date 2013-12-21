@@ -17,16 +17,16 @@ class WPLinkedInConnection {
 		$this->app_secret = WP_LINKEDIN_APPSECRET;
 	}
 
-	protected function set_cache($key, $value, $expires=0) {
+	public function set_cache($key, $value, $expires=0) {
 		return set_transient($key, $value);
 	}
 
-	protected function get_cache($key, $default=false) {
+	public function get_cache($key, $default=false) {
 		$value = get_transient($key);
 		return ($value !== false) ? $value : $default;
 	}
 
-	protected function delete_cache($key) {
+	public function delete_cache($key) {
 		return delete_transient($key);
 	}
 
@@ -87,7 +87,7 @@ class WPLinkedInConnection {
 		return $this->get_access_token() !== false;
 	}
 
-	protected function get_state_token() {
+	public function get_state_token() {
 		$time = intval(time() / 172800);
 		return sha1('linkedin-oauth' . NONCE_SALT . $time);
 	}
@@ -143,7 +143,6 @@ class WPLinkedInConnection {
 			// Else just return the error
 			return $fetched;
 		}
-
 	}
 
 	public function get_network_updates($count=50, $only_self=true) {
@@ -202,7 +201,7 @@ class WPLinkedInConnection {
 		}
 	}
 
-	protected function send_invalid_token_email() {
+	public function send_invalid_token_email() {
 		if (LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY && !$this->get_cache('wp-linkedin_invalid_token_mail_sent')) {
 			$blog_name = get_option('blogname');
 			$admin_email = get_option('admin_email');
