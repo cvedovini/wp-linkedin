@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 3.8
-Stable tag: 1.7
+Stable tag: 1.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -50,6 +50,9 @@ We welcome volunteers to translate that plugin into more languages. If you wish
 to help then contact [@cvedovini](https://twitter.com/cvedovini) on Twitter or
 use that [contact form](http://vedovini.net/contact/).
 
+Please check the [WP-LinkedIn Multi-Users](http://vedovini.net/downloads/wp-linkedin-multi-users/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
+extension if you need to show the profiles of multiple users.
+
 
 == Installation ==
 
@@ -70,7 +73,10 @@ WP-LinkedIn](http://vedovini.net/more-wp-linkedin)
 
 = Does the plugin support multiple user profiles? =
 
-No, it doesn't.
+No, it doesn't. But there is a premiun extension,
+[WP-LinkedIn Multi-Users](http://vedovini.net/downloads/wp-linkedin-multi-users/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
+that changes the behavior of this plugin so that shortcodes and widgets show
+the data of the author of the post or page.
 
 = How to add other sections from my profile? =
 
