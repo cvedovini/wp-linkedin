@@ -104,26 +104,11 @@
 	font-weight: bolder;
 }
 
-.linkedin .card {
-	background-color: #F0F0F0;
-	padding: 4px;
-}
-
-.linkedin .card #cartouche {
-	min-height: 50px;
-}
-
-.linkedin .card #cartouche .picture {
-	display: block;
-	float: left;
-	margin: 0 8px 8px 0;
-}
-
-.linkedin .card #cartouche .name {
+.linkedin #cartouche .name {
 	font-size: larger;
 	font-weight: bolder;
 }
 
-.linkedin .card #cartouche .headline {
+.linkedin #cartouche .headline {
 	font-weight: bolder;
 }

@@ -1,21 +1,25 @@
+# Copyright (C) 2013 WP LinkedIn
+# This file is distributed under the same license as the WP LinkedIn package.
 msgid ""
 msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
-"POT-Creation-Date: 2013-12-09 10:23:15+00:00\n"
-"PO-Revision-Date: 2013-12-10 17:38+0700\n"
+"POT-Creation-Date: 2013-12-21 13:59:24+00:00\n"
+"PO-Revision-Date: 2013-12-21 21:05+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: fr_FR\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.5.7\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: .\n"
+"X-POOTLE-MTIME: 1387634653.0\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 
-#: class-admin.php:14 class-admin.php:149
+#: class-admin.php:14 class-admin.php:153
 msgid "LinkedIn Options"
 msgstr "Options LinkedIn"
 
@@ -40,8 +44,8 @@ msgid "Verify SSL peer"
 msgstr "Vérifier le pair SSL"
 
 #: class-admin.php:20
-msgid "LinkedIn card in posts"
-msgstr "Carte de visite dans les articles"
+msgid "LinkedIn cards"
+msgstr "Carte de visite"
 
 #: class-admin.php:30
 msgid "Settings"
@@ -112,17 +116,16 @@ msgstr ""
 "Décocher cette option si vous avez des problèmes de certificat SSL sur votre "
 "serveur."
 
-#: class-admin.php:75
-msgid "Check this option to display your LinkedIn card after each post."
+#: class-admin.php:79
+msgid "Check the content types where you want your LinkedIn card inserted."
 msgstr ""
-"Cocher cette option pour afficher votre carte de visite LinkedIn après le "
-"contenu de chaque article."
+"Sélectionner les types de contenu dans lesquels insérer la carte de visite."
 
-#: class-admin.php:83
+#: class-admin.php:87
 msgid "An error has occured while retrieving the profile:"
 msgstr "Une erreur est survenue lors de la récupération du profile:"
 
-#: class-admin.php:87
+#: class-admin.php:91
 msgid ""
 "Your LinkedIn access token is invalid or has expired, please <a href=\"%s"
 "\">click here</a> to get a new one."
@@ -130,241 +133,247 @@ msgstr ""
 "Votre jeton d'accès à LinkedIn est non valid ou a expiré, merci de <a href="
 "\"%s\">cliquer ici</a> afin d'en générer un nouveau."
 
-#: class-admin.php:97
+#: class-admin.php:101
 msgid "The access token has been successfully updated."
 msgstr "Le jeton d'accès a été mis à jour avec succès."
 
-#: class-admin.php:103
+#: class-admin.php:107
 msgid "An error has occured while updating the access token, please try again."
 msgstr ""
 "Une erreur est survenue lors de la mise à jour du jeton d'accès, merci "
 "d'essayer à nouveau."
 
-#: class-admin.php:104
+#: class-admin.php:108
 msgid "Error message: "
 msgstr "Message d'erreur:"
 
-#: class-admin.php:108
+#: class-admin.php:112
 msgid "The cache has been cleared."
 msgstr "Le cache a été vidé."
 
-#: class-admin.php:141
+#: class-admin.php:145
 msgid "Invalid state"
 msgstr "Etat non valide"
 
-#: class-admin.php:152
+#: class-admin.php:156
 msgid "Options"
 msgstr "Options"
 
-#: class-admin.php:162
+#: class-admin.php:166
 msgid "Administration"
 msgstr "Administration"
 
-#: class-admin.php:165
+#: class-admin.php:169
 msgid "Regenerate LinkedIn Access Token"
 msgstr "Régénérer le jeton d'accès à LinkedIn"
 
-#: class-admin.php:166
+#: class-admin.php:170
 msgid "Clear the Cache"
 msgstr "Vider le cache"
 
-#: class-admin.php:174
+#: class-admin.php:178
 msgid "Do you like this Plugin?"
 msgstr "Appréciez-vous cette extension?"
 
-#: class-admin.php:176
+#: class-admin.php:180
 msgid "Please consider a donation."
 msgstr "Merci de penser à une donation."
 
-#: class-admin.php:186
-msgid ""
-"We also need volunteers to translate that plugin into more languages.\n"
-"\t\t\t\t\t\tIf you wish to help then contact <a href=\"https://twitter.com/"
-"cvedovini\">@cvedovini</a>\n"
-"\t\t\t\t\t\ton Twitter or use that <a href=\"http://vedovini.net/contact/"
-"\">contact form</a>."
+#: class-admin.php:190
+msgid "We also need volunteers to translate that plugin into more languages."
 msgstr ""
 "Nous avons également besoin de volontaires pour traduire cette extension "
-"dans plus de langues. Si vous souhaitez aider merci de contacter <a href="
-"\"https://twitter.com/cvedovini\">@cvedovini</a> sur Twitter ou bien "
-"utilisez ce <a href=\"http://vedovini.net/contact/\">formulaire de contact</"
-"a>."
+"dans plus de langues."
 
-#: class-admin.php:205
+#: class-admin.php:191
+msgid ""
+"If you wish to help then contact <a href=\"https://twitter.com/cvedovini"
+"\">@cvedovini</a> on Twitter or use that <a href=\"http://vedovini.net/"
+"contact/\">contact form</a>."
+msgstr ""
+"Si vous souhaitez aider merci de contacter <a href=\\\"https://twitter.com/"
+"cvedovini\\\">@cvedovini</a> sur Twitter ou bien utilisez ce <a href=\\"
+"\"http://vedovini.net/contact/\\\">formulaire de contact</a>."
+
+#: class-admin.php:208
 msgid "Bahasa Indonesia"
 msgstr "Indonésien"
 
-#: class-admin.php:206
+#: class-admin.php:209
 msgid "Czech"
 msgstr "Tchèque"
 
-#: class-admin.php:207
+#: class-admin.php:210
 msgid "Danish"
 msgstr "Danois"
 
-#: class-admin.php:208
+#: class-admin.php:211
 msgid "Dutch"
 msgstr "Néerlandais"
 
-#: class-admin.php:209
+#: class-admin.php:212
 msgid "French"
 msgstr "Français"
 
-#: class-admin.php:210
+#: class-admin.php:213
 msgid "German"
 msgstr "Allemand"
 
-#: class-admin.php:211
+#: class-admin.php:214
 msgid "Italian"
 msgstr "Italien"
 
-#: class-admin.php:212
+#: class-admin.php:215
 msgid "Japanese"
 msgstr "Japonais"
 
-#: class-admin.php:213
+#: class-admin.php:216
 msgid "Korean"
 msgstr "Coréen"
 
-#: class-admin.php:214
+#: class-admin.php:217
 msgid "Malay"
 msgstr "Malais"
 
-#: class-admin.php:215
+#: class-admin.php:218
 msgid "Norwegian"
 msgstr "Norvégien"
 
-#: class-admin.php:216
+#: class-admin.php:219
 msgid "Polish"
 msgstr "Polonais"
 
-#: class-admin.php:217
+#: class-admin.php:220
 msgid "Portuguese"
 msgstr "Portugais"
 
-#: class-admin.php:218
+#: class-admin.php:221
 msgid "Romanian"
 msgstr "Roumain"
 
-#: class-admin.php:219
+#: class-admin.php:222
 msgid "Russian"
 msgstr "Russe"
 
-#: class-admin.php:220
+#: class-admin.php:223
 msgid "Spanish"
 msgstr "Espagnol"
 
-#: class-admin.php:221
+#: class-admin.php:224
 msgid "Swedish"
 msgstr "Suédois"
 
-#: class-admin.php:222
+#: class-admin.php:225
 msgid "Turkish"
 msgstr "Turc"
 
-#: class-admin.php:223
+#: class-admin.php:226
 msgid "Albanian"
 msgstr "Albanais"
 
-#: class-admin.php:224
+#: class-admin.php:227
 msgid "Armenian"
 msgstr "Arménien"
 
-#: class-admin.php:225
+#: class-admin.php:228
 msgid "Bosnian"
 msgstr "Bosniaque"
 
-#: class-admin.php:226
+#: class-admin.php:229
 msgid "Burmese (Myanmar)"
 msgstr "Birman"
 
-#: class-admin.php:227
+#: class-admin.php:230
 msgid "Chinese (Simplified)"
 msgstr "Chinois (Simplifié)"
 
-#: class-admin.php:228
+#: class-admin.php:231
 msgid "Chinese (Traditional)"
 msgstr "Chinois (Traditionel)"
 
-#: class-admin.php:229
+#: class-admin.php:232
 msgid "Croatian"
 msgstr "Croate"
 
-#: class-admin.php:230
+#: class-admin.php:233
 msgid "Finnish"
 msgstr "Finnois"
 
-#: class-admin.php:231
+#: class-admin.php:234
 msgid "Greek"
 msgstr "Grecque"
 
-#: class-admin.php:232
+#: class-admin.php:235
 msgid "Hindi"
 msgstr "Hindou"
 
-#: class-admin.php:233
+#: class-admin.php:236
 msgid "Hungarian"
 msgstr "Hongrois"
 
-#: class-admin.php:234
+#: class-admin.php:237
 msgid "Icelandic"
 msgstr "Islandais"
 
-#: class-admin.php:235
+#: class-admin.php:238
 msgid "Javanese"
 msgstr "Javanais"
 
-#: class-admin.php:236
+#: class-admin.php:239
 msgid "Kannada"
 msgstr "Kannada"
 
-#: class-admin.php:237
+#: class-admin.php:240
 msgid "Latvian"
 msgstr "Letton"
 
-#: class-admin.php:238
+#: class-admin.php:241
 msgid "Lithuanian"
 msgstr "Lituanien"
 
-#: class-admin.php:239
+#: class-admin.php:242
 msgid "Malayalam"
 msgstr "Malayalam"
 
-#: class-admin.php:240
+#: class-admin.php:243
 msgid "Serbian"
 msgstr "Serbe"
 
-#: class-admin.php:241
+#: class-admin.php:244
 msgid "Slovak"
 msgstr "Slovaque"
 
-#: class-admin.php:242
+#: class-admin.php:245
 msgid "Tagalog"
 msgstr "Tagalog"
 
-#: class-admin.php:243
+#: class-admin.php:246
 msgid "Tamil"
 msgstr "Tamoul"
 
-#: class-admin.php:244
+#: class-admin.php:247
 msgid "Telugu"
 msgstr "Télougou"
 
-#: class-admin.php:245
+#: class-admin.php:248
 msgid "Thai"
 msgstr "Thaïlandais"
 
-#: class-admin.php:246
+#: class-admin.php:249
 msgid "Ukrainian"
 msgstr "Ukrainien"
 
-#: class-admin.php:247
+#: class-admin.php:250
 msgid "Vietnamese"
 msgstr "Vietnamien"
 
-#: class-admin.php:248
+#: class-admin.php:251
 msgid "Other"
 msgstr "Autre"
+
+#: class-card-widget.php:6
+msgid "LinkedIn Card"
+msgstr "Carte de visite"
 
 #: class-card-widget.php:7
 msgid "A widget displaying your LinkedIn card"
@@ -391,35 +400,37 @@ msgstr "Indiquer '0' pour cacher le résumé."
 msgid "An unknown error has occured and no token was retrieved."
 msgstr "Une erreur inconnue s'est produite et le jeton n'a pu être récupéré."
 
-#: class-linkedin-connection.php:178 class-linkedin-connection.php:225
+#: class-linkedin-connection.php:189
 msgid "HTTP request returned error code %d."
 msgstr "La requette HTTP a retourné un code d'erreur %d."
 
-#: class-linkedin-connection.php:190 class-linkedin-connection.php:237
+#: class-linkedin-connection.php:201
 msgid "No token or token has expired."
-msgstr ""
+msgstr "Pas de jeton ou le jeton a expiré."
 
-#: class-linkedin-connection.php:246
+#: class-linkedin-connection.php:210
 msgid "Invalid or expired access token"
-msgstr "Jeton d'accès invalide ou expiré"
+msgstr "Jeton d'accès invalid ou expiré"
 
-#: class-linkedin-connection.php:248
+#: class-linkedin-connection.php:212
 msgid ""
 "The access token for the WP LinkedIn plugin is either invalid or has "
-"expired, please click on the following link to renew it.\n"
-"\n"
-"%s\n"
-"\n"
-"This link will only be valid for a limited period of time.\n"
-"-Thank you."
+"expired, please click on the following link to renew it."
 msgstr ""
 "Le jeton d'accès pour l'extension WP LinkedIn est soit invalide soit expiré, "
-"merci de cliquer sur le lien suivant afin de le renouveler.\n"
-"\n"
-"%s\n"
-"\n"
-"Ce lien ne sera valide que pour une période de temps limitée.\n"
-"-Merci."
+"merci de cliquer sur le lien suivant afin de le renouveler."
+
+#: class-linkedin-connection.php:214
+msgid "This link will only be valid for a limited period of time."
+msgstr "Ce lien ne sera valide que pour une période de temps limitée."
+
+#: class-linkedin-connection.php:215
+msgid "-Thank you."
+msgstr "-Merci."
+
+#: class-profile-widget.php:6
+msgid "LinkedIn Profile"
+msgstr "Profil LinkedIn"
 
 #: class-profile-widget.php:7
 msgid ""
@@ -429,6 +440,10 @@ msgstr "La version JavaScript de la carte de visite LinkedIn"
 #: class-profile-widget.php:49
 msgid "Show connections"
 msgstr "Afficher les connections"
+
+#: class-recommendations-widget.php:6
+msgid "LinkedIn Recommendations"
+msgstr "Recommandations LinkedIn"
 
 #: class-recommendations-widget.php:7
 msgid "A slider with your LinkedIn recommendations"
@@ -454,6 +469,10 @@ msgstr "Longueur de la recommendation (en nombre de caractères):"
 #: class-recommendations-widget.php:58
 msgid "Scroller's speed:"
 msgstr "Vitesse de défilement (en ms):"
+
+#: class-updates-widget.php:6
+msgid "LinkedIn Network Updates"
+msgstr "Mises-à-jour du réseau LinkedIn"
 
 #: class-updates-widget.php:7
 msgid "A widget displaying your LinkedIn network updates"
@@ -544,7 +563,7 @@ msgstr "Compétences et Expertise"
 msgid "Languages"
 msgstr "Langues"
 
-#: templates/profile.php:87 wp-linkedin.php:241
+#: templates/profile.php:87 wp-linkedin.php:268
 msgid "Education"
 msgstr "Education"
 
@@ -556,59 +575,59 @@ msgstr "Activités et associations"
 msgid "Recommendations"
 msgstr "Recommendations"
 
-#: wp-linkedin.php:190
+#: wp-linkedin.php:217
 msgid "You don't have any recommendation to show."
 msgstr "Vous n'avez pas de recommandation."
 
-#: wp-linkedin.php:235
+#: wp-linkedin.php:262
 msgid "Animal Welfare"
 msgstr "Protection animale"
 
-#: wp-linkedin.php:236
+#: wp-linkedin.php:263
 msgid "Arts and Culture"
 msgstr "Arts et Culture"
 
-#: wp-linkedin.php:237
+#: wp-linkedin.php:264
 msgid "Children"
 msgstr "Enfants"
 
-#: wp-linkedin.php:238
+#: wp-linkedin.php:265
 msgid "Civil Rights and Social Action"
 msgstr "Droits civils et action sociale"
 
-#: wp-linkedin.php:239
+#: wp-linkedin.php:266
 msgid "Disaster and Humanitarian Relief"
 msgstr "Catastrophes et aide humanitaire"
 
-#: wp-linkedin.php:240
+#: wp-linkedin.php:267
 msgid "Economic Empowerment"
 msgstr "Autonomisation économique"
 
-#: wp-linkedin.php:242
+#: wp-linkedin.php:269
 msgid "Environment"
 msgstr "Environnement"
 
-#: wp-linkedin.php:243
+#: wp-linkedin.php:270
 msgid "Health"
 msgstr "Santé"
 
-#: wp-linkedin.php:244
+#: wp-linkedin.php:271
 msgid "Human Rights"
 msgstr "Droits de l'homme"
 
-#: wp-linkedin.php:245
+#: wp-linkedin.php:272
 msgid "Politics"
 msgstr "Politique"
 
-#: wp-linkedin.php:246
+#: wp-linkedin.php:273
 msgid "Poverty Alleviation"
 msgstr "Réduction de la pauvreté"
 
-#: wp-linkedin.php:247
+#: wp-linkedin.php:274
 msgid "Science and Technology"
 msgstr "Science et technologie"
 
-#: wp-linkedin.php:248
+#: wp-linkedin.php:275
 msgid "Social Services"
 msgstr "Services sociaux"
 
@@ -643,6 +662,44 @@ msgid ""
 msgstr ""
 "http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-"
 "linkedin"
+
+#~ msgid "LinkedIn card in posts"
+#~ msgstr "Carte de visite dans les articles"
+
+#~ msgid "Check this option to display your LinkedIn card after each post."
+#~ msgstr ""
+#~ "Cocher cette option pour afficher votre carte de visite LinkedIn après le "
+#~ "contenu de chaque article."
+
+#~ msgid ""
+#~ "We also need volunteers to translate that plugin into more languages.\n"
+#~ "\t\t\t\t\t\tIf you wish to help then contact <a href=\"https://twitter."
+#~ "com/cvedovini\">@cvedovini</a>\n"
+#~ "\t\t\t\t\t\ton Twitter or use that <a href=\"http://vedovini.net/contact/"
+#~ "\">contact form</a>."
+#~ msgstr ""
+#~ "Nous avons également besoin de volontaires pour traduire cette extension "
+#~ "dans plus de langues. Si vous souhaitez aider merci de contacter <a href="
+#~ "\"https://twitter.com/cvedovini\">@cvedovini</a> sur Twitter ou bien "
+#~ "utilisez ce <a href=\"http://vedovini.net/contact/\">formulaire de "
+#~ "contact</a>."
+
+#~ msgid ""
+#~ "The access token for the WP LinkedIn plugin is either invalid or has "
+#~ "expired, please click on the following link to renew it.\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "This link will only be valid for a limited period of time.\n"
+#~ "-Thank you."
+#~ msgstr ""
+#~ "Le jeton d'accès pour l'extension WP LinkedIn est soit invalide soit "
+#~ "expiré, merci de cliquer sur le lien suivant afin de le renouveler.\n"
+#~ "\n"
+#~ "%s\n"
+#~ "\n"
+#~ "Ce lien ne sera valide que pour une période de temps limitée.\n"
+#~ "-Merci."
 
 #~ msgid ""
 #~ "There's something wrong and the profile could not be retreived, please "

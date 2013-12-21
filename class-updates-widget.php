@@ -3,7 +3,7 @@
 class WP_LinkedIn_Updates_Widget extends WP_Widget {
 
 	public function __construct() {
-		parent::__construct('wp-linkedin-updates-widget', 'LinkedIn Network Updates',
+		parent::__construct('wp-linkedin-updates-widget', __('LinkedIn Network Updates', 'wp-linkedin'),
 				array('description' => __('A widget displaying your LinkedIn network updates', 'wp-linkedin')));
 	}
 

@@ -3,7 +3,7 @@
 class WP_LinkedIn_Card_Widget extends WP_Widget {
 
 	public function __construct() {
-		parent::__construct('wp-linkedin-card-widget', 'LinkedIn Card',
+		parent::__construct('wp-linkedin-card-widget', __('LinkedIn Card', 'wp-linkedin'),
 				array('description' => __('A widget displaying your LinkedIn card', 'wp-linkedin')));
 	}
 

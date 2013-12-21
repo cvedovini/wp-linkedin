@@ -3,7 +3,7 @@
 class WP_LinkedIn_Recommendations_Widget extends WP_Widget {
 
 	public function __construct() {
-		parent::__construct('wp-linkedin-recommendation-widget', 'LinkedIn Recommendations',
+		parent::__construct('wp-linkedin-recommendation-widget', __('LinkedIn Recommendations', 'wp-linkedin'),
 				array('description' => __('A slider with your LinkedIn recommendations', 'wp-linkedin')));
 	}
 

@@ -129,6 +129,10 @@ profile.
 
 == Changelog ==
 
+= Version 1.9 =
+- Fixed some translation issues.
+- Simplified the CSS and template for the LinkedIn card.
+
 = Version 1.8 =
 - Added a setting to let you choose on which post types your LinkedIn card will
 be inserted (before it was only inserted on posts).

@@ -125,7 +125,9 @@ class WPLinkedInConnection {
 		}
 
 		// Else, let's try to fetch one.
-		$fetched = $this->fetch_profile($options, $lang);
+		$url = "https://api.linkedin.com/v1/people/~:($options)";
+		$fetched = $this->api_call($url, $lang);
+
 		if (!is_wp_error($fetched)) {
 			$profile = $fetched;
 
@@ -144,11 +146,20 @@ class WPLinkedInConnection {
 
 	}
 
-	protected function fetch_profile($options='id', $lang='') {
+	public function get_network_updates($count=50, $only_self=true) {
+		$params = array('count' => $count);
+		if ($only_self) $params['scope'] = 'self';
+		return $this->api_call('https://api.linkedin.com/v1/people/~/network/updates', '', $params);
+	}
+
+	public function api_call($url, $lang='', $params=false) {
 		$access_token = $this->get_access_token();
 
 		if ($access_token) {
-			$url = "https://api.linkedin.com/v1/people/~:($options)?" . http_build_query(array('oauth2_access_token' => $access_token));
+			if (!is_array($params)) $params = array();
+			$params['oauth2_access_token'] = $access_token;
+			$url .= '?' . http_build_query($params);
+
 			$headers = array(
 					'Content-Type' => 'text/plain; charset=UTF-8',
 					'x-li-format' => 'json');
@@ -173,9 +184,9 @@ class WPLinkedInConnection {
 					}
 
 					if (isset($body->message)) {
-						$error = new WP_Error('fetch_profile', $body->message);
+						$error = new WP_Error('api_call', $body->message);
 					} else {
-						$error = new WP_Error('fetch_profile', sprintf(__('HTTP request returned error code %d.', 'wp-linkedin'), $return_code));
+						$error = new WP_Error('api_call', sprintf(__('HTTP request returned error code %d.', 'wp-linkedin'), $return_code));
 					}
 
 					$this->set_last_error($error);
@@ -183,58 +194,11 @@ class WPLinkedInConnection {
 				}
 			} else {
 				$this->set_last_error($response);
-				return new WP_Error('fetch_profile', $response->get_error_message());
+				return new WP_Error('api_call', $response->get_error_message());
 			}
 		} else {
 			$this->send_invalid_token_email();
-			return new WP_Error('fetch_profile', __('No token or token has expired.', 'wp-linkedin'));
-		}
-	}
-
-	public function get_network_updates($count=50, $only_self=true) {
-		$access_token = $this->get_access_token();
-
-		if ($access_token) {
-			$params = array('oauth2_access_token' => $access_token, 'count' => $count);
-			if ($only_self) $params['scope'] = 'self';
-
-			$url = 'https://api.linkedin.com/v1/people/~/network/updates?' . http_build_query($params);
-
-			$headers = array(
-					'Content-Type' => 'text/plain; charset=UTF-8',
-					'x-li-format' => 'json');
-
-			$response = wp_remote_get($url, array('sslverify' => LINKEDIN_SSL_VERIFYPEER, 'headers' => $headers));
-			if (!is_wp_error($response)) {
-				$return_code = $response['response']['code'];
-				$body = json_decode($response['body']);
-
-				if ($return_code == 200) {
-					$this->set_last_error();
-					return $body;
-				} else{
-					if ($return_code == 401) {
-						// Invalidate token
-						$this->invalidate_access_token();
-						$this->send_invalid_token_email();
-					}
-
-					if (isset($body->message)) {
-						$error = new WP_Error('get_network_updates', $body->message);
-					} else {
-						$error = new WP_Error('get_network_updates', sprintf(__('HTTP request returned error code %d.', 'wp-linkedin'), $return_code));
-					}
-
-					$this->set_last_error($error);
-					return $error;
-				}
-			} else {
-				$this->set_last_error($response);
-				return new WP_Error('get_network_updates', $response->get_error_message());
-			}
-		} else {
-			$this->send_invalid_token_email();
-			return new WP_Error('get_network_updates', __('No token or token has expired.', 'wp-linkedin'));
+			return new WP_Error('api_call', __('No token or token has expired.', 'wp-linkedin'));
 		}
 	}
 

@@ -3,7 +3,7 @@
 class WP_LinkedIn_Profile_Widget extends WP_Widget {
 
 	public function __construct() {
-		parent::__construct('wp-linkedin-profile-widget', 'LinkedIn Profile',
+		parent::__construct('wp-linkedin-profile-widget', __('LinkedIn Profile', 'wp-linkedin'),
 				array('description' => __('A widget displaying your LinkedIn profile using the LinkedIn Javascript API', 'wp-linkedin')));
 	}
 

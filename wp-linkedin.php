@@ -144,11 +144,11 @@ function wp_linkedin_get_network_updates($count=50, $only_self=true) {
 }
 
 
-function wp_linkedin_load_template($name, $args) {
+function wp_linkedin_load_template($name, $args, $plugin=__FILE__) {
 	$template = locate_template('linkedin/'. $name . '.php');
 
 	if (empty($template)) {
-		$template = dirname( __FILE__ ) . '/templates/' . $name . '.php';
+		$template = dirname($plugin) . '/templates/' . $name . '.php';
 	}
 
 	$template = apply_filters('linkedin_template', $template);
