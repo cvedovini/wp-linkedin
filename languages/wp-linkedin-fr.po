@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: wp-linkedin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-linkedin\n"
 "POT-Creation-Date: 2013-12-21 13:59:24+00:00\n"
-"PO-Revision-Date: 2013-12-21 21:05+0700\n"
+"PO-Revision-Date: 2013-12-22 01:11+0700\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-Basepath: .\n"
-"X-POOTLE-MTIME: 1387634653.0\n"
+"X-POOTLE-MTIME: 1387649468.0\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 
 #: class-admin.php:14 class-admin.php:153
@@ -29,11 +29,11 @@ msgstr "LinkedIn"
 
 #: class-admin.php:16
 msgid "Profile fields"
-msgstr "Champs du profile"
+msgstr "Champs du profil"
 
 #: class-admin.php:17
 msgid "Profile language"
-msgstr "Langage du profile"
+msgstr "Langage du profil"
 
 #: class-admin.php:18
 msgid "Send mail on token expiry"
@@ -53,7 +53,7 @@ msgstr "Réglages"
 
 #: class-admin.php:37
 msgid "Comma separated list of fields to show on the profile."
-msgstr "Liste des champs à afficher dans le profile, séparés par des virgules."
+msgstr "Liste des champs à afficher dans le profil, séparés par des virgules."
 
 #: class-admin.php:38
 msgid ""
@@ -81,7 +81,7 @@ msgid ""
 "The language of the profile to display if you have several profiles in "
 "different languages."
 msgstr ""
-"Le langage à afficher si vous avez plusieurs profiles dans différents "
+"Le langage à afficher si vous avez plusieurs profils dans différents "
 "langages."
 
 #: class-admin.php:56
@@ -123,7 +123,7 @@ msgstr ""
 
 #: class-admin.php:87
 msgid "An error has occured while retrieving the profile:"
-msgstr "Une erreur est survenue lors de la récupération du profile:"
+msgstr "Une erreur est survenue lors de la récupération du profil:"
 
 #: class-admin.php:91
 msgid ""
@@ -517,11 +517,11 @@ msgstr "%1$s à rejoint le groupe %2$s."
 
 #: templates/network-updates.php:81
 msgid "%s has a new profile picture."
-msgstr "%s a une nouvelle photo de profile."
+msgstr "%s a une nouvelle photo de profil."
 
 #: templates/network-updates.php:88 templates/network-updates.php:116
 msgid "%s has an updated profile."
-msgstr "%s a mis-à-jour son profile."
+msgstr "%s a mis-à-jour son profil."
 
 #: templates/network-updates.php:95
 msgid "%1$s recommends %2$s."
