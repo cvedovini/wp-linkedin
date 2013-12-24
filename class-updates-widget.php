@@ -41,7 +41,7 @@ class WP_LinkedIn_Updates_Widget extends WP_Widget {
 </p>
 <p>
 	<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Number of updates to show:', 'wp-linkedin'); ?></label>
-	<input id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" type="text" value="<?php echo $instance['count']; ?>" />
+	<input id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" type="text" value="<?php echo $instance['count']; ?>" size="3" />
 </p>
 <p>
 	<label><input id="<?php echo $this->get_field_id('only_self'); ?>" name="<?php echo $this->get_field_name('only_self'); ?>"

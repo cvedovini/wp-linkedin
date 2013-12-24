@@ -47,16 +47,16 @@ class WP_LinkedIn_Recommendations_Widget extends WP_Widget {
 </p>
 <p>
 	<label for="<?php echo $this->get_field_id('width'); ?>"><?php _e('Width of widget (in px):', 'wp-linkedin'); ?></label>
-	<input id="<?php echo $this->get_field_id('width'); ?>" name="<?php echo $this->get_field_name('width'); ?>" type="text" value="<?php echo $instance['width']; ?>" />
+	<input id="<?php echo $this->get_field_id('width'); ?>" name="<?php echo $this->get_field_name('width'); ?>" type="text" value="<?php echo $instance['width']; ?>" size="4" />
 	<br/><small><em><?php _e('You can also specify \'auto\' to let javascript automatically compute the width or \'css\' to set it yourself using your theme\'s stylesheet.', 'wp-linkedin'); ?></em></small>
 </p>
 <p>
 	<label for="<?php echo $this->get_field_id('length'); ?>"><?php _e('Length of recommendations (in char):', 'wp-linkedin'); ?></label>
-	<input id="<?php echo $this->get_field_id('length'); ?>" name="<?php echo $this->get_field_name('length'); ?>" type="text" value="<?php echo $instance['length']; ?>" />
+	<input id="<?php echo $this->get_field_id('length'); ?>" name="<?php echo $this->get_field_name('length'); ?>" type="text" value="<?php echo $instance['length']; ?>" size="4" />
 </p>
 <p>
 	<label for="<?php echo $this->get_field_id('interval'); ?>"><?php _e('Scroller\'s speed:', 'wp-linkedin'); ?></label>
-	<input id="<?php echo $this->get_field_id('interval'); ?>" name="<?php echo $this->get_field_name('interval'); ?>" type="text" value="<?php echo $instance['interval']; ?>" />
+	<input id="<?php echo $this->get_field_id('interval'); ?>" name="<?php echo $this->get_field_name('interval'); ?>" type="text" value="<?php echo $instance['interval']; ?>" size="4" />
 </p>
 <?php
 }
