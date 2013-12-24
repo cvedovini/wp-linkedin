@@ -255,6 +255,7 @@ function wp_linkedin_excerpt($str, $length, $postfix='[...]') {
 	}
 }
 
+
 function wp_linkedin_cause($cause_name) {
 	static $causes;
 	if (!isset($causes)) {
@@ -277,6 +278,7 @@ function wp_linkedin_cause($cause_name) {
 
 	return $causes[$cause_name];
 }
+
 
 global $the_wp_linked_plugin;
 $the_wp_linked_plugin = new WPLinkedInPlugin();

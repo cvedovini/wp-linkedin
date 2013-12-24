@@ -104,11 +104,11 @@
 	font-weight: bolder;
 }
 
-.linkedin #cartouche .name {
+.linkedin .card #cartouche .name {
 	font-size: larger;
 	font-weight: bolder;
 }
 
-.linkedin #cartouche .headline {
+.linkedin .card #cartouche .headline {
 	font-weight: bolder;
 }

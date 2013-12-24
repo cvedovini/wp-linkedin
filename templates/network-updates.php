@@ -122,6 +122,6 @@ switch ($update->updateType) {
 		echo $update->updateType;
 		echo '</li>';
 }
-?></li>
+?>
 <?php endforeach; ?>
 </ul></div>
