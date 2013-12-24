@@ -129,8 +129,9 @@ profile.
 
 == Changelog ==
 
-= Version 1.9 =
+= Version 1.8.1 =
 - Fixed some translation issues.
+- Fixed the default value for the list of post types to put the card on.
 - Simplified the CSS and template for the LinkedIn card.
 
 = Version 1.8 =
