@@ -89,7 +89,7 @@ class WPLinkedInPlugin {
 	function get_post_types() {
 		$post_types = get_option('wp-linkedin_add_card_to_content', false);
 
-		if (!is_array($post_types) && $post_types !== false) {
+		if (!is_array($post_types) && $post_types) {
 			$post_types = ($post_types) ? array('post') : false;
 		}
 
