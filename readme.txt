@@ -53,6 +53,10 @@ use that [contact form](http://vedovini.net/contact/).
 Please check the [WP-LinkedIn Multi-Users](http://vedovini.net/downloads/wp-linkedin-multi-users/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
 extension if you need to show the profiles of multiple users.
 
+And if you need to show company profiles or company updates, please check the
+[WP-LinkedIn for Companies](http://vedovini.net/downloads/wp-linkedin-co/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
+extension.
+
 
 == Installation ==
 
@@ -77,6 +81,12 @@ No, it doesn't. But there is a premiun extension,
 [WP-LinkedIn Multi-Users](http://vedovini.net/downloads/wp-linkedin-multi-users/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
 that changes the behavior of this plugin so that shortcodes and widgets show
 the data of the author of the post or page.
+
+= Does the plugin support company profiles? =
+
+No, it doesn't. But there is a premiun extension,
+[WP-LinkedIn for Companies](http://vedovini.net/downloads/wp-linkedin-co/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
+that provides shortcodes and widgets for company profiles and company updates.
 
 = How to add other sections from my profile? =
 
