@@ -11,7 +11,7 @@ class WP_LinkedIn_Card_Widget extends WP_Widget {
 		extract($args);
 		$instance = wp_parse_args((array) $instance, array(
 				'title' => '',
-				'picture_width' => 80,
+				'picture_width' => 50,
 				'summary_length' => 200
 			));
 
@@ -30,7 +30,7 @@ class WP_LinkedIn_Card_Widget extends WP_Widget {
 	public function form($instance) {
 		$instance = wp_parse_args((array) $instance, array(
 				'title' => '',
-				'picture_width' => 80,
+				'picture_width' => 50,
 				'summary_length' => 200
 			));
 		$title = esc_attr($instance['title']);

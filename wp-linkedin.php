@@ -162,10 +162,11 @@ function wp_linkedin_load_template($name, $args, $plugin=__FILE__) {
 
 
 function wp_linkedin_profile($atts) {
-	extract(shortcode_atts(array(
-			'fields' => LINKEDIN_FIELDS,
-			'lang' => LINKEDIN_PROFILELANGUAGE
-	), $atts, 'li_profile'));
+	$atts = shortcode_atts(array(
+				'fields' => LINKEDIN_FIELDS,
+				'lang' => LINKEDIN_PROFILELANGUAGE
+			), $atts, 'li_profile');
+	extract($atts);
 
 	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ',' . $fields);
 	$profile = wp_linkedin_get_profile($fields, $lang);
@@ -173,18 +174,20 @@ function wp_linkedin_profile($atts) {
 	if (is_wp_error($profile)) {
 		return wp_linkedin_error($profile->get_error_message());
 	} elseif ($profile && is_object($profile)) {
-		return wp_linkedin_load_template('profile', array('profile' => $profile));
+		return wp_linkedin_load_template('profile',
+				array_merge($atts, array('profile' => $profile)));
 	}
 }
 
 
 function wp_linkedin_card($atts) {
-	extract(shortcode_atts(array(
-			'picture_width' => '80',
-			'summary_length' => '200',
-			'fields' => 'summary',
-			'lang' => LINKEDIN_PROFILELANGUAGE
-	), $atts, 'li_card'));
+	$atts = shortcode_atts(array(
+				'picture_width' => '50',
+				'summary_length' => '200',
+				'fields' => 'summary',
+				'lang' => LINKEDIN_PROFILELANGUAGE
+			), $atts, 'li_card');
+	extract($atts);
 
 	$fields = preg_replace('/\s+/', '', LINKEDIN_FIELDS_BASIC . ',' . $fields);
 	$profile = wp_linkedin_get_profile($fields, $lang);
@@ -192,18 +195,19 @@ function wp_linkedin_card($atts) {
 	if (is_wp_error($profile)) {
 		return wp_linkedin_error($profile->get_error_message());
 	} elseif ($profile && is_object($profile)) {
-		return wp_linkedin_load_template('card', array('profile' => $profile,
-				'picture_width' => $picture_width, 'summary_length' => $summary_length));
+		return wp_linkedin_load_template('card',
+				array_merge($atts, array('profile' => $profile)));
 	}
 }
 
 
 function wp_linkedin_recommendations($atts) {
-	extract(shortcode_atts(array(
-			'width' => 'auto',
-			'length' => '200',
-			'interval' => '4000'
-	), $atts, 'li_recommendations'));
+	$atts = shortcode_atts(array(
+				'width' => 'auto',
+				'length' => '200',
+				'interval' => '4000'
+			), $atts, 'li_recommendations');
+	extract($atts);
 
 	$profile = wp_linkedin_get_profile(LINKEDIN_FIELDS_RECOMMENDATIONS);
 
@@ -211,8 +215,8 @@ function wp_linkedin_recommendations($atts) {
 		return wp_linkedin_error($profile->get_error_message());
 	} elseif ($profile && is_object($profile)) {
 		if (isset($profile->recommendationsReceived->values) && is_array($profile->recommendationsReceived->values)) {
-			return wp_linkedin_load_template('recommendations', array('recommendations' => $profile->recommendationsReceived->values,
-					'width' => $width, 'length' => $length, 'interval' => $interval));
+			return wp_linkedin_load_template('recommendations',
+					array_merge($atts, array('recommendations' => $profile->recommendationsReceived->values)));
 		} else {
 			return wp_linkedin_error(__('You don\'t have any recommendation to show.', 'wp-linkedin'));
 		}
@@ -221,18 +225,19 @@ function wp_linkedin_recommendations($atts) {
 
 
 function wp_linkedin_updates($atts) {
-	extract(shortcode_atts(array(
-			'only_self' => true,
-			'count' => 50
-	), $atts, 'li_updates'));
+	$atts = shortcode_atts(array(
+				'only_self' => true,
+				'count' => 50
+			), $atts, 'li_updates');
+	extract($atts);
 
 	$updates = wp_linkedin_get_network_updates($count, $only_self);
 
 	if (is_wp_error($updates)) {
 		return wp_linkedin_error($updates->get_error_message());
 	} elseif ($updates && is_object($updates)) {
-		return wp_linkedin_load_template('network-updates', array('updates' => $updates,
-				'only_self' => $only_self, 'count' => $count));
+		return wp_linkedin_load_template('network-updates',
+				array_merge($atts, array('updates' => $updates)));
 	}
 }
 
