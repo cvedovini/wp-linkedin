@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 3.8
-Stable tag: 1.8
+Stable tag: 1.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -139,10 +139,11 @@ profile.
 
 == Changelog ==
 
-= Version 1.8.1 =
+= Version 1.9 =
 - Fixed some translation issues.
 - Fixed the default value for the list of post types to put the card on.
 - Simplified the CSS and template for the LinkedIn card.
+- Updated Dutch translations.
 
 = Version 1.8 =
 - Added a setting to let you choose on which post types your LinkedIn card will
