@@ -139,6 +139,10 @@ profile.
 
 == Changelog ==
 
+= Version 1.11 =
+- Added 30mn caching for network updates to avoid API throttling.
+- Small fixes.
+
 = Version 1.10 =
 - Bundled jQueryTools within the plugin instead of using jQueryTools CDN.
 
