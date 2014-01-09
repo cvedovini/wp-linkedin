@@ -1,7 +1,16 @@
 <?php
 
-if (!defined('WP_LINKEDIN_CACHETIMEOUT')) {
-	define('WP_LINKEDIN_CACHETIMEOUT', 43200); // 12 hours
+if (!defined('WP_LINKEDIN_PROFILE_CACHE_TIMEOUT')) {
+	if (defined('WP_LINKEDIN_CACHETIMEOUT')) {
+		define('WP_LINKEDIN_PROFILE_CACHE_TIMEOUT', WP_LINKEDIN_CACHETIMEOUT);
+	} else {
+		define('WP_LINKEDIN_PROFILE_CACHE_TIMEOUT', 43200); // 12 hours
+		define('WP_LINKEDIN_CACHETIMEOUT', WP_LINKEDIN_PROFILE_CACHE_TIMEOUT); // compatibility for extensions
+	}
+}
+
+if (!defined('WP_LINKEDIN_UPDATES_CACHE_TIMEOUT')) {
+	define('WP_LINKEDIN_UPDATES_CACHE_TIMEOUT', 1800); // 30 minutes
 }
 
 // Let people define their own APPKEY if needed
@@ -106,14 +115,15 @@ class WPLinkedInConnection {
 	}
 
 	public function clear_cache() {
-		$this->delete_cache('wp-linkedin_cache');
+		$this->delete_cache('wp-linkedin_profile_cache');
+		$this->delete_cache('wp-linkedin_updates_cache');
 	}
 
 	public function get_profile($options='id', $lang='') {
 		$profile = false;
 		$cache_key = sha1($options.$lang);
 
-		$cache = $this->get_cache('wp-linkedin_cache');
+		$cache = $this->get_cache('wp-linkedin_profile_cache');
 		if (!is_array($cache)) $cache = array();
 
 		// Do we have an up-to-date profile?
@@ -132,9 +142,9 @@ class WPLinkedInConnection {
 			$profile = $fetched;
 
 			$cache[$cache_key] = array(
-					'expires' => time() + WP_LINKEDIN_CACHETIMEOUT,
+					'expires' => time() + WP_LINKEDIN_PROFILE_CACHE_TIMEOUT,
 					'profile' => $profile);
-			$this->set_cache('wp-linkedin_cache', $cache);
+			$this->set_cache('wp-linkedin_profile_cache', $cache);
 			return $profile;
 		} elseif ($profile) {
 			// If we cannot fetch one, let's return the outdated one if any.
@@ -146,9 +156,39 @@ class WPLinkedInConnection {
 	}
 
 	public function get_network_updates($count=50, $only_self=true) {
+		$updates = false;
+		$cache = $this->get_cache('wp-linkedin_updates_cache');
+
+		if ($cache && is_array($cache)) {
+			if ($cache['count'] == $count &&
+					$cache['only_self'] == $only_self) {
+				$expires = $cache['expires'];
+				$updates = $cache['updates'];
+				if (time() < $expires) return $updates;
+			}
+		}
+
 		$params = array('count' => $count);
 		if ($only_self) $params['scope'] = 'self';
-		return $this->api_call('https://api.linkedin.com/v1/people/~/network/updates', '', $params);
+		$fetched = $this->api_call('https://api.linkedin.com/v1/people/~/network/updates', '', $params);
+
+		if (!is_wp_error($fetched)) {
+			$updates = $fetched;
+
+			$cache = array(
+					'count' => $count,
+					'only_self' => $only_self,
+					'expires' => time() + WP_LINKEDIN_UPDATES_CACHE_TIMEOUT,
+					'updates' => $updates);
+			$this->set_cache('wp-linkedin_updates_cache', $cache);
+			return $updates;
+		} elseif ($updates) {
+			// If we cannot fetch one, let's return the outdated one if any.
+			return $updates;
+		} else {
+			// Else just return the error
+			return $fetched;
+		}
 	}
 
 	public function api_call($url, $lang='', $params=false) {

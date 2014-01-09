@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 3.8
-Stable tag: 1.10
+Stable tag: 1.11
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -138,6 +138,11 @@ profile.
 
 
 == Changelog ==
+
+= Version 1.11 =
+- Added 30mn caching for network updates to avoid API throttling.
+- Small fixes.
+- Added Spanish translations.
 
 = Version 1.10 =
 - Bundled jQueryTools within the plugin instead of using jQueryTools CDN.
@@ -322,3 +327,5 @@ Dutch translations.
 translations.
 - [Graciela Morel Centurion](ar.linkedin.com/pub/graciela-morel-centurion/4/61b/b9):
 Contributed the Brazilian Portuguese translations.
+- Andrew Curtiz, from [WebHostingHub](http://www.webhostinghub.com/): Contributed the Spanish
+translations.
