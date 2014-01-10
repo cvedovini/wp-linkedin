@@ -139,6 +139,10 @@ profile.
 
 == Changelog ==
 
+= Version 1.11.1 =
+- Using `esc_url` in templates when printing links.
+- Using `nl2br` instead of `wpautop` when printing recommendations text.
+
 = Version 1.11 =
 - Added 30mn caching for network updates to avoid API throttling.
 - Small fixes.

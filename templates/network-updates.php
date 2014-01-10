@@ -8,7 +8,7 @@ if (!function_exists('profile_name')) {
 		}
 
 		if (isset($v->siteStandardProfileRequest->url)) {
-			return sprintf('<a href="%s">%s</a>', $v->siteStandardProfileRequest->url, $fullName);
+			return sprintf('<a href="%s">%s</a>', esc_url($v->siteStandardProfileRequest->url), $fullName);
 		} else {
 			return $fullName;
 		}
@@ -18,7 +18,7 @@ if (!function_exists('profile_name')) {
 if (!function_exists('find_links')) {
 	function find_links($v) {
 		$regex = '/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/i';
-		return preg_replace($regex, '<a href="\\0">\\0</a>', $v);
+		return preg_replace($regex, '<a href="\\0">\\0</a>', esc_url($v));
 	}
 }
 ?>

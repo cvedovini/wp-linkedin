@@ -1,7 +1,7 @@
 <div class="linkedin"><div class="profile">
 <div id ="cartouche" class="section">
-	<a href="<?php echo $profile->publicProfileUrl; ?>"><img class="picture" src="<?php echo $profile->pictureUrl; ?>" width="80px" /></a>
-	<div class="name"><a href="<?php echo $profile->publicProfileUrl; ?>"><?php echo $profile->firstName; ?> <?php echo $profile->lastName; ?></a></div>
+	<a href="<?php echo esc_url($profile->publicProfileUrl); ?>"><img class="picture" src="<?php echo $profile->pictureUrl; ?>" width="80px" /></a>
+	<div class="name"><a href="<?php echo esc_url($profile->publicProfileUrl); ?>"><?php echo $profile->firstName; ?> <?php echo $profile->lastName; ?></a></div>
 	<div class="headline"><?php echo $profile->headline; ?></div>
 	<div class="location"><?php echo $profile->location->name; ?> | <?php echo $profile->industry; ?></div>
 </div>
@@ -105,9 +105,9 @@ foreach ($profile->skills->values as $v) {
 <div class="heading"><?php _e('Recommendations', 'wp-linkedin'); ?></div>
 <?php foreach ($profile->recommendationsReceived->values as $v): ?>
 <blockquote>
-	<div class="recommendation"><?php  echo wpautop($v->recommendationText); ?></div>
+	<div class="recommendation"><?php  echo nl2br($v->recommendationText); ?></div>
 	<div class="recommender"><?php if (isset($v->recommender->publicProfileUrl)): ?>
-		<a href="<?php echo $v->recommender->publicProfileUrl; ?>"
+		<a href="<?php echo esc_url($v->recommender->publicProfileUrl); ?>"
 		target="_blank"><?php echo $v->recommender->firstName; ?>
 		<?php echo $v->recommender->lastName; ?></a>
 		<?php else: ?>
