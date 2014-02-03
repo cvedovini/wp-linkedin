@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 3.8
-Stable tag: 1.11.1
+Stable tag: 1.11.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -138,6 +138,9 @@ profile.
 
 
 == Changelog ==
+
+= Version 1.11.2 =
+- Fixed a bug in the `Network Updates` template that was messing up the update text.
 
 = Version 1.11.1 =
 - Using `esc_url` in templates when printing links.
