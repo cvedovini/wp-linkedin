@@ -4,8 +4,8 @@ Contributors: cvedovini
 Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
-Tested up to: 3.8
-Stable tag: 1.12
+Tested up to: 3.8.1
+Stable tag: 1.12.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -139,8 +139,11 @@ profile.
 
 == Changelog ==
 
+= Version 1.12.1 =
+- Fixed version numbers.
+
 = Version 1.12 =
-- Added Catalan translations
+- Added Catalan translations.
 
 = Version 1.11.2 =
 - Fixed a bug in the `Network Updates` template that was messing up the update text.
