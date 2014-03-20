@@ -105,10 +105,13 @@ class WPLinkedInConnection {
 	}
 
 	public function get_authorization_url() {
+		$scope = array('r_fullprofile', 'rw_nus');
+		$scope = apply_filters('linkedin_scope', $scope);
+
 		return 'https://www.linkedin.com/uas/oauth2/authorization?' . http_build_query(array(
 				'response_type' => 'code',
 				'client_id' => $this->app_key,
-				'scope' => 'r_fullprofile r_network rw_nus',
+				'scope' => implode(' ', $scope),
 				'state' => $this->get_state_token(),
 				'redirect_uri' => $this->get_token_process_url()));
 	}
