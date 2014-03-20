@@ -27,16 +27,15 @@ class WPLinkedInConnection {
 	}
 
 	public function set_cache($key, $value, $expires=0) {
-		return set_transient($key, $value);
+		return update_option($key, $value);
 	}
 
 	public function get_cache($key, $default=false) {
-		$value = get_transient($key);
-		return ($value !== false) ? $value : $default;
+		return get_option($key, $default);
 	}
 
 	public function delete_cache($key) {
-		return delete_transient($key);
+		return delete_option($key);
 	}
 
 	public function set_last_error($error=false) {
