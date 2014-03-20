@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.12.1
+Version: 1.12.2
 Text Domain: wp-linkedin
 
 # The code in this plugin is free software; you can redistribute the code aspects of
@@ -24,7 +24,7 @@ Text Domain: wp-linkedin
 # See the GNU lesser General Public License for more details.
 */
 
-define('WP_LINKEDIN_VERSION', '1.12.1');
+define('WP_LINKEDIN_VERSION', '1.12.2');
 
 if (!defined('LINKEDIN_FIELDS_RECOMMENDATIONS')) {
 	define('LINKEDIN_FIELDS_RECOMMENDATIONS', 'recommendations-received:(recommendation-text,recommender:(first-name,last-name,public-profile-url))');
@@ -58,21 +58,19 @@ class WPLinkedInPlugin {
 		add_filter('load_textdomain_mofile', array(&$this, 'smarter_load_textdomain'), 10, 2);
 		load_plugin_textdomain('wp-linkedin', false, dirname(plugin_basename(__FILE__)) . '/languages/' );
 
-		if (!is_admin()) {
-			wp_register_script('jquery.tools', plugins_url('jquery.tools.min.js', __FILE__), array('jquery'), '1.2.7', true);
-			wp_register_script('responsive-scrollable', plugins_url('responsive-scrollable.js', __FILE__), array('jquery.tools'), WP_LINKEDIN_VERSION, true);
-			wp_register_style('wp-linkedin', plugins_url('style.css', __FILE__), false, '1.5.2');
-			add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
+		wp_register_script('jquery.tools', plugins_url('jquery.tools.min.js', __FILE__), array('jquery'), '1.2.7', true);
+		wp_register_script('responsive-scrollable', plugins_url('responsive-scrollable.js', __FILE__), array('jquery.tools'), WP_LINKEDIN_VERSION, true);
+		wp_register_style('wp-linkedin', plugins_url('style.css', __FILE__), false, '1.5.2');
+		add_action('wp_enqueue_scripts', array(&$this, 'enqueue_scripts'));
 
-			add_shortcode('li_recommendations', 'wp_linkedin_recommendations');
-			add_shortcode('li_profile', 'wp_linkedin_profile');
-			add_shortcode('li_card', 'wp_linkedin_card');
-			add_shortcode('li_updates', 'wp_linkedin_updates');
+		add_shortcode('li_recommendations', 'wp_linkedin_recommendations');
+		add_shortcode('li_profile', 'wp_linkedin_profile');
+		add_shortcode('li_card', 'wp_linkedin_card');
+		add_shortcode('li_updates', 'wp_linkedin_updates');
 
-			$post_types = $this->get_post_types();
-			if (!empty($post_types)) {
-				add_filter('the_content', array(&$this, 'filter_content'), 1);
-			}
+		$post_types = $this->get_post_types();
+		if (!empty($post_types)) {
+			add_filter('the_content', array(&$this, 'filter_content'), 1);
 		}
 	}
 
@@ -250,18 +248,34 @@ function wp_linkedin_updates($atts) {
 function wp_linkedin_excerpt($str, $length, $postfix='[...]') {
 	$length++;
 
-	if (mb_strlen($str) > $length) {
-		$subex = mb_substr($str, 0, $length - 5);
-		$exwords = explode(' ', $subex);
-		$excut = -mb_strlen($exwords[count($exwords) - 1]);
-		if ($excut < 0) {
-			echo mb_substr($subex, 0, $excut);
+	if (function_exists('mb_strlen')) {
+		if (mb_strlen($str) > $length) {
+			$subex = mb_substr($str, 0, $length - 5);
+			$exwords = explode(' ', $subex);
+			$excut = -mb_strlen($exwords[count($exwords) - 1]);
+			if ($excut < 0) {
+				echo mb_substr($subex, 0, $excut);
+			} else {
+				echo $subex;
+			}
+			echo $postfix;
 		} else {
-			echo $subex;
+			echo $str;
 		}
-		echo $postfix;
 	} else {
-		echo $str;
+		if (strlen($str) > $length) {
+			$subex = substr($str, 0, $length - 5);
+			$exwords = explode(' ', $subex);
+			$excut = -strlen($exwords[count($exwords) - 1]);
+			if ($excut < 0) {
+				echo substr($subex, 0, $excut);
+			} else {
+				echo $subex;
+			}
+			echo $postfix;
+		} else {
+			echo $str;
+		}
 	}
 }
 
