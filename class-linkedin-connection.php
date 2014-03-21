@@ -27,16 +27,15 @@ class WPLinkedInConnection {
 	}
 
 	public function set_cache($key, $value, $expires=0) {
-		return set_transient($key, $value);
+		return update_option($key, $value);
 	}
 
 	public function get_cache($key, $default=false) {
-		$value = get_transient($key);
-		return ($value !== false) ? $value : $default;
+		return get_option($key, $default);
 	}
 
 	public function delete_cache($key) {
-		return delete_transient($key);
+		return delete_option($key);
 	}
 
 	public function set_last_error($error=false) {
@@ -106,10 +105,13 @@ class WPLinkedInConnection {
 	}
 
 	public function get_authorization_url() {
+		$scope = array('r_fullprofile', 'rw_nus');
+		$scope = apply_filters('linkedin_scope', $scope);
+
 		return 'https://www.linkedin.com/uas/oauth2/authorization?' . http_build_query(array(
 				'response_type' => 'code',
 				'client_id' => $this->app_key,
-				'scope' => 'r_fullprofile r_network rw_nus',
+				'scope' => implode(' ', $scope),
 				'state' => $this->get_state_token(),
 				'redirect_uri' => $this->get_token_process_url()));
 	}

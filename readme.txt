@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 3.8.1
-Stable tag: 1.12.1
+Stable tag: 1.13
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -88,13 +88,22 @@ No, it doesn't. But there is a premiun extension,
 [WP-LinkedIn for Companies](http://vedovini.net/downloads/wp-linkedin-co/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin)
 that provides shortcodes and widgets for company profiles and company updates.
 
-= How to add other sections from my profile? =
+= How to add the volunteer experiences section from my profile? =
 
 The volunteer experiences section is already in the template but is not
-activated by default.To activate it you must add the relevant profile fields to
-activate it, the minimum is `volunteer`. To get the full data
+activated by default. To activate it you must add the relevant profile fields to
+to the list of fields, the minimum is `volunteer`. To get the full data
 use `volunteer:(volunteer-experiences:(organization,cause,role,start-date,
 end-date,description))`.
+
+= How to add the projects section to my profile? =
+
+The projects section is already in the template but is not activated by default.
+To activate it you must add the relevant profile fields to the list of fields:
+`projects:(name,url,start-date,end-date,members:(person:(public-profile-url,
+first-name,last-name,picture-url,headline)),description)`.
+
+= How to add other sections to my profile? =
 
 For other sections see [Showing more of your LinkedIn profile with
 WP-LinkedIn](http://vedovini.net/more-wp-linkedin).
@@ -138,6 +147,16 @@ profile.
 
 
 == Changelog ==
+
+= Version 1.13 =
+- Added support for projects section in the profile template. If you want to add
+that section to your output make sure to add the following fields to the list of
+fields: `projects:(name,url,start-date,end-date,members:(person:(public-profile-url,
+first-name,last-name,picture-url,headline)),description)`.
+
+= Version 1.12.2 =
+- Use options API directly instead of the transient API to avoid issues with object cache.
+- Defaulting to single-byte API when multi-byte strings support is not enabled.
 
 = Version 1.12.1 =
 - Fixed version numbers.
