@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.13
+Version: 1.13.1
 Text Domain: wp-linkedin
 
 # The code in this plugin is free software; you can redistribute the code aspects of
@@ -24,7 +24,7 @@ Text Domain: wp-linkedin
 # See the GNU lesser General Public License for more details.
 */
 
-define('WP_LINKEDIN_VERSION', '1.13');
+define('WP_LINKEDIN_VERSION', '1.13.1');
 
 if (!defined('LINKEDIN_FIELDS_RECOMMENDATIONS')) {
 	define('LINKEDIN_FIELDS_RECOMMENDATIONS', 'recommendations-received:(recommendation-text,recommender:(first-name,last-name,public-profile-url))');
@@ -164,7 +164,7 @@ function wp_linkedin_load_template($name, $args, $plugin=__FILE__) {
 }
 
 
-function wp_linkedin_profile($atts) {
+function wp_linkedin_profile($atts=array()) {
 	$atts = shortcode_atts(array(
 				'fields' => LINKEDIN_FIELDS,
 				'lang' => LINKEDIN_PROFILELANGUAGE
@@ -183,7 +183,7 @@ function wp_linkedin_profile($atts) {
 }
 
 
-function wp_linkedin_card($atts) {
+function wp_linkedin_card($atts=array()) {
 	$atts = shortcode_atts(array(
 				'picture_width' => '50',
 				'summary_length' => '200',
@@ -204,7 +204,7 @@ function wp_linkedin_card($atts) {
 }
 
 
-function wp_linkedin_recommendations($atts) {
+function wp_linkedin_recommendations($atts=array()) {
 	$atts = shortcode_atts(array(
 				'width' => 'auto',
 				'length' => '200',
@@ -227,7 +227,7 @@ function wp_linkedin_recommendations($atts) {
 }
 
 
-function wp_linkedin_updates($atts) {
+function wp_linkedin_updates($atts=array()) {
 	$atts = shortcode_atts(array(
 				'only_self' => true,
 				'count' => 50
