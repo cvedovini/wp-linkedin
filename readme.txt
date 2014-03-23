@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 3.8.1
-Stable tag: 1.13
+Stable tag: 1.13.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -93,15 +93,18 @@ that provides shortcodes and widgets for company profiles and company updates.
 The volunteer experiences section is already in the template but is not
 activated by default. To activate it you must add the relevant profile fields to
 to the list of fields, the minimum is `volunteer`. To get the full data
-use `volunteer:(volunteer-experiences:(organization,cause,role,start-date,
+use this:
+
+`volunteer:(volunteer-experiences:(organization,cause,role,start-date,
 end-date,description))`.
 
 = How to add the projects section to my profile? =
 
 The projects section is already in the template but is not activated by default.
 To activate it you must add the relevant profile fields to the list of fields:
-`projects:(name,url,start-date,end-date,members:(person:(public-profile-url,
-first-name,last-name,picture-url,headline)),description)`.
+
+`projects:(name,url,start-date,end-date,members:(name,person:(public-profile-url,
+first-name,last-name,picture-url,headline)),description)`
 
 = How to add other sections to my profile? =
 
@@ -148,10 +151,15 @@ profile.
 
 == Changelog ==
 
+= Version 1.13.1 =
+- Fixing display of a project's team members when they are not LinkedIn users or
+they don't have a public profile.
+- Fixing doc about the list of field to display projects.
+
 = Version 1.13 =
 - Added support for projects section in the profile template. If you want to add
 that section to your output make sure to add the following fields to the list of
-fields: `projects:(name,url,start-date,end-date,members:(person:(public-profile-url,
+fields: `projects:(name,url,start-date,end-date,members:(name,person:(public-profile-url,
 first-name,last-name,picture-url,headline)),description)`.
 
 = Version 1.12.2 =
