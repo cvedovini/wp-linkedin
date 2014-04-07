@@ -139,6 +139,13 @@ custom template: `wp_enqueue_script('responsive-scrollable');`
 Try regenerating the access token from the settings page, the plugin needs new
 authorization to access your network updates.
 
+= Profile picture is only 80x80 pixels is there a way to get a bigger one from LinkedIn? =
+
+Unfortunately not, LinkedIn has bigger pictures but they make only the 80x80
+version available to theit API. If you want a bigger image you will have to
+provide it and [modify the profile template](http://vedovini.net/more-wp-linkedin)
+to show this one.
+
 
 == Screenshots ==
 
@@ -149,7 +156,21 @@ profile.
 3. LinkedIn profile card added after a post content.
 
 
+== Upgrade Notice ==
+
+= 1.14 =
+As of April 11, 2014 LinkedIn requires that redirect uris be registered, thus
+forcing every plugin installation to have its own application key/secret pair
+and register the corresponding redirect uri. Follow the instructions on the
+plugin settings page.
+
+
 == Changelog ==
+
+= Version 1.14 =
+- LinkedIn now requires that redirect uris be registered, thus forcing every
+user of the plugin to create their own application key/secret pair and register
+their redirect uri.
 
 = Version 1.13.1 =
 - Fixing display of a project's team members when they are not LinkedIn users or

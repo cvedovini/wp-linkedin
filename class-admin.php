@@ -12,17 +12,22 @@ class WPLinkedInAdmin {
 	function add_settings() {
 		add_filter('plugin_action_links_wp-linkedin/wp-linkedin.php', array(&$this, 'add_settings_link'));
 		add_submenu_page('options-general.php', __('LinkedIn Options', 'wp-linkedin'), __('LinkedIn', 'wp-linkedin'), 'manage_options', 'wp-linkedin', array(&$this, 'options_page'));
-		add_settings_section('default', '', false, 'wp-linkedin');
-		$this->add_settings_field('wp-linkedin_fields', __('Profile fields', 'wp-linkedin'), 'add_settings_field_fields');
-		$this->add_settings_field('wp-linkedin_profilelanguage', __('Profile language', 'wp-linkedin'), 'add_settings_field_profilelanguage');
-		$this->add_settings_field('wp-linkedin_sendmail_on_token_expiry', __('Send mail on token expiry', 'wp-linkedin'), 'add_settings_field_sendmail_on_token_expiry');
-		$this->add_settings_field('wp-linkedin_ssl_verifypeer', __('Verify SSL peer', 'wp-linkedin'), 'add_settings_field_ssl_verifypeer');
-		$this->add_settings_field('wp-linkedin_add_card_to_content', __('LinkedIn cards', 'wp-linkedin'), 'add_settings_field_add_card_to_content');
+
+		add_settings_section('appkeys', __('API Access', 'wp-linkedin'), array(&$this, 'api_access_section'), 'wp-linkedin');
+		$this->add_options_field('wp-linkedin_appkey', __('Application key', 'wp-linkedin'), 'add_settings_field_appkey', 'appkeys');
+		$this->add_options_field('wp-linkedin_appsecret', __('Application secret', 'wp-linkedin'), 'add_settings_field_appsecret', 'appkeys');
+
+		add_settings_section('default', __('Options', 'wp-linkedin'), false, 'wp-linkedin');
+		$this->add_options_field('wp-linkedin_fields', __('Profile fields', 'wp-linkedin'), 'add_settings_field_fields');
+		$this->add_options_field('wp-linkedin_profilelanguage', __('Profile language', 'wp-linkedin'), 'add_settings_field_profilelanguage');
+		$this->add_options_field('wp-linkedin_sendmail_on_token_expiry', __('Send mail on token expiry', 'wp-linkedin'), 'add_settings_field_sendmail_on_token_expiry');
+		$this->add_options_field('wp-linkedin_ssl_verifypeer', __('Verify SSL peer', 'wp-linkedin'), 'add_settings_field_ssl_verifypeer');
+		$this->add_options_field('wp-linkedin_add_card_to_content', __('LinkedIn cards', 'wp-linkedin'), 'add_settings_field_add_card_to_content');
 	}
 
-	function add_settings_field($id, $title, $callback) {
+	function add_options_field($id, $title, $callback, $section = 'default') {
 		register_setting('wp-linkedin', $id);
-		add_settings_field($id, $title, array(&$this, $callback), 'wp-linkedin');
+		add_settings_field($id, $title, array(&$this, $callback), 'wp-linkedin', $section);
 	}
 
 	function add_settings_link($links) {
@@ -31,17 +36,42 @@ class WPLinkedInAdmin {
 		return $links;
 	}
 
+	function api_access_section() {
+		$redirect_uri = $this->linkedin->get_token_process_url(); ?>
+		<p><?php _e('As of April 11, 2014 LinkedIn requires that redirect uris
+				be registered, thus forcing every plugin installation to have
+				its own application key/secret pair and register the corresponding
+				redirect uri.', 'wp-linkedin'); ?></p>
+		<p><?php _e('Please follow those instructions:', 'wp-linkedin'); ?></p>
+		<ol>
+			<li><a href="https://www.linkedin.com/secure/developer" target="_blank"><?php _e('Go to the LinkedIn Developer Network', 'wp-linkedin'); ?></a></li>
+			<li><?php _e('Select the <code>Add a new application</code> link at the bottom of the page'); ?></li>
+			<li><?php _e('Fill-in the mandatory fields on the <code>Add New Application</code> form'); ?></li>
+			<li><?php printf(__('In the <code>OAuth 2.0 Redirect URLs</code> field specify the following URL', 'wp-linkedin')); ?>:
+				<a href="<?php echo $redirect_uri; ?>"><?php echo $redirect_uri; ?></a></li>
+			<li><?php _e('Click on the <code>Add Application</code> button'); ?></li>
+			<li><?php _e('Copy the <code>API Key</code> and the <code>Secret Key</code> in the corresponding fields below'); ?></li>
+		</ol><?php
+	}
+
+	function add_settings_field_appkey() { ?>
+		<input type="text" name="wp-linkedin_appkey" value="<?php echo WP_LINKEDIN_APPKEY; ?>" /><?php
+	}
+
+	function add_settings_field_appsecret() { ?>
+		<input type="text" name="wp-linkedin_appsecret" value="<?php echo WP_LINKEDIN_APPSECRET; ?>" /><?php
+	}
+
 	function add_settings_field_fields() { ?>
 		<textarea id="wp-linkedin_fields" name="wp-linkedin_fields" rows="5"
-		cols="50"><?php echo get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAULT); ?></textarea>
+		class="large-text"><?php echo get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAULT); ?></textarea>
 		<p><em><?php _e('Comma separated list of fields to show on the profile.', 'wp-linkedin'); ?><br/>
 		<?php _e('You can overide this setting in the shortcode with the `fields` attribute.', 'wp-linkedin'); ?><br/>
-		<?php _e('See the <a href="https://developers.linkedin.com/documents/profile-fields" target="_blank">LinkedIn API documentation</a> for the complete list of fields.', 'wp-linkedin'); ?></em></p>
-	<?php }
+		<?php _e('See the <a href="https://developers.linkedin.com/documents/profile-fields" target="_blank">LinkedIn API documentation</a> for the complete list of fields.', 'wp-linkedin'); ?></em></p><?php
+	}
 
 	function add_settings_field_profilelanguage() { ?>
-		<select id="wp-linkedin_profilelanguage" name="wp-linkedin_profilelanguage">
-		<?php
+		<select id="wp-linkedin_profilelanguage" name="wp-linkedin_profilelanguage"><?php
 			$lang = get_option('wp-linkedin_profilelanguage');
 			$languages = $this->getLanguages();
 
@@ -49,25 +79,24 @@ class WPLinkedInAdmin {
 
 			foreach ($languages as $k => $v) {
 				echo '<option value="' . $k . '" ' . selected($lang, $k, false) . '>' . $v . '</option>';
-			}
-		?>
+			} ?>
 		</select>
 		<p><em><?php _e('The language of the profile to display if you have several profiles in different languages.', 'wp-linkedin'); ?><br/>
 		<?php _e('You can overide this setting in the shortcode with the `lang` attribute.', 'wp-linkedin'); ?><br/>
-		<?php _e('See "Selecting the profile language" <a href="https://developer.linkedin.com/documents/profile-api" target="_blank">LinkedIn API documentation</a> for details.', 'wp-linkedin'); ?></em></p>
-	<?php }
+		<?php _e('See "Selecting the profile language" <a href="https://developer.linkedin.com/documents/profile-api" target="_blank">LinkedIn API documentation</a> for details.', 'wp-linkedin'); ?></em></p><?php
+	}
 
 	function add_settings_field_sendmail_on_token_expiry() { ?>
 		<label><input type="checkbox" name="wp-linkedin_sendmail_on_token_expiry"
 			value="1" <?php checked(LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY); ?> />&nbsp;
-			<?php _e('Check this option if you want the plugin to send you an email when the token has expired or is invalid.', 'wp-linkedin') ?></label>
-	<?php }
+			<?php _e('Check this option if you want the plugin to send you an email when the token has expired or is invalid.', 'wp-linkedin') ?></label><?php
+	}
 
 	function add_settings_field_ssl_verifypeer() { ?>
 		<label><input type="checkbox" name="wp-linkedin_ssl_verifypeer"
 			value="1" <?php checked(LINKEDIN_SSL_VERIFYPEER); ?> />&nbsp;
-			<?php _e('Uncheck this option only if you have SSL certificate issues on your server.', 'wp-linkedin') ?></label>
-	<?php }
+			<?php _e('Uncheck this option only if you have SSL certificate issues on your server.', 'wp-linkedin') ?></label><?php
+	}
 
 	function add_settings_field_add_card_to_content() {
 		$post_types = $this->plugin->get_post_types();
@@ -79,8 +108,14 @@ class WPLinkedInAdmin {
 		<p><em><?php _e('Check the content types where you want your LinkedIn card inserted.', 'wp-linkedin') ?></em></p><?php
 	}
 
-
 	function admin_notices() {
+		if (!WP_LINKEDIN_APPKEY) {
+			$format = __('Your must create an application key/secret to access the LinkedIn API. Please follow the instructions <a href="%s">on the settings page</a>.', 'wp-linkedin');
+			$notice = sprintf($format, site_url('/wp-admin/options-general.php?page=wp-linkedin#appkeys')); ?>
+			<div class="error"><p><strong><?php echo $notice; ?></strong></p></div><?php
+			return;
+		}
+
 		if ($this->linkedin->get_last_error() || !$this->linkedin->is_access_token_valid()) { ?>
 			<div class="error" style="font-weight:bold;"><ul>
 				<?php if ($this->linkedin->get_last_error()): ?>
@@ -98,19 +133,19 @@ class WPLinkedInAdmin {
 
 		if (!isset($_GET['settings-updated'])) {
 			if (isset($_GET['oauth_success'])) { ?>
-				<div class="updated"><p><strong><?php _e('The access token has been successfully updated.', 'wp-linkedin'); ?></strong></p></div>
-			<?php }
+				<div class="updated"><p><strong><?php _e('The access token has been successfully updated.', 'wp-linkedin'); ?></strong></p></div><?php
+			}
 
 			if (isset($_GET['oauth_error'])) {
 				$message = isset($_GET['message']) ? $_GET['message'] : false; ?>
 				<div class="error">
 					<p><strong><?php _e('An error has occured while updating the access token, please try again.', 'wp-linkedin'); ?></strong>
-					<?php echo ($message) ? '<br/>' . __('Error message: ', 'wp-linkedin') . $message : ''; ?></p></div>
-			<?php }
+					<?php echo ($message) ? '<br/>' . __('Error message: ', 'wp-linkedin') . $message : ''; ?></p></div><?php
+			}
 
 			if (isset($_GET['cache_cleared'])) { ?>
-				<div class="updated"><p><strong><?php _e('The cache has been cleared.', 'wp-linkedin'); ?></strong></p></div>
-			<?php }
+				<div class="updated"><p><strong><?php _e('The cache has been cleared.', 'wp-linkedin'); ?></strong></p></div><?php
+			}
 		}
 	}
 
@@ -151,17 +186,27 @@ class WPLinkedInAdmin {
 <div class="wrap">
 	<?php screen_icon(); ?>
 	<h2><?php _e('LinkedIn Options', 'wp-linkedin'); ?></h2>
-	<div id="main-container" class="postbox-container metabox-holder" style="width:75%;"><div style="margin:0 8px;">
-		<div class="postbox">
-			<h3 style="cursor:default;"><span><?php _e('Options', 'wp-linkedin'); ?></span></h3>
-			<div class="inside">
-				<form method="POST" action="options.php"><?php
-				settings_fields('wp-linkedin');
-				do_settings_sections('wp-linkedin');
-				submit_button();
-				?></form>
-			</div> <!-- .inside -->
-		</div> <!-- .postbox -->
+	<div id="main-container" class="postbox-container metabox-holder" style="width:75%;"><div style="margin-right:16px;">
+		<form method="POST" action="options.php"><?php
+			settings_fields('wp-linkedin');
+			global $wp_settings_sections, $wp_settings_fields;
+			$sections = (array) $wp_settings_sections['wp-linkedin'];
+			$fields = $wp_settings_fields['wp-linkedin'];
+
+			foreach ($sections as $section) {
+				if (!isset($fields[$section['id']])) continue; ?>
+				<div class="postbox">
+					<h3 style="cursor:default;"><span><?php echo $section['title']; ?></span></h3>
+					<div class="inside"><a name="<?php echo $section['id']; ?>"></a>
+					<?php if ($section['callback']) call_user_func($section['callback'], $section); ?>
+					<table class="form-table">
+					<?php do_settings_fields('wp-linkedin', $section['id'] ); ?>
+					</table>
+					<?php submit_button(); ?>
+					</div> <!-- .inside -->
+				</div> <!-- .postbox --><?php
+			} ?>
+		</form>
 		<div class="postbox">
 			<h3 style="cursor:default;"><span><?php _e('Administration', 'wp-linkedin'); ?></span></h3>
 			<div class="inside">
@@ -171,9 +216,9 @@ class WPLinkedInAdmin {
 				</p>
 			</div> <!-- .inside -->
 		</div> <!-- .postbox -->
-		</div></div> <!-- #main-container -->
+	</div></div> <!-- #main-container -->
 
-	<div id="side-container" class="postbox-container metabox-holder" style="width:24%;"><div style="margin:0 8px;">
+	<div id="side-container" class="postbox-container metabox-holder" style="width:25%;">
 		<div class="postbox">
 			<h3 style="cursor:default;"><span><?php _e('Do you like this Plugin?', 'wp-linkedin'); ?></span></h3>
 			<div class="inside">
@@ -195,8 +240,7 @@ class WPLinkedInAdmin {
 			<a class="twitter-timeline" href="https://twitter.com/cvedovini" data-widget-id="377037845489139712">Tweets by @cvedovini</a>
 			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 		</div>
-	</div></div> <!-- #side-container -->
-
+	</div> <!-- #side-container -->
 </div><?php
 	}
 

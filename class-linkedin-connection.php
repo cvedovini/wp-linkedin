@@ -15,8 +15,8 @@ if (!defined('WP_LINKEDIN_UPDATES_CACHE_TIMEOUT')) {
 
 // Let people define their own APPKEY if needed
 if (!defined('WP_LINKEDIN_APPKEY')) {
-	define('WP_LINKEDIN_APPKEY', '57zh7f1nvty5');
-	define('WP_LINKEDIN_APPSECRET', 'FL0gcEC2b0G18KPa');
+	define('WP_LINKEDIN_APPKEY', get_option('wp-linkedin_appkey'));
+	define('WP_LINKEDIN_APPSECRET', get_option('wp-linkedin_appsecret'));
 }
 
 class WPLinkedInConnection {
