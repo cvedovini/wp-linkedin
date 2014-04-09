@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 3.8.1
-Stable tag: 1.13.1
+Stable tag: 1.14
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
