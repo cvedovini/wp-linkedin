@@ -58,9 +58,6 @@ class WPLinkedInPlugin {
 		add_filter('load_textdomain_mofile', array(&$this, 'smarter_load_textdomain'), 10, 2);
 		load_plugin_textdomain('wp-linkedin', false, dirname(plugin_basename(__FILE__)) . '/languages/' );
 
-		// Allow symlinking this plugin
-		add_filter('plugins_url', array(&$this, 'symlink_fix'), 10, 3 );
-
 		wp_register_script('jquery.tools', plugins_url('jquery.tools.min.js', __FILE__), array('jquery'), '1.2.7', true);
 		wp_register_script('responsive-scrollable', plugins_url('responsive-scrollable.js', __FILE__), array('jquery.tools'), WP_LINKEDIN_VERSION, true);
 		wp_register_style('wp-linkedin', plugins_url('style.css', __FILE__), false, WP_LINKEDIN_VERSION);
@@ -75,15 +72,6 @@ class WPLinkedInPlugin {
 		if (!empty($post_types)) {
 			add_filter('the_content', array(&$this, 'filter_content'), 1);
 		}
-	}
-
-	function symlink_fix($url, $path, $plugin) {
-		// Do it only for this plugin
-		if (strstr($plugin, basename(__FILE__))) {
-			return str_replace(dirname(__FILE__), '/wp-linkedin', $url);
-		}
-
-		return $url;
 	}
 
 	function smarter_load_textdomain($mofile, $domain) {
