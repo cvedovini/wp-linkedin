@@ -4,8 +4,8 @@ Contributors: cvedovini
 Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
-Tested up to: 3.8.1
-Stable tag: 1.13.1
+Tested up to: 3.9.1
+Stable tag: 1.15
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -65,6 +65,8 @@ method](http://codex.wordpress.org/Managing_Plugins#Installing_Plugins):
 
 1. Upload the `wp-linkedin` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
+1. Create a LinkedIn API key/secret pair and register the redirect URI (follow
+the instructions on the settings page)
 1. Generate an access token for the LinkedIn API (those tokens expire after 60
 days so you will have to regenerate them from time to time)
 1. The `Profile fields` field is the list of fields that will be available to
@@ -166,6 +168,9 @@ plugin settings page.
 
 
 == Changelog ==
+
+= Version 1.15 =
+- Added Serbian translations.
 
 = Version 1.14 =
 - LinkedIn now requires that redirect uris be registered, thus forcing every
@@ -386,8 +391,9 @@ many thanks to them :)
 Dutch translations.
 - [Nathalie Aynié](http://nathalieaynie.com/): Contributed the Italian
 translations.
-- [Graciela Morel Centurion](ar.linkedin.com/pub/graciela-morel-centurion/4/61b/b9):
+- [Graciela Morel Centurion](http://ar.linkedin.com/pub/graciela-morel-centurion/4/61b/b9):
 Contributed the Brazilian Portuguese translations.
 - Andrew Curtiz, from [WebHostingHub](http://www.webhostinghub.com/): Contributed the Spanish
 translations.
 - [Jaume Villar](http://www.jaumevillar.info/): Contributed the Catalan translations.
+- Ogi Djuraskovic, from [First Site Guide](http://firstsiteguide.com/): Contributed the Serbian translations
