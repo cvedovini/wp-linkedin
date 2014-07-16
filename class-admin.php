@@ -45,12 +45,12 @@ class WPLinkedInAdmin {
 		<p><?php _e('Please follow those instructions:', 'wp-linkedin'); ?></p>
 		<ol>
 			<li><a href="https://www.linkedin.com/secure/developer" target="_blank"><?php _e('Go to the LinkedIn Developer Network', 'wp-linkedin'); ?></a></li>
-			<li><?php _e('Select the <code>Add a new application</code> link at the bottom of the page'); ?></li>
-			<li><?php _e('Fill-in the mandatory fields on the <code>Add New Application</code> form'); ?></li>
+			<li><?php _e('Select the <code>Add a new application</code> link at the bottom of the page', 'wp-linkedin'); ?></li>
+			<li><?php _e('Fill-in the mandatory fields on the <code>Add New Application</code> form', 'wp-linkedin'); ?></li>
 			<li><?php printf(__('In the <code>OAuth 2.0 Redirect URLs</code> field specify the following URL', 'wp-linkedin')); ?>:
 				<a href="<?php echo $redirect_uri; ?>"><?php echo $redirect_uri; ?></a></li>
-			<li><?php _e('Click on the <code>Add Application</code> button'); ?></li>
-			<li><?php _e('Copy the <code>API Key</code> and the <code>Secret Key</code> in the corresponding fields below'); ?></li>
+			<li><?php _e('Click on the <code>Add Application</code> button', 'wp-linkedin'); ?></li>
+			<li><?php _e('Copy the <code>API Key</code> and the <code>Secret Key</code> in the corresponding fields below', 'wp-linkedin'); ?></li>
 		</ol><?php
 	}
 
