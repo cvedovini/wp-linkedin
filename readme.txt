@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 1.15
+Stable tag: 1.16
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -168,6 +168,10 @@ plugin settings page.
 
 
 == Changelog ==
+
+= Version 1.16 =
+- Added Portuguese translations.
+- Corrected internationalization bugs in class-admin.php
 
 = Version 1.15 =
 - Added Serbian translations.
@@ -397,3 +401,5 @@ Contributed the Brazilian Portuguese translations.
 translations.
 - [Jaume Villar](http://www.jaumevillar.info/): Contributed the Catalan translations.
 - Ogi Djuraskovic, from [First Site Guide](http://firstsiteguide.com/): Contributed the Serbian translations
+- [Pedro Gaspar](http://twitter.com/pedro_gaspar): Contributed the Portuguese
+translations and corrected internationalization bugs in class-admin.php.
