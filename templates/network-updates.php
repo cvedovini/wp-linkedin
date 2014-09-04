@@ -22,8 +22,10 @@ if (!function_exists('li_find_links')) {
 	}
 }
 ?>
-<div class="linkedin"><ul class="updates">
-<?php foreach ($updates->values as $update):
+
+<div class="linkedin">
+<?php if (is_array($updates->values) && !empty($updates->values)):?>
+<ul class="updates"><?php foreach ($updates->values as $update):
 if (!isset($update->updateContent->person)) continue;
 $p = $update->updateContent->person;
 if ($p->firstName == 'private') continue;
@@ -135,4 +137,8 @@ switch ($update->updateType) {
 }
 ?>
 <?php endforeach; ?>
-</ul></div>
+</ul>
+<?php else: ?>
+<p><?php _e('No updates', 'wp-lnkedin'); ?></p>
+<?php endif; ?>
+</div>
