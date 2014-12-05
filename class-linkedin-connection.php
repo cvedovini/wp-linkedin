@@ -65,12 +65,14 @@ class WPLinkedInConnection {
 		return site_url('/wp-admin/options-general.php?page=wp-linkedin');
 	}
 
-	public function set_access_token($code) {
+	public function set_access_token($code, $redirect_url=false) {
+		$redirect_url = ($redirect_url) ? $redirect_url : $this->get_token_process_url();
+
 		$this->set_last_error();
 		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?' . http_build_query(array(
 			'grant_type' => 'authorization_code',
 			'code' => $code,
-			'redirect_uri' => $this->get_token_process_url(),
+			'redirect_uri' => $redirect_url,
 			'client_id' => $this->app_key,
 			'client_secret' => $this->app_secret));
 
@@ -104,16 +106,17 @@ class WPLinkedInConnection {
 		return ($token == $this->get_state_token());
 	}
 
-	public function get_authorization_url() {
+	public function get_authorization_url($redirect_uri=false) {
 		$scope = array('r_fullprofile', 'rw_nus');
 		$scope = apply_filters('linkedin_scope', $scope);
+		$redirect_uri = ($redirect_uri) ? $redirect_uri : $this->get_token_process_url();
 
 		return 'https://www.linkedin.com/uas/oauth2/authorization?' . http_build_query(array(
 				'response_type' => 'code',
 				'client_id' => $this->app_key,
 				'scope' => implode(' ', $scope),
 				'state' => $this->get_state_token(),
-				'redirect_uri' => $this->get_token_process_url()));
+				'redirect_uri' => $redirect_uri));
 	}
 
 	public function clear_cache() {

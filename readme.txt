@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 3.9.1
-Stable tag: 1.16
+Stable tag: 1.17
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -168,6 +168,14 @@ plugin settings page.
 
 
 == Changelog ==
+
+= Version 1.17 =
+- Added support for publication section in the profile template. If you want to add
+that section to your output make sure to add the following fields to the list of
+fields: `publications:(title,publisher,authors,date,url,summary)`.
+- Separated the profile template into several different templates to simplify
+customisation. Now if you just need to customize one section of the profile then
+you will only need to create a custom template for that section.
 
 = Version 1.16 =
 - Added Portuguese translations.
