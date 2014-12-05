@@ -169,6 +169,14 @@ plugin settings page.
 
 == Changelog ==
 
+= Version 1.17 =
+- Added support for publication section in the profile template. If you want to add
+that section to your output make sure to add the following fields to the list of
+fields: `publications:(title,publisher,authors,date,url,summary)`.
+- Separated the profile template into several different templates to simplify
+customisation. Now if you just need to customize one section of the profile then
+you will only need to create a custom template for that section.
+
 = Version 1.16 =
 - Added Portuguese translations.
 - Corrected internationalization bugs in class-admin.php
