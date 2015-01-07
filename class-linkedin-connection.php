@@ -74,7 +74,9 @@ class WPLinkedInConnection {
 			'code' => $code,
 			'redirect_uri' => $redirect_url,
 			'client_id' => $this->app_key,
-			'client_secret' => $this->app_secret));
+			'client_secret' => $this->app_secret), '', '&');
+
+		if (WP_DEBUG) echo '<!-- token access url: ' . $url . ' -->';
 
 		$response = wp_remote_get($url, array('sslverify' => LINKEDIN_SSL_VERIFYPEER));
 		if (!is_wp_error($response)) {
@@ -99,7 +101,8 @@ class WPLinkedInConnection {
 
 	public function get_state_token() {
 		$time = intval(time() / 172800);
-		return sha1('linkedin-oauth' . NONCE_SALT . $time);
+		$salt = (defined('NONCE_SALT')) ? NONCE_SALT : SECRET_KEY;
+		return sha1('linkedin-oauth' . $salt . $time);
 	}
 
 	public function check_state_token($token) {
@@ -116,7 +119,7 @@ class WPLinkedInConnection {
 				'client_id' => $this->app_key,
 				'scope' => implode(' ', $scope),
 				'state' => $this->get_state_token(),
-				'redirect_uri' => $redirect_uri));
+				'redirect_uri' => $redirect_uri), '', '&');
 	}
 
 	public function clear_cache() {
@@ -202,7 +205,7 @@ class WPLinkedInConnection {
 		if ($access_token) {
 			if (!is_array($params)) $params = array();
 			$params['oauth2_access_token'] = $access_token;
-			$url .= '?' . http_build_query($params);
+			$url .= '?' . http_build_query($params, '', '&');
 
 			$headers = array(
 					'Content-Type' => 'text/plain; charset=UTF-8',
