@@ -4,8 +4,8 @@ Contributors: cvedovini
 Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
-Tested up to: 3.9.1
-Stable tag: 1.16
+Tested up to: 4.0.1
+Stable tag: 1.17.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -93,20 +93,29 @@ that provides shortcodes and widgets for company profiles and company updates.
 = How to add the volunteer experiences section from my profile? =
 
 The volunteer experiences section is already in the template but is not
-activated by default. To activate it you must add the relevant profile fields to
+activated by default. To activate it you must add the relevant profile fields
 to the list of fields, the minimum is `volunteer`. To get the full data
 use this:
 
 `volunteer:(volunteer-experiences:(organization,cause,role,start-date,
-end-date,description))`.
+end-date,description))`
 
 = How to add the projects section to my profile? =
 
 The projects section is already in the template but is not activated by default.
 To activate it you must add the relevant profile fields to the list of fields:
 
-`projects:(name,url,start-date,end-date,members:(name,person:(public-profile-url,
-first-name,last-name,picture-url,headline)),description)`
+`projects:(name,url,start-date,end-date,members:(name,
+person:(public-profile-url,first-name,last-name,picture-url,headline)),
+description)`
+
+= How to add the publications section to my profile? =
+
+The publications section is already in the template but is not activated by
+default. To activate it you must add the relevant profile fields to the list
+of fields:
+
+`publications:(title,publisher,authors,date,url,summary)`
 
 = How to add other sections to my profile? =
 
@@ -168,6 +177,21 @@ plugin settings page.
 
 
 == Changelog ==
+
+= Version 1.17.2 =
+- Change in the way urls are built to make sure the correct separator for query
+parameters is always used.
+
+= Version 1.17.1 =
+- Some changes to the profile templates to remove unwelcomed warnings.
+
+= Version 1.17 =
+- Added support for publications section in the profile template. If you want
+to add that section to your output make sure to add the following fields to the
+list of fields: `publications:(title,publisher,authors,date,url,summary)`.
+- Separated the profile template into several different templates to simplify
+customisation. Now if you just need to customize one section of the profile then
+you will only need to create a custom template for that section.
 
 = Version 1.16 =
 - Added Portuguese translations.

@@ -65,14 +65,18 @@ class WPLinkedInConnection {
 		return site_url('/wp-admin/options-general.php?page=wp-linkedin');
 	}
 
-	public function set_access_token($code) {
+	public function set_access_token($code, $redirect_url=false) {
+		$redirect_url = ($redirect_url) ? $redirect_url : $this->get_token_process_url();
+
 		$this->set_last_error();
 		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?' . http_build_query(array(
 			'grant_type' => 'authorization_code',
 			'code' => $code,
-			'redirect_uri' => $this->get_token_process_url(),
+			'redirect_uri' => $redirect_url,
 			'client_id' => $this->app_key,
-			'client_secret' => $this->app_secret));
+			'client_secret' => $this->app_secret), '', '&');
+
+		if (WP_DEBUG) echo '<!-- token access url: ' . $url . ' -->';
 
 		$response = wp_remote_get($url, array('sslverify' => LINKEDIN_SSL_VERIFYPEER));
 		if (!is_wp_error($response)) {
@@ -97,23 +101,25 @@ class WPLinkedInConnection {
 
 	public function get_state_token() {
 		$time = intval(time() / 172800);
-		return sha1('linkedin-oauth' . NONCE_SALT . $time);
+		$salt = (defined('NONCE_SALT')) ? NONCE_SALT : SECRET_KEY;
+		return sha1('linkedin-oauth' . $salt . $time);
 	}
 
 	public function check_state_token($token) {
 		return ($token == $this->get_state_token());
 	}
 
-	public function get_authorization_url() {
+	public function get_authorization_url($redirect_uri=false) {
 		$scope = array('r_fullprofile', 'rw_nus');
 		$scope = apply_filters('linkedin_scope', $scope);
+		$redirect_uri = ($redirect_uri) ? $redirect_uri : $this->get_token_process_url();
 
 		return 'https://www.linkedin.com/uas/oauth2/authorization?' . http_build_query(array(
 				'response_type' => 'code',
 				'client_id' => $this->app_key,
 				'scope' => implode(' ', $scope),
 				'state' => $this->get_state_token(),
-				'redirect_uri' => $this->get_token_process_url()));
+				'redirect_uri' => $redirect_uri), '', '&');
 	}
 
 	public function clear_cache() {
@@ -199,7 +205,7 @@ class WPLinkedInConnection {
 		if ($access_token) {
 			if (!is_array($params)) $params = array();
 			$params['oauth2_access_token'] = $access_token;
-			$url .= '?' . http_build_query($params);
+			$url .= '?' . http_build_query($params, '', '&');
 
 			$headers = array(
 					'Content-Type' => 'text/plain; charset=UTF-8',

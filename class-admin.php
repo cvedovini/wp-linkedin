@@ -154,15 +154,20 @@ class WPLinkedInAdmin {
 		if ($message) $path .= '&message=' . urlencode($message);
 		$location = site_url($path);
 
-		if (headers_sent()) {
-			// If the headers have already been sent then use Javascript
-			echo "<script>window.location='$location';</script>";
-		} else {
-			// Other wise, just a normal redirect
-			wp_redirect($location);
-		}
+		$notice = __('Please click <a href="%s">here</a> if you are not redirected immediately.');
+		echo '<div class="updated"><p><strong>' . sprintf($notice, $location) . '</strong></p></div>';
 
-		exit;
+		if (!WP_DEBUG) {
+			if (headers_sent()) {
+				// If the headers have already been sent then use Javascript
+				echo "<script>window.location='$location';</script>";
+			} else {
+				// Otherwise, just use a normal redirect
+				wp_redirect($location);
+			}
+
+			exit;
+		}
 	}
 
 	function options_page() {
