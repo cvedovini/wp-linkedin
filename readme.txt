@@ -28,6 +28,9 @@ are `picture_width` and `summary_length`, and `fields` and `lang` to overide
 the general settings.
 * `[li_updates]` displays your network updates. Optional attributes are `count`
 and `only_self`.
+* `[li_picture]` displays the original profile picture (size may vary depending
+on what you uploaded to LinkedIn). Optional attributes are `width`, `height`
+and `class`.
 
 To customize the rendering of the shortcodes you must create a `linkedin` folder
 in your theme and then copy the template file you want to modify.
@@ -192,6 +195,12 @@ other jQuery plugins and reduce footprint.
 - Added support for honors & awards section to the profile template. If you
 want to activate it then make sure to add the following fields to the list of
 fields: `honors-awards:(name,issuer,date,description)`
+- Added support for the `LI_DEBUG` variable. Set that define to `true` in the
+`wp-config.php` file and debug information will be printed by the plugin as
+HTML comments (especially usefull when debugging customized templates).
+- Added the `li_picture` shortcode that enables you to print the original
+profile picture.
+
 
 = Version 1.17.2 =
 - Change in the way urls are built to make sure the correct separator for query
