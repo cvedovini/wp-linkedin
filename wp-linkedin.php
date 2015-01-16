@@ -256,7 +256,8 @@ function wp_linkedin_original_profile_picture_url() {
 	return $picture_urls->values[0];
 }
 
-function wp_linkedin_picture() {
+
+function wp_linkedin_picture($atts=array()) {
 	$atts = shortcode_atts(array(
 			'class' => false,
 			'width' => false,
