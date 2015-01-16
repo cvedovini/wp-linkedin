@@ -1,1 +1,3 @@
-<pre><?php print_r($profile); ?></pre>
+<!--
+<?php print_r($profile); ?>
+-->
