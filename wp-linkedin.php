@@ -258,6 +258,7 @@ function wp_linkedin_original_profile_picture_url() {
 
 function wp_linkedin_picture() {
 	$atts = shortcode_atts(array(
+			'classes' => false,
 			'width' => false,
 			'height' => false
 	), $atts, 'li_picture');
@@ -267,6 +268,7 @@ function wp_linkedin_picture() {
 	$output = "<img src=\"$picture_url\"";
 	if ($width) $output .= " width=\"$width\"";
 	if ($height) $output .= " height=\"$height\"";
+	if ($classes) $output .= " class=\"$classes\"";
 	$output .= '/>';
 }
 
