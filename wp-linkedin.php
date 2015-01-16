@@ -71,6 +71,7 @@ class WPLinkedInPlugin {
 		add_shortcode('li_profile', 'wp_linkedin_profile');
 		add_shortcode('li_card', 'wp_linkedin_card');
 		add_shortcode('li_updates', 'wp_linkedin_updates');
+		add_shortcode('li_picture', 'wp_linkedin_picture');
 
 		$post_types = $this->get_post_types();
 		if (!empty($post_types)) {
@@ -253,6 +254,20 @@ function wp_linkedin_original_profile_picture_url() {
 	$linkedin = wp_linkedin_connection();
 	$picture_urls = $linkedin->api_call('https://api.linkedin.com/v1/people/~/picture-urls::(original)');
 	return $picture_urls->values[0];
+}
+
+function wp_linkedin_picture() {
+	$atts = shortcode_atts(array(
+			'width' => false,
+			'height' => false
+	), $atts, 'li_picture');
+	extract($atts);
+
+	$picture_url = wp_linkedin_original_profile_picture_url();
+	$output = "<img src=\"$picture_url\"";
+	if ($width) $output .= " width=\"$width\"";
+	if ($height) $output .= " height=\"$height\"";
+	$output .= '/>';
 }
 
 
