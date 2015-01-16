@@ -27,7 +27,7 @@ Text Domain: wp-linkedin
 define('WP_LINKEDIN_VERSION', '1.18RC1');
 
 if (!defined('LI_DEBUG')) {
-	define('LINKEDIN_FIELDS_RECOMMENDATIONS', WP_DEBUG);
+	define('LI_DEBUG', WP_DEBUG);
 }
 
 if (!defined('LINKEDIN_FIELDS_RECOMMENDATIONS')) {
@@ -251,7 +251,8 @@ function wp_linkedin_updates($atts=array()) {
 
 function wp_linkedin_original_profile_picture_url() {
 	$linkedin = wp_linkedin_connection();
-	$pictures = $linkedin->api_call('https://api.linkedin.com/v1/people/~/picture-urls::(original)');
+	$picture_urls = $linkedin->api_call('https://api.linkedin.com/v1/people/~/picture-urls::(original)');
+	return $picture_urls->values[0];
 }
 
 
