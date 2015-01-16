@@ -76,7 +76,7 @@ class WPLinkedInConnection {
 			'client_id' => $this->app_key,
 			'client_secret' => $this->app_secret), '', '&');
 
-		if (WP_DEBUG) echo '<!-- token access url: ' . $url . ' -->';
+		if (LI_DEBUG) echo '<!-- token access url: ' . $url . ' -->';
 
 		$response = wp_remote_get($url, array('sslverify' => LINKEDIN_SSL_VERIFYPEER));
 		if (!is_wp_error($response)) {

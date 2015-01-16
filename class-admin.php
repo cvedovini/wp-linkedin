@@ -157,7 +157,7 @@ class WPLinkedInAdmin {
 		$notice = __('Please click <a href="%s">here</a> if you are not redirected immediately.');
 		echo '<div class="updated"><p><strong>' . sprintf($notice, $location) . '</strong></p></div>';
 
-		if (!WP_DEBUG) {
+		if (!LI_DEBUG) {
 			if (headers_sent()) {
 				// If the headers have already been sent then use Javascript
 				echo "<script>window.location='$location';</script>";

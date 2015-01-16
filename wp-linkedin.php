@@ -5,7 +5,7 @@ Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 1.17.2
+Version: 1.18RC1
 Text Domain: wp-linkedin
 
 # The code in this plugin is free software; you can redistribute the code aspects of
@@ -24,7 +24,11 @@ Text Domain: wp-linkedin
 # See the GNU lesser General Public License for more details.
 */
 
-define('WP_LINKEDIN_VERSION', '1.17.2');
+define('WP_LINKEDIN_VERSION', '1.18RC1');
+
+if (!defined('LI_DEBUG')) {
+	define('LINKEDIN_FIELDS_RECOMMENDATIONS', WP_DEBUG);
+}
 
 if (!defined('LINKEDIN_FIELDS_RECOMMENDATIONS')) {
 	define('LINKEDIN_FIELDS_RECOMMENDATIONS', 'recommendations-received:(recommendation-text,recommender:(first-name,last-name,public-profile-url))');
@@ -126,7 +130,7 @@ class WPLinkedInPlugin {
 
 
 function wp_linkedin_error($message) {
-	if (WP_DEBUG) {
+	if (LI_DEBUG) {
 		return "<p class='error'>$message</p>";
 	} else {
 		return "<!-- $message -->";
@@ -158,7 +162,7 @@ function wp_linkedin_load_template($name, $args, $plugin=__FILE__) {
 
 	extract($args);
 	ob_start();
-	if (WP_DEBUG) echo '<!-- template path: ' . $template . ' -->';
+	if (LI_DEBUG) echo '<!-- template path: ' . $template . ' -->';
 	require($template);
 	return ob_get_clean();
 }
@@ -242,6 +246,12 @@ function wp_linkedin_updates($atts=array()) {
 		return wp_linkedin_load_template('network-updates',
 				array_merge($atts, array('updates' => $updates)));
 	}
+}
+
+
+function wp_linkedin_original_profile_picture_url() {
+	$linkedin = wp_linkedin_connection();
+	$pictures = $linkedin->api_call('https://api.linkedin.com/v1/people/~/picture-urls::(original)');
 }
 
 

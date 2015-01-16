@@ -117,6 +117,14 @@ of fields:
 
 `publications:(title,publisher,authors,date,url,summary)`
 
+= How to add the honors & awards section to my profile? =
+
+The honors & awards section is already in the template but is not activated by
+default. To activate it you must add the relevant profile fields to the list
+of fields:
+
+`honors-awards:(name,issuer,date,description)`
+
 = How to add other sections to my profile? =
 
 For other sections see [Showing more of your LinkedIn profile with
@@ -177,6 +185,13 @@ plugin settings page.
 
 
 == Changelog ==
+
+= Version 1.18 =
+- Stripped down the jQuery Tools library to the scroller only to avoid clashes with
+other jQuery plugins and reduce footprint.
+- Added support for honors & awards section to the profile template. If you
+want to activate it then make sure to add the following fields to the list of
+fields: `honors-awards:(name,issuer,date,description)`
 
 = Version 1.17.2 =
 - Change in the way urls are built to make sure the correct separator for query
