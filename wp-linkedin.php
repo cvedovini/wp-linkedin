@@ -100,12 +100,12 @@ class WPLinkedInPlugin {
 			return;
 		}
 
-		add_rewrite_rule('^oauth/linkedin/?', 'index.php?oauth=linkedin', 'top');
+		add_rewrite_rule('oauth/linkedin/?$', 'index.php?oauth=linkedin', 'top');
 		add_filter('query_vars', array(&$this, 'query_vars'));
 		add_action('template_redirect', array(&$this, 'template_redirect'));
 
 		$rules = get_option('rewrite_rules');
-		if (!isset($rules["^oauth/linkedin/?"])) {
+		if (!isset($rules['oauth/linkedin/?$'])) {
 			flush_rewrite_rules();
 		}
 	}
