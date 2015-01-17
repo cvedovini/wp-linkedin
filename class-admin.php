@@ -131,62 +131,31 @@ class WPLinkedInAdmin {
 			</ul></div><?php
 		}
 
-		if (!isset($_GET['settings-updated'])) {
-			if (isset($_GET['oauth_success'])) { ?>
-				<div class="updated"><p><strong><?php _e('The access token has been successfully updated.', 'wp-linkedin'); ?></strong></p></div><?php
-			}
+		if (isset($_GET['oauth_status'])) {
+			switch ($_GET['oauth_status']) {
+				case 'success': ?>
+					<div class="updated"><p><strong><?php _e('The access token has been successfully updated.', 'wp-linkedin'); ?></strong></p></div><?php
+					break;
 
-			if (isset($_GET['oauth_error'])) {
-				$message = isset($_GET['message']) ? $_GET['message'] : false; ?>
-				<div class="error">
+				case 'error':
+					$message = isset($_GET['oauth_message']) ? $_GET['oauth_message'] : false; ?>
+					<div class="error">
 					<p><strong><?php _e('An error has occured while updating the access token, please try again.', 'wp-linkedin'); ?></strong>
-					<?php echo ($message) ? '<br/>' . __('Error message: ', 'wp-linkedin') . $message : ''; ?></p></div><?php
-			}
-
-			if (isset($_GET['cache_cleared'])) { ?>
-				<div class="updated"><p><strong><?php _e('The cache has been cleared.', 'wp-linkedin'); ?></strong></p></div><?php
+					<?php echo ($message) ? '<br/>' . __('Error message: ', 'wp-linkedin') . $message : ''; ?></p>
+					</div><?php
+					break;
 			}
 		}
-	}
 
-	function redirect($code, $message=false) {
-		$path = '/wp-admin/options-general.php?page=wp-linkedin&' . urlencode($code);
-		if ($message) $path .= '&message=' . urlencode($message);
-		$location = site_url($path);
-
-		$notice = __('Please click <a href="%s">here</a> if you are not redirected immediately.');
-		echo '<div class="updated"><p><strong>' . sprintf($notice, $location) . '</strong></p></div>';
-
-		if (!LI_DEBUG) {
-			if (headers_sent()) {
-				// If the headers have already been sent then use Javascript
-				echo "<script>window.location='$location';</script>";
-			} else {
-				// Otherwise, just use a normal redirect
-				wp_redirect($location);
-			}
-
-			exit;
+		if (isset($_GET['cache_cleared'])) { ?>
+			<div class="updated"><p><strong><?php _e('The cache has been cleared.', 'wp-linkedin'); ?></strong></p></div><?php
 		}
 	}
 
 	function options_page() {
-		if (isset($_GET['code']) && isset($_GET['state'])) {
-			if ($this->linkedin->check_state_token($_GET['state'])) {
-				$retcode = $this->linkedin->set_access_token($_GET['code']);
-
-				if (!is_wp_error($retcode)) {
-					$this->linkedin->clear_cache();
-					$this->redirect('oauth_success');
-				} else {
-					$this->redirect('oauth_error', $retcode->get_error_message());
-				}
-			} else {
-				$this->redirect('oauth_error', __('Invalid state', 'wp-linkedin'));
-			}
-		} elseif (isset($_GET['clear_cache'])) {
-			$this->linkedin->clear_cache();
-			$this->redirect('cache_cleared');
+		if (isset($_GET['clear_cache'])) {
+			$this->linkedin->clear_cache();?>
+			<div class="updated"><p><strong><?php _e('The cache has been cleared.', 'wp-linkedin'); ?></strong></p></div><?php
 		} ?>
 <div class="wrap">
 	<?php screen_icon(); ?>

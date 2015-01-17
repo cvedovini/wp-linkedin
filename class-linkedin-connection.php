@@ -63,6 +63,10 @@ class WPLinkedInConnection {
 
 	public function get_token_process_url($r=false) {
 		if ($r) {
+			// cleanup the url
+			$query = array('settings-updated' => false, 'clear_cache' => false,
+						'message' => false);
+			$r = add_query_arg($query, $r);
 			return site_url('/oauth/linkedin/?r='.urlencode($r));
 		} else {
 			return site_url('/oauth/linkedin/');

@@ -105,7 +105,7 @@ class WPLinkedInPlugin {
 		add_action('template_redirect', array(&$this, 'template_redirect'));
 
 		$rules = get_option('rewrite_rules');
-		if (!isset($rules["language/$regexp/?$"])) {
+		if (!isset($rules["^oauth/linkedin/?"])) {
 			flush_rewrite_rules();
 		}
 	}
@@ -130,23 +130,23 @@ class WPLinkedInPlugin {
 
 				if (!is_wp_error($retcode)) {
 					$linkedin->clear_cache();
-					$this->redirect($r, 'oauth_success');
+					$this->redirect($r, 'success');
 				} else {
-					$this->redirect($r, 'oauth_error', $retcode->get_error_message());
+					$this->redirect($r, 'error', $retcode->get_error_message());
 				}
 			} else {
-				$this->redirect($r, 'oauth_error', __('Invalid state', 'wp-linkedin'));
+				$this->redirect($r, 'error', __('Invalid state', 'wp-linkedin'));
 			}
 
 			exit;
 		}
 	}
 
-	function redirect($path, $code, $message=false) {
-		$query = $code;
-		if ($message) $query .= '&message=' . urlencode($message);
-		$path = http_build_url($path, array('query', $query));
-		$location = site_url($path);
+	function redirect($path, $status, $message=false) {
+		$query = array('oauth_status' => $status);
+		if ($message) $query['oauth_message'] = urlencode($message);
+		$path = add_query_arg($query, $path);
+		$location = $path;
 
 		$notice = __('Please click <a href="%s">here</a> if you are not redirected immediately.');
 		echo '<div class="updated"><p><strong>' . sprintf($notice, $location) . '</strong></p></div>';
