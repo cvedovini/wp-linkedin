@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 4.1
-Stable tag: 1.17.2
+Stable tag: 1.18
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -163,10 +163,8 @@ authorization to access your network updates.
 
 = Profile picture is only 80x80 pixels is there a way to get a bigger one from LinkedIn? =
 
-Unfortunately not, LinkedIn has bigger pictures but they make only the 80x80
-version available to theit API. If you want a bigger image you will have to
-provide it and [modify the profile template](http://vedovini.net/more-wp-linkedin)
-to show this one.
+You can either add `picture-urls::(original)` to the list of fields and output
+that field in a customized template or use the `[li_picture]` shortcode.
 
 
 == Screenshots ==
@@ -179,6 +177,12 @@ profile.
 
 
 == Upgrade Notice ==
+
+= 1.18 =
+*BREAKING CHANGE* The redirect uri that is used to process the OAuth access
+token has changed in this version. You must update the redirect urls setting
+in you LinkedIn API Application details. See the plugin settings page, API
+access section, for more.
 
 = 1.14 =
 As of April 11, 2014 LinkedIn requires that redirect uris be registered, thus
@@ -200,6 +204,7 @@ fields: `honors-awards:(name,issuer,date,description)`
 HTML comments (especially usefull when debugging customized templates).
 - Added the `li_picture` shortcode that enables you to print the original
 profile picture.
+- Changed the uri that gets the access token from the API.
 
 
 = Version 1.17.2 =

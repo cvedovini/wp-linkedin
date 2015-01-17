@@ -154,7 +154,7 @@ class WPLinkedInAdmin {
 
 	function options_page() {
 		if (isset($_GET['clear_cache'])) {
-			$this->linkedin->clear_cache();?>
+			$this->linkedin->clear_cache(); ?>
 			<div class="updated"><p><strong><?php _e('The cache has been cleared.', 'wp-linkedin'); ?></strong></p></div><?php
 		} ?>
 <div class="wrap">
