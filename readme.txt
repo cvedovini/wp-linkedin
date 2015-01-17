@@ -199,8 +199,8 @@ other jQuery plugins and reduce footprint.
 - Added support for honors & awards section to the profile template. If you
 want to activate it then make sure to add the following fields to the list of
 fields: `honors-awards:(name,issuer,date,description)`
-- Added support for the `LI_DEBUG` variable. Set that define to `true` in the
-`wp-config.php` file and debug information will be printed by the plugin as
+- Added support for the `LI_DEBUG` variable. Set that define to `true` in
+the `wp-config.php` file and debug information will be printed by the plugin as
 HTML comments (especially usefull when debugging customized templates).
 - Added the `li_picture` shortcode that enables you to print the original
 profile picture.
