@@ -119,7 +119,7 @@ class WPLinkedInPlugin {
 	}
 
 	function template_redirect() {
-		if (get_query_var('oauth') == 'linkedin') {
+		if (is_user_logged_in() && get_query_var('oauth') == 'linkedin') {
 			$linkedin = wp_linkedin_connection();
 			$state = get_query_var('state');
 			$code = get_query_var('code');
@@ -138,7 +138,7 @@ class WPLinkedInPlugin {
 				$this->redirect($r, 'oauth_error', __('Invalid state', 'wp-linkedin'));
 			}
 
-			exit();
+			exit;
 		}
 	}
 
@@ -159,8 +159,6 @@ class WPLinkedInPlugin {
 				// Otherwise, just use a normal redirect
 				wp_redirect($location);
 			}
-
-			exit;
 		}
 	}
 
