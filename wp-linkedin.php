@@ -253,7 +253,14 @@ function wp_linkedin_updates($atts=array()) {
 function wp_linkedin_original_profile_picture_url() {
 	$linkedin = wp_linkedin_connection();
 	$picture_urls = $linkedin->api_call('https://api.linkedin.com/v1/people/~/picture-urls::(original)');
-	return $picture_urls->values[0];
+
+	if (!is_wp_error($picture_urls)) {
+		return $picture_urls->values[0];
+	} elseif (LI_DEBUG) {
+		return $picture_urls->get_error_message();
+	} else {
+		return false;
+	}
 }
 
 
@@ -266,12 +273,15 @@ function wp_linkedin_picture($atts=array()) {
 	extract($atts);
 
 	$picture_url = wp_linkedin_original_profile_picture_url();
-	$output = "<img src=\"$picture_url\"";
-	if ($width) $output .= " width=\"$width\"";
-	if ($height) $output .= " height=\"$height\"";
-	if ($class) $output .= " class=\"$class\"";
-	$output .= '/>';
-	return $output;
+
+	if ($picture_url) {
+		$output = "<img src=\"$picture_url\"";
+		if ($width) $output .= " width=\"$width\"";
+		if ($height) $output .= " height=\"$height\"";
+		if ($class) $output .= " class=\"$class\"";
+		$output .= '/>';
+		return $output;
+	}
 }
 
 
