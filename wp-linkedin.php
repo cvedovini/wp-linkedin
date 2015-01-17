@@ -149,7 +149,7 @@ class WPLinkedInPlugin {
 		$location = $path;
 
 		$notice = __('Please click <a href="%s">here</a> if you are not redirected immediately.');
-		echo '<div class="updated"><p><strong>' . sprintf($notice, $location) . '</strong></p></div>';
+		echo '<p><strong>' . sprintf($notice, $location) . '</strong></p>';
 
 		if (!LI_DEBUG) {
 			if (headers_sent()) {

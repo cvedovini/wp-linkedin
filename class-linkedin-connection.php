@@ -65,11 +65,12 @@ class WPLinkedInConnection {
 		if ($r) {
 			// cleanup the url
 			$query = array('settings-updated' => false, 'clear_cache' => false,
-						'message' => false);
+						'message' => false, 'oauth_status' => false,
+						'oauth_message' => false);
 			$r = add_query_arg($query, $r);
-			return site_url('/oauth/linkedin/?r='.urlencode($r));
+			return home_url('/oauth/linkedin/?r='.urlencode($r));
 		} else {
-			return site_url('/oauth/linkedin/');
+			return home_url('/oauth/linkedin/');
 		}
 	}
 
