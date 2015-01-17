@@ -69,15 +69,15 @@ class WPLinkedInConnection {
 		}
 	}
 
-	public function set_access_token($code, $redirect_url=false) {
-		if (!$redirect_url) $redirect_url = $_SERVER["REQUEST_URI"];
-		$redirect_url = $this->get_token_process_url($redirect_url);
+	public function set_access_token($code, $redirect_uri=false) {
+		if (!$redirect_uri) $redirect_uri = $_SERVER["REQUEST_URI"];
+		$redirect_uri = $this->get_token_process_url($redirect_uri);
 
 		$this->set_last_error();
 		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?' . http_build_query(array(
 			'grant_type' => 'authorization_code',
 			'code' => $code,
-			'redirect_uri' => $redirect_url,
+			'redirect_uri' => $redirect_uri,
 			'client_id' => $this->app_key,
 			'client_secret' => $this->app_secret), '', '&');
 
@@ -118,8 +118,8 @@ class WPLinkedInConnection {
 		$scope = array('r_fullprofile', 'rw_nus');
 		$scope = apply_filters('linkedin_scope', $scope);
 
-		if (!$redirect_url) $redirect_url = $_SERVER["REQUEST_URI"];
-		$redirect_url = $this->get_token_process_url($redirect_url);
+		if (!$redirect_uri) $redirect_uri = $_SERVER["REQUEST_URI"];
+		$redirect_uri = $this->get_token_process_url($redirect_uri);
 
 		return 'https://www.linkedin.com/uas/oauth2/authorization?' . http_build_query(array(
 				'response_type' => 'code',
