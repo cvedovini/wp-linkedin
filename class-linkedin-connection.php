@@ -61,16 +61,17 @@ class WPLinkedInConnection {
 		$this->delete_cache('wp-linkedin_oauthtoken');
 	}
 
-	public function get_token_process_url() {
-		$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
-		$url .= $_SERVER['SERVER_NAME'];
-		if ($_SERVER['SERVER_PORT'] != 80) $url .= ':'.$_SERVER["SERVER_PORT"];
-		$url .= $_SERVER["REQUEST_URI"];
-		return site_url('/oauth/linkedin/?r='.urlencode($url));
+	public function get_token_process_url($r=false) {
+		if ($r) {
+			return site_url('/oauth/linkedin/?r='.urlencode($r));
+		} else {
+			return site_url('/oauth/linkedin/');
+		}
 	}
 
 	public function set_access_token($code, $redirect_url=false) {
-		$redirect_url = ($redirect_url) ? $redirect_url : $this->get_token_process_url();
+		if (!$redirect_url) $redirect_url = $_SERVER["REQUEST_URI"];
+		$redirect_url = $this->get_token_process_url($redirect_url);
 
 		$this->set_last_error();
 		$url = 'https://www.linkedin.com/uas/oauth2/accessToken?' . http_build_query(array(
@@ -116,7 +117,9 @@ class WPLinkedInConnection {
 	public function get_authorization_url($redirect_uri=false) {
 		$scope = array('r_fullprofile', 'rw_nus');
 		$scope = apply_filters('linkedin_scope', $scope);
-		$redirect_uri = ($redirect_uri) ? $redirect_uri : $this->get_token_process_url();
+
+		if (!$redirect_url) $redirect_url = $_SERVER["REQUEST_URI"];
+		$redirect_url = $this->get_token_process_url($redirect_url);
 
 		return 'https://www.linkedin.com/uas/oauth2/authorization?' . http_build_query(array(
 				'response_type' => 'code',

@@ -126,7 +126,7 @@ class WPLinkedInPlugin {
 			$r = get_query_var('r');
 
 			if ($linkedin->check_state_token($state)) {
-				$retcode = $linkedin->set_access_token($code);
+				$retcode = $linkedin->set_access_token($code, $r);
 
 				if (!is_wp_error($retcode)) {
 					$linkedin->clear_cache();
