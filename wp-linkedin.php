@@ -47,10 +47,22 @@ include 'class-card-widget.php';
 include 'class-profile-widget.php';
 include 'class-updates-widget.php';
 
+add_action('plugins_loaded', array('WPLinkedInPlugin', 'get_instance'));
 
 class WPLinkedInPlugin {
 
-	function WPLinkedInPlugin() {
+	private static $instance;
+
+	public static function get_instance() {
+		if (!self::$instance) {
+			self::$instance = new self();
+		}
+
+		return self::$instance;
+	}
+
+	function __construct() {
+		register_deactivation_hook(__FILE__, 'flush_rewrite_rules');
 		add_action('init', array(&$this, 'init'));
 		add_action('widgets_init', array(&$this, 'widgets_init'));
 		add_action('admin_menu', array(&$this, 'admin_init'));
@@ -76,6 +88,79 @@ class WPLinkedInPlugin {
 		$post_types = $this->get_post_types();
 		if (!empty($post_types)) {
 			add_filter('the_content', array(&$this, 'filter_content'), 1);
+		}
+
+		$this->setup_rewrite_rules();
+	}
+
+	function setup_rewrite_rules() {
+		if (isset($_GET['action']) && $_GET['action'] == 'deactivate' &&
+				$_GET['plugin'] == 'wp-linkedin/wp-linkedin.php') {
+			// Don't do anything if we're deactivating this plugin
+			return;
+		}
+
+		add_rewrite_rule('^oauth/linkedin/?', 'index.php?oauth=linkedin', 'top');
+		add_filter('query_vars', array(&$this, 'query_vars'));
+		add_action('template_redirect', array(&$this, 'template_redirect'));
+
+		$rules = get_option('rewrite_rules');
+		if (!isset($rules["language/$regexp/?$"])) {
+			flush_rewrite_rules();
+		}
+	}
+
+	function query_vars($vars) {
+		$vars[] = 'oauth';
+		$vars[] = 'code';
+		$vars[] = 'state';
+		$vars[] = 'r';
+		return $vars;
+	}
+
+	function template_redirect() {
+		if (get_query_var('oauth') == 'linkedin') {
+			$linkedin = wp_linkedin_connection();
+			$state = get_query_var('state');
+			$code = get_query_var('code');
+			$r = get_query_var('r');
+
+			if ($linkedin->check_state_token($state)) {
+				$retcode = $linkedin->set_access_token($code);
+
+				if (!is_wp_error($retcode)) {
+					$linkedin->clear_cache();
+					$this->redirect($r, 'oauth_success');
+				} else {
+					$this->redirect($r, 'oauth_error', $retcode->get_error_message());
+				}
+			} else {
+				$this->redirect($r, 'oauth_error', __('Invalid state', 'wp-linkedin'));
+			}
+
+			exit();
+		}
+	}
+
+	function redirect($path, $code, $message=false) {
+		$query = $code;
+		if ($message) $query .= '&message=' . urlencode($message);
+		$path = http_build_url($path, array('query', $query));
+		$location = site_url($path);
+
+		$notice = __('Please click <a href="%s">here</a> if you are not redirected immediately.');
+		echo '<div class="updated"><p><strong>' . sprintf($notice, $location) . '</strong></p></div>';
+
+		if (!LI_DEBUG) {
+			if (headers_sent()) {
+				// If the headers have already been sent then use Javascript
+				echo "<script>window.location='$location';</script>";
+			} else {
+				// Otherwise, just use a normal redirect
+				wp_redirect($location);
+			}
+
+			exit;
 		}
 	}
 
@@ -342,7 +427,3 @@ function wp_linkedin_cause($cause_name) {
 
 	return $causes[$cause_name];
 }
-
-
-global $the_wp_linked_plugin;
-$the_wp_linked_plugin = new WPLinkedInPlugin();

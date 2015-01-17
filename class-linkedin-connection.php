@@ -62,7 +62,11 @@ class WPLinkedInConnection {
 	}
 
 	public function get_token_process_url() {
-		return site_url('/wp-admin/options-general.php?page=wp-linkedin');
+		$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https://' : 'http://';
+		$url .= $_SERVER['SERVER_NAME'];
+		if ($_SERVER['SERVER_PORT'] != 80) $url .= ':'.$_SERVER["SERVER_PORT"];
+		$url .= $_SERVER["REQUEST_URI"];
+		return site_url('/oauth/linkedin/?r='.urlencode($url));
 	}
 
 	public function set_access_token($code, $redirect_url=false) {
