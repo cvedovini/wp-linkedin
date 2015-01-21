@@ -197,6 +197,7 @@ plugin settings page.
 - Loading the text domain earlier in the plugin loading process so that
 translations for widget names are available.
 - Updating Portuguese and French translations.
+- Now working when fancy permalinks are not activated.
 
 
 = Version 1.18 =

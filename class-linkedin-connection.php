@@ -62,15 +62,30 @@ class WPLinkedInConnection {
 	}
 
 	public function get_token_process_url($r=false) {
+		$query = array();
+		$rules = get_option('rewrite_rules');
+
+		if (is_array($rules) and !empty($rules)) {
+			// we have rewrite rules activated
+			$url = home_url('/oauth/linkedin/');
+		} else {
+			$url = home_url();
+			$query['oauth'] = 'linkedin';
+		}
+
 		if ($r) {
 			// cleanup the url
-			$query = array('settings-updated' => false, 'clear_cache' => false,
+			$clean = array('settings-updated' => false, 'clear_cache' => false,
 						'message' => false, 'oauth_status' => false,
 						'oauth_message' => false);
-			$r = add_query_arg($query, $r);
-			return home_url('/oauth/linkedin/?r='.urlencode($r));
+			$r = add_query_arg($clean, $r);
+			$query['r'] = $r;
+		}
+
+		if (empty($query)) {
+			return $url;
 		} else {
-			return home_url('/oauth/linkedin/');
+			return $url . '?' . http_build_query($query);
 		}
 	}
 
