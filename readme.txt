@@ -193,6 +193,12 @@ plugin settings page.
 
 == Changelog ==
 
+= Version 1.18.1 =
+- Loading the text domain earlier in the plugin loading process so that
+translations for widget names are available.
+- Updating Portuguese and French translations.
+
+
 = Version 1.18 =
 - Stripped down the jQuery Tools library to the scroller only to avoid clashes with
 other jQuery plugins and reduce footprint.
