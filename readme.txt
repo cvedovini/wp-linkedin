@@ -193,7 +193,7 @@ plugin settings page.
 
 == Changelog ==
 
-= 1.18.2 =
+= Version 1.18.2 =
 - Updated Spanish and Catalan translations.
 
 = Version 1.18.1 =
