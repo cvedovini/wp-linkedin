@@ -178,12 +178,6 @@ profile.
 
 == Upgrade Notice ==
 
-= 1.18.2 =
-Updated Spanish and Catalan translations.
-
-= 1.18.1 =
-Updated French and Portuguese translations.
-
 = 1.18 =
 *BREAKING CHANGE* The redirect uri that is used to process the OAuth access
 token has changed in this version. You must update the redirect urls setting
@@ -198,6 +192,9 @@ plugin settings page.
 
 
 == Changelog ==
+
+= 1.18.2 =
+- Updated Spanish and Catalan translations.
 
 = Version 1.18.1 =
 - Loading the text domain earlier in the plugin loading process so that
