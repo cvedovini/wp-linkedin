@@ -5,7 +5,7 @@ Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 4.1
-Stable tag: 1.18.1
+Stable tag: 1.18.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -177,6 +177,12 @@ profile.
 
 
 == Upgrade Notice ==
+
+= 1.18.2 =
+Updated Spanish and Catalan translations.
+
+= 1.18.1 =
+Updated French and Portuguese translations.
 
 = 1.18 =
 *BREAKING CHANGE* The redirect uri that is used to process the OAuth access
@@ -463,3 +469,4 @@ translations.
 - Ogi Djuraskovic, from [First Site Guide](http://firstsiteguide.com/): Contributed the Serbian translations
 - [Pedro Gaspar](http://twitter.com/pedro_gaspar): Contributed the Portuguese
 translations and corrected internationalization bugs in class-admin.php.
+- [Oriol Torrillas](http://www.otorrillas.tk): Contributed Spanish and Catalan translations
