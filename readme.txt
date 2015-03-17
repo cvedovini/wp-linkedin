@@ -193,6 +193,13 @@ plugin settings page.
 
 == Changelog ==
 
+= Version 1.19 =
+- As an option you can now put your customized templates in a `linkedin` folder
+under the `wp-content` folder instead of your theme's folder. No need to create
+a child theme anymore or have the templates overwritten when you update your
+theme.
+- Updated Portuguese translations.
+
 = Version 1.18.3 =
 - Fixing network updates templates that didn't show "Likes" properly.
 
