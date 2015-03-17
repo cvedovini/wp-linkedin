@@ -33,8 +33,8 @@ on what you uploaded to LinkedIn). Optional attributes are `width`, `height`
 and `class`.
 
 To customize the rendering of the shortcodes you must create a `linkedin` folder
-in your theme and then copy the template file you want to modify.
-The default template files are located in the plugin's `templates` folder.
+in your theme or in the `wp-content` folder and then copy the template file you
+want to modify. The default template files are located in the plugin's `templates` folder.
 
 See this post for more details on customization: [Showing more of your LinkedIn
 profile with WP-LinkedIn](http://vedovini.net/more-wp-linkedin)
