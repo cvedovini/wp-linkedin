@@ -135,7 +135,7 @@ class WPLinkedInConnection {
 	}
 
 	public function get_authorization_url($redirect_uri=false) {
-		$scope = array('r_fullprofile', 'rw_nus');
+		$scope = array('r_fullprofile', 'w_share');
 		$scope = apply_filters('linkedin_scope', $scope);
 
 		if (!$redirect_uri) $redirect_uri = $_SERVER["REQUEST_URI"];
