@@ -18,6 +18,7 @@ class WPLinkedInAdmin {
 		$this->add_options_field('wp-linkedin_appsecret', __('Application secret', 'wp-linkedin'), 'add_settings_field_appsecret', 'appkeys');
 
 		add_settings_section('default', __('Options', 'wp-linkedin'), false, 'wp-linkedin');
+		$this->add_options_field('wp-linkedin_full_profile', __('Full Profile', 'wp-linkedin'), 'add_settings_field_full_profile');
 		$this->add_options_field('wp-linkedin_fields', __('Profile fields', 'wp-linkedin'), 'add_settings_field_fields');
 		$this->add_options_field('wp-linkedin_profilelanguage', __('Profile language', 'wp-linkedin'), 'add_settings_field_profilelanguage');
 		$this->add_options_field('wp-linkedin_sendmail_on_token_expiry', __('Send mail on token expiry', 'wp-linkedin'), 'add_settings_field_sendmail_on_token_expiry');
@@ -60,6 +61,16 @@ class WPLinkedInAdmin {
 
 	function add_settings_field_appsecret() { ?>
 		<input type="text" name="wp-linkedin_appsecret" value="<?php echo WP_LINKEDIN_APPSECRET; ?>" /><?php
+	}
+
+	function add_settings_field_full_profile() { ?>
+		<label><input type="checkbox" name="wp-linkedin_full_profile"
+			value="1" <?php checked(LINKEDIN_FULL_PROFILE); ?> />&nbsp;
+			<?php _e('Check this option only if you have been authorized by LinkedIn to access the full profile.', 'wp-linkedin') ?></label>
+		<p><em><?php _e('To be authorized you must apply to <a target="_blank" href="https://help.linkedin.com/app/ask/path/api-dvr">the "Apply with LinkedIn" program</a>.',
+				'wp-linkedin'); ?>
+			<?php _e('<a href="http://vedovini.net/2015/04/the-fate-of-the-wp-linkedin-wordpress-plugin-after-may-12/" target="_blank">More information on vedovini.net</a>',
+				'wp-linkedin'); ?></em></p><?php
 	}
 
 	function add_settings_field_fields() { ?>
@@ -131,57 +142,31 @@ class WPLinkedInAdmin {
 			</ul></div><?php
 		}
 
-		if (!isset($_GET['settings-updated'])) {
-			if (isset($_GET['oauth_success'])) { ?>
-				<div class="updated"><p><strong><?php _e('The access token has been successfully updated.', 'wp-linkedin'); ?></strong></p></div><?php
-			}
+		if (isset($_GET['oauth_status'])) {
+			switch ($_GET['oauth_status']) {
+				case 'success': ?>
+					<div class="updated"><p><strong><?php _e('The access token has been successfully updated.', 'wp-linkedin'); ?></strong></p></div><?php
+					break;
 
-			if (isset($_GET['oauth_error'])) {
-				$message = isset($_GET['message']) ? $_GET['message'] : false; ?>
-				<div class="error">
+				case 'error':
+					$message = isset($_GET['oauth_message']) ? $_GET['oauth_message'] : false; ?>
+					<div class="error">
 					<p><strong><?php _e('An error has occured while updating the access token, please try again.', 'wp-linkedin'); ?></strong>
-					<?php echo ($message) ? '<br/>' . __('Error message: ', 'wp-linkedin') . $message : ''; ?></p></div><?php
-			}
-
-			if (isset($_GET['cache_cleared'])) { ?>
-				<div class="updated"><p><strong><?php _e('The cache has been cleared.', 'wp-linkedin'); ?></strong></p></div><?php
+					<?php echo ($message) ? '<br/>' . __('Error message: ', 'wp-linkedin') . $message : ''; ?></p>
+					</div><?php
+					break;
 			}
 		}
-	}
 
-	function redirect($code, $message=false) {
-		$path = '/wp-admin/options-general.php?page=wp-linkedin&' . urlencode($code);
-		if ($message) $path .= '&message=' . urlencode($message);
-		$location = site_url($path);
-
-		if (headers_sent()) {
-			// If the headers have already been sent then use Javascript
-			echo "<script>window.location='$location';</script>";
-		} else {
-			// Other wise, just a normal redirect
-			wp_redirect($location);
+		if (isset($_GET['cache_cleared'])) { ?>
+			<div class="updated"><p><strong><?php _e('The cache has been cleared.', 'wp-linkedin'); ?></strong></p></div><?php
 		}
-
-		exit;
 	}
 
 	function options_page() {
-		if (isset($_GET['code']) && isset($_GET['state'])) {
-			if ($this->linkedin->check_state_token($_GET['state'])) {
-				$retcode = $this->linkedin->set_access_token($_GET['code']);
-
-				if (!is_wp_error($retcode)) {
-					$this->linkedin->clear_cache();
-					$this->redirect('oauth_success');
-				} else {
-					$this->redirect('oauth_error', $retcode->get_error_message());
-				}
-			} else {
-				$this->redirect('oauth_error', __('Invalid state', 'wp-linkedin'));
-			}
-		} elseif (isset($_GET['clear_cache'])) {
-			$this->linkedin->clear_cache();
-			$this->redirect('cache_cleared');
+		if (isset($_GET['clear_cache'])) {
+			$this->linkedin->clear_cache(); ?>
+			<div class="updated"><p><strong><?php _e('The cache has been cleared.', 'wp-linkedin'); ?></strong></p></div><?php
 		} ?>
 <div class="wrap">
 	<?php screen_icon(); ?>

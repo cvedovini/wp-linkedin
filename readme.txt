@@ -4,13 +4,17 @@ Contributors: cvedovini
 Donate link: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
-Tested up to: 3.9.1
-Stable tag: 1.16
+Tested up to: 4.2
+Stable tag: 2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
 
 == Description ==
+
+Following the modifications to the LinkedIn developer program, version 2.0 of
+this plugin introduces breaking changes. [More information on vedovini.net](http://vedovini.net/2015/04/the-fate-of-the-wp-linkedin-wordpress-plugin-after-may-12/)
+
 
 This plugin provides you with shortcodes to insert your full LinkedIn profile
 and a rotating scroller of your LinkedIn recommendations in any Wordpress page
@@ -28,10 +32,13 @@ are `picture_width` and `summary_length`, and `fields` and `lang` to overide
 the general settings.
 * `[li_updates]` displays your network updates. Optional attributes are `count`
 and `only_self`.
+* `[li_picture]` displays the original profile picture (size may vary depending
+on what you uploaded to LinkedIn). Optional attributes are `width`, `height`
+and `class`.
 
 To customize the rendering of the shortcodes you must create a `linkedin` folder
-in your theme and then copy the template file you want to modify.
-The default template files are located in the plugin's `templates` folder.
+in your theme or in the `wp-content` folder and then copy the template file you
+want to modify. The default template files are located in the plugin's `templates` folder.
 
 See this post for more details on customization: [Showing more of your LinkedIn
 profile with WP-LinkedIn](http://vedovini.net/more-wp-linkedin)
@@ -93,20 +100,37 @@ that provides shortcodes and widgets for company profiles and company updates.
 = How to add the volunteer experiences section from my profile? =
 
 The volunteer experiences section is already in the template but is not
-activated by default. To activate it you must add the relevant profile fields to
+activated by default. To activate it you must add the relevant profile fields
 to the list of fields, the minimum is `volunteer`. To get the full data
 use this:
 
 `volunteer:(volunteer-experiences:(organization,cause,role,start-date,
-end-date,description))`.
+end-date,description))`
 
 = How to add the projects section to my profile? =
 
 The projects section is already in the template but is not activated by default.
 To activate it you must add the relevant profile fields to the list of fields:
 
-`projects:(name,url,start-date,end-date,members:(name,person:(public-profile-url,
-first-name,last-name,picture-url,headline)),description)`
+`projects:(name,url,start-date,end-date,members:(name,
+person:(public-profile-url,first-name,last-name,picture-url,headline)),
+description)`
+
+= How to add the publications section to my profile? =
+
+The publications section is already in the template but is not activated by
+default. To activate it you must add the relevant profile fields to the list
+of fields:
+
+`publications:(title,publisher,authors,date,url,summary)`
+
+= How to add the honors & awards section to my profile? =
+
+The honors & awards section is already in the template but is not activated by
+default. To activate it you must add the relevant profile fields to the list
+of fields:
+
+`honors-awards:(name,issuer,date,description)`
 
 = How to add other sections to my profile? =
 
@@ -143,10 +167,8 @@ authorization to access your network updates.
 
 = Profile picture is only 80x80 pixels is there a way to get a bigger one from LinkedIn? =
 
-Unfortunately not, LinkedIn has bigger pictures but they make only the 80x80
-version available to theit API. If you want a bigger image you will have to
-provide it and [modify the profile template](http://vedovini.net/more-wp-linkedin)
-to show this one.
+You can either add `picture-urls::(original)` to the list of fields and output
+that field in a customized template or use the `[li_picture]` shortcode.
 
 
 == Screenshots ==
@@ -160,6 +182,16 @@ profile.
 
 == Upgrade Notice ==
 
+= 2.0 =
+Following the modifications to the LinkedIn developer program, version 2.0 of
+this plugin introduce breaking changes. [More information on vedovini.net](http://vedovini.net/2015/04/the-fate-of-the-wp-linkedin-wordpress-plugin-after-may-12/)
+
+= 1.18 =
+*BREAKING CHANGE* The redirect uri that is used to process the OAuth access
+token has changed in this version. You must update the redirect urls setting
+in you LinkedIn API Application details. See the plugin settings page, API
+access section, for more.
+
 = 1.14 =
 As of April 11, 2014 LinkedIn requires that redirect uris be registered, thus
 forcing every plugin installation to have its own application key/secret pair
@@ -168,6 +200,59 @@ plugin settings page.
 
 
 == Changelog ==
+
+= Version 2.0 =
+- Updated to follow the restrictions on the API imposed by LinkedIn starting on
+May 12, 2015.[More information on vedovini.net](http://vedovini.net/2015/04/the-fate-of-the-wp-linkedin-wordpress-plugin-after-may-12/)
+
+= Version 1.19 =
+- As an option you can now put your customized templates in a `linkedin` folder
+under the `wp-content` folder instead of your theme's folder. No need to create
+a child theme anymore or have the templates overwritten when you update your
+theme.
+- Updated Portuguese translations.
+
+= Version 1.18.3 =
+- Fixing network updates templates that didn't show "Likes" properly.
+
+= Version 1.18.2 =
+- Updated Spanish and Catalan translations.
+
+= Version 1.18.1 =
+- Loading the text domain earlier in the plugin loading process so that
+translations for widget names are available.
+- Updating Portuguese and French translations.
+- Now working when fancy permalinks are not activated.
+
+
+= Version 1.18 =
+- Stripped down the jQuery Tools library to the scroller only to avoid clashes with
+other jQuery plugins and reduce footprint.
+- Added support for honors & awards section to the profile template. If you
+want to activate it then make sure to add the following fields to the list of
+fields: `honors-awards:(name,issuer,date,description)`
+- Added support for the `LI_DEBUG` variable. Set that define to `true` in
+the `wp-config.php` file and debug information will be printed by the plugin as
+HTML comments (especially usefull when debugging customized templates).
+- Added the `li_picture` shortcode that enables you to print the original
+profile picture.
+- Changed the uri that gets the access token from the API.
+
+
+= Version 1.17.2 =
+- Change in the way urls are built to make sure the correct separator for query
+parameters is always used.
+
+= Version 1.17.1 =
+- Some changes to the profile templates to remove unwelcomed warnings.
+
+= Version 1.17 =
+- Added support for publications section in the profile template. If you want
+to add that section to your output make sure to add the following fields to the
+list of fields: `publications:(title,publisher,authors,date,url,summary)`.
+- Separated the profile template into several different templates to simplify
+customisation. Now if you just need to customize one section of the profile then
+you will only need to create a custom template for that section.
 
 = Version 1.16 =
 - Added Portuguese translations.
@@ -403,3 +488,4 @@ translations.
 - Ogi Djuraskovic, from [First Site Guide](http://firstsiteguide.com/): Contributed the Serbian translations
 - [Pedro Gaspar](http://twitter.com/pedro_gaspar): Contributed the Portuguese
 translations and corrected internationalization bugs in class-admin.php.
+- [Oriol Torrillas](http://www.otorrillas.tk): Contributed Spanish and Catalan translations
