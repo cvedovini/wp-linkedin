@@ -201,6 +201,12 @@ plugin settings page.
 
 == Changelog ==
 
+= Version 2.0.2 =
+
+- CSS fix for some cases when blockquotes have horizontal margins in the scroller
+- Template fix to accomodate a bug whereby content filtered using `wpautop`
+see `<br/>` tags  introduced in the middle of HTML `<img>` tags containing line breaks
+
 = Version 2.0.1 =
 
 - Adding some missing `esc_url` in the templates.
