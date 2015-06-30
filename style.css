@@ -38,6 +38,8 @@
 	float: left;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .linkedin .profile .section {
@@ -54,7 +56,9 @@
 
 .linkedin .profile .position,
 	.linkedin .profile .project,
+	.linkedin .profile .publication,
 	.linkedin .profile .education,
+	.linkedin .profile .honor,
 	.linkedin .profile .volunteer {
 	margin-bottom: 20px;
 }
@@ -68,17 +72,21 @@
 }
 
 .linkedin .profile .position .company,
+	.linkedin .profile .publication .publisher,
+	.linkedin .profile .honor .issuer,
 	.linkedin .profile .volunteer .organization {
 	font-weight: bolder;
 }
 
-.linkedin .profile .project-members img {
+.linkedin .profile .project-members img,
+	.linkedin .profile .authors img {
 	width: 35px;
 	border: none;
 	margin: 0 5px 5px 0;
 }
 
-.linkedin .profile .project-members .members-count {
+.linkedin .profile .project-members .count,
+	.linkedin .profile .authors .count {
 	color: #999;
 	font-size: smaller;
 }
