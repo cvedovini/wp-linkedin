@@ -201,6 +201,13 @@ plugin settings page.
 
 == Changelog ==
 
+= Version 2.1 =
+
+- Removed everything related to network updates
+- Changed some defaults
+- Moved most of the profile templates to the Advanced Templates plugin and left
+only what's necessary for the basic profile fields
+
 = Version 2.0.2 =
 
 - CSS fix for some cases when blockquotes have horizontal margins in the scroller
