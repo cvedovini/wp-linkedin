@@ -201,6 +201,10 @@ plugin settings page.
 
 == Changelog ==
 
+= Version 2.1.1 =
+
+- Fixing labels for Client ID and Client Secret in settings page
+
 = Version 2.1 =
 
 - Removed everything related to network updates

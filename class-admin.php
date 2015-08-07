@@ -14,8 +14,8 @@ class WPLinkedInAdmin {
 		add_submenu_page('options-general.php', __('LinkedIn Options', 'wp-linkedin'), __('LinkedIn', 'wp-linkedin'), 'manage_options', 'wp-linkedin', array(&$this, 'options_page'));
 
 		add_settings_section('appkeys', __('API Access', 'wp-linkedin'), array(&$this, 'api_access_section'), 'wp-linkedin');
-		$this->add_options_field('wp-linkedin_appkey', __('Application key', 'wp-linkedin'), 'add_settings_field_appkey', 'appkeys');
-		$this->add_options_field('wp-linkedin_appsecret', __('Application secret', 'wp-linkedin'), 'add_settings_field_appsecret', 'appkeys');
+		$this->add_options_field('wp-linkedin_appkey', __('Client ID', 'wp-linkedin'), 'add_settings_field_appkey', 'appkeys');
+		$this->add_options_field('wp-linkedin_appsecret', __('Client secret', 'wp-linkedin'), 'add_settings_field_appsecret', 'appkeys');
 
 		add_settings_section('default', __('Options', 'wp-linkedin'), false, 'wp-linkedin');
 		$this->add_options_field('wp-linkedin_full_profile', __('Full Profile', 'wp-linkedin'), 'add_settings_field_full_profile');
@@ -51,7 +51,7 @@ class WPLinkedInAdmin {
 			<li><?php printf(__('In the <code>OAuth 2.0 Redirect URLs</code> field specify the following URL', 'wp-linkedin')); ?>:
 				<a href="<?php echo $redirect_uri; ?>"><?php echo $redirect_uri; ?></a></li>
 			<li><?php _e('Click on the <code>Add Application</code> button', 'wp-linkedin'); ?></li>
-			<li><?php _e('Copy the <code>API Key</code> and the <code>Secret Key</code> in the corresponding fields below', 'wp-linkedin'); ?></li>
+			<li><?php _e('Copy the <code>Client ID</code> and the <code>Client Secret</code> in the corresponding fields below', 'wp-linkedin'); ?></li>
 		</ol><?php
 	}
 
