@@ -24,7 +24,7 @@ Text Domain: wp-linkedin
 # See the GNU lesser General Public License for more details.
 */
 
-define('WP_LINKEDIN_VERSION', '2.1');
+define('WP_LINKEDIN_VERSION', '2.1.1');
 
 if (!defined('LI_DEBUG')) {
 	define('LI_DEBUG', WP_DEBUG);

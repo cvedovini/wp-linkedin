@@ -2,7 +2,7 @@
 
 class WPLinkedInAdmin {
 
-	function WPLinkedInAdmin($plugin) {
+	function __construct($plugin) {
 		$this->plugin = $plugin;
 		$this->linkedin = wp_linkedin_connection();
 		$this->add_settings();
@@ -170,7 +170,7 @@ class WPLinkedInAdmin {
 		} ?>
 <div class="wrap">
 	<?php screen_icon(); ?>
-	<h2><?php _e('LinkedIn Options', 'wp-linkedin'); ?></h2>
+	<h1><?php _e('LinkedIn Options', 'wp-linkedin'); ?></h1>
 	<div id="main-container" class="postbox-container metabox-holder" style="width:75%;"><div style="margin-right:16px;">
 		<form method="POST" action="options.php"><?php
 			settings_fields('wp-linkedin');
