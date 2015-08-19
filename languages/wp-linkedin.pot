@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the WP LinkedIn package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP LinkedIn 2.0.1\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/wp-linkedin\n"
-"POT-Creation-Date: 2015-05-26 16:05:34+00:00\n"
+"Project-Id-Version: WP LinkedIn 2.1.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-linkedin\n"
+"POT-Creation-Date: 2015-08-07 08:49:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,11 +25,11 @@ msgid "API Access"
 msgstr ""
 
 #: class-admin.php:17
-msgid "Application key"
+msgid "Client ID"
 msgstr ""
 
 #: class-admin.php:18
-msgid "Application secret"
+msgid "Client secret"
 msgstr ""
 
 #: class-admin.php:20
@@ -101,7 +101,7 @@ msgstr ""
 
 #: class-admin.php:54
 msgid ""
-"Copy the <code>API Key</code> and the <code>Secret Key</code> in the "
+"Copy the <code>Client ID</code> and the <code>Client Secret</code> in the "
 "corresponding fields below"
 msgstr ""
 
@@ -424,7 +424,7 @@ msgid "A widget displaying your LinkedIn card"
 msgstr ""
 
 #: class-card-widget.php:40 class-profile-widget.php:44
-#: class-recommendations-widget.php:45 class-updates-widget.php:39
+#: class-recommendations-widget.php:45
 msgid "Title:"
 msgstr ""
 
@@ -509,201 +509,92 @@ msgstr ""
 msgid "Scroller's speed:"
 msgstr ""
 
-#: class-updates-widget.php:6
-msgid "LinkedIn Network Updates"
-msgstr ""
-
-#: class-updates-widget.php:7
-msgid "A widget displaying your LinkedIn network updates"
-msgstr ""
-
-#: class-updates-widget.php:43
-msgid "Number of updates to show:"
-msgstr ""
-
-#: class-updates-widget.php:48
-msgid "Show my updates only"
-msgstr ""
-
-#: templates/network-updates.php:7 templates/profile-projects.php:21
-#: templates/profile-publications.php:24
-#: templates/profile-recommendations.php:10 templates/recommendations.php:18
-msgid "Anonymous"
-msgstr ""
-
-#: templates/network-updates.php:41
-msgid "%1$s is now connected to %2$s."
-msgstr ""
-
-#: templates/network-updates.php:47
-msgid "%s is now a connection."
-msgstr ""
-
-#: templates/network-updates.php:52
-msgid "%s has joined LinkedIn."
-msgstr ""
-
-#: templates/network-updates.php:57 templates/network-updates.php:62
-msgid "%1$s says: %2$s"
-msgstr ""
-
-#: templates/network-updates.php:69
-msgid "%1$s likes: %2$s by %3$s"
-msgstr ""
-
-#: templates/network-updates.php:79
-msgid "%1$s joined the group %2$s."
-msgid_plural "%1$s joined the groups %2$s."
-msgstr[0] ""
-msgstr[1] ""
-
-#: templates/network-updates.php:94
-msgid "%s has a new profile picture."
-msgstr ""
-
-#: templates/network-updates.php:101 templates/network-updates.php:131
-msgid "%s has an updated profile."
-msgstr ""
-
-#: templates/network-updates.php:111
-msgid "%1$s recommends %2$s."
-msgstr ""
-
-#: templates/network-updates.php:118
-msgid "%1$s posted a job: %2$s at %3$s."
-msgstr ""
-
-#: templates/network-updates.php:125
-msgid "%1$s is now following %2$s."
-msgstr ""
-
-#: templates/network-updates.php:144
-msgid "No updates"
-msgstr ""
-
-#: templates/profile-educations.php:2 wp-linkedin.php:421
-msgid "Education"
-msgstr ""
-
-#: templates/profile-educations.php:5 templates/profile-positions.php:5
-#: templates/profile-projects.php:8 templates/profile-volunteer.php:6
-msgid "Present"
-msgstr ""
-
-#: templates/profile-educations.php:8
-msgid "Activities and societies"
-msgstr ""
-
-#: templates/profile-header.php:12
+#: templates/profile-header.php:10
 msgid "Summary"
 msgstr ""
 
-#: templates/profile-header.php:19
+#: templates/profile-header.php:17
 msgid "Specialties"
-msgstr ""
-
-#: templates/profile-honors.php:2
-msgid "Honors & Awards"
-msgstr ""
-
-#: templates/profile-languages.php:2
-msgid "Languages"
 msgstr ""
 
 #: templates/profile-positions.php:2
 msgid "Experience"
 msgstr ""
 
-#: templates/profile-projects.php:2
-msgid "Projects"
+#: templates/profile-positions.php:5
+msgid "Present"
 msgstr ""
 
-#: templates/profile-projects.php:11
-msgid "%d team members"
+#: templates/recommendations.php:18
+msgid "Anonymous"
 msgstr ""
 
-#: templates/profile-publications.php:2
-msgid "Publications"
-msgstr ""
-
-#: templates/profile-publications.php:14
-msgid "%d authors"
-msgstr ""
-
-#: templates/profile-recommendations.php:2
-msgid "Recommendations"
-msgstr ""
-
-#: templates/profile-skills.php:2
-msgid "Skills &amp; Expertise"
-msgstr ""
-
-#: templates/profile-volunteer.php:2
-msgid "Volunteer Experiences"
-msgstr ""
-
-#: wp-linkedin.php:139
+#: wp-linkedin.php:138
 msgid "Invalid state"
 msgstr ""
 
-#: wp-linkedin.php:152
+#: wp-linkedin.php:151
 msgid ""
 "Please click <a href=\"%s\">here</a> if you are not redirected immediately."
 msgstr ""
 
-#: wp-linkedin.php:317
+#: wp-linkedin.php:315
 msgid "You don't have any recommendation to show."
 msgstr ""
 
-#: wp-linkedin.php:415
+#: wp-linkedin.php:413
 msgid "Animal Welfare"
 msgstr ""
 
-#: wp-linkedin.php:416
+#: wp-linkedin.php:414
 msgid "Arts and Culture"
 msgstr ""
 
-#: wp-linkedin.php:417
+#: wp-linkedin.php:415
 msgid "Children"
 msgstr ""
 
-#: wp-linkedin.php:418
+#: wp-linkedin.php:416
 msgid "Civil Rights and Social Action"
 msgstr ""
 
-#: wp-linkedin.php:419
+#: wp-linkedin.php:417
 msgid "Disaster and Humanitarian Relief"
 msgstr ""
 
-#: wp-linkedin.php:420
+#: wp-linkedin.php:418
 msgid "Economic Empowerment"
 msgstr ""
 
-#: wp-linkedin.php:422
+#: wp-linkedin.php:419
+msgid "Education"
+msgstr ""
+
+#: wp-linkedin.php:420
 msgid "Environment"
 msgstr ""
 
-#: wp-linkedin.php:423
+#: wp-linkedin.php:421
 msgid "Health"
 msgstr ""
 
-#: wp-linkedin.php:424
+#: wp-linkedin.php:422
 msgid "Human Rights"
 msgstr ""
 
-#: wp-linkedin.php:425
+#: wp-linkedin.php:423
 msgid "Politics"
 msgstr ""
 
-#: wp-linkedin.php:426
+#: wp-linkedin.php:424
 msgid "Poverty Alleviation"
 msgstr ""
 
-#: wp-linkedin.php:427
+#: wp-linkedin.php:425
 msgid "Science and Technology"
 msgstr ""
 
-#: wp-linkedin.php:428
+#: wp-linkedin.php:426
 msgid "Social Services"
 msgstr ""
 
