@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: WP LinkedIn
-Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
+Plugin URI: http://vdvn.me/pga
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
-Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
+Author URI: http://vdvn.me/
 Version: 2.1.1
 Text Domain: wp-linkedin
 

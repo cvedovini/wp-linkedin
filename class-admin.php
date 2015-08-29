@@ -69,7 +69,7 @@ class WPLinkedInAdmin {
 			<?php _e('Check this option only if you have been authorized by LinkedIn to access the full profile.', 'wp-linkedin') ?></label>
 		<p><em><?php _e('To be authorized you must apply to <a target="_blank" href="https://help.linkedin.com/app/ask/path/api-dvr">the "Apply with LinkedIn" program</a>.',
 				'wp-linkedin'); ?>
-			<?php _e('<a href="http://vedovini.net/2015/04/the-fate-of-the-wp-linkedin-wordpress-plugin-after-may-12/" target="_blank">More information on vedovini.net</a>',
+			<?php _e('<a href="http://vdvn.me/p2lg" target="_blank">More information on vedovini.net</a>',
 				'wp-linkedin'); ?></em></p><?php
 	}
 
@@ -218,7 +218,7 @@ class WPLinkedInAdmin {
 					</form>
 				</div>
 				<p><?php _e('We also need volunteers to translate that plugin into more languages.', 'wp-linkedin'); ?>
-					<?php _e('If you wish to help then contact <a href="https://twitter.com/cvedovini">@cvedovini</a> on Twitter or use that <a href="http://vedovini.net/contact/">contact form</a>.', 'wp-linkedin'); ?></p>
+					<?php _e('If you wish to help then contact <a href="https://twitter.com/cvedovini">@cvedovini</a> on Twitter or use that <a href="http://vdvn.me/contact/">contact form</a>.', 'wp-linkedin'); ?></p>
 			</div> <!-- .inside -->
 		</div> <!-- .postbox -->
 		<div>
