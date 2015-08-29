@@ -5,7 +5,7 @@ Plugin URI: http://vdvn.me/pga
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
 Author URI: http://vdvn.me/
-Version: 2.1.1
+Version: 2.1.2
 Text Domain: wp-linkedin
 
 # The code in this plugin is free software; you can redistribute the code aspects of
@@ -24,7 +24,7 @@ Text Domain: wp-linkedin
 # See the GNU lesser General Public License for more details.
 */
 
-define('WP_LINKEDIN_VERSION', '2.1.1');
+define('WP_LINKEDIN_VERSION', '2.1.2');
 
 if (!defined('LI_DEBUG')) {
 	define('LI_DEBUG', WP_DEBUG);

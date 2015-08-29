@@ -43,24 +43,21 @@ class WPLinkedInAdmin {
 				be registered, thus forcing every plugin installation to have
 				its own application key/secret pair and register the corresponding
 				redirect uri.', 'wp-linkedin'); ?></p>
-		<p><?php _e('Please follow those instructions:', 'wp-linkedin'); ?></p>
-		<ol>
-			<li><a href="https://www.linkedin.com/secure/developer" target="_blank"><?php _e('Go to the LinkedIn Developer Network', 'wp-linkedin'); ?></a></li>
-			<li><?php _e('Select the <code>Add a new application</code> link at the bottom of the page', 'wp-linkedin'); ?></li>
-			<li><?php _e('Fill-in the mandatory fields on the <code>Add New Application</code> form', 'wp-linkedin'); ?></li>
-			<li><?php printf(__('In the <code>OAuth 2.0 Redirect URLs</code> field specify the following URL', 'wp-linkedin')); ?>:
-				<a href="<?php echo $redirect_uri; ?>"><?php echo $redirect_uri; ?></a></li>
-			<li><?php _e('Click on the <code>Add Application</code> button', 'wp-linkedin'); ?></li>
-			<li><?php _e('Copy the <code>Client ID</code> and the <code>Client Secret</code> in the corresponding fields below', 'wp-linkedin'); ?></li>
-		</ol><?php
+		<p><?php _e('Please follow the instructions on <a href="http://vdvn.me/p2tt" target="_blank">how to create a LinkedIn API application for the WP-LinkedIn plugin</a>.', 'wp-linkedin'); ?></p>
+		<table class="form-table">
+			<tr>
+				<th scope="row">Redirect URL</th>
+				<td><input type="text" class="regular-text" readonly value="<?php echo $redirect_uri; ?>"</td>
+			</tr>
+		</table><?php
 	}
 
 	function add_settings_field_appkey() { ?>
-		<input type="text" name="wp-linkedin_appkey" value="<?php echo WP_LINKEDIN_APPKEY; ?>" /><?php
+		<input type="text" name="wp-linkedin_appkey" class="regular-text" value="<?php echo WP_LINKEDIN_APPKEY; ?>" /><?php
 	}
 
 	function add_settings_field_appsecret() { ?>
-		<input type="text" name="wp-linkedin_appsecret" value="<?php echo WP_LINKEDIN_APPSECRET; ?>" /><?php
+		<input type="text" name="wp-linkedin_appsecret" class="regular-text" value="<?php echo WP_LINKEDIN_APPSECRET; ?>" /><?php
 	}
 
 	function add_settings_field_full_profile() { ?>
