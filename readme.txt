@@ -201,6 +201,9 @@ plugin settings page.
 
 == Changelog ==
 
+= Version 2.2 =
+- Better error management and added flexibility to the authentication process
+
 = Version 2.1.2 =
 - Updating instructions to create the LinkedIn API application to match the
 changes on their side

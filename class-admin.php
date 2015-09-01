@@ -141,8 +141,9 @@ class WPLinkedInAdmin {
 
 		if (isset($_GET['oauth_status'])) {
 			switch ($_GET['oauth_status']) {
-				case 'success': ?>
-					<div class="updated"><p><strong><?php _e('The access token has been successfully updated.', 'wp-linkedin'); ?></strong></p></div><?php
+				case 'success':
+					$message = isset($_GET['oauth_message']) ? $_GET['oauth_message'] : __('The access token has been successfully updated.', 'wp-linkedin'); ?>
+					<div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 					break;
 
 				case 'error':
