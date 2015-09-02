@@ -46,7 +46,7 @@ class WPLinkedInAdmin {
 		<p><?php _e('Please follow the instructions on <a href="http://vdvn.me/p2tt" target="_blank">how to create a LinkedIn API application for the WP-LinkedIn plugin</a>.', 'wp-linkedin'); ?></p>
 		<table class="form-table">
 			<tr>
-				<th scope="row">Redirect URL</th>
+				<th scope="row"><?php _e('Redirect URL', 'wp-linkedin'); ?></th>
 				<td><input type="text" class="regular-text" readonly value="<?php echo $redirect_uri; ?>"</td>
 			</tr>
 		</table><?php

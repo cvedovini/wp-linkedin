@@ -205,6 +205,11 @@ plugin settings page.
 
 == Changelog ==
 
+= Version 2.2.1 =
+- Updating pot file
+- Updating Brazilian translations
+- Fixing a missing call to gettext
+
 = Version 2.2 =
 - Better error management and added flexibility to the authentication process
 
