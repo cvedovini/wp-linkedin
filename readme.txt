@@ -207,7 +207,7 @@ plugin settings page.
 
 = Version 2.2.1 =
 - Updating pot file
-- Updating Brazilian translations
+- Updating Portuguese and French translations
 - Fixing a missing call to gettext
 
 = Version 2.2 =
