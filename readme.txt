@@ -1,7 +1,7 @@
 === WP LinkedIn ===
 Author: Claude Vedovini
 Contributors: cvedovini
-Donate link: http://vdvn.me/pga
+Donate link: http://paypal.me/vdvn
 Tags: linkedin,resume,recommendations,profile,network updates
 Requires at least: 2.7
 Tested up to: 4.3
