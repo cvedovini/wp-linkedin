@@ -64,6 +64,10 @@ And if you need to show company profiles or company updates, please check the
 [WP-LinkedIn for Companies](http://vdvn.me/p1nr)
 extension.
 
+Also available is the [WP-LinkedIn Advanced Templates](http://vdvn.me/p2ub)
+extension that provides extended profile templates (including most of the
+profile sections) and a more sofisticated template for company page updates.
+
 
 == Installation ==
 
