@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WP LinkedIn
-Plugin URI: http://vedovini.net/plugins/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
+Plugin URI: http://vdvn.me/pga
 Description: This plugin enables you to add various part of your LinkedIn profile to your Wordpress blog.
 Author: Claude Vedovini
-Author URI: http://vedovini.net/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-linkedin
-Version: 2.0.2
+Author URI: http://vdvn.me/
+Version: 2.2
 Text Domain: wp-linkedin
 
 # The code in this plugin is free software; you can redistribute the code aspects of
@@ -24,7 +24,7 @@ Text Domain: wp-linkedin
 # See the GNU lesser General Public License for more details.
 */
 
-define('WP_LINKEDIN_VERSION', '2.0.2');
+define('WP_LINKEDIN_VERSION', '2.2');
 
 if (!defined('LI_DEBUG')) {
 	define('LI_DEBUG', WP_DEBUG);
@@ -35,7 +35,7 @@ if (!defined('LINKEDIN_FIELDS_RECOMMENDATIONS')) {
 }
 
 define('LINKEDIN_FIELDS_BASIC', 'id, first-name, last-name, picture-url, headline, location, industry, public-profile-url');
-define('LINKEDIN_FIELDS_DEFAULT', 'summary, specialties, languages, skills, educations, positions, ' . LINKEDIN_FIELDS_RECOMMENDATIONS);
+define('LINKEDIN_FIELDS_DEFAULT', 'summary, positions');
 define('LINKEDIN_FIELDS', get_option('wp-linkedin_fields', LINKEDIN_FIELDS_DEFAULT));
 define('LINKEDIN_PROFILELANGUAGE', get_option('wp-linkedin_profilelanguage'));
 define('LINKEDIN_SENDMAIL_ON_TOKEN_EXPIRY', get_option('wp-linkedin_sendmail_on_token_expiry', false));
@@ -46,7 +46,6 @@ include 'class-linkedin-connection.php';
 include 'class-recommendations-widget.php';
 include 'class-card-widget.php';
 include 'class-profile-widget.php';
-include 'class-updates-widget.php';
 
 add_action('plugins_loaded', array('WPLinkedInPlugin', 'get_instance'));
 
@@ -66,7 +65,7 @@ class WPLinkedInPlugin {
 		register_deactivation_hook(__FILE__, 'flush_rewrite_rules');
 		add_action('init', array(&$this, 'init'));
 		add_action('widgets_init', array(&$this, 'widgets_init'));
-		add_action('admin_menu', array(&$this, 'admin_init'));
+		add_action('admin_menu', array(&$this, 'admin_menu'));
 
 		// Make plugin available for translation
 		// Translations can be filed in the /languages/ directory
@@ -120,46 +119,11 @@ class WPLinkedInPlugin {
 	}
 
 	function template_redirect() {
-		if (is_user_logged_in() && get_query_var('oauth') == 'linkedin') {
+		if (get_query_var('oauth') == 'linkedin') {
 			$linkedin = wp_linkedin_connection();
-			$state = get_query_var('state');
-			$code = get_query_var('code');
-			$r = get_query_var('r');
-
-			if ($linkedin->check_state_token($state)) {
-				$retcode = $linkedin->set_access_token($code, $r);
-
-				if (!is_wp_error($retcode)) {
-					$linkedin->clear_cache();
-					$this->redirect($r, 'success');
-				} else {
-					$this->redirect($r, 'error', $retcode->get_error_message());
-				}
-			} else {
-				$this->redirect($r, 'error', __('Invalid state', 'wp-linkedin'));
-			}
-
+			$linkedin->process_authorization(get_query_var('code'),
+					get_query_var('state'), get_query_var('r'));
 			exit;
-		}
-	}
-
-	function redirect($path, $status, $message=false) {
-		$query = array('oauth_status' => $status);
-		if ($message) $query['oauth_message'] = urlencode($message);
-		$path = add_query_arg($query, $path);
-		$location = $path;
-
-		$notice = __('Please click <a href="%s">here</a> if you are not redirected immediately.');
-		echo '<p><strong>' . sprintf($notice, $location) . '</strong></p>';
-
-		if (!LI_DEBUG) {
-			if (headers_sent()) {
-				// If the headers have already been sent then use Javascript
-				echo "<script>window.location='$location';</script>";
-			} else {
-				// Otherwise, just use a normal redirect
-				wp_redirect($location);
-			}
 		}
 	}
 
@@ -200,10 +164,9 @@ class WPLinkedInPlugin {
 		register_widget('WP_LinkedIn_Recommendations_Widget');
 		register_widget('WP_LinkedIn_Card_Widget');
 		register_widget('WP_LinkedIn_Profile_Widget');
-		register_widget('WP_LinkedIn_Updates_Widget');
 	}
 
-	function admin_init() {
+	function admin_menu() {
 		require_once 'class-admin.php';
 		$this->admin = new WPLinkedInAdmin($this);
 	}
